@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bin Taha Associates • Properties Hub App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker-move { display: inline-block; animation: tickerScroll 25s linear infinite; }
+    
+    /* Smooth mobile drawer transition */
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Mobile Top Bar: Connectivity Badge + Mini Clock -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Lahore: <strong id="clockPk" class="text-white">--:--</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- Live Market Ticker -->
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
+    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">Live</span>
+    <div class="ticker-wrap w-full text-[11px]">
+      <div class="ticker-move">
+        <span>LDA Avenue 1: Prime Plots Available</span> &bull; 
+        <span>Jubilee Town: Turnkey Luxury Villas</span> &bull; 
+        <span>Bugtia Chowk Raiwind: Commercial High ROI</span> &bull; 
+        <span>Valencia & Izmir: Ready Registry</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Logo -->
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Properties Hub & AI Portal</p>
+        </div>
+      </a>
+
+      <!-- Quick Action Buttons + Drawer Toggle -->
+      <div class="flex items-center gap-2">
+        <button onclick="toggleAddModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition cursor-pointer">
+          <i class="fa-solid fa-plus text-[10px]"></i> Add Property
+        </button>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-building w-4"></i> Properties Hub</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Dream Home Finder</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Auth & CRM Portal -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+
+    <!-- Search & Society Filters Bar -->
+    <div class="glass-card p-4 sm:p-5 rounded-3xl shadow-xl space-y-3">
+      <div class="flex flex-col sm:flex-row justify-between gap-2 items-start sm:items-center">
+        <div class="flex items-center gap-2 text-xs font-bold text-white">
+          <i class="fa-solid fa-magnifying-glass text-amber-400"></i>
+          <span>Search & Filter Listings</span>
+        </div>
+        <span id="propCountTag" class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-lg text-[11px] font-black">
+          0 Properties Available
+        </span>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative">
+        <input type="text" id="propSearchInput" onkeyup="searchProperties()" placeholder="Search by title, LDA Avenue 1, Jubilee, plot size..." class="w-full bg-slate-950 border border-slate-700 p-3 pl-9 rounded-2xl text-xs text-white font-medium outline-none focus:border-amber-500 shadow-inner">
+        <i class="fa-solid fa-search absolute left-3 top-3.5 text-slate-500 text-xs"></i>
+      </div>
+
+      <!-- Category Filter Chips (Horizontal Scroll on Mobile) -->
+      <div class="flex gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <button onclick="filterProperties('All')" id="btnFilterAll" class="filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer">All Types</button>
+        <button onclick="filterProperties('Plot')" id="btnFilterPlot" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Plots</button>
+        <button onclick="filterProperties('House')" id="btnFilterHouse" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Houses / Villas</button>
+        <button onclick="filterProperties('Commercial')" id="btnFilterComm" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Commercial</button>
+      </div>
+    </div>
+
+    <!-- Quick Utilities Bar (Currency & Broadcast) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <!-- Currency Converter Quick Bar -->
+      <div class="bg-slate-900/80 border border-slate-800 p-3 rounded-2xl flex items-center justify-between text-xs">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-coins text-amber-400"></i>
+          <span class="font-bold text-slate-300">FX Rate:</span>
+          <select id="currSelect" onchange="convertCurrency()" class="bg-slate-950 text-white rounded px-2 py-1 border border-slate-700 outline-none text-[11px]">
+            <option value="USD">USD ($)</option>
+            <option value="AED">AED (Dh)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="SAR">SAR (SR)</option>
+          </select>
+          <input type="number" id="currVal" value="10000" onkeyup="convertCurrency()" class="w-16 bg-slate-950 text-white px-2 py-1 rounded border border-slate-700 outline-none text-[11px]">
+        </div>
+        <span id="currResult" class="text-emerald-400 font-black text-xs text-right">= PKR 2,800,000</span>
+      </div>
+
+      <!-- Broadcast to WhatsApp -->
+      <button onclick="broadcastAllProperties()" class="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-black px-4 py-3 rounded-2xl text-xs flex items-center justify-center gap-2 shadow transition cursor-pointer">
+        <i class="fa-brands fa-whatsapp text-sm"></i> Share Hot Properties on WhatsApp
+      </button>
+    </div>
+
+    <!-- Properties Grid Display -->
+    <div id="propertiesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Injected dynamically -->
+    </div>
+
+    <!-- ROI Calculator Collapsible Box -->
+    <div id="roiCalculator" class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div>
+          <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-black uppercase">Smart AI Tool</span>
+          <h3 class="text-base font-black text-white">Property ROI Predictor</h3>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Capital (PKR):</label>
+          <input type="number" id="roiAmount" value="20000000" onkeyup="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Growth Forecast:</label>
+          <select id="roiRate" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+            <option value="15">15% (General Market)</option>
+            <option value="25" selected>25% (LDA & Jubilee Growth)</option>
+            <option value="35">35% (Raiwind Commercial)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Holding Period:</label>
+          <select id="roiYears" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+            <option value="1">1 Year</option>
+            <option value="2" selected>2 Years</option>
+            <option value="3">3 Years</option>
+            <option value="5">5 Years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+        <div>
+          <div class="text-[10px] text-slate-400 font-bold uppercase">Estimated Future Value</div>
+          <div id="roiFutureValue" class="text-lg sm:text-xl font-black text-emerald-400">PKR 31,250,000</div>
+        </div>
+        <div class="sm:text-right">
+          <div class="text-[10px] text-slate-400 font-bold uppercase">Net Projected Return</div>
+          <div id="roiNetProfit" class="text-lg sm:text-xl font-black text-amber-400">+ PKR 11,250,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist / Dream Section -->
+    <div id="dreamSection" class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center border border-purple-500/30"><i class="fa-solid fa-star text-xs"></i></span>
+          <h3 class="text-base font-black text-white">Your Saved Wishlist</h3>
+        </div>
+        <span id="dreamListCount" class="text-xs text-amber-400 font-bold">0 Saved</span>
+      </div>
+      <div id="dreamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Wishlist items -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- In-App Modal: Add Property (AI Wizard + Offline Queue) -->
+  <div id="addPropModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> Add Property (AI Wizard)
+        </h3>
+        <button onclick="toggleAddModal()" class="text-slate-400 hover:text-white text-sm font-bold cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Property Title / Plot No: *</label>
+          <input type="text" id="newTitle" placeholder="e.g. 5 Marla Plot #42 Block C, LDA Avenue 1" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-slate-300 mb-1">Category: *</label>
+            <select id="newType" onchange="runAiValuation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+              <option value="Plot">Plot</option>
+              <option value="House">House / Villa</option>
+              <option value="Commercial">Commercial</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Society: *</label>
+            <select id="newSociety" onchange="runAiValuation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+              <option value="LDA Avenue 1">LDA Avenue 1</option>
+              <option value="Jubilee Town">Jubilee Town</option>
+              <option value="Izmir Town">Izmir Town</option>
+              <option value="Valencia Town">Valencia Town</option>
+              <option value="Bugtia Chowk">Bugtia Chowk (Raiwind)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-slate-300 mb-1">Demand Price (PKR): *</label>
+            <input type="number" id="newPrice" placeholder="15000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Phone / WhatsApp: *</label>
+            <input type="text" id="newPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+        </div>
+
+        <!-- AI Price Insight Box -->
+        <div class="bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl text-[11px]">
+          <span class="text-amber-400 font-black"><i class="fa-solid fa-robot mr-1"></i> AI Valuation Insight:</span>
+          <div id="aiValuationText" class="text-slate-200 mt-0.5">Select society and category for estimate.</div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Image URL (Optional):</label>
+          <input type="text" id="newImg" placeholder="Leave empty for verified default photo" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Features / Description:</label>
+          <textarea id="newDesc" rows="2" placeholder="Mention near park, corner, facing commercial, etc..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal"></textarea>
+        </div>
+
+        <button onclick="submitNewProperty()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 py-3 rounded-xl font-black text-xs transition shadow-lg cursor-pointer uppercase tracking-wider">
+          <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Publish Property & Sync
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Mobile Bottom Navigation Bar (Thumb Friendly) -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <button onclick="toggleAddModal()" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
+      <i class="fa-solid fa-plus text-base"></i>
+    </button>
+    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+      <i class="fa-solid fa-star text-sm"></i>
+      <span class="text-[10px] font-bold">Dream</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast Notification -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    // In-App Toast Messenger
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-amber-500 text-amber-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    // Drawer Toggle
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function toggleAddModal() {
+      const modal = document.getElementById('addPropModal');
+      modal.classList.toggle('hidden');
+      runAiValuation();
+    }
+
+    // Online/Offline Detection & Auto Sync
+    function checkConnectivity() {
+      const badge = document.getElementById('networkStatusBadge');
+      if(navigator.onLine) {
+        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
+        flushOfflineQueue();
+      } else {
+        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
+      }
+    }
+    window.addEventListener('online', checkConnectivity);
+    window.addEventListener('offline', checkConnectivity);
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+
+    function convertCurrency() {
+      const type = document.getElementById('currSelect').value;
+      const val = parseFloat(document.getElementById('currVal').value) || 0;
+      let rate = 280;
+      if(type === 'AED') rate = 76;
+      if(type === 'GBP') rate = 365;
+      if(type === 'SAR') rate = 75;
+      let total = val * rate;
+      document.getElementById('currResult').innerText = `= PKR ${total.toLocaleString()}`;
+    }
+
+    function calculateRoi() {
+      const p = parseFloat(document.getElementById('roiAmount').value) || 0;
+      const r = parseFloat(document.getElementById('roiRate').value) / 100;
+      const t = parseFloat(document.getElementById('roiYears').value);
+      const future = p * Math.pow((1 + r), t);
+      const profit = future - p;
+      document.getElementById('roiFutureValue').innerText = `PKR ${Math.round(future).toLocaleString()}`;
+      document.getElementById('roiNetProfit').innerText = `+ PKR ${Math.round(profit).toLocaleString()}`;
+    }
+
+    function runAiValuation() {
+      const society = document.getElementById('newSociety').value;
+      const type = document.getElementById('newType').value;
+      let base = 15000000;
+      if(society === 'LDA Avenue 1') base = 25000000;
+      if(society === 'Jubilee Town') base = 20000000;
+      if(society === 'Valencia Town') base = 35000000;
+      if(society === 'Izmir Town') base = 40000000;
+      if(type === 'House') base *= 2.5;
+      if(type === 'Commercial') base *= 3;
+      document.getElementById('aiValuationText').innerText = `Est. Value: PKR ${base.toLocaleString()} (AI Verified by Bin Taha)`;
+    }
+
+    // Storage Engine (Local + Fallback Defaults)
+    function getStoredProperties() {
+      let defaults = [
+        { id: 1, title: "5 Marla Commercial Plot", type: "Commercial", society: "Bugtia Chowk", price: 32000000, phone: "03219404812", views: 420, desc: "High rental yield commercial plot on main Raiwind Road hub.", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
+        { id: 2, title: "1 Kanal Luxury Smart Villa", type: "House", society: "LDA Avenue 1", price: 68000000, phone: "03219404812", views: 610, desc: "Brand new turnkey luxury villa with solid Grade-60 steel foundation.", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" },
+        { id: 3, title: "10 Marla Residential Plot Block C", type: "Plot", society: "Jubilee Town", price: 21000000, phone: "03219404812", views: 290, desc: "Prime location plot, walking distance to park and commercial market.", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" }
+      ];
+      let stored = JSON.parse(localStorage.getItem('bintaha_properties_hub') || 'null');
+      if (!stored || stored.length === 0) {
+        localStorage.setItem('bintaha_properties_hub', JSON.stringify(defaults));
+        return defaults;
+      }
+      return stored;
+    }
+
+    function getDreamWishlist() {
+      return JSON.parse(localStorage.getItem('bintaha_dream_wishlist') || '[]');
+    }
+
+    function toggleDreamWishlist(id) {
+      let props = getStoredProperties();
+      let item = props.find(p => p.id === id);
+      if(!item) return;
+      let dreams = getDreamWishlist();
+      let idx = dreams.findIndex(d => d.id === id);
+      if(idx > -1) {
+        dreams.splice(idx, 1);
+        showToast("Removed from Wishlist");
+      } else {
+        dreams.push(item);
+        showToast("Added to Wishlist ⭐");
+      }
+      localStorage.setItem('bintaha_dream_wishlist', JSON.stringify(dreams));
+      renderProperties(props);
+      renderDreamWishlist();
+    }
+
+    function broadcastAllProperties() {
+      let props = getStoredProperties();
+      let text = "🌟 *Bin Taha Associates • Hot Properties Broadcast* 🌟\n\n";
+      props.forEach((p, index) => {
+        text += `${index + 1}. *${p.title}* (${p.society})\n💰 Demand: PKR ${Number(p.price).toLocaleString()}\n📞 Contact: 03219404812\n\n`;
+      });
+      text += "Managed by CEO Taha Mobeen Bhutta • Bin Taha Associates Lahore.";
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function renderDreamWishlist() {
+      const dreams = getDreamWishlist();
+      const grid = document.getElementById('dreamGrid');
+      document.getElementById('dreamListCount').innerText = `${dreams.length} Saved`;
+
+      if(dreams.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center text-slate-500 text-xs py-4">No bookmarked properties yet. Tap the star icon on any property card to save.</div>`;
+        return;
+      }
+
+      grid.innerHTML = dreams.map(p => `
+        <div class="bg-slate-950 border border-purple-500/30 rounded-2xl overflow-hidden shadow flex items-center justify-between p-3 gap-3">
+          <img src="${p.img}" alt="${p.title}" class="w-14 h-14 object-cover rounded-xl shrink-0">
+          <div class="flex-1 min-w-0">
+            <h5 class="text-xs font-black text-white truncate">${p.title}</h5>
+            <div class="text-[11px] text-amber-400 font-bold">PKR ${Number(p.price).toLocaleString()}</div>
+            <div class="text-[10px] text-slate-400 truncate">${p.society}</div>
+          </div>
+          <button onclick="toggleDreamWishlist(${p.id})" class="text-rose-400 hover:text-rose-300 p-2 cursor-pointer">
+            <i class="fa-solid fa-trash-can text-xs"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function renderProperties(data) {
+      const grid = document.getElementById('propertiesGrid');
+      const dreams = getDreamWishlist();
+      document.getElementById('propCountTag').innerText = `${data.length} Properties Available`;
+
+      if (data.length === 0) {
+        grid.innerHTML = `<div class="col-span-full bg-slate-900 border border-slate-800 p-8 rounded-2xl text-center text-slate-500 text-xs font-bold">No properties found matching your criteria.</div>`;
+        return;
+      }
+
+      grid.innerHTML = data.map(p => {
+        let isStarred = dreams.some(d => d.id === p.id);
+        let starBtn = isStarred 
+          ? "text-amber-400 bg-amber-500/30 border border-amber-500/60" 
+          : "text-slate-400 bg-slate-950/80 border border-slate-700";
+        
+        let waText = `🌟 *Bin Taha Associates Property Inquiry* 🌟\n\n📌 Title: ${p.title}\n🏢 Society: ${p.society}\n💰 Demand: PKR ${Number(p.price).toLocaleString()}\n\nContacting CEO Taha Mobeen Bhutta.`;
+        let shareUrl = `https://wa.me/?text=` + encodeURIComponent(waText);
+        let chatUrl = `https://wa.me/923219404812?text=` + encodeURIComponent(waText);
+
+        return `
+          <div class="glass-card rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-amber-500/80 transition duration-300">
+            
+            <div class="h-44 overflow-hidden relative">
+              <img src="${p.img || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80'}" alt="${p.title}" class="w-full h-full object-cover">
+              
+              <span class="absolute top-2.5 left-2.5 bg-slate-950/85 backdrop-blur text-amber-400 px-2 py-0.5 rounded-lg text-[10px] font-black border border-amber-500/30">
+                ${p.type}
+              </span>
+              
+              <span class="absolute top-2.5 left-18 bg-emerald-600/90 text-white px-2 py-0.5 rounded-lg text-[10px] font-bold">
+                <i class="fa-solid fa-eye text-[9px] mr-0.5"></i> ${p.views || 180}
+              </span>
+
+              <button onclick="toggleDreamWishlist(${p.id})" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full backdrop-blur flex items-center justify-center transition cursor-pointer ${starBtn}">
+                <i class="fa-solid fa-star text-xs"></i>
+              </button>
+            </div>
+
+            <div class="p-4 space-y-2.5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-[11px] text-rose-400 font-bold mb-1">
+                  <i class="fa-solid fa-location-dot"></i> <span>${p.society}</span>
+                </div>
+                <h4 class="font-black text-white text-sm leading-snug">${p.title}</h4>
+                <p class="text-[11px] text-slate-300 mt-1 line-clamp-2">${p.desc || 'Direct listing under Bin Taha Associates verification.'}</p>
+              </div>
+
+              <div class="pt-2.5 border-t border-slate-800/80 space-y-2.5">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400 font-bold">Demand:</span>
+                  <span class="text-amber-400 text-sm font-black">PKR ${Number(p.price).toLocaleString()}</span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-1.5 pt-1">
+                  <a href="tel:03219404812" class="bg-slate-800 hover:bg-slate-700 text-white py-2 rounded-xl text-center text-xs font-bold transition flex items-center justify-center gap-1 shadow">
+                    <i class="fa-solid fa-phone text-emerald-400 text-[11px]"></i> Call
+                  </a>
+                  <a href="${chatUrl}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white py-2 rounded-xl text-center text-xs font-black transition flex items-center justify-center gap-1 shadow">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                  </a>
+                  <a href="${shareUrl}" target="_blank" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-xl text-center text-xs font-bold transition flex items-center justify-center border border-amber-500/30">
+                    <i class="fa-solid fa-share-nodes text-[11px]"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Submit Property with Offline Queue & Google Sheet Webhook
+    function submitNewProperty() {
+      const title = document.getElementById('newTitle').value.trim();
+      const type = document.getElementById('newType').value;
+      const society = document.getElementById('newSociety').value;
+      const price = parseFloat(document.getElementById('newPrice').value) || 0;
+      const phone = document.getElementById('newPhone').value.trim();
+      const img = document.getElementById('newImg').value.trim();
+      const desc = document.getElementById('newDesc').value.trim();
+
+      if (!title || !price || !phone) {
+        showToast("Please fill Title, Demand, and Phone!", true);
+        return;
+      }
+
+      let props = getStoredProperties();
+      let newProp = {
+        id: Date.now(),
+        title,
+        type,
+        society,
+        price,
+        phone,
+        views: 1,
+        img: img || 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=600&q=80',
+        desc: desc || 'Direct submission by property owner.'
+      };
+
+      props.unshift(newProp);
+      localStorage.setItem('bintaha_properties_hub', JSON.stringify(props));
+
+      // Sync or Queue for Offline
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwtDCdqZjTSWdLfhJZUVM6N8stSXvKTjocrSCrzF_4V6CnaCXy8Gh00W7odchH6xu9f/exec';
+      const payload = { action: 'sync_new_property', property: newProp, time: new Date().toISOString() };
+
+      if(navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(() => {
+          showToast("Property Published & Synced to Google Sheet!");
+        }).catch(() => {
+          queueForSync(payload);
+          showToast("Property Saved locally (Offline Sync queued)");
+        });
+      } else {
+        queueForSync(payload);
+        showToast("Offline: Saved locally! Will sync when connected.");
+      }
+
+      // Reset & Refresh
+      document.getElementById('newTitle').value = '';
+      document.getElementById('newPrice').value = '';
+      document.getElementById('newImg').value = '';
+      document.getElementById('newDesc').value = '';
+      toggleAddModal();
+      renderProperties(props);
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: 'https://script.google.com/macros/s/AKfycbwtDCdqZjTSWdLfhJZUVM6N8stSXvKTjocrSCrzF_4V6CnaCXy8Gh00W7odchH6xu9f/exec', data: payload });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      queue.forEach(item => {
+        fetch(item.url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        }).catch(err => console.log('Sync retry failed:', err));
+      });
+
+      localStorage.removeItem('bintaha_offline_queue');
+      showToast("All offline items successfully synced to Google Sheet!");
+    }
+
+    function filterProperties(type) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.className = "filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer";
+      });
+
+      if(type === 'All') document.getElementById('btnFilterAll').className = "filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(type === 'Plot') document.getElementById('btnFilterPlot').className = "filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(type === 'House') document.getElementById('btnFilterHouse').className = "filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(type === 'Commercial') document.getElementById('btnFilterComm').className = "filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+
+      const props = getStoredProperties();
+      if (type === 'All') {
+        renderProperties(props);
+      } else {
+        renderProperties(props.filter(p => p.type === type));
+      }
+    }
+
+    function searchProperties() {
+      const query = document.getElementById('propSearchInput').value.toLowerCase().trim();
+      const props = getStoredProperties();
+      const filtered = props.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.society.toLowerCase().includes(query) || 
+        p.type.toLowerCase().includes(query) ||
+        (p.desc && p.desc.toLowerCase().includes(query))
+      );
+      renderProperties(filtered);
+    }
+
+    window.onload = function() {
+      checkConnectivity();
+      updateClock();
+      renderProperties(getStoredProperties());
+      renderDreamWishlist();
+      calculateRoi();
+      convertCurrency();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contact Hub | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Mobile Top Connectivity Bar -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Lahore: <strong id="clockPk" class="text-white">--:--</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Logo -->
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Official Contact & Inquiry Console</p>
+        </div>
+      </a>
+
+      <!-- Quick Actions + Drawer Toggle -->
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+        </a>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (All 17 Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-envelope w-4"></i> Contact Us</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Portals -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+
+    <!-- Header Banner -->
+    <div class="text-center max-w-3xl mx-auto space-y-2">
+      <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">
+        Direct VIP Gateway
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black shining-gold">
+        Contact CEO Taha Mobeen Bhutta
+      </h2>
+      <p class="text-xs text-slate-300">
+        Inquiries are processed via local memory first (offline-ready) and auto-synced to Master CRM & Google Sheets.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Operations Card -->
+      <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 flex flex-col justify-between">
+        <div class="space-y-4">
+          <h3 class="text-base font-black text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-map-location-dot text-amber-400"></i> Operational Hubs & Hotlines
+          </h3>
+
+          <div class="space-y-3 text-xs">
+            <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-1">
+              <div class="text-amber-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-building text-xs"></i> Head Office
+              </div>
+              <p class="text-slate-300 text-[11px]">LDA Avenue 1 & Jubilee Town, Lahore, Pakistan</p>
+            </div>
+
+            <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-1">
+              <div class="text-cyan-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-truck-ramp-box text-xs"></i> Site Material Dispatch
+              </div>
+              <p class="text-slate-300 text-[11px]">Bugtia Chowk, Raiwind Road, Lahore</p>
+            </div>
+
+            <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-1">
+              <div class="text-emerald-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-phone-volume text-xs"></i> Direct Line & 24/7 Hotline
+              </div>
+              <p class="text-white font-bold text-xs">0321-9404812 (CEO Taha Mobeen Bhutta)</p>
+            </div>
+
+            <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-1">
+              <div class="text-purple-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-envelope text-xs"></i> Official CRM Email
+              </div>
+              <p class="text-slate-300 text-[11px]">bintahacrm@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+          <span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> FBR Registered</span>
+          <span>PEC Category C</span>
+        </div>
+      </div>
+
+      <!-- Direct Contact Form -->
+      <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-2xl gold-glow border-2 border-amber-500/50 space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+          <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+            <i class="fa-solid fa-paper-plane text-emerald-400"></i> Send Direct Inquiry
+          </h3>
+          <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px] font-black">
+            Sheet Synced
+          </span>
+        </div>
+
+        <div class="space-y-3 text-xs font-bold">
+          <div>
+            <label class="block text-slate-300 mb-1">Your Full Name: *</label>
+            <input type="text" id="contactName" placeholder="Enter your name..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+
+          <div>
+            <label class="block text-slate-300 mb-1">Phone / WhatsApp: *</label>
+            <input type="text" id="contactPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+
+          <div>
+            <label class="block text-slate-300 mb-1">Subject / Requirement:</label>
+            <input type="text" id="contactSubject" placeholder="e.g. 1 Kanal Plot / Construction Quote" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+
+          <div>
+            <label class="block text-slate-300 mb-1">Message / Project Details:</label>
+            <textarea id="contactMessage" rows="3" placeholder="Provide details about your project or inquiry..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal"></textarea>
+          </div>
+
+          <div class="space-y-2 pt-1">
+            <button onclick="submitContactForm()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs transition shadow-lg flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Submit to CRM & Sheet
+            </button>
+            <a id="contactWhatsappBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs transition shadow flex items-center justify-center gap-2 cursor-pointer">
+              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Directly
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="contact.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+      <i class="fa-solid fa-envelope text-sm"></i>
+      <span class="text-[10px] font-bold">Contact</span>
+    </a>
+    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+      <i class="fa-solid fa-star text-sm"></i>
+      <span class="text-[10px] font-bold">Dream</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-amber-500 text-amber-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function checkConnectivity() {
+      const badge = document.getElementById('networkStatusBadge');
+      if(navigator.onLine) {
+        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
+        flushOfflineQueue();
+      } else {
+        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
+      }
+    }
+    window.addEventListener('online', checkConnectivity);
+    window.addEventListener('offline', checkConnectivity);
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+
+    function updateContactWhatsapp() {
+      const name = document.getElementById('contactName').value.trim() || 'Client';
+      const phone = document.getElementById('contactPhone').value.trim() || '03219404812';
+      const subj = document.getElementById('contactSubject').value.trim() || 'General Inquiry';
+      const msg = document.getElementById('contactMessage').value.trim() || 'No additional details';
+      const text = `📬 OFFICIAL CONTACT INQUIRY\nName: ${name} (${phone})\nSubject: ${subj}\nMessage: ${msg}`;
+      document.getElementById('contactWhatsappBtn').href = `https://wa.me/923219404812?text=${encodeURIComponent(text)}`;
+    }
+
+    document.getElementById('contactName').addEventListener('input', updateContactWhatsapp);
+    document.getElementById('contactPhone').addEventListener('input', updateContactWhatsapp);
+    document.getElementById('contactSubject').addEventListener('input', updateContactWhatsapp);
+    document.getElementById('contactMessage').addEventListener('input', updateContactWhatsapp);
+
+    function submitContactForm() {
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const subj = document.getElementById('contactSubject').value.trim() || 'General Inquiry';
+      const msg = document.getElementById('contactMessage').value.trim() || 'No details';
+
+      if(!name || !phone) {
+        showToast("Please enter your name and phone number!", true);
+        return;
+      }
+
+      const inboxMsg = {
+        id: Date.now(),
+        name: name,
+        phone: phone,
+        email: 'bintahacrm@gmail.com',
+        subject: subj,
+        text: msg,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      // Local storage
+      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+      inboxList.unshift(inboxMsg);
+      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
+
+      // Sync or Queue
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+      if (navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(inboxMsg)
+        }).then(() => {
+          showToast(`Inquiry sent to CEO Taha Mobeen Bhutta & Synced!`);
+        }).catch(() => {
+          queueForSync(inboxMsg);
+          showToast("Saved locally (will sync when online)");
+        });
+      } else {
+        queueForSync(inboxMsg);
+        showToast("Offline: Message saved locally! Will sync when connected.");
+      }
+
+      document.getElementById('contactName').value = '';
+      document.getElementById('contactSubject').value = '';
+      document.getElementById('contactMessage').value = '';
+      updateContactWhatsapp();
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      queue.forEach(item => {
+        fetch(item.url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        }).catch(err => console.log('Sync retry failed:', err));
+      });
+
+      localStorage.removeItem('bintaha_offline_queue');
+      showToast("Offline contact inquiries synced to Google Sheets!");
+    }
+
+    window.onload = function() {
+      checkConnectivity();
+      updateClock();
+      updateContactWhatsapp();
+    };
+  </script>
+</body>
+</html>

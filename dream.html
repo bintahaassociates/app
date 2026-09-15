@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Our Dream & Vision | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .hover-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hover-card:hover { transform: translateY(-4px); border-color: #fcd34d !important; box-shadow: 0 12px 35px rgba(252, 211, 77, 0.25); }
+
+    /* 3D Dynamic Moving Eagle Logo Animation */
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Mobile Top Bar: Connectivity & Real-time Info -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Doorstep: <strong class="text-emerald-400">24/7 Active</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Logo -->
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Our Dream & Visionary Blueprint</p>
+        </div>
+      </a>
+
+      <!-- Quick Actions + Drawer Toggle -->
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen,%20I%20want%20to%20discuss%20my%20dream%20project%20in%20Lahore." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp CEO
+        </a>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Navigation</span>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-star w-4"></i> Our Dream</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Portals -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+    
+    <!-- Hero Banner -->
+    <div class="glass-card p-6 sm:p-10 rounded-3xl shadow-2xl gold-glow text-center max-w-4xl mx-auto space-y-4 relative overflow-hidden">
+      <div class="absolute -top-20 -left-20 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-20 -right-20 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[11px] font-black uppercase px-3.5 py-1.5 rounded-full tracking-wider inline-block">
+        Visionary Blueprint & Legacy Standard
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black shining-gold leading-tight">
+        Architecting Lahore's Zero-Commission Real Estate Future
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        Under the leadership of <strong class="text-white">CEO Taha Mobeen Bhutta</strong>, Bin Taha Associates brings absolute transparency, direct owner verification, and certified engineering execution to LDA Avenue 1, Jubilee Town, and Raiwind Road.
+      </p>
+
+      <div class="pt-2 flex flex-wrap justify-center gap-2">
+        <a href="properties.html" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-5 py-2.5 rounded-xl text-xs transition shadow flex items-center gap-1.5">
+          <i class="fa-solid fa-building"></i> Explore Verified Properties
+        </a>
+        <a href="#dreamFinder" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition border border-slate-700 flex items-center gap-1.5">
+          <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Dream Property Planner
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Dream Property Requirement Planner (Offline + Online Sync) -->
+    <div id="dreamFinder" class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-5 border-2 border-purple-500/40">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold border border-purple-500/30">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white">Dream Property Planner & Lead Sync</h3>
+            <p class="text-[10px] text-purple-400 font-semibold">Direct VIP Dispatch to CEO Taha Mobeen Bhutta</p>
+          </div>
+        </div>
+        <span class="bg-purple-500/20 text-purple-300 text-[10px] px-2.5 py-1 rounded-lg font-black uppercase">
+          AI Matchmaker Active
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Target Society:</label>
+          <select id="dreamSociety" class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white outline-none focus:border-purple-500">
+            <option value="LDA Avenue 1">LDA Avenue 1</option>
+            <option value="Jubilee Town">Jubilee Town</option>
+            <option value="Raiwind Road (Bugtia Chowk)">Raiwind Road (Bugtia Chowk)</option>
+            <option value="Izmir Town">Izmir Town</option>
+            <option value="Valencia Town">Valencia Town</option>
+            <option value="DHA Rahbar">DHA Rahbar</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Property Size & Type:</label>
+          <select id="dreamType" class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white outline-none focus:border-purple-500">
+            <option value="5 Marla Residential Plot">5 Marla Residential Plot</option>
+            <option value="10 Marla Residential Plot">10 Marla Residential Plot</option>
+            <option value="1 Kanal Luxury Villa">1 Kanal Luxury Villa</option>
+            <option value="Commercial Plaza Unit">Commercial Plaza Unit</option>
+            <option value="Turnkey Construction Project">Turnkey Construction Project</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Maximum Budget (PKR):</label>
+          <input type="text" id="dreamBudget" placeholder="e.g. 1.5 Crore to 3 Crore" class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white outline-none focus:border-purple-500">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Your Full Name: *</label>
+          <input type="text" id="dreamName" placeholder="Enter your name..." class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white outline-none focus:border-purple-500">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Phone / WhatsApp Number: *</label>
+          <input type="text" id="dreamPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white outline-none focus:border-purple-500">
+        </div>
+      </div>
+
+      <button onclick="submitDreamRequirement()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-black py-3 rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider">
+        <i class="fa-solid fa-paper-plane"></i> Save Dream Requirement & Sync
+      </button>
+      <div id="dreamResult" class="hidden p-3 bg-slate-950 rounded-xl border border-purple-500/40 text-purple-300 text-xs font-bold"></div>
+    </div>
+
+    <!-- Core Pillars Grid -->
+    <div class="grid sm:grid-cols-2 gap-6">
+      
+      <!-- Pillar 1 -->
+      <div class="glass-card p-6 sm:p-7 rounded-3xl hover-card flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center text-xl font-black mb-4 shadow-lg">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-black text-white mb-2 flex items-center gap-2">
+            <span class="w-2 h-5 bg-amber-500 rounded-full"></span> Zero-Commission & Direct Verification
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            We eliminate deceptive broker intermediaries and hidden fees. Through our verified master maps and automated digital CRM, buyers and sellers negotiate directly with certified legal ownership records and complete title transparency.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-amber-400 font-bold">
+          <span><i class="fa-solid fa-shield-check mr-1"></i> FBR Registered</span>
+          <span>100% Escrow Protection</span>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="glass-card p-6 sm:p-7 rounded-3xl hover-card flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center text-xl font-black mb-4 shadow-lg">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-black text-white mb-2 flex items-center gap-2">
+            <span class="w-2 h-5 bg-emerald-500 rounded-full"></span> Turnkey Engineering & PEC Standard
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Our construction arm executes gray structures and luxury turnkey finishes with 100% Grade-60 deformed steel, lab-tested concrete ratios, and continuous digital site supervision backed by PEC Category C protocols.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-emerald-400 font-bold">
+          <span><i class="fa-solid fa-truck-fast mr-1"></i> 24/7 Doorstep Service</span>
+          <span>Grade-60 Steel Certified</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Official Social Channels Hub -->
+    <div class="glass-card p-5 sm:p-6 rounded-3xl text-center space-y-3">
+      <h4 class="text-xs font-black text-amber-400 uppercase tracking-widest">Connect Directly with CEO Taha Mobeen Bhutta</h4>
+      <div class="flex flex-wrap justify-center gap-2.5 pt-1">
+        <a href="https://wa.me/923219404812" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-emerald-400 hover:bg-emerald-600 hover:text-white transition shadow"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61593120180672" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition shadow"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/taha.m.bhutta/" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-pink-400 hover:bg-pink-600 hover:text-white transition shadow"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@BinTahaAssociates" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-red-400 hover:bg-red-600 hover:text-white transition shadow"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@bintahaassociates?is_from_webapp=1&sender_device=pc" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-slate-300 hover:bg-slate-800 hover:text-pink-400 transition shadow"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://x.com/Tahamobeenbhut" target="_blank" class="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition shadow"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="add-property.html" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
+      <i class="fa-solid fa-plus text-base"></i>
+    </a>
+    <a href="dream.html" class="flex flex-col items-center gap-1 text-purple-400 font-black">
+      <i class="fa-solid fa-star text-sm"></i>
+      <span class="text-[10px] font-bold">Dream</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast Notification -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-purple-500 text-purple-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-purple-500 text-purple-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function checkConnectivity() {
+      const badge = document.getElementById('networkStatusBadge');
+      if(navigator.onLine) {
+        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
+        flushOfflineQueue();
+      } else {
+        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
+      }
+    }
+    window.addEventListener('online', checkConnectivity);
+    window.addEventListener('offline', checkConnectivity);
+
+    function submitDreamRequirement() {
+      const society = document.getElementById('dreamSociety').value;
+      const type = document.getElementById('dreamType').value;
+      const budget = document.getElementById('dreamBudget').value.trim() || 'Flexible';
+      const name = document.getElementById('dreamName').value.trim();
+      const phone = document.getElementById('dreamPhone').value.trim();
+
+      if(!name || !phone) {
+        showToast("Please enter your name and phone number!", true);
+        return;
+      }
+
+      const lead = {
+        id: Date.now(),
+        name,
+        phone,
+        email: 'bintahacrm@gmail.com',
+        subject: `Dream Home: ${type} in ${society}`,
+        text: `Client: ${name}, Phone: ${phone}, Budget: ${budget}, Preference: ${type} at ${society}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      // Local Inbox Save
+      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+      inboxList.unshift(lead);
+      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
+
+      // Sync or Queue
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+      if(navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(lead)
+        }).then(() => {
+          showToast(`Requirement saved & synced to CEO Taha Mobeen!`);
+        }).catch(() => {
+          queueForSync(lead);
+          showToast("Saved locally (will sync when online)");
+        });
+      } else {
+        queueForSync(lead);
+        showToast("Offline: Saved locally! Will sync when connected.");
+      }
+
+      const resBox = document.getElementById('dreamResult');
+      resBox.classList.remove('hidden');
+      resBox.innerHTML = `✅ Dream Blueprint Registered for <strong class="text-white">${name}</strong> (${society} - ${type}). Our team will reach out on ${phone}.`;
+
+      document.getElementById('dreamName').value = '';
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      queue.forEach(item => {
+        fetch(item.url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        }).catch(err => console.log('Sync retry failed:', err));
+      });
+
+      localStorage.removeItem('bintaha_offline_queue');
+      showToast("Offline dream submissions synced to Google Sheets!");
+    }
+
+    window.onload = function() {
+      checkConnectivity();
+    };
+  </script>
+</body>
+</html>

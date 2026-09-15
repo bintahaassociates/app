@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Master Enterprise CRM & Payment Ledger | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Master Security Login Gate Overlay -->
+  <div id="securityGate" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex items-center justify-center p-4">
+    <div class="glass-card border-2 border-amber-500/60 p-6 sm:p-8 rounded-3xl max-w-sm w-full space-y-5 shadow-2xl text-center gold-glow">
+      <div class="w-14 h-14 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 rounded-2xl mx-auto flex items-center justify-center font-black text-2xl shadow-xl">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <h2 class="text-xl font-black text-white">Master CRM Security</h2>
+        <p class="text-xs text-amber-400 font-bold mt-1">CEO Taha Mobeen Bhutta • Master Ledger</p>
+      </div>
+
+      <!-- PIN Input -->
+      <div class="space-y-2">
+        <input type="password" id="masterPin" placeholder="••••••••" maxlength="15" autocomplete="off" class="w-full bg-slate-950 border border-slate-700 px-4 py-3.5 rounded-2xl text-center text-lg tracking-widest text-white focus:border-amber-500 outline-none font-black shadow-inner">
+        <p id="pinError" class="text-rose-400 text-xs font-bold hidden">
+          <i class="fa-solid fa-circle-exclamation mr-1"></i> Incorrect PIN! Try taha123 or 03219404812
+        </p>
+      </div>
+
+      <!-- Quick Numeric Keypad for Mobile -->
+      <div class="grid grid-cols-3 gap-2 text-sm font-black">
+        <button type="button" onclick="appendPin('1')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">1</button>
+        <button type="button" onclick="appendPin('2')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">2</button>
+        <button type="button" onclick="appendPin('3')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">3</button>
+        <button type="button" onclick="appendPin('4')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">4</button>
+        <button type="button" onclick="appendPin('5')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">5</button>
+        <button type="button" onclick="appendPin('6')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">6</button>
+        <button type="button" onclick="appendPin('7')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">7</button>
+        <button type="button" onclick="appendPin('8')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">8</button>
+        <button type="button" onclick="appendPin('9')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">9</button>
+        <button type="button" onclick="clearPin()" class="bg-rose-950/40 text-rose-300 border border-rose-800/60 py-3 rounded-xl active:scale-95 transition text-xs font-bold">C</button>
+        <button type="button" onclick="appendPin('0')" class="bg-slate-900 border border-slate-800 hover:border-amber-500 py-3 rounded-xl active:scale-95 transition">0</button>
+        <button type="button" onclick="quickFillMasterPin()" class="bg-amber-500/20 text-amber-400 border border-amber-500/40 py-3 rounded-xl active:scale-95 transition text-xs font-black">CEO</button>
+      </div>
+
+      <button onclick="verifyMasterPin()" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-slate-950 py-3.5 rounded-2xl font-black text-xs transition shadow-xl uppercase tracking-wider">
+        <i class="fa-solid fa-lock-open mr-1"></i> Unlock Master Ledger
+      </button>
+
+      <div class="text-[10px] text-slate-500 font-bold">
+        Session persists on this device until manual logout
+      </div>
+    </div>
+  </div>
+
+  <!-- Top App Status Bar -->
+  <aside aria-label="System status" class="bg-slate-950/95 backdrop-blur-md px-4 py-1.5 border-b border-slate-800 sticky top-0 z-40 flex items-center justify-between text-xs">
+    <div class="flex items-center gap-2">
+      <div id="networkStatusBadge" class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold text-[10px] tracking-wide">
+        <span id="networkIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="networkStatusText">ONLINE</span>
+      </div>
+      <span id="syncQueueCounter" class="hidden text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30 font-bold">
+        <i class="fa-solid fa-arrows-rotate fa-spin text-[9px] mr-1"></i><span id="queueCount">0</span> pending
+      </span>
+    </div>
+
+    <!-- Clocks & Vault -->
+    <div class="flex items-center gap-3 text-[11px] font-semibold">
+      <span class="text-emerald-400 font-bold hidden sm:inline">🇵🇰 <span id="tzPk" class="text-white">--:--</span></span>
+      <span class="text-amber-400 font-bold hidden sm:inline">🇦🇪 <span id="tzDubai" class="text-white">--:--</span></span>
+      <div class="bg-slate-900 border border-amber-500/40 px-2.5 py-0.5 rounded-lg text-amber-400 font-black text-[11px] flex items-center gap-1">
+        <i class="fa-solid fa-vault text-[10px]"></i> <span id="topVaultBadge">PKR 0</span>
+      </div>
+      <button onclick="masterCrmLogout()" class="text-rose-400 hover:text-rose-300 text-xs font-bold ml-1" title="Lock Master CRM">
+        <i class="fa-solid fa-lock"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[29px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Logo -->
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://placehold.co/80x80/0f172a/fcd34d?text=BT'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Master CRM & Payment Ledger</p>
+        </div>
+      </a>
+
+      <!-- Quick Action Buttons + Drawer Toggle -->
+      <div class="flex items-center gap-2">
+        <button onclick="syncAllLedgerToSheets()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition cursor-pointer">
+          <i class="fa-solid fa-cloud-arrow-up text-[10px]"></i> Sync
+        </button>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain" onerror="this.src='https://placehold.co/80x80/0f172a/fcd34d?text=BT'">
+          <div>
+            <div class="text-xs font-black text-white">Bin Taha App</div>
+            <div class="text-[9px] text-amber-400 font-bold">17-Module PropTech Suite</div>
+          </div>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Public Modules</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-rose-400"></i> Contact Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Client Actions</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Portals & CRM -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Enterprise & Operations</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black shadow"><i class="fa-solid fa-gauge-high w-4"></i> Master CRM Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Directory CRM</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="dealers.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-address-book w-4 text-emerald-400"></i> Master Directory</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="agent-login.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-user-shield w-4 text-yellow-400"></i> Partner Login</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-arrow-right-to-bracket w-4 text-blue-400"></i> Client Sign In</a>
+        <a href="signup.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-user-plus w-4 text-emerald-400"></i> Register Account</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta • 0321-9404812</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+
+    <!-- Overview Financial Matrix (Vault Metrics) -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+      <div class="glass-card p-4 rounded-2xl space-y-1 border border-amber-500/40">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Total Deals Value</span>
+        <div class="text-lg sm:text-xl font-black text-white" id="statTotalDeals">PKR 0</div>
+        <span class="text-[10px] text-amber-400 font-semibold">Active Pipeline</span>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl space-y-1 border border-emerald-500/40">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Received Vault</span>
+        <div class="text-lg sm:text-xl font-black text-emerald-400" id="statTotalPaid">PKR 0</div>
+        <span class="text-[10px] text-emerald-400 font-semibold">Collected Cash/Bank</span>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl space-y-1 border border-rose-500/40">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Pending Balance</span>
+        <div class="text-lg sm:text-xl font-black text-rose-400" id="statTotalBalance">PKR 0</div>
+        <span class="text-[10px] text-rose-400 font-semibold">Receivables Due</span>
+      </div>
+
+      <div class="glass-card p-4 rounded-2xl space-y-1 border border-cyan-500/40">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Total Entries</span>
+        <div class="text-lg sm:text-xl font-black text-cyan-400" id="statTotalEntries">0</div>
+        <span class="text-[10px] text-cyan-400 font-semibold">Unified Records</span>
+      </div>
+    </div>
+
+    <!-- Intake & New Ledger Form Card -->
+    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-amber-500/40">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm border border-amber-500/30">
+            <i class="fa-solid fa-file-circle-plus"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-white">Add Client & Payment Ledger</h3>
+            <p class="text-[10px] text-slate-400">Offline-first recording with auto Google Sheet accounting push</p>
+          </div>
+        </div>
+        <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px] font-black uppercase">
+          ABL Synced
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Client Full Name *</label>
+          <input type="text" id="clientName" placeholder="e.g. Malik Rizwan" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Phone / WhatsApp Number *</label>
+          <input type="text" id="clientPhone" placeholder="03219404812" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Service / Category *</label>
+          <select id="clientCategory" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+            <option value="Property">Property Buy / Sell</option>
+            <option value="Construction">Civil Construction (Turnkey/Gray)</option>
+            <option value="Material">Material Supply (Steel, Cement, Crush)</option>
+            <option value="Services">CAD Architecture & Approvals</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Bank / Account Method</label>
+          <select id="clientBank" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+            <option value="Allied Bank (ABL)">Allied Bank (ABL Master Vault)</option>
+            <option value="Meezan Bank">Meezan Bank Escrow</option>
+            <option value="Cash In Hand">Cash in Office Hand</option>
+            <option value="Direct Pay Order">Bank Pay Order / Cheque</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Total Deal / Agreement Amount (PKR) *</label>
+          <input type="number" id="dealAmount" placeholder="e.g. 15000000" onkeyup="updateLiveBalancePreview()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Received Payment / Token (PKR) *</label>
+          <input type="number" id="paidAmount" placeholder="e.g. 2000000" onkeyup="updateLiveBalancePreview()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <!-- Dynamic Live Balance Computation Preview -->
+        <div class="sm:col-span-2 bg-slate-950/80 border border-slate-800 p-3 rounded-2xl flex items-center justify-between text-xs">
+          <div class="text-slate-400 font-bold">
+            Computed Balance: <span id="computedBalanceText" class="text-rose-400 font-black text-sm ml-1">PKR 0</span>
+          </div>
+          <div class="text-[10px] text-amber-400 font-bold">
+            <i class="fa-solid fa-calculator mr-1"></i> Auto Calculated
+          </div>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-slate-300 mb-1">Project Remarks (Plot Number, Block, Society, Milestones):</label>
+          <textarea id="clientDetails" rows="2" placeholder="e.g. Plot 42 Block C LDA Avenue 1, 1st installment received..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-xs text-white outline-none focus:border-amber-500 font-normal"></textarea>
+        </div>
+      </div>
+
+      <button onclick="saveCrmEntryWithLedger()" id="btnSaveLedger" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-slate-950 py-3.5 rounded-xl font-black text-xs transition shadow-xl flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider">
+        <i class="fa-solid fa-floppy-disk text-sm"></i> Save Entry & Sync to Ledger
+      </button>
+    </div>
+
+    <!-- Ledger Feed, Search & Category Filters -->
+    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div>
+          <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+            <i class="fa-solid fa-receipt text-amber-400"></i> Master Ledger & Payment Records
+          </h3>
+          <p class="text-[10px] text-slate-400">All local entries with one-click WhatsApp invoices</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="confirmClearAllEntries()" class="text-rose-400 hover:text-rose-300 text-xs font-bold flex items-center gap-1 bg-rose-950/40 border border-rose-800/40 px-3 py-1.5 rounded-xl transition cursor-pointer">
+            <i class="fa-solid fa-trash-can text-[10px]"></i> Reset Ledger
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative">
+        <input type="text" id="searchInput" onkeyup="searchRecords()" placeholder="Search by client name, phone number, plot or remarks..." class="w-full bg-slate-950 border border-slate-700 p-3 pl-9 rounded-2xl text-xs text-white font-medium outline-none focus:border-amber-500 shadow-inner">
+        <i class="fa-solid fa-search absolute left-3 top-3.5 text-slate-500 text-xs"></i>
+      </div>
+
+      <!-- Filter Buttons (Horizontal scrolling for small screens) -->
+      <div class="flex gap-2 overflow-x-auto pb-1 text-xs no-scrollbar font-bold">
+        <button onclick="filterRecords('All')" id="btnFilterAll" class="ledger-filter-btn bg-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer">All Records</button>
+        <button onclick="filterRecords('Property')" id="btnFilterProp" class="ledger-filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 px-3.5 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Property</button>
+        <button onclick="filterRecords('Construction')" id="btnFilterConst" class="ledger-filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 px-3.5 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Construction</button>
+        <button onclick="filterRecords('Material')" id="btnFilterMat" class="ledger-filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 px-3.5 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Material & Supply</button>
+      </div>
+
+      <!-- Mobile Ledger Cards Container -->
+      <div id="entriesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
+        <!-- Dynamic Cards -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+    <a href="inbox.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+      <i class="fa-solid fa-inbox text-sm"></i>
+      <span class="text-[10px] font-bold">Inbox</span>
+    </a>
+    <a href="owners-crm.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-users-gear text-sm"></i>
+      <span class="text-[10px] font-bold">Owners</span>
+    </a>
+  </nav>
+
+  <!-- In-App Custom Toast Notification (Replaces window.alert) -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2 max-w-sm w-[90%]">
+    <i id="appToastIcon" class="fa-solid fa-circle-check text-emerald-400 text-sm shrink-0"></i>
+    <span id="appToastMsg" class="truncate">Notification</span>
+  </div>
+
+  <!-- Custom In-App Modal Dialog (Replaces window.confirm) -->
+  <div id="customConfirmModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card border border-rose-500/60 p-6 rounded-3xl max-w-xs w-full space-y-4 text-center shadow-2xl">
+      <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xl mx-auto border border-rose-500/40">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div>
+        <h4 class="text-sm font-black text-white">Reset Master Ledger?</h4>
+        <p class="text-xs text-slate-400 mt-1">This will erase all locally stored entries on this device.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold pt-1">
+        <button onclick="closeConfirmModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 py-2.5 rounded-xl transition">
+          Cancel
+        </button>
+        <button onclick="closeConfirmModal(true)" class="bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl transition font-black">
+          Yes, Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ACCOUNTING_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxtmVS9snQMnLF_Z_qATwuJQWDlDe2SVQ_YRDuo9nX0Yzbmq1nXnMNOllj1C32tuyzbDg/exec';
+    let currentCategoryFilter = 'All';
+
+    /* In-App Toast System */
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      const toastIcon = document.getElementById('appToastIcon');
+      toastMsg.innerText = msg;
+
+      if(isError) {
+        toast.className = 'fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-rose-500 text-rose-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2 max-w-sm w-[90%]';
+        toastIcon.className = 'fa-solid fa-circle-exclamation text-rose-400 text-sm shrink-0';
+      } else {
+        toast.className = 'fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2 max-w-sm w-[90%]';
+        toastIcon.className = 'fa-solid fa-circle-check text-emerald-400 text-sm shrink-0';
+      }
+
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+    }
+
+    /* In-App Confirmation Modal System */
+    let confirmCallback = null;
+    function confirmAction(callback) {
+      confirmCallback = callback;
+      document.getElementById('customConfirmModal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal(result) {
+      document.getElementById('customConfirmModal').classList.add('hidden');
+      if(result && typeof confirmCallback === 'function') {
+        confirmCallback();
+      }
+      confirmCallback = null;
+    }
+
+    /* Drawer Toggle */
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    /* Master PIN Security Engine */
+    function appendPin(num) {
+      const input = document.getElementById('masterPin');
+      input.value += num;
+    }
+
+    function clearPin() {
+      document.getElementById('masterPin').value = '';
+    }
+
+    function quickFillMasterPin() {
+      document.getElementById('masterPin').value = 'taha123';
+      verifyMasterPin();
+    }
+
+    function verifyMasterPin() {
+      const pin = document.getElementById('masterPin').value.trim();
+      const savedPin = localStorage.getItem('binTahaMasterPin') || 'taha123';
+
+      if(pin === savedPin || pin === '03219404812' || pin === 'taha123') {
+        localStorage.setItem('bintaha_master_crm_unlocked', 'true');
+        document.getElementById('securityGate').style.display = 'none';
+        document.getElementById('pinError').classList.add('hidden');
+        showToast("Master CRM & Ledger Unlocked!");
+        renderEntries();
+      } else {
+        document.getElementById('pinError').classList.remove('hidden');
+        showToast("Access Denied: Incorrect PIN", true);
+      }
+    }
+
+    function masterCrmLogout() {
+      localStorage.removeItem('bintaha_master_crm_unlocked');
+      document.getElementById('masterPin').value = '';
+      document.getElementById('securityGate').style.display = 'flex';
+      showToast("Master CRM Locked");
+    }
+
+    /* Network Connectivity & Queue Manager */
+    function updateNetworkStatus() {
+      const isOnline = navigator.onLine;
+      const statusText = document.getElementById('networkStatusText');
+      const statusBadge = document.getElementById('networkStatusBadge');
+      const indicatorDot = document.getElementById('networkIndicatorDot');
+
+      if (isOnline) {
+        statusText.innerText = 'ONLINE';
+        statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold text-[10px] tracking-wide';
+        indicatorDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+        flushOfflineQueue();
+      } else {
+        statusText.innerText = 'OFFLINE';
+        statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-950/80 border border-rose-500/40 text-rose-400 font-bold text-[10px] tracking-wide';
+        indicatorDot.className = 'w-2 h-2 rounded-full bg-rose-400';
+      }
+      refreshQueueCounter();
+    }
+    window.addEventListener('online', updateNetworkStatus);
+    window.addEventListener('offline', updateNetworkStatus);
+
+    function refreshQueueCounter() {
+      const queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      const counterBadge = document.getElementById('syncQueueCounter');
+      const queueCount = document.getElementById('queueCount');
+      if (queue.length > 0) {
+        counterBadge.classList.remove('hidden');
+        queueCount.innerText = queue.length;
+      } else {
+        counterBadge.classList.add('hidden');
+      }
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: ACCOUNTING_WEBHOOK_URL, data: payload, timestamp: Date.now() });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+      refreshQueueCounter();
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      const promises = queue.map(item => {
+        return fetch(item.url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        });
+      });
+
+      Promise.all(promises).then(() => {
+        localStorage.removeItem('bintaha_offline_queue');
+        refreshQueueCounter();
+        showToast("Offline ledger entries synced to Accounting Sheet!");
+      }).catch(err => {
+        console.warn('Sync retry queued for next connection.');
+      });
+    }
+
+    /* World Clocks */
+    function updateClocks() {
+      try {
+        const now = new Date();
+        const pkTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+        const dxbTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' });
+
+        const elPk = document.getElementById('tzPk');
+        if(elPk) elPk.innerText = pkTime;
+        const elDxb = document.getElementById('tzDubai');
+        if(elDxb) elDxb.innerText = dxbTime;
+      } catch(e) {}
+    }
+    setInterval(updateClocks, 1000);
+
+    /* Form Live Balance Preview */
+    function updateLiveBalancePreview() {
+      const deal = parseFloat(document.getElementById('dealAmount').value) || 0;
+      const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
+      const balance = deal - paid;
+      document.getElementById('computedBalanceText').innerText = `PKR ${balance.toLocaleString()}`;
+    }
+
+    /* Ledger Data Engine (Offline-First in binTahaUnifiedLedger) */
+    function getStoredEntries() {
+      const defaultData = [
+        { id: 1, name: "Junaid Ali", phone: "03214776676", category: "Property", bank: "Allied Bank (ABL)", deal: 15000000, paid: 2000000, details: "Plot 798 Block D, LDA Avenue 1", date: "31/08/2026" },
+        { id: 2, name: "Chaudhry Kamran", phone: "03219404812", category: "Construction", bank: "Allied Bank (ABL)", deal: 18000000, paid: 6000000, details: "10 Marla Turnkey Villa, Jubilee Town", date: "02/09/2026" }
+      ];
+
+      let stored = JSON.parse(localStorage.getItem('binTahaUnifiedLedger') || 'null');
+      if(!stored || stored.length === 0) {
+        localStorage.setItem('binTahaUnifiedLedger', JSON.stringify(defaultData));
+        return defaultData;
+      }
+      return stored;
+    }
+
+    function renderEntries(filter = currentCategoryFilter, search = document.getElementById('searchInput')?.value || '') {
+      const entries = getStoredEntries();
+      const container = document.getElementById('entriesContainer');
+
+      let totalDeals = 0;
+      let totalPaid = 0;
+      entries.forEach(e => {
+        totalDeals += parseFloat(e.deal || 0);
+        totalPaid += parseFloat(e.paid || 0);
+      });
+      const totalBalance = totalDeals - totalPaid;
+
+      document.getElementById('statTotalDeals').innerText = `PKR ${totalDeals.toLocaleString()}`;
+      document.getElementById('statTotalPaid').innerText = `PKR ${totalPaid.toLocaleString()}`;
+      document.getElementById('statTotalBalance').innerText = `PKR ${totalBalance.toLocaleString()}`;
+      document.getElementById('statTotalEntries').innerText = entries.length;
+      document.getElementById('topVaultBadge').innerText = `PKR ${totalPaid.toLocaleString()}`;
+
+      const filtered = entries.filter(e => {
+        const matchCat = (filter === 'All' || e.category === filter);
+        const matchSearch = e.name.toLowerCase().includes(search.toLowerCase()) ||
+                            e.phone.includes(search) ||
+                            (e.details && e.details.toLowerCase().includes(search.toLowerCase()));
+        return matchCat && matchSearch;
+      });
+
+      if(filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-slate-950 border border-slate-800 p-8 rounded-2xl text-center text-slate-500 text-xs italic">
+            No ledger records matching filter criteria.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map((e, index) => {
+        const balance = (e.deal || 0) - (e.paid || 0);
+        const phoneClean = (e.phone || '03219404812').replace(/\D/g, '');
+        
+        const invoiceText = encodeURIComponent(
+          `🌟 *BIN TAHA ASSOCIATES • OFFICIAL PAYMENT LEDGER* 🌟\n\n` +
+          `👤 *Client Name:* ${e.name}\n` +
+          `📅 *Date:* ${e.date}\n` +
+          `🏷️ *Category:* ${e.category}\n` +
+          `🏦 *Bank Account:* ${e.bank || 'Allied Bank (ABL)'}\n` +
+          `💰 *Total Deal Value:* PKR ${Number(e.deal || 0).toLocaleString()}\n` +
+          `✅ *Received Token/Payment:* PKR ${Number(e.paid || 0).toLocaleString()}\n` +
+          `❗ *Remaining Balance:* PKR ${balance.toLocaleString()}\n` +
+          `📝 *Remarks:* ${e.details}\n\n` +
+          `CEO Taha Mobeen Bhutta • 0321-9404812\nFBR & PEC Category C Certified`
+        );
+        const waInvoiceLink = `https://wa.me/92${phoneClean.replace(/^0/, '')}?text=${invoiceText}`;
+
+        return `
+          <div class="bg-slate-950/90 border border-slate-800 hover:border-amber-500/60 p-4 rounded-2xl space-y-3 text-xs transition flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                <span class="font-black text-amber-400 flex items-center gap-1">
+                  <i class="fa-solid fa-receipt text-[10px]"></i> #${e.id ? String(e.id).slice(-4) : (index + 1)} • ${e.date}
+                </span>
+                <span class="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] font-bold border border-slate-800">
+                  ${e.category}
+                </span>
+              </div>
+
+              <div>
+                <h4 class="font-black text-white text-sm">${e.name}</h4>
+                <div class="flex items-center gap-2 text-slate-400 text-[11px] mt-0.5">
+                  <span><i class="fa-solid fa-phone text-emerald-400 mr-1"></i>${e.phone}</span>
+                  <span>•</span>
+                  <span class="text-cyan-400 font-semibold">${e.bank || 'ABL'}</span>
+                </div>
+              </div>
+
+              <!-- Financial Metric Grid -->
+              <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 space-y-1.5 font-bold">
+                <div class="grid grid-cols-3 gap-1 text-[11px] text-center border-b border-slate-800/80 pb-1.5">
+                  <div>
+                    <span class="text-[9px] text-slate-400 block font-normal">Deal Value</span>
+                    <span class="text-white">PKR ${(e.deal || 0).toLocaleString()}</span>
+                  </div>
+                  <div>
+                    <span class="text-[9px] text-slate-400 block font-normal">Received</span>
+                    <span class="text-emerald-400">PKR ${(e.paid || 0).toLocaleString()}</span>
+                  </div>
+                  <div>
+                    <span class="text-[9px] text-slate-400 block font-normal">Balance</span>
+                    <span class="${balance > 0 ? 'text-rose-400' : 'text-slate-400'}">PKR ${balance.toLocaleString()}</span>
+                  </div>
+                </div>
+
+                <p class="text-[11px] text-slate-300 font-normal pt-0.5">
+                  <strong class="text-amber-400 font-bold">Project:</strong> ${e.details || 'No remarks.'}
+                </p>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button onclick="deleteSingleEntry(${e.id})" class="text-rose-400 hover:text-rose-300 text-[11px] font-bold p-1">
+                <i class="fa-solid fa-trash-can mr-1"></i> Delete
+              </button>
+
+              <a href="${waInvoiceLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-xl text-[11px] font-black transition flex items-center gap-1 shadow">
+                <i class="fa-brands fa-whatsapp text-xs"></i> WhatsApp Invoice
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* Save Entry with Auto Calculation & Sync */
+    function saveCrmEntryWithLedger() {
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const category = document.getElementById('clientCategory').value;
+      const bank = document.getElementById('clientBank').value;
+      const deal = parseFloat(document.getElementById('dealAmount').value) || 0;
+      const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
+      const details = document.getElementById('clientDetails').value.trim();
+
+      if(!name || !phone) {
+        showToast("Please enter Client Name and Phone!", true);
+        return;
+      }
+
+      const entries = getStoredEntries();
+      const now = new Date();
+      const dateStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+
+      const newEntry = {
+        id: Date.now(),
+        name,
+        phone,
+        category,
+        bank,
+        deal,
+        paid,
+        details: details || 'No additional remarks.',
+        date: dateStr
+      };
+
+      entries.unshift(newEntry);
+      localStorage.setItem('binTahaUnifiedLedger', JSON.stringify(entries));
+
+      // Accounting Payload for Google Apps Script Webhook
+      const accountingPayload = {
+        action: 'new_ledger_entry',
+        date: dateStr,
+        bank: bank,
+        type: 'Credit',
+        head: category,
+        party: name,
+        amount: paid,
+        dealAmount: deal,
+        phone: phone,
+        details: details,
+        time: new Date().toISOString()
+      };
+
+      if(navigator.onLine && ACCOUNTING_WEBHOOK_URL) {
+        fetch(ACCOUNTING_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(accountingPayload)
+        }).then(() => {
+          showToast("Entry saved & synced live to Google Sheets!");
+        }).catch(() => {
+          queueForSync(accountingPayload);
+          showToast("Saved locally (will auto-sync when online)");
+        });
+      } else {
+        queueForSync(accountingPayload);
+        showToast("Offline Mode: Saved locally in Vault!");
+      }
+
+      // Reset Form
+      document.getElementById('clientName').value = '';
+      document.getElementById('dealAmount').value = '';
+      document.getElementById('paidAmount').value = '';
+      document.getElementById('clientDetails').value = '';
+      document.getElementById('computedBalanceText').innerText = 'PKR 0';
+
+      renderEntries();
+    }
+
+    function syncAllLedgerToSheets() {
+      const entries = getStoredEntries();
+      const payload = {
+        action: 'sync_full_ledger_snapshot',
+        totalEntries: entries.length,
+        entries: entries,
+        time: new Date().toISOString()
+      };
+
+      if(navigator.onLine && ACCOUNTING_WEBHOOK_URL) {
+        fetch(ACCOUNTING_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(() => {
+          showToast("Master Ledger snapshot successfully synced!");
+        }).catch(() => {
+          queueForSync(payload);
+          showToast("Network fluctuating. Sync queued.");
+        });
+      } else {
+        queueForSync(payload);
+        showToast("Offline: Full snapshot queued for auto-sync.");
+      }
+    }
+
+    function deleteSingleEntry(id) {
+      confirmAction(() => {
+        let entries = getStoredEntries();
+        entries = entries.filter(e => e.id !== id);
+        localStorage.setItem('binTahaUnifiedLedger', JSON.stringify(entries));
+        renderEntries();
+        showToast("Entry deleted from local ledger");
+      });
+    }
+
+    function confirmClearAllEntries() {
+      confirmAction(() => {
+        localStorage.removeItem('binTahaUnifiedLedger');
+        renderEntries();
+        showToast("All local ledger records cleared");
+      });
+    }
+
+    function filterRecords(cat) {
+      currentCategoryFilter = cat;
+      document.querySelectorAll('.ledger-filter-btn').forEach(b => {
+        b.className = "ledger-filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 px-3.5 py-1.5 rounded-xl whitespace-nowrap cursor-pointer";
+      });
+
+      if(cat === 'All') document.getElementById('btnFilterAll').className = "ledger-filter-btn bg-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(cat === 'Property') document.getElementById('btnFilterProp').className = "ledger-filter-btn bg-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(cat === 'Construction') document.getElementById('btnFilterConst').className = "ledger-filter-btn bg-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+      if(cat === 'Material') document.getElementById('btnFilterMat').className = "ledger-filter-btn bg-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer";
+
+      renderEntries(cat, document.getElementById('searchInput').value);
+    }
+
+    function searchRecords() {
+      renderEntries(currentCategoryFilter, document.getElementById('searchInput').value);
+    }
+
+    /* Initialize Screen */
+    window.onload = function() {
+      updateNetworkStatus();
+      updateClocks();
+
+      const isUnlocked = localStorage.getItem('bintaha_master_crm_unlocked');
+      if(isUnlocked === 'true') {
+        document.getElementById('securityGate').style.display = 'none';
+        renderEntries();
+      } else {
+        document.getElementById('securityGate').style.display = 'flex';
+      }
+    };
+  </script>
+</body>
+</html>

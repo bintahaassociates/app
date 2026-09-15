@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Member Sign In | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Mobile Top Connectivity Bar -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Security: <strong class="text-amber-400">AES-256 Active</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Logo -->
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Member Sign In Portal</p>
+        </div>
+      </a>
+
+      <!-- Quick Actions + Drawer Toggle -->
+      <div class="flex items-center gap-2">
+        <a href="signup.html" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition">
+          <i class="fa-solid fa-user-plus text-[10px]"></i> Sign Up
+        </a>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Portals -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-lock w-4"></i> Portal Login</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="max-w-md mx-auto px-4 py-8 flex-1 w-full space-y-6">
+
+    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-2xl gold-glow border-2 border-amber-500/50 space-y-5">
+      
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center text-xl font-bold mx-auto shadow-lg">
+          <i class="fa-solid fa-user-lock"></i>
+        </div>
+        <h2 class="text-2xl font-black shining-gold">Member Sign In</h2>
+        <p class="text-xs text-slate-400">Access verified portal, listings & CRM dashboard</p>
+      </div>
+
+      <form onsubmit="handleClientSignIn(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Email or Phone Number *</label>
+          <div class="relative">
+            <input type="text" id="signInEmail" required placeholder="03219404812 or email..." class="w-full bg-slate-950 border border-slate-700 p-3 pl-10 rounded-xl text-xs text-white focus:border-amber-500 font-semibold outline-none">
+            <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Password *</label>
+          <div class="relative">
+            <input type="password" id="signInPass" required placeholder="Enter your password..." class="w-full bg-slate-950 border border-slate-700 p-3 pl-10 pr-10 rounded-xl text-xs text-white focus:border-amber-500 font-semibold outline-none">
+            <i class="fa-solid fa-lock absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+            <button type="button" onclick="togglePassVisibility()" class="absolute right-3.5 top-3 text-slate-500 hover:text-white">
+              <i id="passIcon" class="fa-solid fa-eye text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" id="signInSubmitBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow-xl cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider">
+          <i class="fa-solid fa-shield-halved text-sm"></i> Sign In & Verify Account
+        </button>
+      </form>
+
+      <div class="pt-2 border-t border-slate-800 text-center space-y-2 text-xs">
+        <p class="text-slate-400">
+          Don't have an account? <a href="signup.html" class="text-amber-400 font-bold hover:underline">Sign Up here</a>
+        </p>
+        <p class="text-slate-500 text-[11px]">
+          Staff & Sales Agents: <a href="agent-login.html" class="text-cyan-400 font-bold hover:underline">Partner Portal</a>
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="add-property.html" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
+      <i class="fa-solid fa-plus text-base"></i>
+    </a>
+    <a href="signin.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+      <i class="fa-solid fa-lock text-sm"></i>
+      <span class="text-[10px] font-bold">Sign In</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-amber-500 text-amber-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function togglePassVisibility() {
+      const passField = document.getElementById('signInPass');
+      const passIcon = document.getElementById('passIcon');
+      if (passField.type === "password") {
+        passField.type = "text";
+        passIcon.className = "fa-solid fa-eye-slash text-xs";
+      } else {
+        passField.type = "password";
+        passIcon.className = "fa-solid fa-eye text-xs";
+      }
+    }
+
+    function checkConnectivity() {
+      const badge = document.getElementById('networkStatusBadge');
+      if(navigator.onLine) {
+        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
+        flushOfflineQueue();
+      } else {
+        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
+      }
+    }
+    window.addEventListener('online', checkConnectivity);
+    window.addEventListener('offline', checkConnectivity);
+
+    function handleClientSignIn(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('signInEmail').value.trim();
+      const regCode = 'BTA-REG-' + Math.floor(100000 + Math.random() * 900000);
+
+      const sessionUser = {
+        identifier: identifier,
+        token: regCode,
+        loginTime: new Date().toISOString(),
+        role: identifier.toLowerCase().includes('admin') ? 'admin' : 'client'
+      };
+
+      // Store local authentication state
+      localStorage.setItem('bintaha_auth_user', JSON.stringify(sessionUser));
+
+      const crmRecord = {
+        id: Date.now(),
+        sender: 'Client Sign In: ' + identifier,
+        phone: identifier.includes('@') ? '0321-9404812' : identifier,
+        email: identifier.includes('@') ? identifier : 'client@bintaha.com',
+        subject: 'Member Portal Sign In & Verification',
+        text: `Client signed in. Verification Code: ${regCode}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      // Local Inbox Save
+      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+      inboxList.unshift(crmRecord);
+      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
+
+      const submitBtn = document.getElementById('signInSubmitBtn');
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Verifying...`;
+      submitBtn.disabled = true;
+
+      // Online Sync or Offline Queue
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+      const payload = { action: 'client_signin', record: crmRecord, time: new Date().toISOString() };
+
+      if(navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.log('Sync notice:', err));
+      } else {
+        queueForSync(payload);
+      }
+
+      showToast(`Welcome! Token: ${regCode}`);
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      queue.forEach(item => {
+        fetch(item.url, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        }).catch(err => console.log('Sync retry failed:', err));
+      });
+
+      localStorage.removeItem('bintaha_offline_queue');
+      showToast("Offline authentication synced!");
+    }
+
+    window.onload = function() {
+      checkConnectivity();
+    };
+  </script>
+</body>
+</html>

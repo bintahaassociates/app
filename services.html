@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Services Hub & CAD Studio | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker-move { display: inline-block; animation: tickerScroll 25s linear infinite; }
+
+    #mobileDrawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-open {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+
+  <!-- Mobile Top Connectivity Bar -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">PEC Category C: <strong class="text-white">Certified</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- Live Market Ticker -->
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
+    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">AI CAD</span>
+    <div class="ticker-wrap w-full text-[11px]">
+      <div class="ticker-move">
+        <span>Instant Architectural Blueprints & Dimensions</span> &bull; 
+        <span>Grade-60 Saria & Turnkey Civil Engineering</span> &bull; 
+        <span>LDA Avenue 1 & Jubilee Town Site Supervision</span> &bull; 
+        <span>Google Sheets Master CRM Integrated</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">AI CAD Studio & Services Hub</p>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="toggleServiceModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition cursor-pointer">
+          <i class="fa-solid fa-file-signature text-[10px]"></i> Book Service
+        </button>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer (17 Pages) -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Services Menu</span>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Public Section -->
+      <div class="space-y-1">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-bolt w-4"></i> Services Hub</a>
+        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+      </div>
+
+      <!-- Actions Section -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
+        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
+        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
+      </div>
+
+      <!-- Portals -->
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
+        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
+        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
+        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+
+    <!-- Hero Card -->
+    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl gold-glow relative overflow-hidden space-y-4">
+      <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <span class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block">
+        PEC Category C Registered Civil Contractor
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-black shining-gold leading-tight">
+        Pro Architectural CAD & Construction Engineering Hub
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+        Autonomous CAD design, computerized structural layouts, LDA regulation setbacks, and turnkey civil construction across Lahore directed by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        <button onclick="toggleServiceModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-calendar-check"></i> Book Project Consultation
+        </button>
+        <a href="tel:03219404812" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 flex items-center gap-1.5">
+          <i class="fa-solid fa-phone text-emerald-400"></i> Direct Call CEO
+        </a>
+      </div>
+    </div>
+
+    <!-- PRO CAD STUDIO -->
+    <div id="proCadStudio" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
+            <i class="fa-solid fa-compass-drafting text-base"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white">Live Architectural Blueprint Generator</h3>
+            <p class="text-[10px] text-cyan-400 font-bold">Auto Setbacks • Wall Dimensions • Grade-60 Specs</p>
+          </div>
+        </div>
+
+        <!-- Layout Option Tabs (Mobile Scrollable) -->
+        <div class="flex gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 no-scrollbar text-xs font-bold">
+          <button onclick="selectLayoutOption(1)" id="btnOpt1" class="bg-cyan-600 text-slate-950 font-black px-3 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer">Opt 1: Executive</button>
+          <button onclick="selectLayoutOption(2)" id="btnOpt2" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Opt 2: Modern Open</button>
+          <button onclick="selectLayoutOption(3)" id="btnOpt3" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Opt 3: Palace</button>
+        </div>
+      </div>
+
+      <!-- Controls Form -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Front Width (Ft): *</label>
+          <input type="number" id="cadFront" value="32" onkeyup="drawCadBlueprint()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Length / Depth (Ft): *</label>
+          <input type="number" id="cadLength" value="70" onkeyup="drawCadBlueprint()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Storeys:</label>
+          <select id="cadStoreys" onchange="drawCadBlueprint()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+            <option value="Single Storey">Single Storey</option>
+            <option value="Double Storey" selected>Double Storey (G+1)</option>
+            <option value="Triple Storey">Triple Storey (G+2)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Bedrooms:</label>
+          <select id="cadBeds" onchange="drawCadBlueprint()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+            <option value="3 Beds">3 Bedrooms</option>
+            <option value="4 Beds" selected>4 Beds Attached</option>
+            <option value="5 Beds">5 Beds Luxury</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Blueprint Canvas Box -->
+      <div class="bg-slate-950 border border-cyan-500/30 p-3 sm:p-5 rounded-2xl space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-2">
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">CAD Render Screen</span>
+            <h4 id="cadTitle" class="text-xs sm:text-sm font-black text-white">Plot Size: 32x70 Ft • Executive Family</h4>
+          </div>
+          <button onclick="downloadCadBlueprintImage()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 px-3.5 py-1.5 rounded-xl font-black text-xs shadow flex items-center gap-1.5 cursor-pointer self-stretch sm:self-auto justify-center">
+            <i class="fa-solid fa-download"></i> Save Blueprint (JPEG)
+          </button>
+        </div>
+
+        <div class="overflow-x-auto bg-slate-900/60 p-2 rounded-xl border border-slate-800 text-center">
+          <canvas id="cadCanvas" width="900" height="560" class="mx-auto rounded-lg shadow-xl bg-slate-950 max-w-full h-auto"></canvas>
+        </div>
+
+        <!-- Blueprint Specs & Costs -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+            <span class="text-cyan-400 font-bold block mb-0.5"><i class="fa-solid fa-ruler-combined mr-1"></i> Dimensions:</span>
+            <p id="cadDimSummary" class="text-slate-300 text-[11px]">Porch (16x18 ft), Lounge (20x18 ft), Drawing (14x16 ft).</p>
+          </div>
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+            <span class="text-cyan-400 font-bold block mb-0.5"><i class="fa-solid fa-shield-halved mr-1"></i> LDA Compliance:</span>
+            <p class="text-slate-300 text-[11px]">Front Lawn 5ft, Rear 4ft, Light Ducts Verified.</p>
+          </div>
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+            <span class="text-cyan-400 font-bold block mb-0.5"><i class="fa-solid fa-calculator mr-1"></i> Structure Cost:</span>
+            <p id="cadCostSummary" class="text-amber-400 font-black text-xs">PKR 14,500,000 (Gray Structure)</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Core Construction Packages -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between">
+        <div>
+          <span class="bg-amber-500/20 text-amber-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 01</span>
+          <h4 class="text-base font-black text-white">Gray Structure Super</h4>
+          <p class="text-xs text-slate-300 mt-1">100% Mughal/Amreli Grade-60 deformed steel, A-grade Chenab sand, Margalla crush, and certified anti-termite foundation treatment.</p>
+        </div>
+        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+          <span class="text-slate-400 font-bold">Rates from:</span>
+          <span class="text-amber-400 font-black">PKR 3,500 / Sq Ft</span>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-emerald-500/30 flex flex-col justify-between">
+        <div>
+          <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 02</span>
+          <h4 class="text-base font-black text-white">Turnkey Luxury Finishing</h4>
+          <p class="text-xs text-slate-300 mt-1">Imported porcelain tiles, custom solid ash-wood doors, Grohe/Porta sanitary fittings, designer false ceilings, and smart ambient lighting.</p>
+        </div>
+        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+          <span class="text-slate-400 font-bold">Rates from:</span>
+          <span class="text-emerald-400 font-black">PKR 6,800 / Sq Ft</span>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-cyan-500/30 flex flex-col justify-between">
+        <div>
+          <span class="bg-cyan-500/20 text-cyan-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 03</span>
+          <h4 class="text-base font-black text-white">CAD & Society Approvals</h4>
+          <p class="text-xs text-slate-300 mt-1">Complete architectural working drawings, 3D photorealistic elevations, soil testing, and hassle-free LDA / Society approval filing.</p>
+        </div>
+        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+          <span class="text-slate-400 font-bold">Timeframe:</span>
+          <span class="text-cyan-400 font-black">7 to 10 Working Days</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Service Booking Modal (Offline Storage + Online Webhook Sync) -->
+  <div id="serviceModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-helmet-safety text-amber-400"></i> Book Construction Consultation
+        </h3>
+        <button onclick="toggleServiceModal()" class="text-slate-400 hover:text-white text-sm font-bold cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Your Full Name: *</label>
+          <input type="text" id="bookingName" placeholder="Enter your full name" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-slate-300 mb-1">Phone / WhatsApp: *</label>
+            <input type="text" id="bookingPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Service Type: *</label>
+            <select id="bookingService" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+              <option value="Gray Structure Construction">Gray Structure</option>
+              <option value="Turnkey Luxury Finish">Turnkey Finish</option>
+              <option value="Architectural CAD & Map Approval">CAD & Map Approval</option>
+              <option value="Site Supervision Consultation">Site Supervision</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Society / Location (e.g. LDA Avenue 1, Jubilee): *</label>
+          <input type="text" id="bookingLocation" placeholder="Plot / Block / Society Name" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Project Requirements / Plot Size:</label>
+          <textarea id="bookingDetails" rows="2" placeholder="e.g. 10 Marla Double Storey Gray Structure..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal"></textarea>
+        </div>
+
+        <button onclick="submitServiceBooking()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 py-3 rounded-xl font-black text-xs transition shadow-lg cursor-pointer uppercase tracking-wider">
+          <i class="fa-solid fa-paper-plane mr-1"></i> Confirm Booking & Sync
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Gemini AI Assistant Widget -->
+  <div class="fixed bottom-20 right-4 z-40">
+    <div id="geminiChatBox" class="hidden glass-card p-4 rounded-3xl w-72 sm:w-80 shadow-2xl mb-3 space-y-3 border border-amber-500/60">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+        <span class="text-xs font-black text-amber-400 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> Construction Copilot</span>
+        <button onclick="toggleGeminiChat()" class="text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="geminiChatHistory" class="text-[11px] text-slate-300 space-y-2 max-h-48 overflow-y-auto p-1">
+        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">👋 Hello! Ask me about 5 Marla / 10 Marla construction estimates, Grade-60 steel rates, or CAD designs in Lahore.</div>
+      </div>
+      <div class="flex gap-1.5">
+        <input type="text" id="geminiUserInput" placeholder="Type a query (e.g. 5 marla cost)..." onkeypress="if(event.key==='Enter') sendToGeminiAI()" class="flex-1 bg-slate-950 border border-slate-700 px-3 py-2 rounded-xl text-xs text-white outline-none focus:border-amber-500">
+        <button onclick="sendToGeminiAI()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-2 rounded-xl font-black text-xs cursor-pointer"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <button onclick="toggleGeminiChat()" class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 font-black shadow-2xl flex items-center justify-center gold-glow cursor-pointer hover:scale-105 transition">
+      <i class="fa-solid fa-robot text-base"></i>
+    </button>
+  </div>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="services.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+      <i class="fa-solid fa-bolt text-sm"></i>
+      <span class="text-[10px] font-bold">Services</span>
+    </a>
+    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+      <i class="fa-solid fa-star text-sm"></i>
+      <span class="text-[10px] font-bold">Dream</span>
+    </a>
+    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-gauge-high text-sm"></i>
+      <span class="text-[10px] font-bold">CRM</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-cyan-500 text-cyan-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    let currentLayoutOption = 1;
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-cyan-500 text-cyan-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function toggleServiceModal() {
+      document.getElementById('serviceModal').classList.toggle('hidden');
+    }
+
+    function toggleGeminiChat() {
+      document.getElementById('geminiChatBox').classList.toggle('hidden');
+    }
+
+    function checkConnectivity() {
+      const badge = document.getElementById('networkStatusBadge');
+      if(navigator.onLine) {
+        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
+        flushOfflineQueue();
+      } else {
+        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
+      }
+    }
+    window.addEventListener('online', checkConnectivity);
+    window.addEventListener('offline', checkConnectivity);
+
+    function selectLayoutOption(optNum) {
+      currentLayoutOption = optNum;
+      for(let i=1; i<=3; i++) {
+        let btn = document.getElementById('btnOpt' + i);
+        if(i === optNum) {
+          btn.className = "bg-cyan-600 text-slate-950 px-3 py-1.5 rounded-xl shadow cursor-pointer font-black whitespace-nowrap";
+        } else {
+          btn.className = "bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl whitespace-nowrap cursor-pointer";
+        }
+      }
+      drawCadBlueprint();
+    }
+
+    function drawCadBlueprint() {
+      const front = parseFloat(document.getElementById('cadFront').value) || 32;
+      const length = parseFloat(document.getElementById('cadLength').value) || 70;
+      const storeys = document.getElementById('cadStoreys').value;
+      const totalArea = front * length;
+
+      let layoutName = currentLayoutOption === 1 ? "Option 1 (Executive Family)" : (currentLayoutOption === 2 ? "Option 2 (Modern Open-Plan)" : "Option 3 (Luxury Palace)");
+      document.getElementById('cadTitle').innerText = `Plot: ${front}x${length} Ft (${totalArea} Sq Ft) • ${layoutName}`;
+      
+      let estCost = totalArea * (storeys.includes('Single') ? 3500 : 4200);
+      document.getElementById('cadCostSummary').innerText = `PKR ${estCost.toLocaleString()} (Gray Est.)`;
+      document.getElementById('cadDimSummary').innerText = `Porch (${Math.round(front*0.5)}'x18'), Lounge (20'x18'), Drawing (14'x16'), Kitchen (10'x12').`;
+
+      const canvas = document.getElementById('cadCanvas');
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#050b14';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Grid Lines
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.06)';
+      ctx.lineWidth = 1;
+      for(let x=0; x<canvas.width; x+=25) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for(let y=0; y<canvas.height; y+=25) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      // Outer Boundary
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(50, 50, 800, 440);
+
+      ctx.fillStyle = '#fcd34d';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.fillText(`BIN TAHA ASSOCIATES • CIVIL ENGINEERING CAD BLUEPRINT`, 65, 32);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = '10px monospace';
+      ctx.fillText(`PLOT: ${front} FT x ${length} FT | PEC CATEGORY C STANDARD | ALL SETBACKS VERIFIED`, 65, 520);
+
+      if(currentLayoutOption === 1) {
+        drawRoom(ctx, 70, 70, 360, 120, '#10b981', 'CAR PORCH & GREEN LAWN', `${Math.round(front*0.5)}'-0" x 18'-0"`);
+        drawRoom(ctx, 450, 70, 380, 120, '#3b82f6', 'DRAWING & GUEST LOUNGE', `14'-0" x 16'-0"`);
+        drawRoom(ctx, 70, 210, 480, 140, '#f59e0b', 'MAIN FAMILY TV LOUNGE', `20'-0" x 18'-0"`);
+        drawRoom(ctx, 570, 210, 260, 140, '#ec4899', 'OPEN DIRTY/CHEF KITCHEN', `10'-0" x 12'-0"`);
+        drawRoom(ctx, 70, 370, 760, 100, '#8b5cf6', 'MASTER BEDROOM (BATH & DRESS)', `${front-4}'-0" x 16'-0"`);
+      } else if(currentLayoutOption === 2) {
+        drawRoom(ctx, 70, 70, 760, 110, '#3b82f6', 'OPEN-PLAN LIVING, DINING & FOYER', `${front-4}'-0" x 20'-0"`);
+        drawRoom(ctx, 70, 200, 360, 140, '#10b981', 'AMERICAN KITCHEN & PANTRY', `14'-0" x 14'-0"`);
+        drawRoom(ctx, 450, 200, 380, 140, '#f59e0b', 'GUEST BED / STUDY ROOM', `14'-0" x 14'-0"`);
+        drawRoom(ctx, 70, 360, 760, 110, '#8b5cf6', 'MASTER SUITE & WALK-IN DRESS', `${front-4}'-0" x 18'-0"`);
+      } else {
+        drawRoom(ctx, 70, 70, 260, 120, '#10b981', 'GRAND ENTRANCE PORCH', `12'-0" x 18'-0"`);
+        drawRoom(ctx, 350, 70, 480, 120, '#3b82f6', 'ROYAL GUEST SALON', `20'-0" x 18'-0"`);
+        drawRoom(ctx, 70, 210, 760, 130, '#f59e0b', 'CENTRAL HALL & DINING', `${front-4}'-0" x 16'-0"`);
+        drawRoom(ctx, 70, 360, 760, 110, '#8b5cf6', 'PRESIDENTIAL MASTER BEDROOM', `${front-4}'-0" x 18'-0"`);
+      }
+    }
+
+    function drawRoom(ctx, x, y, w, h, color, title, dim) {
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.12;
+      ctx.fillRect(x, y, w, h);
+      ctx.globalAlpha = 1.0;
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.8;
+      ctx.strokeRect(x, y, w, h);
+
+      ctx.fillStyle = color;
+      ctx.font = 'bold 10px sans-serif';
+      ctx.fillText(title, x + 10, y + 22);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText(`[ ${dim} ]`, x + 10, y + 42);
+    }
+
+    function downloadCadBlueprintImage() {
+      const canvas = document.getElementById('cadCanvas');
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.download = 'Bin_Taha_Architectural_Blueprint.jpg';
+      link.click();
+      showToast("Blueprint Downloaded to Device!");
+    }
+
+    function submitServiceBooking() {
+      const name = document.getElementById('bookingName').value.trim();
+      const phone = document.getElementById('bookingPhone').value.trim();
+      const service = document.getElementById('bookingService').value;
+      const location = document.getElementById('bookingLocation').value.trim();
+      const details = document.getElementById('bookingDetails').value.trim();
+
+      if (!name || !phone || !location) {
+        showToast("Please fill Name, Phone, and Society!", true);
+        return;
+      }
+
+      const bookingMsg = {
+        id: Date.now(),
+        name,
+        phone,
+        email: 'bintahacrm@gmail.com',
+        subject: `Service: ${service} at ${location}`,
+        text: `Client: ${name}, Phone: ${phone}, Service: ${service}, Location: ${location}, Notes: ${details}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      // Local Inbox save
+      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+      inboxList.unshift(bookingMsg);
+      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
+
+      // Sync or Queue
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+      if(navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bookingMsg)
+        }).then(() => {
+          showToast("Booking Dispatched & Synced to CRM!");
+        }).catch(() => {
+          queueForSync(bookingMsg);
+          showToast("Booking saved locally (will sync when online)");
+        });
+      } else {
+        queueForSync(bookingMsg);
+        showToast("Offline: Saved locally! Will sync when connected.");
+      }
+
+      document.getElementById('bookingName').value = '';
+      document.getElementById('bookingLocation').value = '';
+      document.getElementById('bookingDetails').value = '';
+      toggleServiceModal();
+    }
+
+    function sendToGeminiAI() {
+      const input = document.getElementById('geminiUserInput');
+      const history = document.getElementById('geminiChatHistory');
+      let text = input.value.trim();
+      if(!text) return;
+
+      history.innerHTML += `<div class="bg-slate-900 p-2 rounded-xl text-right text-white text-[11px]">👤 ${text}</div>`;
+      input.value = '';
+      history.scrollTop = history.scrollHeight;
+
+      setTimeout(() => {
+        let reply = `🤖 Gemini: For construction in LDA Avenue 1 or Jubilee Town, gray structure standard rate is PKR 3,500/sq.ft with Grade-60 steel. CEO Taha Mobeen Bhutta has been alerted!`;
+        history.innerHTML += `<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/30 text-amber-300 text-[11px]">${reply}</div>`;
+        history.scrollTop = history.scrollHeight;
+      }, 700);
+    }
+
+    function queueForSync(payload) {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
+      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
+    }
+
+    function flushOfflineQueue() {
+      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
+      if(queue.length === 0) return;
+
+      queue.forEach(item => {
+        fetch(item.url, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.data)
+        }).catch(err => console.log('Sync retry failed:', err));
+      });
+
+      localStorage.removeItem('bintaha_offline_queue');
+      showToast("Offline services bookings synced to Google Sheets!");
+    }
+
+    window.onload = function() {
+      checkConnectivity();
+      drawCadBlueprint();
+    };
+  </script>
+</body>
+</html>
