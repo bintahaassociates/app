@@ -24,7 +24,7 @@
     .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
     .feature-card:active { transform: scale(0.98); }
 
-    /* PERFECTED CINEMATIC SPLASH SCREEN INTRO (Smooth 360 Rotation & Proper Duration) */
+    /* EXACT 3D ROTATING EAGLE INTRO SPLASH SCREEN */
     #splashScreen {
       position: fixed;
       inset: 0;
@@ -36,21 +36,23 @@
       justify-content: center;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-    @keyframes eagleIntroAnim {
-      0% { transform: scale(0.3) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 0px rgba(252, 211, 77, 0)); }
-      50% { transform: scale(1.15) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 35px rgba(252, 211, 77, 0.9)); }
-      100% { transform: scale(1) rotate(360deg); opacity: 1; filter: drop-shadow(0 0 20px rgba(252, 211, 77, 0.6)); }
+    
+    @keyframes splashEagleRotate {
+      0% { transform: perspective(800px) rotateY(0deg) scale(0.3); opacity: 0; filter: drop-shadow(0 0 0px rgba(252, 211, 77, 0)); }
+      30% { opacity: 1; }
+      100% { transform: perspective(800px) rotateY(1080deg) scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
     }
-    .splash-eagle {
-      animation: eagleIntroAnim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-      width: 140px;
-      height: 140px;
+    .splash-eagle-3d {
+      animation: splashEagleRotate 3s infinite linear;
+      transform-style: preserve-3d;
+      width: 130px;
+      height: 130px;
       object-fit: contain;
     }
     .splash-text {
       opacity: 0;
-      animation: fadeInText 1s ease 1s forwards;
-      margin-top: 18px;
+      animation: fadeInText 1s ease 1.2s forwards;
+      margin-top: 20px;
       text-align: center;
     }
     @keyframes fadeInText {
@@ -76,9 +78,9 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen pb-24 flex flex-col justify-between">
 
-  <!-- CINEMATIC SPLASH SCREEN INTRO -->
+  <!-- CINEMATIC 3D ROTATING SPLASH SCREEN INTRO -->
   <div id="splashScreen">
-    <img src="logo.png" alt="Bin Taha Logo" class="splash-eagle" onerror="this.src='logo.png.png'">
+    <img src="logo.png" alt="Bin Taha Logo" class="splash-eagle-3d" onerror="this.src='logo.png.png'">
     <div class="splash-text">
       <h1 class="text-base font-black shining-gold uppercase tracking-wider">Bin Taha Associates</h1>
       <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Real Estate & Civil Construction Hub</p>
@@ -92,9 +94,6 @@
         <span id="networkIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span id="networkStatusText">ONLINE</span>
       </div>
-      <span id="syncQueueCounter" class="hidden text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30">
-        <i class="fa-solid fa-arrows-rotate fa-spin text-[9px] mr-1"></i> <span id="queueCount">0</span> pending
-      </span>
     </div>
 
     <div class="flex items-center gap-3 text-[11px] font-semibold">
@@ -129,7 +128,7 @@
         <i class="fa-solid fa-bars-staggered"></i>
       </button>
       
-      <!-- SECRET CEO DOOR: 5 Taps on Eagle Logo opens Master CRM -->
+      <!-- SECRET CEO DOOR: 5 Taps on Eagle Logo opens Master CRM / Accounting Vault -->
       <div class="flex items-center gap-2 cursor-pointer" onclick="handleSecretCeoTap()">
         <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
@@ -140,9 +139,6 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <a href="dream.html" class="hidden sm:inline-flex bg-cyan-600/20 text-cyan-400 border border-cyan-500/40 text-xs px-2.5 py-1.5 rounded-lg font-bold items-center gap-1">
-        ✨ Dream
-      </a>
       <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
         <i class="fa-brands fa-whatsapp text-sm"></i> <span class="hidden xs:inline">WhatsApp</span> CEO
       </a>
@@ -167,47 +163,26 @@
         </button>
       </div>
 
-      <div class="bg-slate-950 p-3 rounded-2xl border border-amber-500/30 flex items-center gap-3">
-        <img src="taha.jpg" alt="CEO" class="w-11 h-11 rounded-xl object-cover border border-amber-500" onerror="this.src='taha1.jpg'">
-        <div class="text-xs">
-          <div class="font-bold text-white">Taha Mobeen Bhutta</div>
-          <div class="text-[10px] text-emerald-400 font-bold">CEO & Founder</div>
-          <a href="tel:03219404812" class="text-amber-400 text-[11px] font-bold hover:underline">0321-9404812</a>
-        </div>
-      </div>
-
       <nav class="space-y-4 text-xs">
         <div>
           <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Properties & Services</span>
           <div class="mt-2 space-y-1 font-bold">
             <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-amber-500 text-slate-950 shadow"><i class="fa-solid fa-house w-4"></i> Home Screen</a>
-            <a href="properties.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-building w-4 text-amber-400"></i> Property Listings</a>
-            <a href="dream.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-4 text-cyan-400"></i> Dream Home Finder</a>
-            <a href="services.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-4 text-emerald-400"></i> Construction Services</a>
-            <a href="about.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-address-card w-4 text-blue-400"></i> About Bin Taha</a>
-            <a href="contact.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-envelope w-4 text-purple-400"></i> Contact & Queries</a>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Client Inquiries</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="add-property.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-4 text-emerald-400"></i> Post Property For Sale</a>
-            <a href="client-form.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-4 text-amber-400"></i> Submit Requirements</a>
+            <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-building w-4 text-amber-400"></i> Property Listings</a>
+            <a href="https://bintahaassociates.github.io/bintaha-main/services.html" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-4 text-emerald-400"></i> Construction Services</a>
           </div>
         </div>
       </nav>
     </div>
 
     <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500">
-      <div>Bin Taha App Build v2.8</div>
+      <div>Bin Taha App Build v2.9</div>
       <div class="text-slate-400 font-bold mt-0.5">Offline Verified & Escrow Protected</div>
     </div>
   </aside>
 
   <!-- Main Scrollable App Container -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
-
     <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
       <div class="flex items-center gap-2">
         <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
@@ -247,37 +222,7 @@
           </button>
         </div>
       </div>
-
-      <div class="grid grid-cols-2 gap-2.5 pt-1">
-        <a href="services.html" class="bg-slate-800 active:bg-slate-700 text-slate-200 border border-slate-700 text-center py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-bolt text-amber-400"></i> Dispatch Hub
-        </a>
-        <a href="properties.html" class="bg-amber-500/10 active:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-center py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-building"></i> View Properties
-        </a>
-      </div>
     </section>
-
-    <!-- Live Impact Counters -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-      <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl">
-        <div class="text-xl font-black text-amber-400">100%</div>
-        <div class="text-[10px] text-slate-400 font-bold uppercase">Escrow Safe</div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl">
-        <div class="text-xl font-black text-emerald-400">24/7</div>
-        <div class="text-[10px] text-slate-400 font-bold uppercase">AI Site Feed</div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl">
-        <div class="text-xl font-black text-cyan-400">PEC C</div>
-        <div class="text-[10px] text-slate-400 font-bold uppercase">Certified</div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl">
-        <div class="text-xl font-black text-purple-400">0321</div>
-        <div class="text-[10px] text-slate-400 font-bold uppercase">CEO Direct</div>
-      </div>
-    </div>
-
   </main>
 
   <!-- Fixed Native Mobile App Bottom Navigation Bar -->
@@ -286,25 +231,17 @@
       <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></div>
       <span>Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+    <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-building"></i></div>
       <span>Properties</span>
     </a>
-    <a href="add-property.html" class="flex flex-col items-center -mt-5 font-bold text-[10px]">
-      <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 flex items-center justify-center text-lg shadow-xl border-2 border-slate-900 active:scale-95"><i class="fa-solid fa-plus"></i></div>
-      <span class="text-amber-400 mt-1">Post</span>
-    </a>
-    <a href="services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-      <span>Services</span>
-    </a>
-    <a href="contact.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-headset"></i></div>
-      <span>Contact</span>
+    <a href="https://wa.me/923219404812" target="_blank" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-brands fa-whatsapp"></i></div>
+      <span>WhatsApp</span>
     </a>
   </nav>
 
-  <!-- SECRET CEO GATEWAY MODAL (Fixed Absolute Links to Prevent 404) -->
+  <!-- SECRET CEO GATEWAY MODAL (Points to exact https://bintahaassociates.github.io/bintaha-acconting/) -->
   <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border-2 border-amber-500 p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl border border-amber-500/40">
@@ -330,7 +267,7 @@
   <script>
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
 
-    /* Perfected Splash Screen Duration (2.5 seconds for complete rotation and display) */
+    /* Perfected Splash Screen Duration & 3D Rotation */
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
@@ -338,7 +275,7 @@
           splash.style.opacity = '0';
           splash.style.visibility = 'hidden';
         }
-      }, 2600);
+      }, 3000); // 3 seconds smooth intro
     });
 
     let eagleTapCount = 0;
@@ -365,8 +302,8 @@
       const pin = document.getElementById('secretCeoPin').value.trim();
       if (pin === '0321' || pin === '9404812' || pin === 'taha123' || pin === 'Taha123' || pin === 'طاہ123') {
         sessionStorage.setItem('bintaha_ceo_authenticated', 'true');
-        // Absolute URL to prevent 404 errors
-        window.location.href = 'https://bintahaassociates.github.io/accont/';
+        // Pointing to exact accounting repository URL
+        window.location.href = 'https://bintahaassociates.github.io/bintaha-acconting/';
       } else {
         alert('❌ Security Violation: Invalid Master PIN!');
         closeSecretModal();
@@ -405,7 +342,6 @@
         const now = new Date();
         const pkTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
         document.getElementById('clockPkHeader').innerText = pkTime;
-        document.getElementById('clockPk').innerText = pkTime;
       } catch (e) {}
     }
 
