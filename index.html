@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bin Taha Associates | Mobile App Hub</title>
+  <title>Bin Taha Associates | Government Tax & Property Suite</title>
   <meta name="description" content="Official Bin Taha Real Estate & Construction Mobile App by CEO Taha Mobeen Bhutta.">
   <meta name="theme-color" content="#020617">
   
@@ -24,7 +24,7 @@
     .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
     .feature-card:active { transform: scale(0.98); }
 
-    /* EXACT 3D ROTATING EAGLE INTRO SPLASH SCREEN */
+    /* CINEMATIC 3D ROTATING SPLASH SCREEN INTRO */
     #splashScreen {
       position: fixed;
       inset: 0;
@@ -36,7 +36,6 @@
       justify-content: center;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-    
     @keyframes splashEagleRotate {
       0% { transform: perspective(800px) rotateY(0deg) scale(0.3); opacity: 0; filter: drop-shadow(0 0 0px rgba(252, 211, 77, 0)); }
       30% { opacity: 1; }
@@ -128,7 +127,7 @@
         <i class="fa-solid fa-bars-staggered"></i>
       </button>
       
-      <!-- SECRET CEO DOOR: 5 Taps on Eagle Logo opens Master CRM / Accounting Vault -->
+      <!-- SECRET CEO DOOR: 5 Taps on Eagle Logo opens Accounting Vault -->
       <div class="flex items-center gap-2 cursor-pointer" onclick="handleSecretCeoTap()">
         <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
@@ -176,13 +175,15 @@
     </div>
 
     <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500">
-      <div>Bin Taha App Build v2.9</div>
-      <div class="text-slate-400 font-bold mt-0.5">Offline Verified & Escrow Protected</div>
+      <div>Bin Taha App Build v3.3</div>
+      <div class="text-slate-400 font-bold mt-0.5">Govt Tax & Escrow Protected</div>
     </div>
   </aside>
 
   <!-- Main Scrollable App Container -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
+
+    <!-- Hero Card -->
     <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
       <div class="flex items-center gap-2">
         <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
@@ -223,6 +224,178 @@
         </div>
       </div>
     </section>
+
+    <!-- GOVERNORATE TAX & DC VALUE AUTO-CALCULATOR (FBR, CVT, Stamp Duty, Registry, Transfer) -->
+    <div class="bg-slate-900 border-2 border-emerald-500/60 p-5 rounded-3xl space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">⚖️ Govt Tax & DC Calculator</span>
+        <span class="text-[10px] bg-amber-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Auto e-Challan</span>
+      </div>
+      <h3 class="text-base font-black text-white">Auto DC Valuation & Government Dues Generator</h3>
+      <p class="text-xs text-slate-300">Calculate exact FBR value, DC rate, Stamp Duty, CVT, Registry Fee, and Transfer Fee instantly for Lahore societies.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Select Society / Area:</label>
+          <select id="taxSociety" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+            <option value="LDA Avenue 1">LDA Avenue 1 (Lahore)</option>
+            <option value="Jubilee Town">Jubilee Town (Lahore)</option>
+            <option value="Raiwind Road">Raiwind Road / Bugtia Chowk</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Size:</label>
+          <select id="taxPlotSize" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+            <option value="5">5 Marla</option>
+            <option value="10">10 Marla</option>
+            <option value="20">1 Kanal</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Filer / Non-Filer Status:</label>
+          <select id="taxFilerStatus" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+            <option value="filer">Active Filer (Tax Saved)</option>
+            <option value="nonfiler">Non-Filer (Double Tax)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Agreed Deal Price (PKR):</label>
+          <input type="number" id="taxDealPrice" value="15000000" oninput="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-950 rounded-2xl border border-emerald-500/40 text-xs space-y-2.5">
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated DC Rate / Marla:</span> <span id="outDcRate" class="text-amber-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>FBR Valuation Total:</span> <span id="outFbrVal" class="text-amber-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Stamp Duty (1%):</span> <span id="outStampDuty" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>CVT (Capital Value Tax):</span> <span id="outCvt" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Registry Fee (1%):</span> <span id="outRegistry" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Society Transfer Fee:</span> <span id="outTransferFee" class="text-emerald-400">PKR --</span></div>
+        <div class="border-t border-slate-800 pt-2 flex justify-between font-black text-sm"><span>Total Govt Dues & Challan:</span> <span id="outTotalTax" class="text-emerald-400 font-black">PKR --</span></div>
+      </div>
+    </div>
+
+    <!-- LIVE GOOGLE MAP FINDER & PLOT LOCATOR -->
+    <div class="bg-slate-900 border-2 border-cyan-500/50 p-5 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="bg-cyan-500/20 text-cyan-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🗺️ Live Map & Plot Finder</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Interactive GPS</span>
+      </div>
+      <h3 class="text-base font-black text-white">Interactive Site Map & Plot Locator</h3>
+      <p class="text-xs text-slate-300">Search any plot or block in LDA Avenue 1 or Jubilee Town to instantly locate on the live map.</p>
+
+      <div class="space-y-3 text-xs">
+        <div class="flex gap-2">
+          <input type="text" id="mapSearchInput" placeholder="Enter Plot #, Block (e.g. Block C, Plot 42)..." class="flex-1 bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-cyan-500 text-xs">
+          <button onclick="locatePlotOnMap()" class="bg-cyan-600 active:scale-95 text-white font-black px-4 py-2.5 rounded-xl cursor-pointer text-xs">
+            <i class="fa-solid fa-location-crosshairs mr-1"></i> Locate
+          </button>
+        </div>
+        <div id="mapStatusMsg" class="hidden p-2.5 bg-slate-950 rounded-xl border border-cyan-500/40 text-cyan-300 font-bold text-xs"></div>
+
+        <div class="w-full h-60 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative">
+          <iframe id="googleMapFrame" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.491223040182!2d74.1921!3d31.4658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDI3JzU2LjgiTiA3NMKwMTEnMzEuNiJF!5e0!3m2!1sen!2spk!4v1650000000000!5m2!1sen!2spk"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTO CONSTRUCTION COST ESTIMATOR -->
+    <div class="bg-slate-900 border-2 border-amber-500/50 p-5 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🧮 Auto Estimator</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live Calculation</span>
+      </div>
+      <h3 class="text-base font-black text-white">Auto Construction Cost Estimator</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Area (Marla / Kanal):</label>
+          <select id="autoPlotSize" onchange="runAutoEstimation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
+            <option value="5">5 Marla Unit</option>
+            <option value="10">10 Marla Unit</option>
+            <option value="20">1 Kanal Luxury Villa</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Construction Grade / Package:</label>
+          <select id="autoGrade" onchange="runAutoEstimation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
+            <option value="gray">Standard Gray Structure</option>
+            <option value="turnkey">Complete Turnkey Luxury Finishing</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="autoEstimateResult" class="p-4 bg-slate-950 rounded-2xl border border-amber-500/40 text-xs space-y-2">
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Steel (Saria):</span> <span id="estSteel" class="text-amber-400">-- Tons</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Cement Bags:</span> <span id="estCement" class="text-amber-400">-- Bags</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Bricks:</span> <span id="estBricks" class="text-amber-400">-- Pcs</span></div>
+        <div class="border-t border-slate-800 pt-2 flex justify-between font-black text-sm"><span>Total Budget Quote:</span> <span id="estTotal" class="text-emerald-400">PKR --</span></div>
+      </div>
+    </div>
+
+    <!-- POST PROPERTY / ADD PROPERTY HUB -->
+    <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/60 p-5 sm:p-6 rounded-3xl space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <span class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">📢 Post Property</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Direct to CRM</span>
+      </div>
+      <h3 class="text-base font-black text-white">List Your Plot or Villa For Sale</h3>
+
+      <div class="space-y-3 text-xs">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Your Name:</label>
+            <input type="text" id="postOwnerName" placeholder="Owner Name" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Phone Number:</label>
+            <input type="tel" id="postOwnerPhone" placeholder="03XXXXXXXXX" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Society / Location:</label>
+            <select id="postSociety" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
+              <option value="LDA Avenue 1">LDA Avenue 1</option>
+              <option value="Jubilee Town">Jubilee Town</option>
+              <option value="Raiwind Road">Bugtia Chowk (Raiwind)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Property Type & Size:</label>
+            <input type="text" id="postDetails" placeholder="e.g. 5 Marla Plot / 1 Kanal Villa" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
+          </div>
+        </div>
+        <button onclick="submitUserProperty()" class="w-full bg-amber-500 active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-lg">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Submit Property Listing to CEO
+        </button>
+      </div>
+      <div id="postResultMsg" class="hidden p-3 bg-slate-950 rounded-xl border border-amber-500/40 text-xs text-amber-300 font-bold"></div>
+    </div>
+
+    <!-- AI GEMINI CHATBOT WIDGET -->
+    <div class="bg-slate-900 border-2 border-cyan-500/50 p-5 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="bg-cyan-500/20 text-cyan-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🤖 AI Gemini Assistant</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live 24/7</span>
+      </div>
+      <h3 class="text-base font-black text-white">Ask Bin Taha AI Real Estate Expert</h3>
+
+      <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-3 text-xs">
+        <div id="chatHistory" class="space-y-2 max-h-48 overflow-y-auto p-2 text-slate-300">
+          <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+            <strong class="text-amber-400">Bin Taha AI:</strong> Assalam-o-Alaikum! Main Bin Taha Associates ka AI Assistant hoon. DC valuation, transfer fee ya construction cost ke baray mein poochein!
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <input type="text" id="chatUserInput" placeholder="Ask anything about taxes or properties..." class="flex-1 bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
+          <button onclick="sendChatQuery()" class="bg-cyan-600 active:scale-95 text-white font-black px-4 py-2.5 rounded-xl text-xs cursor-pointer">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Fixed Native Mobile App Bottom Navigation Bar -->
@@ -241,7 +414,7 @@
     </a>
   </nav>
 
-  <!-- SECRET CEO GATEWAY MODAL (Points to exact https://bintahaassociates.github.io/bintaha-acconting/) -->
+  <!-- SECRET CEO GATEWAY MODAL -->
   <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border-2 border-amber-500 p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl border border-amber-500/40">
@@ -267,7 +440,6 @@
   <script>
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
 
-    /* Perfected Splash Screen Duration & 3D Rotation */
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
@@ -275,7 +447,9 @@
           splash.style.opacity = '0';
           splash.style.visibility = 'hidden';
         }
-      }, 3000); // 3 seconds smooth intro
+      }, 3000);
+      runAutoEstimation();
+      calculateGovtTaxes();
     });
 
     let eagleTapCount = 0;
@@ -302,7 +476,6 @@
       const pin = document.getElementById('secretCeoPin').value.trim();
       if (pin === '0321' || pin === '9404812' || pin === 'taha123' || pin === 'Taha123' || pin === 'طاہ123') {
         sessionStorage.setItem('bintaha_ceo_authenticated', 'true');
-        // Pointing to exact accounting repository URL
         window.location.href = 'https://bintahaassociates.github.io/bintaha-acconting/';
       } else {
         alert('❌ Security Violation: Invalid Master PIN!');
@@ -337,12 +510,42 @@
       }
     }
 
-    function updateWorldClocks() {
-      try {
-        const now = new Date();
-        const pkTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
-        document.getElementById('clockPkHeader').innerText = pkTime;
-      } catch (e) {}
+    /* AUTO GOVT TAX & DC VALUATION CALCULATOR */
+    function calculateGovtTaxes() {
+      const society = document.getElementById('taxSociety').value;
+      const marlaCount = parseFloat(document.getElementById('taxPlotSize').value) || 5;
+      const isFiler = document.getElementById('taxFilerStatus').value === 'filer';
+      const dealPrice = parseFloat(document.getElementById('taxDealPrice').value) || 15000000;
+
+      // Base DC Rate per marla based on society
+      let dcPerMarla = 1200000; // LDA Ave 1 default
+      if (society === 'Jubilee Town') dcPerMarla = 1000000;
+      if (society === 'Raiwind Road') dcPerMarla = 1500000;
+
+      const totalDcValuation = dcPerMarla * marlaCount;
+      const calculationBase = Math.max(dealPrice, totalDcValuation);
+
+      const stampDuty = calculationBase * 0.01; // 1%
+      const cvt = calculationBase * 0.02; // 2%
+      const registryFee = calculationBase * 0.01; // 1%
+      
+      // Advance Tax / Withholding Tax (Filer vs Non-filer)
+      // Filer 3%, Non-filer 6% (or standard rates)
+      const advTaxRate = isFiler ? 0.03 : 0.06;
+      const advTax = calculationBase * advTaxRate;
+
+      // Society Transfer Fee
+      let transferFee = marlaCount <= 5 ? 35000 : (marlaCount <= 10 ? 60000 : 100000);
+
+      const totalGovtDues = stampDuty + cvt + registryFee + advTax + transferFee;
+
+      document.getElementById('outDcRate').innerText = `PKR ${dcPerMarla.toLocaleString()} / Marla`;
+      document.getElementById('outFbrVal').innerText = `PKR ${totalDcValuation.toLocaleString()}`;
+      document.getElementById('outStampDuty').innerText = `PKR ${Math.round(stampDuty).toLocaleString()}`;
+      document.getElementById('outCvt').innerText = `PKR ${Math.round(cvt).toLocaleString()}`;
+      document.getElementById('outRegistry').innerText = `PKR ${Math.round(registryFee).toLocaleString()}`;
+      document.getElementById('outTransferFee').innerText = `PKR ${transferFee.toLocaleString()}`;
+      document.getElementById('outTotalTax').innerText = `PKR ${Math.round(totalGovtDues).toLocaleString()}`;
     }
 
     function submitHomeLead() {
@@ -365,10 +568,91 @@
       document.getElementById('homePhone').value = '';
     }
 
-    window.onload = function() {
-      updateWorldClocks();
-      setInterval(updateWorldClocks, 1000);
-    };
+    function runAutoEstimation() {
+      const size = document.getElementById('autoPlotSize').value;
+      const grade = document.getElementById('autoGrade').value;
+
+      let steel = '3.5 Tons', cement = '450 Bags', bricks = '45,000 Pcs', total = 'PKR 6,850,000';
+
+      if (size === '5' && grade === 'turnkey') {
+        steel = '4.2 Tons', cement = '550 Bags', bricks = '48,000 Pcs', total = 'PKR 9,750,000';
+      } else if (size === '10' && grade === 'gray') {
+        steel = '7.0 Tons', cement = '900 Bags', bricks = '90,000 Pcs', total = 'PKR 12,500,000';
+      } else if (size === '10' && grade === 'turnkey') {
+        steel = '8.5 Tons', cement = '1,100 Bags', bricks = '95,000 Pcs', total = 'PKR 18,200,000';
+      } else if (size === '20' && grade === 'gray') {
+        steel = '14.0 Tons', cement = '1,800 Bags', bricks = '180,000 Pcs', total = 'PKR 25,000,000';
+      } else if (size === '20' && grade === 'turnkey') {
+        steel = '17.0 Tons', cement = '2,200 Bags', bricks = '190,000 Pcs', total = 'PKR 37,500,000';
+      }
+
+      document.getElementById('estSteel').innerText = steel;
+      document.getElementById('estCement').innerText = cement;
+      document.getElementById('estBricks').innerText = bricks;
+      document.getElementById('estTotal').innerText = total;
+    }
+
+    function locatePlotOnMap() {
+      const query = document.getElementById('mapSearchInput').value.trim();
+      const statusMsg = document.getElementById('mapStatusMsg');
+      if (!query) { showToast("Please enter plot details!", true); return; }
+
+      statusMsg.classList.remove('hidden');
+      statusMsg.innerHTML = `📍 Locating "${query}" on Lahore Map (LDA Ave 1 / Jubilee Town HQ)...`;
+
+      const iframe = document.getElementById('googleMapFrame');
+      iframe.src = `https://maps.google.com/maps?q=Lahore+LDA+Avenue+1+${encodeURIComponent(query)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+      setTimeout(() => {
+        statusMsg.innerHTML = `✅ Successfully pinned "${query}" on Live Google Map!`;
+      }, 1000);
+    }
+
+    function submitUserProperty() {
+      const name = document.getElementById('postOwnerName').value.trim();
+      const phone = document.getElementById('postOwnerPhone').value.trim();
+      const society = document.getElementById('postSociety').value;
+      const details = document.getElementById('postDetails').value.trim();
+
+      if(!name || !phone || !details) { showToast("Please fill all property details!", true); return; }
+
+      const propRecord = {
+        id: Date.now(), name: name, phone: phone, email: 'bintahacrm@gmail.com',
+        subject: `New Property Listing (${society})`, text: `Owner: ${name}, Phone: ${phone}, Society: ${society}, Details: ${details}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(propRecord)
+      }).catch(e => {});
+
+      const resMsg = document.getElementById('postResultMsg');
+      resMsg.classList.remove('hidden');
+      resMsg.innerHTML = `✅ Success! Property listing submitted to CEO Taha Mobeen Bhutta.`;
+      document.getElementById('postOwnerName').value = '';
+      document.getElementById('postOwnerPhone').value = '';
+      document.getElementById('postDetails').value = '';
+    }
+
+    function sendChatQuery() {
+      const input = document.getElementById('chatUserInput');
+      const text = input.value.trim();
+      if(!text) return;
+
+      const history = document.getElementById('chatHistory');
+      history.innerHTML += `<div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 text-right"><strong class="text-cyan-400">You:</strong> ${text}</div>`;
+      input.value = '';
+
+      setTimeout(() => {
+        let reply = "Bin Taha Associates LDA Avenue 1 aur Jubilee Town mein best real estate aur civil construction services faraham karti hai. Tax aur DC rates ke liye aap upar hamara Govt Tax Calculator use kar sakte hain.";
+        const lower = text.toLowerCase();
+        if(lower.includes('tax') || lower.includes('dc') || lower.includes('stamp') || lower.includes('registry')) {
+          reply = "Lahore mein property transfer par Stamp Duty 1%, CVT 2%, Registry Fee 1%, aur FBR Withholding Tax filer ke liye 3% (non-filer 6%) lagta hai. Aap upar calculation check kar sakte hain.";
+        }
+        history.innerHTML += `<div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800"><strong class="text-amber-400">Bin Taha AI:</strong> ${reply}</div>`;
+        history.scrollTop = history.scrollHeight;
+      }, 700);
+    }
   </script>
 </body>
 </html>
