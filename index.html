@@ -24,7 +24,7 @@
     .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
     .feature-card:active { transform: scale(0.98); }
 
-    /* CINEMATIC INTRO SPLASH SCREEN ANIMATION */
+    /* PERFECTED CINEMATIC SPLASH SCREEN INTRO (Smooth 360 Rotation & Proper Duration) */
     #splashScreen {
       position: fixed;
       inset: 0;
@@ -34,25 +34,23 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-    @keyframes eagleFlyIn {
-      0% { transform: scale(0.2) translateY(100px); opacity: 0; filter: drop-shadow(0 0 0px rgba(252, 211, 77, 0)); }
-      50% { transform: scale(1.1) translateY(-10px); opacity: 1; filter: drop-shadow(0 0 30px rgba(252, 211, 77, 0.8)); }
-      100% { transform: scale(1) translateY(0); opacity: 1; filter: drop-shadow(0 0 15px rgba(252, 211, 77, 0.5)); }
+    @keyframes eagleIntroAnim {
+      0% { transform: scale(0.3) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 0px rgba(252, 211, 77, 0)); }
+      50% { transform: scale(1.15) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 35px rgba(252, 211, 77, 0.9)); }
+      100% { transform: scale(1) rotate(360deg); opacity: 1; filter: drop-shadow(0 0 20px rgba(252, 211, 77, 0.6)); }
     }
     .splash-eagle {
-      animation: eagleFlyIn 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
-      width: 120px;
-      height: 120px;
+      animation: eagleIntroAnim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      width: 140px;
+      height: 140px;
       object-fit: contain;
     }
     .splash-text {
       opacity: 0;
-      animation: fadeInText 1s ease 0.8s forwards;
-      margin-top: 15px;
-      font-family: 'Cinzel', serif;
-      letter-spacing: 2px;
+      animation: fadeInText 1s ease 1s forwards;
+      margin-top: 18px;
       text-align: center;
     }
     @keyframes fadeInText {
@@ -82,8 +80,8 @@
   <div id="splashScreen">
     <img src="logo.png" alt="Bin Taha Logo" class="splash-eagle" onerror="this.src='logo.png.png'">
     <div class="splash-text">
-      <h1 class="text-lg font-black shining-gold">Bin Taha Associates</h1>
-      <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Real Estate & Civil Construction Hub</p>
+      <h1 class="text-base font-black shining-gold uppercase tracking-wider">Bin Taha Associates</h1>
+      <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Real Estate & Civil Construction Hub</p>
     </div>
   </div>
 
@@ -202,7 +200,7 @@
     </div>
 
     <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500">
-      <div>Bin Taha App Build v2.7</div>
+      <div>Bin Taha App Build v2.8</div>
       <div class="text-slate-400 font-bold mt-0.5">Offline Verified & Escrow Protected</div>
     </div>
   </aside>
@@ -280,32 +278,6 @@
       </div>
     </div>
 
-    <!-- International Market Clocks -->
-    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl space-y-2">
-      <div class="text-[11px] font-black text-slate-400 uppercase tracking-wider flex items-center justify-between">
-        <span><i class="fa-solid fa-globe mr-1 text-amber-400"></i> Global Business Hours</span>
-        <span class="text-[10px] text-emerald-400 font-bold">Synchronized</span>
-      </div>
-      <div class="grid grid-cols-4 gap-2 text-center text-xs">
-        <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-emerald-400 font-bold">🇵🇰 Lahore</div>
-          <div id="clockPk" class="font-black text-white text-xs mt-0.5">--:--</div>
-        </div>
-        <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-amber-400 font-bold">🇦🇪 Dubai</div>
-          <div id="clockDubai" class="font-black text-white text-xs mt-0.5">--:--</div>
-        </div>
-        <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-cyan-400 font-bold">🇬🇧 London</div>
-          <div id="clockLondon" class="font-black text-white text-xs mt-0.5">--:--</div>
-        </div>
-        <div class="bg-slate-950 p-2 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-purple-400 font-bold">🇺🇸 NYC</div>
-          <div id="clockNy" class="font-black text-white text-xs mt-0.5">--:--</div>
-        </div>
-      </div>
-    </div>
-
   </main>
 
   <!-- Fixed Native Mobile App Bottom Navigation Bar -->
@@ -332,7 +304,7 @@
     </a>
   </nav>
 
-  <!-- SECRET CEO GATEWAY MODAL -->
+  <!-- SECRET CEO GATEWAY MODAL (Fixed Absolute Links to Prevent 404) -->
   <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border-2 border-amber-500 p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl border border-amber-500/40">
@@ -358,7 +330,7 @@
   <script>
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
 
-    /* Hide Splash Screen after 1.6s */
+    /* Perfected Splash Screen Duration (2.5 seconds for complete rotation and display) */
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
@@ -366,7 +338,7 @@
           splash.style.opacity = '0';
           splash.style.visibility = 'hidden';
         }
-      }, 1600);
+      }, 2600);
     });
 
     let eagleTapCount = 0;
@@ -393,6 +365,7 @@
       const pin = document.getElementById('secretCeoPin').value.trim();
       if (pin === '0321' || pin === '9404812' || pin === 'taha123' || pin === 'Taha123' || pin === 'طاہ123') {
         sessionStorage.setItem('bintaha_ceo_authenticated', 'true');
+        // Absolute URL to prevent 404 errors
         window.location.href = 'https://bintahaassociates.github.io/accont/';
       } else {
         alert('❌ Security Violation: Invalid Master PIN!');
@@ -403,7 +376,6 @@
     function showToast(message, isError = false) {
       const toast = document.getElementById('appToast');
       const toastMsg = document.getElementById('toastMsg');
-      const toastIcon = document.getElementById('toastIcon');
       toastMsg.innerText = message;
       toast.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
       toast.classList.add('opacity-100', 'translate-y-0');
@@ -434,9 +406,6 @@
         const pkTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
         document.getElementById('clockPkHeader').innerText = pkTime;
         document.getElementById('clockPk').innerText = pkTime;
-        document.getElementById('clockDubai').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' });
-        document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' });
-        document.getElementById('clockNy').innerText = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' });
       } catch (e) {}
     }
 
