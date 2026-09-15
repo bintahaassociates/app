@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bin Taha Associates | Government Tax & Property Suite</title>
+  <title>Bin Taha Associates | Official Enterprise App</title>
   <meta name="description" content="Official Bin Taha Real Estate & Construction Mobile App by CEO Taha Mobeen Bhutta.">
-  <meta name="theme-color" content="#020617">
+  <meta name="theme-color" content="#030712">
   
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="logo.png">
@@ -19,10 +19,10 @@
   
   <style>
     * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-    .shining-gold { color: #fcd34d; text-shadow: 0 0 20px rgba(252, 211, 77, 0.45); }
-    .gold-glow { box-shadow: 0 10px 40px -10px rgba(252, 211, 77, 0.35); }
-    .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
-    .feature-card:active { transform: scale(0.98); }
+    .gold-text { color: #fcd34d; text-shadow: 0 0 20px rgba(252, 211, 77, 0.4); }
+    .gold-border { border-color: rgba(252, 211, 77, 0.4); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
+    .gold-glow { box-shadow: 0 10px 30px -10px rgba(252, 211, 77, 0.3); }
 
     /* CINEMATIC 3D ROTATING SPLASH SCREEN INTRO */
     #splashScreen {
@@ -48,15 +48,6 @@
       height: 130px;
       object-fit: contain;
     }
-    .splash-text {
-      opacity: 0;
-      animation: fadeInText 1s ease 1.2s forwards;
-      margin-top: 20px;
-      text-align: center;
-    }
-    @keyframes fadeInText {
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     @keyframes tickerScroll {
       0% { transform: translateX(100%); }
@@ -80,50 +71,49 @@
   <!-- CINEMATIC 3D ROTATING SPLASH SCREEN INTRO -->
   <div id="splashScreen">
     <img src="logo.png" alt="Bin Taha Logo" class="splash-eagle-3d" onerror="this.src='logo.png.png'">
-    <div class="splash-text">
-      <h1 class="text-base font-black shining-gold uppercase tracking-wider">Bin Taha Associates</h1>
+    <div style="opacity:0; animation: fadeInText 1s ease 1.2s forwards; margin-top: 20px; text-align: center;">
+      <h1 class="text-base font-black gold-text uppercase tracking-wider">Bin Taha Associates</h1>
       <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Real Estate & Civil Construction Hub</p>
     </div>
   </div>
 
-  <!-- Top App Status Bar -->
-  <aside aria-label="System status" class="bg-slate-950/95 backdrop-blur-md px-4 py-2 border-b border-slate-800/80 sticky top-0 z-50 flex items-center justify-between text-xs">
+  <!-- TOP WORLD CLOCKS & STATUS BAR -->
+  <aside aria-label="System status" class="bg-slate-950/95 backdrop-blur-md px-3 py-2 border-b gold-border sticky top-0 z-50 flex flex-wrap justify-between items-center text-[11px]">
     <div class="flex items-center gap-2">
-      <div id="networkStatusBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold text-[10px] tracking-wide">
-        <span id="networkIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="networkStatusText">ONLINE</span>
-      </div>
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-emerald-400 font-bold tracking-wide">ONLINE</span>
     </div>
 
-    <div class="flex items-center gap-3 text-[11px] font-semibold">
-      <span class="text-amber-400 flex items-center gap-1">
-        🇵🇰 <span id="clockPkHeader" class="font-bold text-white">--:--</span>
-      </span>
-      <a href="tel:03219404812" class="bg-emerald-600 active:scale-95 text-white px-2.5 py-1 rounded-lg font-black flex items-center gap-1 shadow-md">
-        <i class="fa-solid fa-phone text-[10px]"></i> 0321-9404812
-      </a>
+    <!-- World Clocks -->
+    <div class="flex items-center gap-2 font-bold text-[10px]">
+      <span class="text-slate-300">🇵🇰 <span id="clockPk" class="text-amber-300">--:--</span></span>
+      <span class="text-slate-300">🇦🇪 <span id="clockDubai" class="text-amber-300">--:--</span></span>
+      <span class="text-slate-300">🇬🇧 <span id="clockLondon" class="text-amber-300">--:--</span></span>
     </div>
+
+    <a href="tel:03219404812" class="bg-emerald-600 active:scale-95 text-white px-2 py-0.5 rounded-md font-bold flex items-center gap-1 shadow">
+      <i class="fa-solid fa-phone text-[9px]"></i> 0321-9404812
+    </a>
   </aside>
 
   <!-- Live Market Ticker -->
-  <section aria-label="Market Rates" class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden">
+  <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden">
     <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
-      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag (Live)</span>
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
       <span>•</span>
-      <span><i class="fa-solid fa-bars-progress mr-1"></i> Grade-60 Steel Saria: PKR 282 / Kg</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
       <span>•</span>
       <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-water mr-1"></i> Margalla Crush: PKR 330 / CFT</span>
       <span>•</span>
       <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
     </div>
   </section>
 
   <!-- Main Navigation Header -->
-  <header class="bg-slate-900/90 backdrop-blur-md px-4 py-3 border-b border-slate-800 flex items-center justify-between sticky top-9 z-40">
+  <header class="bg-slate-900/90 backdrop-blur-md px-4 py-3 border-b gold-border flex items-center justify-between sticky top-[37px] z-40">
     <div class="flex items-center gap-2.5">
-      <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 active:bg-slate-700 text-amber-400 flex items-center justify-center text-base border border-slate-700 shadow focus:outline-none cursor-pointer">
+      <!-- Three Dot / Menu Button -->
+      <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 active:bg-slate-700 text-amber-300 flex items-center justify-center text-base border gold-border shadow focus:outline-none cursor-pointer">
         <i class="fa-solid fa-bars-staggered"></i>
       </button>
       
@@ -132,29 +122,29 @@
         <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
           <h1 class="text-sm font-black text-white leading-none">Bin Taha Associates</h1>
-          <p class="text-[9px] text-amber-400 font-bold uppercase tracking-wider mt-0.5">PropTech & Civil Construction</p>
+          <p class="text-[9px] text-amber-300 font-bold uppercase tracking-wider mt-0.5">PropTech & Civil Construction</p>
         </div>
       </div>
     </div>
 
     <div class="flex items-center gap-2">
       <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
-        <i class="fa-brands fa-whatsapp text-sm"></i> <span class="hidden xs:inline">WhatsApp</span> CEO
+        <i class="fa-brands fa-whatsapp text-sm"></i> <span class="hidden xs:inline">WhatsApp</span>
       </a>
     </div>
   </header>
 
-  <!-- Clean Public Drawer Menu -->
-  <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <!-- LUXURY BLACK & GOLD SIDE MENU DRAWER (Three Dot Menu Options) -->
+  <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
   
-  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-900 border-r border-slate-800 z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
+  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
     <div class="space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div class="flex items-center justify-between border-b gold-border pb-4">
         <div class="flex items-center gap-3">
           <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='logo.png.png'">
           <div>
-            <div class="font-black text-sm text-white">Bin Taha App</div>
-            <div class="text-[10px] text-amber-400 font-semibold">Client Portal Edition</div>
+            <div class="font-black text-sm text-white">Bin Taha Menu</div>
+            <div class="text-[10px] text-amber-300 font-semibold">Executive Navigation</div>
           </div>
         </div>
         <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-white p-2 text-lg cursor-pointer">
@@ -162,21 +152,19 @@
         </button>
       </div>
 
-      <nav class="space-y-4 text-xs">
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Properties & Services</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-amber-500 text-slate-950 shadow"><i class="fa-solid fa-house w-4"></i> Home Screen</a>
-            <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-building w-4 text-amber-400"></i> Property Listings</a>
-            <a href="https://bintahaassociates.github.io/bintaha-main/services.html" target="_blank" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-4 text-emerald-400"></i> Construction Services</a>
-          </div>
-        </div>
+      <!-- Menu Buttons as requested -->
+      <nav class="space-y-2 text-xs font-bold">
+        <a href="index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-house w-5"></i> Home Screen</a>
+        <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
+        <a href="https://bintahaassociates.github.io/bintaha-main/services.html" target="_blank" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services Hub</a>
+        <a href="https://bintahaassociates.github.io/bintaha-main/dream.html" target="_blank" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
+        <a href="https://bintahaassociates.github.io/bintaha-main/contact.html" target="_blank" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-headset w-5 text-purple-400"></i> Contact & Support</a>
       </nav>
     </div>
 
-    <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500">
-      <div>Bin Taha App Build v3.3</div>
-      <div class="text-slate-400 font-bold mt-0.5">Govt Tax & Escrow Protected</div>
+    <div class="pt-6 border-t gold-border text-[11px] text-slate-500">
+      <div>Bin Taha App Build v3.4</div>
+      <div class="text-amber-300 font-bold mt-0.5">CEO Taha Mobeen Bhutta</div>
     </div>
   </aside>
 
@@ -184,7 +172,7 @@
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
 
     <!-- Hero Card -->
-    <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
+    <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 gold-border rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
       <div class="flex items-center gap-2">
         <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Lahore's #1 PropTech Hub
@@ -192,15 +180,15 @@
       </div>
 
       <div>
-        <h2 class="text-2xl sm:text-4xl font-black shining-gold leading-tight">Redefining Real Estate & Civil Construction</h2>
+        <h2 class="text-2xl sm:text-4xl font-black gold-text leading-tight">Redefining Real Estate & Civil Construction</h2>
         <p class="text-xs text-slate-300 mt-2 leading-relaxed">
           Supervised by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>. Full transparency, escrow milestone protection, and civil engineering verification in LDA Avenue 1, Jubilee Town, and Raiwind Road.
         </p>
       </div>
 
-      <div class="bg-slate-950/80 border border-amber-500/60 p-4 sm:p-5 rounded-2xl space-y-4">
+      <div class="bg-slate-950/80 border gold-border p-4 sm:p-5 rounded-2xl space-y-4">
         <div class="flex items-center gap-3">
-          <img src="taha1.jpg" alt="CEO Taha Mobeen Bhutta" class="w-12 h-14 object-cover rounded-xl border border-amber-500 shadow" onerror="this.src='taha.jpg'">
+          <img src="taha1.jpg" alt="CEO Taha Mobeen Bhutta" class="w-12 h-14 object-cover rounded-xl border gold-border shadow" onerror="this.src='taha.jpg'">
           <div>
             <h3 class="text-xs font-black text-white">CEO Taha Mobeen Bhutta</h3>
             <p class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
@@ -212,32 +200,59 @@
         <div class="space-y-2.5 text-xs">
           <div>
             <label class="block font-bold text-slate-300 text-[11px] mb-1">Your Full Name:</label>
-            <input type="text" id="homeName" placeholder="Enter your full name..." class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
+            <input type="text" id="homeName" placeholder="Enter your full name..." class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
           </div>
           <div>
             <label class="block font-bold text-slate-300 text-[11px] mb-1">Phone / WhatsApp Number:</label>
-            <input type="tel" id="homePhone" placeholder="03XXXXXXXXX" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
+            <input type="tel" id="homePhone" placeholder="03XXXXXXXXX" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
           </div>
-          <button onclick="submitHomeLead()" class="w-full bg-amber-500 active:bg-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+          <button onclick="submitHomeLead()" class="w-full gold-bg active:scale-95 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
             <i class="fa-solid fa-paper-plane"></i> Send Instant Lead to CEO
           </button>
         </div>
       </div>
     </section>
 
-    <!-- GOVERNORATE TAX & DC VALUE AUTO-CALCULATOR (FBR, CVT, Stamp Duty, Registry, Transfer) -->
-    <div class="bg-slate-900 border-2 border-emerald-500/60 p-5 rounded-3xl space-y-4 shadow-2xl">
+    <!-- OVERSEAS CURRENCY EXCHANGE CONVERTER -->
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🌍 Currency Exchange</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live Rates</span>
+      </div>
+      <h3 class="text-base font-black text-white">Global Currency Real-Time Converter</h3>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">PKR Capital Amount:</label>
+          <input type="number" id="fxAmount" value="10000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Convert to Foreign Currency:</label>
+          <select id="fxCurrency" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+            <option value="USD">USD ($ - US Dollar)</option>
+            <option value="AED">AED (د.إ - UAE Dirham)</option>
+            <option value="GBP">GBP (£ - British Pound)</option>
+          </select>
+        </div>
+        <button onclick="calculateFx()" class="w-full bg-amber-400 active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-coins"></i> Calculate Currency Conversion
+        </button>
+      </div>
+      <div id="fxResultBox" class="hidden p-3 bg-slate-950 rounded-xl border gold-border text-xs text-amber-300 font-bold leading-relaxed"></div>
+    </div>
+
+    <!-- GOVT TAX & DC VALUE AUTO-CALCULATOR -->
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4 shadow-2xl">
       <div class="flex items-center justify-between">
         <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">⚖️ Govt Tax & DC Calculator</span>
-        <span class="text-[10px] bg-amber-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Auto e-Challan</span>
+        <span class="text-[10px] bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md">Auto e-Challan</span>
       </div>
       <h3 class="text-base font-black text-white">Auto DC Valuation & Government Dues Generator</h3>
-      <p class="text-xs text-slate-300">Calculate exact FBR value, DC rate, Stamp Duty, CVT, Registry Fee, and Transfer Fee instantly for Lahore societies.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <div>
           <label class="block font-bold text-slate-300 text-[11px] mb-1">Select Society / Area:</label>
-          <select id="taxSociety" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+          <select id="taxSociety" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
             <option value="LDA Avenue 1">LDA Avenue 1 (Lahore)</option>
             <option value="Jubilee Town">Jubilee Town (Lahore)</option>
             <option value="Raiwind Road">Raiwind Road / Bugtia Chowk</option>
@@ -245,7 +260,7 @@
         </div>
         <div>
           <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Size:</label>
-          <select id="taxPlotSize" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+          <select id="taxPlotSize" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
             <option value="5">5 Marla</option>
             <option value="10">10 Marla</option>
             <option value="20">1 Kanal</option>
@@ -253,20 +268,20 @@
         </div>
         <div>
           <label class="block font-bold text-slate-300 text-[11px] mb-1">Filer / Non-Filer Status:</label>
-          <select id="taxFilerStatus" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+          <select id="taxFilerStatus" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
             <option value="filer">Active Filer (Tax Saved)</option>
             <option value="nonfiler">Non-Filer (Double Tax)</option>
           </select>
         </div>
         <div>
           <label class="block font-bold text-slate-300 text-[11px] mb-1">Agreed Deal Price (PKR):</label>
-          <input type="number" id="taxDealPrice" value="15000000" oninput="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-emerald-500 text-xs">
+          <input type="number" id="taxDealPrice" value="15000000" oninput="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
         </div>
       </div>
 
-      <div class="p-4 bg-slate-950 rounded-2xl border border-emerald-500/40 text-xs space-y-2.5">
-        <div class="flex justify-between font-bold text-slate-300"><span>Estimated DC Rate / Marla:</span> <span id="outDcRate" class="text-amber-400">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>FBR Valuation Total:</span> <span id="outFbrVal" class="text-amber-400">PKR --</span></div>
+      <div class="p-4 bg-slate-950 rounded-2xl border gold-border text-xs space-y-2.5">
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated DC Rate / Marla:</span> <span id="outDcRate" class="text-amber-300">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>FBR Valuation Total:</span> <span id="outFbrVal" class="text-amber-300">PKR --</span></div>
         <div class="flex justify-between font-bold text-slate-300"><span>Stamp Duty (1%):</span> <span id="outStampDuty" class="text-cyan-400">PKR --</span></div>
         <div class="flex justify-between font-bold text-slate-300"><span>CVT (Capital Value Tax):</span> <span id="outCvt" class="text-cyan-400">PKR --</span></div>
         <div class="flex justify-between font-bold text-slate-300"><span>Registry Fee (1%):</span> <span id="outRegistry" class="text-cyan-400">PKR --</span></div>
@@ -276,22 +291,21 @@
     </div>
 
     <!-- LIVE GOOGLE MAP FINDER & PLOT LOCATOR -->
-    <div class="bg-slate-900 border-2 border-cyan-500/50 p-5 rounded-3xl space-y-4">
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4">
       <div class="flex items-center justify-between">
         <span class="bg-cyan-500/20 text-cyan-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🗺️ Live Map & Plot Finder</span>
-        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Interactive GPS</span>
+        <span class="text-[10px] bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md">Interactive GPS</span>
       </div>
       <h3 class="text-base font-black text-white">Interactive Site Map & Plot Locator</h3>
-      <p class="text-xs text-slate-300">Search any plot or block in LDA Avenue 1 or Jubilee Town to instantly locate on the live map.</p>
 
       <div class="space-y-3 text-xs">
         <div class="flex gap-2">
-          <input type="text" id="mapSearchInput" placeholder="Enter Plot #, Block (e.g. Block C, Plot 42)..." class="flex-1 bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-cyan-500 text-xs">
+          <input type="text" id="mapSearchInput" placeholder="Enter Plot #, Block (e.g. Block C, Plot 42)..." class="flex-1 bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
           <button onclick="locatePlotOnMap()" class="bg-cyan-600 active:scale-95 text-white font-black px-4 py-2.5 rounded-xl cursor-pointer text-xs">
             <i class="fa-solid fa-location-crosshairs mr-1"></i> Locate
           </button>
         </div>
-        <div id="mapStatusMsg" class="hidden p-2.5 bg-slate-950 rounded-xl border border-cyan-500/40 text-cyan-300 font-bold text-xs"></div>
+        <div id="mapStatusMsg" class="hidden p-2.5 bg-slate-950 rounded-xl border gold-border text-cyan-300 font-bold text-xs"></div>
 
         <div class="w-full h-60 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative">
           <iframe id="googleMapFrame" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.491223040182!2d74.1921!3d31.4658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDI3JzU2LjgiTiA3NMKwMTEnMzEuNiJF!5e0!3m2!1sen!2spk!4v1650000000000!5m2!1sen!2spk"></iframe>
@@ -299,44 +313,10 @@
       </div>
     </div>
 
-    <!-- AUTO CONSTRUCTION COST ESTIMATOR -->
-    <div class="bg-slate-900 border-2 border-amber-500/50 p-5 rounded-3xl space-y-4">
+    <!-- POST PROPERTY HUB -->
+    <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border-2 gold-border p-5 sm:p-6 rounded-3xl space-y-4 shadow-2xl">
       <div class="flex items-center justify-between">
-        <span class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🧮 Auto Estimator</span>
-        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live Calculation</span>
-      </div>
-      <h3 class="text-base font-black text-white">Auto Construction Cost Estimator</h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Area (Marla / Kanal):</label>
-          <select id="autoPlotSize" onchange="runAutoEstimation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
-            <option value="5">5 Marla Unit</option>
-            <option value="10">10 Marla Unit</option>
-            <option value="20">1 Kanal Luxury Villa</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Construction Grade / Package:</label>
-          <select id="autoGrade" onchange="runAutoEstimation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
-            <option value="gray">Standard Gray Structure</option>
-            <option value="turnkey">Complete Turnkey Luxury Finishing</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="autoEstimateResult" class="p-4 bg-slate-950 rounded-2xl border border-amber-500/40 text-xs space-y-2">
-        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Steel (Saria):</span> <span id="estSteel" class="text-amber-400">-- Tons</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Cement Bags:</span> <span id="estCement" class="text-amber-400">-- Bags</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>Estimated Bricks:</span> <span id="estBricks" class="text-amber-400">-- Pcs</span></div>
-        <div class="border-t border-slate-800 pt-2 flex justify-between font-black text-sm"><span>Total Budget Quote:</span> <span id="estTotal" class="text-emerald-400">PKR --</span></div>
-      </div>
-    </div>
-
-    <!-- POST PROPERTY / ADD PROPERTY HUB -->
-    <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/60 p-5 sm:p-6 rounded-3xl space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between">
-        <span class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">📢 Post Property</span>
+        <span class="bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">📢 Post Property</span>
         <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Direct to CRM</span>
       </div>
       <h3 class="text-base font-black text-white">List Your Plot or Villa For Sale</h3>
@@ -366,15 +346,15 @@
             <input type="text" id="postDetails" placeholder="e.g. 5 Marla Plot / 1 Kanal Villa" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none text-xs">
           </div>
         </div>
-        <button onclick="submitUserProperty()" class="w-full bg-amber-500 active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-lg">
+        <button onclick="submitUserProperty()" class="w-full gold-bg active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-lg">
           <i class="fa-solid fa-cloud-arrow-up"></i> Submit Property Listing to CEO
         </button>
       </div>
-      <div id="postResultMsg" class="hidden p-3 bg-slate-950 rounded-xl border border-amber-500/40 text-xs text-amber-300 font-bold"></div>
+      <div id="postResultMsg" class="hidden p-3 bg-slate-950 rounded-xl border gold-border text-xs text-amber-300 font-bold"></div>
     </div>
 
     <!-- AI GEMINI CHATBOT WIDGET -->
-    <div class="bg-slate-900 border-2 border-cyan-500/50 p-5 rounded-3xl space-y-4">
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4">
       <div class="flex items-center justify-between">
         <span class="bg-cyan-500/20 text-cyan-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🤖 AI Gemini Assistant</span>
         <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live 24/7</span>
@@ -384,7 +364,7 @@
       <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-3 text-xs">
         <div id="chatHistory" class="space-y-2 max-h-48 overflow-y-auto p-2 text-slate-300">
           <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
-            <strong class="text-amber-400">Bin Taha AI:</strong> Assalam-o-Alaikum! Main Bin Taha Associates ka AI Assistant hoon. DC valuation, transfer fee ya construction cost ke baray mein poochein!
+            <strong class="text-amber-300">Bin Taha AI:</strong> Assalam-o-Alaikum! Main Bin Taha Associates ka AI Assistant hoon. DC valuation, transfer fee ya construction cost ke baray mein poochein!
           </div>
         </div>
         <div class="flex gap-2">
@@ -399,9 +379,9 @@
   </main>
 
   <!-- Fixed Native Mobile App Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
-    <a href="index.html" class="flex flex-col items-center gap-1 text-amber-400 font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></div>
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t gold-border z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-amber-300 font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></div>
       <span>Home</span>
     </a>
     <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
@@ -416,24 +396,24 @@
 
   <!-- SECRET CEO GATEWAY MODAL -->
   <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border-2 border-amber-500 p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
-      <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl border border-amber-500/40">
+    <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto text-xl border gold-border">
         <i class="fa-solid fa-user-shield"></i>
       </div>
       <div>
         <h3 class="font-black text-white text-base">CEO Master Console</h3>
         <p class="text-[11px] text-slate-400 mt-0.5">Enter Master Authentication Code</p>
       </div>
-      <input type="password" id="secretCeoPin" placeholder="Enter PIN..." class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-center text-white text-lg tracking-widest font-black outline-none focus:border-amber-500">
+      <input type="password" id="secretCeoPin" placeholder="Enter PIN..." class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-center text-white text-lg tracking-widest font-black outline-none focus:border-amber-400">
       <div class="flex gap-2">
         <button onclick="closeSecretModal()" class="flex-1 bg-slate-800 text-slate-300 font-bold py-2.5 rounded-xl text-xs">Cancel</button>
-        <button onclick="verifyCeoPin()" class="flex-1 bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Unlock</button>
+        <button onclick="verifyCeoPin()" class="flex-1 bg-amber-400 text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Unlock</button>
       </div>
     </div>
   </div>
 
-  <div id="appToast" class="fixed top-12 left-4 right-4 max-w-sm mx-auto bg-slate-900 border border-amber-500 text-white text-xs p-3.5 rounded-2xl shadow-2xl z-50 pointer-events-none opacity-0 -translate-y-4 flex items-center gap-3">
-    <div id="toastIcon" class="text-base text-amber-400 shrink-0"><i class="fa-solid fa-circle-check"></i></div>
+  <div id="appToast" class="fixed top-12 left-4 right-4 max-w-sm mx-auto bg-slate-900 border gold-border text-white text-xs p-3.5 rounded-2xl shadow-2xl z-50 pointer-events-none opacity-0 -translate-y-4 flex items-center gap-3">
+    <div id="toastIcon" class="text-base text-amber-300 shrink-0"><i class="fa-solid fa-circle-check"></i></div>
     <div id="toastMsg" class="font-bold flex-1">Inquiry Dispatched Successfully!</div>
   </div>
 
@@ -448,7 +428,8 @@
           splash.style.visibility = 'hidden';
         }
       }, 3000);
-      runAutoEstimation();
+      updateWorldClocks();
+      setInterval(updateWorldClocks, 1000);
       calculateGovtTaxes();
     });
 
@@ -510,6 +491,28 @@
       }
     }
 
+    function updateWorldClocks() {
+      try {
+        const now = new Date();
+        document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+        document.getElementById('clockDubai').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' });
+        document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' });
+      } catch (e) {}
+    }
+
+    /* CURRENCY CONVERTER */
+    function calculateFx() {
+      const pkr = parseFloat(document.getElementById('fxAmount').value) || 0;
+      const curr = document.getElementById('fxCurrency').value;
+      let rate = 280; let symbol = '$';
+      if (curr === 'AED') { rate = 76; symbol = 'AED '; }
+      else if (curr === 'GBP') { rate = 365; symbol = '£'; }
+      const converted = (pkr / rate).toFixed(2);
+      const resBox = document.getElementById('fxResultBox');
+      resBox.classList.remove('hidden');
+      resBox.innerHTML = `✅ Equivalent Value: <strong class="text-white">${symbol}${converted}</strong> (${curr}) calculated at live market rates.`;
+    }
+
     /* AUTO GOVT TAX & DC VALUATION CALCULATOR */
     function calculateGovtTaxes() {
       const society = document.getElementById('taxSociety').value;
@@ -517,24 +520,18 @@
       const isFiler = document.getElementById('taxFilerStatus').value === 'filer';
       const dealPrice = parseFloat(document.getElementById('taxDealPrice').value) || 15000000;
 
-      // Base DC Rate per marla based on society
-      let dcPerMarla = 1200000; // LDA Ave 1 default
+      let dcPerMarla = 1200000;
       if (society === 'Jubilee Town') dcPerMarla = 1000000;
       if (society === 'Raiwind Road') dcPerMarla = 1500000;
 
       const totalDcValuation = dcPerMarla * marlaCount;
       const calculationBase = Math.max(dealPrice, totalDcValuation);
 
-      const stampDuty = calculationBase * 0.01; // 1%
-      const cvt = calculationBase * 0.02; // 2%
-      const registryFee = calculationBase * 0.01; // 1%
-      
-      // Advance Tax / Withholding Tax (Filer vs Non-filer)
-      // Filer 3%, Non-filer 6% (or standard rates)
+      const stampDuty = calculationBase * 0.01;
+      const cvt = calculationBase * 0.02;
+      const registryFee = calculationBase * 0.01;
       const advTaxRate = isFiler ? 0.03 : 0.06;
       const advTax = calculationBase * advTaxRate;
-
-      // Society Transfer Fee
       let transferFee = marlaCount <= 5 ? 35000 : (marlaCount <= 10 ? 60000 : 100000);
 
       const totalGovtDues = stampDuty + cvt + registryFee + advTax + transferFee;
@@ -566,30 +563,6 @@
       showToast("Inquiry Dispatched Successfully!");
       document.getElementById('homeName').value = '';
       document.getElementById('homePhone').value = '';
-    }
-
-    function runAutoEstimation() {
-      const size = document.getElementById('autoPlotSize').value;
-      const grade = document.getElementById('autoGrade').value;
-
-      let steel = '3.5 Tons', cement = '450 Bags', bricks = '45,000 Pcs', total = 'PKR 6,850,000';
-
-      if (size === '5' && grade === 'turnkey') {
-        steel = '4.2 Tons', cement = '550 Bags', bricks = '48,000 Pcs', total = 'PKR 9,750,000';
-      } else if (size === '10' && grade === 'gray') {
-        steel = '7.0 Tons', cement = '900 Bags', bricks = '90,000 Pcs', total = 'PKR 12,500,000';
-      } else if (size === '10' && grade === 'turnkey') {
-        steel = '8.5 Tons', cement = '1,100 Bags', bricks = '95,000 Pcs', total = 'PKR 18,200,000';
-      } else if (size === '20' && grade === 'gray') {
-        steel = '14.0 Tons', cement = '1,800 Bags', bricks = '180,000 Pcs', total = 'PKR 25,000,000';
-      } else if (size === '20' && grade === 'turnkey') {
-        steel = '17.0 Tons', cement = '2,200 Bags', bricks = '190,000 Pcs', total = 'PKR 37,500,000';
-      }
-
-      document.getElementById('estSteel').innerText = steel;
-      document.getElementById('estCement').innerText = cement;
-      document.getElementById('estBricks').innerText = bricks;
-      document.getElementById('estTotal').innerText = total;
     }
 
     function locatePlotOnMap() {
@@ -647,9 +620,9 @@
         let reply = "Bin Taha Associates LDA Avenue 1 aur Jubilee Town mein best real estate aur civil construction services faraham karti hai. Tax aur DC rates ke liye aap upar hamara Govt Tax Calculator use kar sakte hain.";
         const lower = text.toLowerCase();
         if(lower.includes('tax') || lower.includes('dc') || lower.includes('stamp') || lower.includes('registry')) {
-          reply = "Lahore mein property transfer par Stamp Duty 1%, CVT 2%, Registry Fee 1%, aur FBR Withholding Tax filer ke liye 3% (non-filer 6%) lagta hai. Aap upar calculation check kar sakte hain.";
+          reply = "Lahore mein property transfer par Stamp Duty 1%, CVT 2%, Registry Fee 1%, aur FBR Withholding Tax filer ke liye 3% (non-filer 6%) lagta hai.";
         }
-        history.innerHTML += `<div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800"><strong class="text-amber-400">Bin Taha AI:</strong> ${reply}</div>`;
+        history.innerHTML += `<div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800"><strong class="text-amber-300">Bin Taha AI:</strong> ${reply}</div>`;
         history.scrollTop = history.scrollHeight;
       }, 700);
     }
