@@ -20,7 +20,6 @@
   
   <!-- Custom Mobile UI & Keyframe Animations -->
   <style>
-    /* Prevent default bounce and tap blue highlights on mobile */
     * {
       -webkit-tap-highlight-color: transparent;
       box-sizing: border-box;
@@ -60,14 +59,13 @@
     .moving-eagle-3d { 
       animation: eagle3DRotate 7s infinite linear; 
       transform-style: preserve-3d; 
+      cursor: pointer;
     }
 
-    /* Custom App Toast Notification */
     #appToast { 
       transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     }
     
-    /* Smooth mobile drawer transition */
     #mobileDrawer { 
       transition: transform 0.3s ease-in-out; 
     }
@@ -89,7 +87,7 @@
       </span>
     </div>
 
-    <!-- Local Clocks Mini Dropdown / Direct CEO Hotline -->
+    <!-- Direct CEO Hotline & Time -->
     <div class="flex items-center gap-3 text-[11px] font-semibold">
       <span class="text-amber-400 flex items-center gap-1">
         🇵🇰 <span id="clockPkHeader" class="font-bold text-white">--:--</span>
@@ -100,7 +98,7 @@
     </div>
   </aside>
 
-  <!-- In-App Install PWA Banner (Appears automatically if not installed) -->
+  <!-- In-App Install PWA Banner -->
   <div id="pwaInstallBanner" class="hidden bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 px-4 py-2.5 shadow-xl flex items-center justify-between z-40 sticky top-8">
     <div class="flex items-center gap-2.5">
       <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain rounded-lg">
@@ -130,7 +128,7 @@
       <span>•</span>
       <span><i class="fa-solid fa-water mr-1"></i> Margalla Crush: PKR 330 / CFT</span>
       <span>•</span>
-      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812 (bintahacrm@gmail.com)</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
     </div>
   </section>
 
@@ -140,13 +138,15 @@
       <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 active:bg-slate-700 text-amber-400 flex items-center justify-center text-base border border-slate-700 shadow focus:outline-none cursor-pointer">
         <i class="fa-solid fa-bars-staggered"></i>
       </button>
-      <a href="index.html" class="flex items-center gap-2">
+      
+      <!-- SECRET CEO ACCESS: 5 Taps on the Eagle Logo opens the Master Vault -->
+      <div class="flex items-center gap-2 cursor-pointer" onclick="handleSecretCeoTap()">
         <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
           <h1 class="text-sm font-black text-white leading-none">Bin Taha Associates</h1>
           <p class="text-[9px] text-amber-400 font-bold uppercase tracking-wider mt-0.5">PropTech & Civil Construction</p>
         </div>
-      </a>
+      </div>
     </div>
 
     <div class="flex items-center gap-2">
@@ -159,7 +159,7 @@
     </div>
   </header>
 
-  <!-- Slide-Over App Drawer Menu (All 17 Pages Roadmap Links) -->
+  <!-- Clean Public Drawer Menu -->
   <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
   
   <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-900 border-r border-slate-800 z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
@@ -169,7 +169,7 @@
           <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='logo.png.png'">
           <div>
             <div class="font-black text-sm text-white">Bin Taha App</div>
-            <div class="text-[10px] text-amber-400 font-semibold">17-Module PropTech Suite</div>
+            <div class="text-[10px] text-amber-400 font-semibold">Client Portal Edition</div>
           </div>
         </div>
         <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-white p-2 text-lg cursor-pointer">
@@ -177,7 +177,7 @@
         </button>
       </div>
 
-      <!-- Quick CEO Contact Banner -->
+      <!-- CEO Contact Card -->
       <div class="bg-slate-950 p-3 rounded-2xl border border-amber-500/30 flex items-center gap-3">
         <img src="taha.jpg" alt="CEO" class="w-11 h-11 rounded-xl object-cover border border-amber-500" onerror="this.src='taha1.jpg'">
         <div class="text-xs">
@@ -187,10 +187,10 @@
         </div>
       </div>
 
-      <!-- Navigation Hierarchy -->
+      <!-- Public Navigation Links ONLY -->
       <nav class="space-y-4 text-xs">
         <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Main Client Modules</span>
+          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Properties & Services</span>
           <div class="mt-2 space-y-1 font-bold">
             <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-amber-500 text-slate-950 shadow"><i class="fa-solid fa-house w-4"></i> Home Screen</a>
             <a href="properties.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-building w-4 text-amber-400"></i> Property Listings</a>
@@ -202,23 +202,10 @@
         </div>
 
         <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Direct Actions</span>
+          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Client Inquiries</span>
           <div class="mt-2 space-y-1 font-bold">
-            <a href="add-property.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-4 text-emerald-400"></i> Post New Property</a>
-            <a href="client-form.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-4 text-amber-400"></i> Client Requirement Form</a>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Auth & CRM Portals</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="signin.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-arrow-right-to-bracket w-4 text-cyan-400"></i> Customer Sign In</a>
-            <a href="signup.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-user-plus w-4 text-indigo-400"></i> Create New Account</a>
-            <a href="agent-login.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-user-shield w-4 text-rose-400"></i> Agent Access Portal</a>
-            <a href="agent-dashboard.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-chart-line w-4 text-teal-400"></i> Agent Dashboard</a>
-            <a href="crm-dashboard.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-gauge-high w-4 text-amber-400"></i> Master CRM Center</a>
-            <a href="owners-crm.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-users-gear w-4 text-pink-400"></i> Owners Portfolio CRM</a>
-            <a href="inbox.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-inbox w-4 text-emerald-400"></i> Live Messages Inbox</a>
+            <a href="add-property.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-4 text-emerald-400"></i> Post Property For Sale</a>
+            <a href="client-form.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-4 text-amber-400"></i> Submit Requirements</a>
           </div>
         </div>
       </nav>
@@ -226,8 +213,8 @@
 
     <!-- App Version Footer -->
     <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500">
-      <div>Bin Taha App Mobile Build v2.4</div>
-      <div class="text-slate-400 font-bold mt-0.5">PWA Offline & Google Sheets Engine</div>
+      <div>Bin Taha App Build v2.5</div>
+      <div class="text-slate-400 font-bold mt-0.5">Offline Verified & Escrow Protected</div>
     </div>
   </aside>
 
@@ -263,12 +250,12 @@
 
         <div class="space-y-2.5 text-xs">
           <div>
-            <label class="block font-bold text-slate-300 text-[11px] mb-1">Your Name:</label>
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Your Full Name:</label>
             <input type="text" id="homeName" placeholder="Enter your full name..." class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
           </div>
           <div>
-            <label class="block font-bold text-slate-300 text-[11px] mb-1">Phone / WhatsApp:</label>
-            <input type="tel" id="homePhone" placeholder="03219404812" value="03219404812" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
+            <label class="block font-bold text-slate-300 text-[11px] mb-1">Phone / WhatsApp Number:</label>
+            <input type="tel" id="homePhone" placeholder="03XXXXXXXXX" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
           </div>
           <button onclick="submitHomeLead()" class="w-full bg-amber-500 active:bg-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
             <i class="fa-solid fa-paper-plane"></i> Send Instant Lead to CEO
@@ -370,7 +357,6 @@
       <h3 class="text-base font-black text-white">Instant Plot & Project Locator</h3>
 
       <div class="space-y-4 text-xs">
-        <!-- 1. Plot Finder -->
         <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2">
           <div class="text-amber-400 font-black text-xs flex items-center gap-1.5">
             <i class="fa-solid fa-map-pin"></i> 1. Plot / Villa Code Finder
@@ -384,7 +370,6 @@
           <div id="plotLocateResult" class="hidden p-2.5 bg-slate-900 rounded-xl border border-amber-500/40 text-amber-300 font-bold text-xs"></div>
         </div>
 
-        <!-- 2. Dual Category Filter -->
         <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2">
           <div class="text-cyan-400 font-black text-xs flex items-center gap-1.5">
             <i class="fa-solid fa-sliders"></i> 2. Society & Property Dual Filter
@@ -451,7 +436,6 @@
       </div>
 
       <div class="space-y-3">
-        <!-- Property 1 -->
         <div class="feature-card bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex gap-3 items-center">
           <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-950 relative shrink-0">
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80" alt="Villa" class="w-full h-full object-cover">
@@ -467,7 +451,6 @@
           </div>
         </div>
 
-        <!-- Property 2 -->
         <div class="feature-card bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex gap-3 items-center">
           <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-950 relative shrink-0">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="House" class="w-full h-full object-cover">
@@ -483,7 +466,6 @@
           </div>
         </div>
 
-        <!-- Property 3 -->
         <div class="feature-card bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex gap-3 items-center">
           <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-950 relative shrink-0">
             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Commercial" class="w-full h-full object-cover">
@@ -531,9 +513,8 @@
 
   </main>
 
-  <!-- Fixed Native Mobile App Bottom Navigation Bar -->
+  <!-- Fixed Native Mobile App Bottom Navigation Bar (100% Client Safe) -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
-    <!-- Tab 1: Home (Active) -->
     <a href="index.html" class="flex flex-col items-center gap-1 text-amber-400 font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm">
         <i class="fa-solid fa-house"></i>
@@ -541,7 +522,6 @@
       <span>Home</span>
     </a>
 
-    <!-- Tab 2: Properties -->
     <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
         <i class="fa-solid fa-building"></i>
@@ -549,7 +529,6 @@
       <span>Properties</span>
     </a>
 
-    <!-- Tab 3: Quick Add (+) -->
     <a href="add-property.html" class="flex flex-col items-center -mt-5 font-bold text-[10px]">
       <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 flex items-center justify-center text-lg shadow-xl border-2 border-slate-900 active:scale-95">
         <i class="fa-solid fa-plus"></i>
@@ -557,7 +536,6 @@
       <span class="text-amber-400 mt-1">Post</span>
     </a>
 
-    <!-- Tab 4: Services -->
     <a href="services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
         <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -565,14 +543,32 @@
       <span>Services</span>
     </a>
 
-    <!-- Tab 5: CRM / Inbox -->
-    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+    <!-- REPLACED OPEN CRM WITH SAFE CLIENT CONTACT -->
+    <a href="contact.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
-        <i class="fa-solid fa-chart-pie"></i>
+        <i class="fa-solid fa-headset"></i>
       </div>
-      <span>CRM</span>
+      <span>Contact</span>
     </a>
   </nav>
+
+  <!-- SECRET CEO GATEWAY MODAL (Only Appears on 5 Secret Taps on Logo) -->
+  <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border-2 border-amber-500 p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl border border-amber-500/40">
+        <i class="fa-solid fa-user-shield"></i>
+      </div>
+      <div>
+        <h3 class="font-black text-white text-base">CEO Master Console</h3>
+        <p class="text-[11px] text-slate-400 mt-0.5">Enter Master Authentication Code</p>
+      </div>
+      <input type="password" id="secretCeoPin" placeholder="Enter PIN..." class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-center text-white text-lg tracking-widest font-black outline-none focus:border-amber-500">
+      <div class="flex gap-2">
+        <button onclick="closeSecretModal()" class="flex-1 bg-slate-800 text-slate-300 font-bold py-2.5 rounded-xl text-xs">Cancel</button>
+        <button onclick="verifyCeoPin()" class="flex-1 bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Unlock</button>
+      </div>
+    </div>
+  </div>
 
   <!-- In-App Floating Toast Notification -->
   <div id="appToast" class="fixed top-12 left-4 right-4 max-w-sm mx-auto bg-slate-900 border border-amber-500 text-white text-xs p-3.5 rounded-2xl shadow-2xl z-50 pointer-events-none opacity-0 -translate-y-4 flex items-center gap-3">
@@ -583,8 +579,39 @@
   </div>
 
   <script>
-    /* Google Apps Script Endpoint */
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+
+    /* SECRET CEO DOOR (5 Taps on Eagle Logo) */
+    let eagleTapCount = 0;
+    let eagleTapTimer = null;
+
+    function handleSecretCeoTap() {
+      eagleTapCount++;
+      clearTimeout(eagleTapTimer);
+      eagleTapTimer = setTimeout(() => { eagleTapCount = 0; }, 2000);
+
+      if (eagleTapCount >= 5) {
+        eagleTapCount = 0;
+        document.getElementById('secretCeoModal').classList.remove('hidden');
+        document.getElementById('secretCeoPin').value = '';
+        document.getElementById('secretCeoPin').focus();
+      }
+    }
+
+    function closeSecretModal() {
+      document.getElementById('secretCeoModal').classList.add('hidden');
+    }
+
+    function verifyCeoPin() {
+      const pin = document.getElementById('secretCeoPin').value.trim();
+      if (pin === '0321' || pin === '9404812' || pin === 'taha123' || pin === 'Taha123' || pin === 'طاہ123') {
+        sessionStorage.setItem('bintaha_ceo_authenticated', 'true');
+        window.location.href = 'crm-dashboard.html';
+      } else {
+        alert('❌ Security Violation: Invalid Master PIN!');
+        closeSecretModal();
+      }
+    }
 
     /* Custom Non-blocking In-App Toast System */
     function showToast(message, isError = false) {
@@ -653,11 +680,11 @@
         const elNy = document.getElementById('clockNy');
         if(elNy) elNy.innerText = nyTime;
       } catch (err) {
-        console.warn('Clock timezone update exception:', err);
+        console.warn('Clock timezone exception:', err);
       }
     }
 
-    /* Offline & Online Connectivity Engine */
+    /* Connectivity Engine */
     function updateNetworkStatus() {
       const isOnline = navigator.onLine;
       const statusText = document.getElementById('networkStatusText');
@@ -689,7 +716,7 @@
       }
     }
 
-    /* Core Dispatch Function: Saves to LocalStorage & Syncs to Google Sheet */
+    /* Core Dispatch Function */
     function dispatchLeadRecord(record) {
       const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
       inboxList.unshift(record);
@@ -716,11 +743,11 @@
         queue.push(record);
         localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
         refreshQueueCounter();
-        showToast("Network fluctuation. Record saved locally for auto-sync.");
+        showToast("Record saved locally for auto-sync.");
       });
     }
 
-    /* Auto Flush Queue when network connects */
+    /* Flush Offline Queue */
     function flushOfflineSyncQueue() {
       const queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
       if (queue.length === 0) return;
@@ -739,7 +766,7 @@
         refreshQueueCounter();
         showToast("Offline records synced with Google Sheets!");
       }).catch(e => {
-        console.warn('Queue re-sync attempted, waiting for stable network.');
+        console.warn('Queue re-sync attempted.');
       });
     }
 
@@ -765,9 +792,10 @@
 
       dispatchLeadRecord(leadRecord);
       document.getElementById('homeName').value = '';
+      document.getElementById('homePhone').value = '';
     }
 
-    /* ROI Calculation Function */
+    /* ROI Calculation */
     function calculateRoi() {
       const zone = document.getElementById('roiZone').value;
       const capital = parseFloat(document.getElementById('roiCapital').value) || 0;
@@ -793,7 +821,7 @@
       dispatchLeadRecord(leadRecord);
     }
 
-    /* Global FX Currency Converter */
+    /* FX Currency Converter */
     function calculateFx() {
       const pkr = parseFloat(document.getElementById('fxAmount').value) || 0;
       const curr = document.getElementById('fxCurrency').value;
@@ -881,7 +909,7 @@
       dispatchLeadRecord(leadRecord);
     }
 
-    /* PWA Install Banner Logic */
+    /* PWA Install Banner */
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
