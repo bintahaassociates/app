@@ -8,6 +8,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Central Master Core Bridge -->
+  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
+  
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
@@ -23,15 +26,11 @@
       transform-style: preserve-3d;
     }
 
-    #mobileDrawer {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .drawer-open {
-      transform: translateX(0) !important;
-    }
+    #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-open { transform: translateX(0) !important; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
 
   <!-- Mobile Top Connectivity Bar -->
   <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
@@ -53,20 +52,18 @@
   <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
-      <!-- Brand & Logo -->
-      <a href="index.html" class="flex items-center gap-2.5">
+      <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
-          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Property Submission & CRM Engine</p>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Property Intake Engine</p>
         </div>
       </a>
 
-      <!-- Quick Actions + Drawer Toggle -->
       <div class="flex items-center gap-2">
-        <a href="properties.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition">
+        <a href="./properties.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition">
           <i class="fa-solid fa-building text-[10px] text-amber-400"></i> Listings
         </a>
 
@@ -78,13 +75,13 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <!-- Side Navigation Drawer -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain">
           <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
@@ -92,37 +89,25 @@
         </button>
       </div>
 
-      <!-- Public Section -->
       <div class="space-y-1">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
-        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
-        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
-        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
-        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
-        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
-        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="./contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
       </div>
 
-      <!-- Actions Section -->
       <div class="space-y-1 pt-2 border-t border-slate-800">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
-        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-cloud-arrow-up w-4"></i> Add Property (Wizard)</a>
-        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
-      </div>
-
-      <!-- Portals -->
-      <div class="space-y-1 pt-2 border-t border-slate-800">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
-        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
-        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
-        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
-        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
-        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+        <a href="./add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-cloud-arrow-up w-4"></i> Add Property</a>
+        <a href="./client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
       </div>
     </div>
 
     <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
-      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Associates Mobile App</p>
       <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
     </div>
   </aside>
@@ -130,16 +115,15 @@
   <!-- Main Content Area -->
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
 
-    <!-- Header Banner -->
     <div class="text-center max-w-xl mx-auto space-y-2">
       <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">
         Verified Property Intake
       </span>
       <h2 class="text-2xl sm:text-3xl font-black shining-gold">
-        Post Property to Master CRM
+        Post Property to Master Inventory
       </h2>
       <p class="text-xs text-slate-300">
-        Direct upload engine with offline storage and automatic sync to Google Sheets database.
+        Direct upload with compressed image sync to Central Google Sheet Database.
       </p>
     </div>
 
@@ -216,7 +200,7 @@
           </div>
         </div>
 
-        <!-- Camera & Photo Picker with In-App Compression -->
+        <!-- Camera & Photo Picker with Compression -->
         <div class="p-4 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-950/60 space-y-2">
           <div class="flex justify-between items-center">
             <label class="text-xs font-bold text-amber-400 uppercase flex items-center gap-1.5">
@@ -230,7 +214,7 @@
           <div id="imgPreviewWrapper" class="hidden pt-2 flex items-center gap-3">
             <img id="imgPreview" src="" class="h-20 w-32 object-cover rounded-xl border border-amber-500/50 shadow">
             <div class="text-[11px] text-emerald-400 font-bold">
-              <i class="fa-solid fa-check-circle mr-1"></i> Image ready for Base64 sync
+              <i class="fa-solid fa-check-circle mr-1"></i> Photo ready for Cloud Sync
             </div>
           </div>
         </div>
@@ -243,7 +227,7 @@
 
         <!-- Submit Button -->
         <button type="submit" id="submitBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow-xl flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider">
-          <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Save Property & Sync to Master CRM
+          <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Save Property & Sync to Google Sheets
         </button>
 
       </form>
@@ -253,24 +237,24 @@
 
   <!-- Persistent Mobile Bottom Navigation Bar -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
       <span class="text-[10px] font-bold">Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
-    <a href="add-property.html" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
+    <a href="./add-property.html" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
       <i class="fa-solid fa-plus text-base"></i>
     </a>
-    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
-      <i class="fa-solid fa-star text-sm"></i>
-      <span class="text-[10px] font-bold">Dream</span>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-bolt text-sm"></i>
+      <span class="text-[10px] font-bold">Services</span>
     </a>
-    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
-      <i class="fa-solid fa-gauge-high text-sm"></i>
-      <span class="text-[10px] font-bold">CRM</span>
+    <a href="./client-form.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-400 transition">
+      <i class="fa-solid fa-file-signature text-sm"></i>
+      <span class="text-[10px] font-bold">Inquiry</span>
     </a>
   </nav>
 
@@ -304,27 +288,13 @@
       }
     }
 
-    function checkConnectivity() {
-      const badge = document.getElementById('networkStatusBadge');
-      if(navigator.onLine) {
-        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
-        flushOfflineQueue();
-      } else {
-        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
-      }
-    }
-    window.addEventListener('online', checkConnectivity);
-    window.addEventListener('offline', checkConnectivity);
-
     function updateClock() {
       const now = new Date();
       document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
     }
     setInterval(updateClock, 1000);
 
-    // Auto Compression to Keep Base64 Lightweight for Mobile & Sheets
+    // Auto Compression
     function encodeAndCompressImage(e) {
       const file = e.target.files[0];
       if (file) {
@@ -389,7 +359,7 @@
       currentList.unshift(newListing);
       localStorage.setItem('bintaha_full_inventory', JSON.stringify(currentList));
 
-      // 2. Also save in properties hub inventory for instant rendering on properties.html
+      // 2. Also save in properties hub inventory
       const hubList = JSON.parse(localStorage.getItem('bintaha_properties_hub') || '[]');
       hubList.unshift(newListing);
       localStorage.setItem('bintaha_properties_hub', JSON.stringify(hubList));
@@ -398,57 +368,28 @@
       submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Registering Listing...`;
       submitBtn.disabled = true;
 
-      // 3. Online Webhook or Offline Queue
-      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
-      const payload = { action: 'post_property_listing', listing: newListing, time: new Date().toISOString() };
+      // 3. Central 2-Way Master Core Sync
+      const payload = {
+        id: newListing.id,
+        name: `Property: ${title} (${role})`,
+        phone: phone,
+        email: 'bintahacrm@gmail.com',
+        subject: `New Listing: ${category} in ${location}`,
+        text: `Demand: PKR ${numericPrice.toLocaleString()} | Area: ${area} | Type: ${type} | Remarks: ${desc}`
+      };
 
-      if(navigator.onLine && googleScriptUrl) {
-        fetch(googleScriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(() => {
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(payload, "Orders", function(success) {
           showToast("Property Registered & Synced to Google Sheets!");
-        }).catch(() => {
-          queueForSync(payload);
-          showToast("Saved locally (will sync when online)");
+          setTimeout(() => { window.location.href = './properties.html'; }, 1000);
         });
       } else {
-        queueForSync(payload);
-        showToast("Offline: Saved locally! Will sync when connected.");
+        showToast("Saved locally!");
+        setTimeout(() => { window.location.href = './properties.html'; }, 1000);
       }
-
-      setTimeout(() => {
-        window.location.href = 'properties.html';
-      }, 1200);
-    }
-
-    function queueForSync(payload) {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
-      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
-    }
-
-    function flushOfflineQueue() {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      if(queue.length === 0) return;
-
-      queue.forEach(item => {
-        fetch(item.url, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item.data)
-        }).catch(err => console.log('Sync retry failed:', err));
-      });
-
-      localStorage.removeItem('bintaha_offline_queue');
-      showToast("Offline property listings synced to Google Sheets!");
     }
 
     window.onload = function() {
-      checkConnectivity();
       updateClock();
     };
   </script>
