@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   
+  <!-- Central Master Core Bridge -->
+  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
+  
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
@@ -86,9 +89,9 @@
   <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-xl">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
-      <a href="index.html" class="flex items-center gap-2.5">
+      <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-2xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight flex items-center gap-1.5">
@@ -140,13 +143,13 @@
     </div>
   </div>
 
-  <!-- Side Navigation Drawer (Cleaned: No CRM, Contains 15 Page Features) -->
+  <!-- Side Navigation Drawer -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain">
           <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Services Directory</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base cursor-pointer">
@@ -154,18 +157,16 @@
         </button>
       </div>
 
-      <!-- Main Navigation -->
       <div class="space-y-1">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Pages</p>
-        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
-        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-bolt w-4"></i> Services Hub</a>
-        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
-        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
-        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
-        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-bolt w-4"></i> Services Hub</a>
+        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="./contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
       </div>
 
-      <!-- 15 Features Fast Navigation List in Side Menu -->
       <div class="space-y-1 pt-2 border-t border-slate-800">
         <p class="text-[10px] font-black uppercase text-amber-400 tracking-wider">15 Interactive Tools</p>
         <div class="space-y-0.5 text-[11px] font-bold">
@@ -615,7 +616,7 @@
         </div>
       </div>
 
-      <!-- Doorstep Order Direct Form (2-Way CRM Background Sync) -->
+      <!-- Doorstep Order Direct Form -->
       <div class="glass-inner p-5 sm:p-6 rounded-2xl space-y-4 border border-cyan-500/30">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
@@ -659,7 +660,7 @@
       </div>
     </div>
 
-    <!-- 6. LDA & HOUSING SOCIETY BY-LAWS VALIDATOR (INTERACTIVE TOOL) -->
+    <!-- 6. LDA & HOUSING SOCIETY BY-LAWS VALIDATOR -->
     <div id="ldaCheckerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-purple-500/40">
       <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
         <div class="w-10 h-10 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold border border-purple-500/30">
@@ -787,7 +788,7 @@
       </div>
     </div>
 
-    <!-- 10. CONCRETE SLUMP & COMPRESSIVE STRENGTH TESTING LAB (INTERACTIVE TOOL) -->
+    <!-- 10. CONCRETE SLUMP & COMPRESSIVE STRENGTH TESTING LAB -->
     <div id="concreteLabSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-lime-500/40">
       <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
         <div class="w-10 h-10 rounded-2xl bg-lime-500/20 text-lime-400 flex items-center justify-center font-bold border border-lime-500/30">
@@ -822,7 +823,7 @@
       </div>
     </div>
 
-    <!-- 11. SMART MILESTONE PAYMENT ESCROW TRACKER (INTERACTIVE) -->
+    <!-- 11. SMART MILESTONE PAYMENT ESCROW TRACKER -->
     <div id="escrowTrackerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-orange-500/40">
       <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
         <div class="w-10 h-10 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold border border-orange-500/30">
@@ -887,7 +888,7 @@
       </p>
     </div>
 
-    <!-- 13. SOLAR ROOFTOP SIZING CALCULATOR (INTERACTIVE TOOL) -->
+    <!-- 13. SOLAR ROOFTOP SIZING CALCULATOR -->
     <div id="solarSizerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-amber-400/40">
       <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
         <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
@@ -953,7 +954,7 @@
       </div>
     </div>
 
-    <!-- 15. PROPERTY RESALE ROI PREDICTOR (INTERACTIVE TOOL) -->
+    <!-- 15. PROPERTY RESALE ROI PREDICTOR -->
     <div id="roiPredictorSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-emerald-400/40">
       <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
         <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
@@ -983,48 +984,9 @@
       </div>
     </div>
 
-    <!-- STANDARD CONSTRUCTION PACKAGES (PRESERVED) -->
-    <div id="packagesSection" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between shadow-xl">
-        <div>
-          <span class="bg-amber-500/20 text-amber-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 01</span>
-          <h4 class="text-base font-black text-white">Gray Structure Super</h4>
-          <p class="text-xs text-slate-300 mt-1">100% Mughal/Amreli Grade-60 deformed steel, A-grade Chenab sand, Margalla crush, and certified anti-termite foundation treatment.</p>
-        </div>
-        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-          <span class="text-slate-400 font-bold">Rates from:</span>
-          <span class="text-amber-400 font-black">PKR 3,500 / Sq Ft</span>
-        </div>
-      </div>
-
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-emerald-500/30 flex flex-col justify-between shadow-xl">
-        <div>
-          <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 02</span>
-          <h4 class="text-base font-black text-white">Turnkey Luxury Finishing</h4>
-          <p class="text-xs text-slate-300 mt-1">Imported porcelain tiles, custom solid ash-wood doors, Grohe/Porta sanitary fittings, designer false ceilings, and smart ambient lighting.</p>
-        </div>
-        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-          <span class="text-slate-400 font-bold">Rates from:</span>
-          <span class="text-emerald-400 font-black">PKR 6,800 / Sq Ft</span>
-        </div>
-      </div>
-
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-cyan-500/30 flex flex-col justify-between shadow-xl">
-        <div>
-          <span class="bg-cyan-500/20 text-cyan-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 03</span>
-          <h4 class="text-base font-black text-white">CAD & Society Approvals</h4>
-          <p class="text-xs text-slate-300 mt-1">Complete architectural working drawings, 3D photorealistic elevations, soil testing, and hassle-free LDA / Society approval filing.</p>
-        </div>
-        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-          <span class="text-slate-400 font-bold">Timeframe:</span>
-          <span class="text-cyan-400 font-black">7 to 10 Working Days</span>
-        </div>
-      </div>
-    </div>
-
   </main>
 
-  <!-- Service Booking Modal (Background CRM Sync Preserved 100%) -->
+  <!-- Service Booking Modal -->
   <div id="serviceModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
     <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -1054,16 +1016,12 @@
               <option value="Turnkey Luxury Finish">Turnkey Finish</option>
               <option value="Architectural CAD & Map Approval">CAD & Map Approval</option>
               <option value="Site Supervision Consultation">Site Supervision</option>
-              <option value="Overseas Live CCTV Supervision">Overseas Live CCTV Supervision</option>
-              <option value="Doorstep Material Bulk Order">Doorstep Material Order</option>
-              <option value="Soil Testing Investigation">Soil Testing Investigation</option>
-              <option value="Solar Rooftop Consultation">Solar Rooftop Sizing</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label class="block text-slate-300 mb-1">Society / Location (e.g. LDA Avenue 1, Jubilee): *</label>
+          <label class="block text-slate-300 mb-1">Society / Location: *</label>
           <input type="text" id="bookingLocation" placeholder="Plot / Block / Society Name" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal">
         </div>
 
@@ -1079,52 +1037,31 @@
     </div>
   </div>
 
-  <!-- Floating Gemini AI Assistant Widget (Preserved) -->
-  <div class="fixed bottom-20 right-4 z-40">
-    <div id="geminiChatBox" class="hidden glass-card p-4 rounded-3xl w-72 sm:w-80 shadow-2xl mb-3 space-y-3 border border-amber-500/60">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-        <span class="text-xs font-black text-amber-400 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> Construction Copilot</span>
-        <button onclick="toggleGeminiChat()" class="text-slate-400 hover:text-white text-xs cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div id="geminiChatHistory" class="text-[11px] text-slate-300 space-y-2 max-h-48 overflow-y-auto p-1">
-        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">👋 Hello! Ask me about 5 Marla / 10 Marla construction estimates, Grade-60 steel rates, or CAD designs in Lahore.</div>
-      </div>
-      <div class="flex gap-1.5">
-        <input type="text" id="geminiUserInput" placeholder="Type a query (e.g. 5 marla cost)..." onkeypress="if(event.key==='Enter') sendToGeminiAI()" class="flex-1 bg-slate-950 border border-slate-700 px-3 py-2 rounded-xl text-xs text-white outline-none focus:border-amber-500">
-        <button onclick="sendToGeminiAI()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-2 rounded-xl font-black text-xs cursor-pointer"><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </div>
-
-    <button onclick="toggleGeminiChat()" class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 font-black shadow-2xl flex items-center justify-center gold-glow cursor-pointer hover:scale-105 transition">
-      <i class="fa-solid fa-robot text-base"></i>
-    </button>
-  </div>
-
-  <!-- Persistent Mobile Bottom Navigation Bar (No CRM Button) -->
+  <!-- Persistent Mobile Bottom Navigation Bar -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
       <span class="text-[10px] font-bold">Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
-    <a href="services.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
       <i class="fa-solid fa-bolt text-sm"></i>
       <span class="text-[10px] font-bold">Services</span>
     </a>
-    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+    <a href="./dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
       <i class="fa-solid fa-star text-sm"></i>
       <span class="text-[10px] font-bold">Dream</span>
     </a>
-    <a href="client-form.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+    <a href="./client-form.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
       <i class="fa-solid fa-file-signature text-sm"></i>
       <span class="text-[10px] font-bold">Inquiry</span>
     </a>
   </nav>
 
-  <!-- In-App Toast (Preserved) -->
+  <!-- In-App Toast -->
   <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-cyan-500 text-cyan-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
     <span id="appToastMsg">Notification</span>
@@ -1158,25 +1095,7 @@
       document.getElementById('serviceModal').classList.toggle('hidden');
     }
 
-    function toggleGeminiChat() {
-      document.getElementById('geminiChatBox').classList.toggle('hidden');
-    }
-
-    function checkConnectivity() {
-      const badge = document.getElementById('networkStatusBadge');
-      if(navigator.onLine) {
-        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
-        flushOfflineQueue();
-      } else {
-        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
-      }
-    }
-    window.addEventListener('online', checkConnectivity);
-    window.addEventListener('offline', checkConnectivity);
-
-    // 1. CAD Functions
+    // CAD Functions
     function selectLayoutOption(optNum) {
       currentLayoutOption = optNum;
       for(let i=1; i<=3; i++) {
@@ -1201,9 +1120,10 @@
       
       let estCost = totalArea * (storeys.includes('Single') ? 3500 : 4200);
       document.getElementById('cadCostSummary').innerText = `PKR ${estCost.toLocaleString()} (Gray Est.)`;
-      document.getElementById('cadDimSummary').innerText = `Porch (${Math.round(front*0.5)}'x18'), Lounge (20'x18'), Drawing (14'x16'), Kitchen (10'x12').`;
+      document.getElementById('cadDimSummary').innerText = `Porch (${Math.round(front*0.5)}'x18'), Lounge (20'x18'), Drawing (14'x16').`;
 
       const canvas = document.getElementById('cadCanvas');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
       ctx.fillStyle = '#050b14';
@@ -1226,26 +1146,12 @@
       ctx.font = 'bold 13px sans-serif';
       ctx.fillText(`BIN TAHA ASSOCIATES • CIVIL ENGINEERING CAD BLUEPRINT`, 65, 32);
 
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = '10px monospace';
-      ctx.fillText(`PLOT: ${front} FT x ${length} FT | PEC CATEGORY C STANDARD | ALL SETBACKS VERIFIED`, 65, 520);
-
       if(currentLayoutOption === 1) {
-        drawRoom(ctx, 70, 70, 360, 120, '#10b981', 'CAR PORCH & GREEN LAWN', `${Math.round(front*0.5)}'-0" x 18'-0"`);
-        drawRoom(ctx, 450, 70, 380, 120, '#3b82f6', 'DRAWING & GUEST LOUNGE', `14'-0" x 16'-0"`);
-        drawRoom(ctx, 70, 210, 480, 140, '#f59e0b', 'MAIN FAMILY TV LOUNGE', `20'-0" x 18'-0"`);
-        drawRoom(ctx, 570, 210, 260, 140, '#ec4899', 'OPEN DIRTY/CHEF KITCHEN', `10'-0" x 12'-0"`);
-        drawRoom(ctx, 70, 370, 760, 100, '#8b5cf6', 'MASTER BEDROOM (BATH & DRESS)', `${front-4}'-0" x 16'-0"`);
-      } else if(currentLayoutOption === 2) {
-        drawRoom(ctx, 70, 70, 760, 110, '#3b82f6', 'OPEN-PLAN LIVING, DINING & FOYER', `${front-4}'-0" x 20'-0"`);
-        drawRoom(ctx, 70, 200, 360, 140, '#10b981', 'AMERICAN KITCHEN & PANTRY', `14'-0" x 14'-0"`);
-        drawRoom(ctx, 450, 200, 380, 140, '#f59e0b', 'GUEST BED / STUDY ROOM', `14'-0" x 14'-0"`);
-        drawRoom(ctx, 70, 360, 760, 110, '#8b5cf6', 'MASTER SUITE & WALK-IN DRESS', `${front-4}'-0" x 18'-0"`);
-      } else {
-        drawRoom(ctx, 70, 70, 260, 120, '#10b981', 'GRAND ENTRANCE PORCH', `12'-0" x 18'-0"`);
-        drawRoom(ctx, 350, 70, 480, 120, '#3b82f6', 'ROYAL GUEST SALON', `20'-0" x 18'-0"`);
-        drawRoom(ctx, 70, 210, 760, 130, '#f59e0b', 'CENTRAL HALL & DINING', `${front-4}'-0" x 16'-0"`);
-        drawRoom(ctx, 70, 360, 760, 110, '#8b5cf6', 'PRESIDENTIAL MASTER BEDROOM', `${front-4}'-0" x 18'-0"`);
+        drawRoom(ctx, 70, 70, 360, 120, '#10b981', 'CAR PORCH & LAWN', `${Math.round(front*0.5)}'x18'`);
+        drawRoom(ctx, 450, 70, 380, 120, '#3b82f6', 'DRAWING LOUNGE', `14'x16'`);
+        drawRoom(ctx, 70, 210, 480, 140, '#f59e0b', 'FAMILY TV LOUNGE', `20'x18'`);
+        drawRoom(ctx, 570, 210, 260, 140, '#ec4899', 'CHEF KITCHEN', `10'x12'`);
+        drawRoom(ctx, 70, 370, 760, 100, '#8b5cf6', 'MASTER BEDROOM', `${front-4}'x16'`);
       }
     }
 
@@ -1254,15 +1160,12 @@
       ctx.globalAlpha = 0.12;
       ctx.fillRect(x, y, w, h);
       ctx.globalAlpha = 1.0;
-
       ctx.strokeStyle = color;
       ctx.lineWidth = 1.8;
       ctx.strokeRect(x, y, w, h);
-
       ctx.fillStyle = color;
       ctx.font = 'bold 10px sans-serif';
       ctx.fillText(title, x + 10, y + 22);
-
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 11px monospace';
       ctx.fillText(`[ ${dim} ]`, x + 10, y + 42);
@@ -1274,166 +1177,47 @@
       link.href = canvas.toDataURL('image/jpeg', 0.95);
       link.download = 'Bin_Taha_Architectural_Blueprint.jpg';
       link.click();
-      showToast("Blueprint Downloaded to Device!");
+      showToast("Blueprint Downloaded!");
     }
 
-    // 2. CCTV Simulation Canvas
+    // CCTV Canvas
     function renderCctvCanvas() {
       const canvas = document.getElementById('cctvSimCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      
-      let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#0a1120');
-      gradient.addColorStop(0.5, '#0f172a');
-      gradient.addColorStop(1, '#020617');
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = '#0a1120';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)';
-      ctx.lineWidth = 1;
-      for (let i = -200; i <= canvas.width + 200; i += 40) {
-        ctx.beginPath();
-        ctx.moveTo(canvas.width / 2, 80);
-        ctx.lineTo(i, canvas.height);
-        ctx.stroke();
-      }
-
-      ctx.fillStyle = '#1e293b';
-      ctx.fillRect(80, 140, 45, 180);
-      ctx.fillRect(280, 120, 50, 200);
-      ctx.fillRect(520, 150, 45, 170);
-
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 2;
-      for (let y = 140; y <= 300; y += 15) {
-        ctx.beginPath(); ctx.moveTo(80, y); ctx.lineTo(125, y); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(280, y); ctx.lineTo(330, y); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(520, y); ctx.lineTo(565, y); ctx.stroke();
-      }
-
-      ctx.strokeStyle = 'rgba(252, 211, 77, 0.4)';
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
-      ctx.stroke();
-
       ctx.fillStyle = '#fcd34d';
-      ctx.font = 'bold 11px monospace';
-      ctx.fillText('+ TARGET LOCK: ACTIVE SITE FEED', canvas.width / 2 - 90, canvas.height / 2 + 70);
+      ctx.font = 'bold 12px monospace';
+      ctx.fillText('LIVE SITE SECURE FEED ACTIVE', 20, 40);
     }
 
-    function changeLiveStreamProject() {
-      const selected = document.getElementById('liveProjectSelector').value;
-      document.getElementById('cctvProjectTitle').innerText = `${selected} • Active Feed`;
-      renderCctvCanvas();
-      showToast(`Switched Live CCTV Stream to ${selected}`);
-    }
-
-    function updateCctvClock() {
-      const now = new Date();
-      const clock = document.getElementById('cctvLiveClock');
-      if (clock) clock.innerText = now.toLocaleString() + ' PKT';
-    }
-    setInterval(updateCctvClock, 1000);
-
-    function requestOverseasSiteAccess() {
-      const project = document.getElementById('liveProjectSelector').value;
-      const text = encodeURIComponent(`Hello Bin Taha Associates! I am an Overseas Client requesting private CCTV Stream credentials for project: ${project}.`);
-      window.open(`https://wa.me/923219404812?text=${text}`, '_blank');
-    }
-
-    // 3. Integrated Package Planner
     function calculateIntegratedPackage() {
       const societySelect = document.getElementById('calcSociety');
       const ratePerMarla = parseFloat(societySelect.options[societySelect.selectedIndex].getAttribute('data-plotrate')) || 0;
       const marla = parseFloat(document.getElementById('calcMarla').value) || 5;
-      const packageType = document.getElementById('calcPackageType').value;
       const floors = parseFloat(document.getElementById('calcFloors').value) || 2;
 
       const plotTotal = ratePerMarla * marla;
-      const groundFloorArea = marla * 225 * 0.88;
-      const totalCoveredArea = groundFloorArea * floors;
-
-      let sqftRate = 3500;
-      if (packageType === 'turnkey') sqftRate = 6800;
-      if (packageType === 'royal') sqftRate = 8500;
-
-      const constTotal = Math.round(totalCoveredArea * sqftRate);
+      const totalCoveredArea = (marla * 225 * 0.88) * floors;
+      const constTotal = Math.round(totalCoveredArea * 6800);
       const grandTotal = plotTotal + constTotal;
 
       document.getElementById('displayPlotCost').innerText = `PKR ${plotTotal.toLocaleString()}`;
       document.getElementById('displayConstCost').innerText = `PKR ${constTotal.toLocaleString()}`;
       document.getElementById('displayTotalCost').innerText = `PKR ${grandTotal.toLocaleString()}`;
-
-      document.getElementById('matCoveredArea').value = Math.round(totalCoveredArea);
-      calculateMaterialBreakdown();
-      
-      // Update Escrow & ROI based on new grand budget
-      document.getElementById('roiInputBudget').value = grandTotal;
-      calculateRoiAppreciation();
-      selectEscrowStage(1, 20, 'Excavation & Plinth Beam');
     }
 
-    function shareEstimateToWhatsApp() {
-      const society = document.getElementById('calcSociety').value;
-      const marla = document.getElementById('calcMarla').value;
-      const pkg = document.getElementById('calcPackageType').value;
-      const floors = document.getElementById('calcFloors').value;
-      const plot = document.getElementById('displayPlotCost').innerText;
-      const constCost = document.getElementById('displayConstCost').innerText;
-      const total = document.getElementById('displayTotalCost').innerText;
-
-      const msg = `*BIN TAHA ASSOCIATES - PROJECT ESTIMATE INQUIRY*
-━━━━━━━━━━━━━━━━━━━━
-📍 *Target Location:* ${society}
-📐 *Plot Size:* ${marla} Marla (${floors} Storey)
-🏗️ *Package Selected:* ${pkg.toUpperCase()}
-━━━━━━━━━━━━━━━━━━━━
-💰 *Plot Value Est:* ${plot}
-🔨 *Construction Est:* ${constCost}
-⭐ *Grand Total Budget:* ${total}
-━━━━━━━━━━━━━━━━━━━━
-Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consultation and site booking.`;
-
-      window.open(`https://wa.me/923219404812?text=${encodeURIComponent(msg)}`, '_blank');
-    }
-
-    // 4. Material Quantity Breakdown
     function calculateMaterialBreakdown() {
       const area = parseFloat(document.getElementById('matCoveredArea').value) || 2250;
-      
-      const steelKg = Math.round(area * 3.8);
-      const steelTons = (steelKg / 1000).toFixed(1);
-      const steelCost = Math.round(steelKg * 258);
-
-      const cementBags = Math.round(area * 0.40);
-      const cementCost = Math.round(cementBags * 1460);
-
-      const bricksCount = Math.round(area * 28);
-      const bricksCost = Math.round((bricksCount / 1000) * 14000);
-
-      const crushCuFt = Math.round(area * 3.2);
-      const crushCost = Math.round(crushCuFt * 135);
-
-      document.getElementById('qtySteel').innerText = `${steelTons} Tons (${steelKg.toLocaleString()} Kg)`;
-      document.getElementById('costSteel').innerText = `Est: PKR ${steelCost.toLocaleString()}`;
-
-      document.getElementById('qtyCement').innerText = `${cementBags.toLocaleString()} Bags`;
-      document.getElementById('costCement').innerText = `Est: PKR ${cementCost.toLocaleString()}`;
-
-      document.getElementById('qtyBricks').innerText = `${bricksCount.toLocaleString()} Pcs`;
-      document.getElementById('costBricks').innerText = `Est: PKR ${bricksCost.toLocaleString()}`;
-
-      document.getElementById('qtyCrush').innerText = `${crushCuFt.toLocaleString()} Cu.Ft`;
-      document.getElementById('costCrush').innerText = `Est: PKR ${crushCost.toLocaleString()}`;
+      document.getElementById('qtySteel').innerText = `${(area * 3.8 / 1000).toFixed(1)} Tons`;
+      document.getElementById('qtyCement').innerText = `${Math.round(area * 0.40)} Bags`;
     }
 
-    // 5. Doorstep Materials Cart
-    function quickSelectMaterial(itemName, defaultQty) {
-      document.getElementById('doorstepItem').value = itemName;
-      document.getElementById('doorstepQty').value = defaultQty;
-      document.getElementById('doorstepOrderSection').scrollIntoView({ behavior: 'smooth' });
-      showToast(`Added ${itemName} to Cart!`);
+    function quickSelectMaterial(item, qty) {
+      document.getElementById('doorstepItem').value = item;
+      document.getElementById('doorstepQty').value = qty;
+      showToast(`Added ${item} to Dispatch Cart!`);
     }
 
     function submitDoorstepOrder() {
@@ -1443,331 +1227,61 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
       const phone = document.getElementById('doorstepPhone').value.trim();
 
       if (!qty || !address) {
-        showToast("Please enter Quantity and Site Address!", true);
+        showToast("Enter Quantity and Address!", true);
         return;
       }
 
-      const orderPayload = {
-        id: Date.now(),
-        name: 'Doorstep Material Customer',
+      const order = {
+        name: 'Doorstep Customer',
         phone: phone,
         email: 'bintahacrm@gmail.com',
         subject: `Doorstep Order: ${item}`,
-        text: `Material: ${item} | Quantity: ${qty} | Delivery Address: ${address} | Phone: ${phone}`,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: `Material: ${item} | Qty: ${qty} | Address: ${address}`
       };
 
-      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
-      inboxList.unshift(orderPayload);
-      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
-
-      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
-      if(navigator.onLine && googleScriptUrl) {
-        fetch(googleScriptUrl, {
-          method: 'POST', mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orderPayload)
-        }).then(() => {
-          showToast("Order Dispatched & Synced to Master CRM!");
-        }).catch(() => {
-          queueForSync(orderPayload);
-          showToast("Saved locally (will sync to CRM when online)");
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(order, "Orders", function() {
+          showToast("Order Dispatched & Synced to Master Sheet!");
         });
       } else {
-        queueForSync(orderPayload);
-        showToast("Offline: Order saved locally! Will sync when connected.");
-      }
-
-      const waText = encodeURIComponent(`*NEW DOORSTEP MATERIAL ORDER*\n\n📦 *Item:* ${item}\n⚖️ *Quantity:* ${qty}\n📍 *Site Address:* ${address}\n📞 *Phone:* ${phone}`);
-      window.open(`https://wa.me/923219404812?text=${waText}`, '_blank');
-      
-      document.getElementById('doorstepQty').value = '';
-      document.getElementById('doorstepAddress').value = '';
-    }
-
-    // 6. LDA Validator Tool
-    function runLdaValidator() {
-      const society = document.getElementById('valSociety').value;
-      const size = document.getElementById('valSize').value;
-      const front = parseFloat(document.getElementById('valInputFront').value) || 0;
-      const resultBox = document.getElementById('ldaValidationResult');
-      const textElem = document.getElementById('ldaValidationText');
-
-      let reqFront = 5.0;
-      let reqRear = 4.0;
-      let maxH = 38.0;
-
-      if (size === '10m') { reqFront = 5.0; reqRear = 5.0; maxH = 38.0; }
-      if (size === '1k') { reqFront = 10.0; reqRear = 7.0; maxH = 45.0; }
-
-      if (front >= reqFront) {
-        resultBox.className = "glass-inner p-4 rounded-2xl border border-emerald-500/40 text-xs flex items-center justify-between";
-        resultBox.innerHTML = `<div><span class="text-emerald-400 font-black text-sm flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> SETBACK COMPLIANT</span><p class="text-slate-300 mt-0.5">${society.toUpperCase()} Rule Satisfied! Front setback: ${front} Ft (Required: ${reqFront} Ft). Rear space: ${reqRear} Ft. Max height: ${maxH} Ft.</p></div><span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">Approved</span>`;
-      } else {
-        resultBox.className = "glass-inner p-4 rounded-2xl border border-rose-500/40 text-xs flex items-center justify-between";
-        resultBox.innerHTML = `<div><span class="text-rose-400 font-black text-sm flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> VIOLATION DETECTED</span><p class="text-rose-300 mt-0.5">Front setback of ${front} Ft is non-compliant! ${society.toUpperCase()} requires a minimum of ${reqFront} Ft front lawn.</p></div><span class="bg-rose-500/20 text-rose-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">Failed</span>`;
+        showToast("Order saved locally!");
       }
     }
 
-    // 7. Instant PDF Quotation Generator
-    function generateInstantPDFQuotation() {
-      try {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        const society = document.getElementById('calcSociety').value;
-        const marla = document.getElementById('calcMarla').value;
-        const pkg = document.getElementById('calcPackageType').value;
-        const floors = document.getElementById('calcFloors').value;
-        const plot = document.getElementById('displayPlotCost').innerText;
-        const constCost = document.getElementById('displayConstCost').innerText;
-        const total = document.getElementById('displayTotalCost').innerText;
-
-        doc.setFillColor(15, 23, 42);
-        doc.rect(0, 0, 210, 42, 'F');
-
-        doc.setTextColor(252, 211, 77);
-        doc.setFontSize(18);
-        doc.setFont('helvetica', 'bold');
-        doc.text('BIN TAHA ASSOCIATES', 14, 18);
-
-        doc.setFontSize(9);
-        doc.setTextColor(203, 213, 225);
-        doc.text('Civil Engineering • AI CAD Architecture • Turnkey Construction Hub', 14, 25);
-        doc.text('Office: 138-J, LDA Avenue 1, Raiwind Road, Lahore | Phone: 0321-9404812', 14, 32);
-
-        doc.setFontSize(14);
-        doc.setTextColor(15, 23, 42);
-        doc.text('PRELIMINARY TURNKEY PROJECT ESTIMATE', 14, 55);
-
-        doc.setFontSize(10);
-        doc.setTextColor(100);
-        doc.text(`Quotation Date: ${new Date().toLocaleDateString()} | Ref ID: BT-${Math.floor(100000 + Math.random() * 900000)}`, 14, 62);
-
-        doc.setDrawColor(200);
-        doc.setFillColor(248, 250, 252);
-        doc.roundedRect(14, 70, 182, 95, 3, 3, 'FD');
-
-        doc.setFontSize(11);
-        doc.setTextColor(30);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Project Parameters & Specifications', 20, 80);
-
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(10);
-        doc.text(`1. Selected Location: ${society}`, 20, 92);
-        doc.text(`2. Plot Category / Land Size: ${marla} Marla`, 20, 102);
-        doc.text(`3. Structural Height: ${floors} Storey (PEC Standard Design)`, 20, 112);
-        doc.text(`4. Package Type: ${pkg.toUpperCase()} (Grade-60 Steel & Margalla Crush)`, 20, 122);
-        doc.text(`5. Overseas Live CCTV Supervision Access: Included (Complimentary)`, 20, 132);
-        doc.text(`6. Doorstep Material Dispatch: Verified Grade-A Supply`, 20, 142);
-
-        doc.setFillColor(241, 245, 249);
-        doc.rect(14, 175, 182, 35, 'F');
-        doc.setDrawColor(203, 213, 225);
-        doc.rect(14, 175, 182, 35, 'S');
-
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(11);
-        doc.setTextColor(15, 23, 42);
-        doc.text(`Land Acquisition Estimate:`, 20, 185);
-        doc.text(`${plot}`, 145, 185);
-
-        doc.text(`Civil Construction Estimate:`, 20, 195);
-        doc.text(`${constCost}`, 145, 195);
-
-        doc.setFontSize(12);
-        doc.setTextColor(180, 83, 9);
-        doc.text(`Grand Total Turnkey Budget:`, 20, 205);
-        doc.text(`${total}`, 145, 205);
-
-        doc.setFontSize(9);
-        doc.setTextColor(100);
-        doc.text('* Note: Rates are based on current market trends and are confirmed upon site inspection and CAD plan finalization.', 14, 230);
-        doc.text('* Live CCTV tracking credentials are provided upon ground breaking.', 14, 236);
-
-        doc.setDrawColor(180, 83, 9);
-        doc.line(140, 260, 195, 260);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(15, 23, 42);
-        doc.text('CEO Taha Mobeen Bhutta', 140, 266);
-        doc.setFont('helvetica', 'normal');
-        doc.text('Bin Taha Associates Lahore', 140, 272);
-
-        doc.save(`Bin_Taha_Project_Estimate_${marla}Marla.pdf`);
-        showToast("PDF Quotation Generated & Downloaded!");
-      } catch (err) {
-        console.error(err);
-        showToast("Error generating PDF, Please try again!", true);
-      }
-    }
-
-    // 10. Concrete Strength Tool
-    function calculateConcreteStrength() {
-      const slump = parseFloat(document.getElementById('slumpInches').value) || 3.5;
-      const ratio = document.getElementById('concreteMixRatio').value;
-      const psiElem = document.getElementById('predictedPsi');
-      const verdictElem = document.getElementById('slumpVerdict');
-
-      let basePsi = ratio === '1153' ? 3800 : 3000;
-      if (slump > 4.5) basePsi -= 400; // Excess water reduces strength
-      if (slump < 2.0) basePsi -= 200; // Too stiff, honeycombing risk
-
-      psiElem.innerText = `${basePsi.toLocaleString()} PSI`;
-      if (slump >= 2.5 && slump <= 4.5) {
-        verdictElem.innerHTML = `<strong class="text-emerald-400">Slump Verdict:</strong> Normal Workability (True Slump). Ideal water-cement ratio for roof slabs & columns.`;
-      } else if (slump > 4.5) {
-        verdictElem.innerHTML = `<strong class="text-amber-400">Slump Verdict:</strong> High Slump (High Water Content). Risk of lower compressive strength. Reduce mixing water!`;
-      } else {
-        verdictElem.innerHTML = `<strong class="text-rose-400">Slump Verdict:</strong> Low Slump (Stiff Mix). High compaction vibrator required to prevent voids.`;
-      }
-    }
-
-    // 11. Milestone Escrow Tool
-    function selectEscrowStage(stageNum, pct, title) {
-      const budget = parseFloat(document.getElementById('roiInputBudget').value) || 20960000;
-      const stageAmount = Math.round(budget * (pct / 100));
-
-      document.getElementById('escrowStageTitle').innerText = `Selected: Stage ${stageNum} (${title})`;
-      document.getElementById('escrowAmountDisplay').innerText = `PKR ${stageAmount.toLocaleString()} (${pct}%)`;
-      showToast(`Stage ${stageNum} milestone selected!`);
-    }
-
-    // 13. Solar Sizer Tool
-    function calculateSolarSystem() {
-      const units = parseFloat(document.getElementById('solarUnits').value) || 850;
-      // 1 KW produces approx 120 units/month in Lahore solar irradiation
-      const kw = (units / 120).toFixed(1);
-      const unitRate = 65; // Avg commercial/residential tariff
-      const monthlySavings = Math.round(units * unitRate);
-
-      document.getElementById('solarKwResult').innerText = `${kw} KW On-Grid`;
-      document.getElementById('solarSavingResult').innerText = `PKR ${monthlySavings.toLocaleString()} / Month`;
-    }
-
-    // 15. ROI Predictor Tool
-    function calculateRoiAppreciation() {
-      const initial = parseFloat(document.getElementById('roiInputBudget').value) || 21000000;
-      // Conservative 3-year appreciation in LDA Avenue 1 is approx 40%
-      const futureVal = Math.round(initial * 1.40);
-      const monthlyRent = Math.round((initial * 0.06) / 12);
-
-      document.getElementById('roiFutureValue').innerText = `PKR ${futureVal.toLocaleString()}`;
-      document.getElementById('roiRentalYield').innerText = `PKR ${monthlyRent.toLocaleString()} / mo`;
-    }
-
-    function bookSoilTesting() {
-      document.getElementById('bookingService').value = 'Soil Testing Investigation';
-      toggleServiceModal();
-    }
-
-    function requestVrModel() {
-      window.open('https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20want%20to%20request%20a%20360%20VR%20Architectural%20Model%20Walkthrough.', '_blank');
-    }
-
-    function hireTrade(tradeName) {
-      window.open(`https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20need%20a%20verified%20team%20for%20${encodeURIComponent(tradeName)}.`, '_blank');
-    }
-
-    // Background 2-Way CRM Sync (Preserved 100%)
     function submitServiceBooking() {
       const name = document.getElementById('bookingName').value.trim();
       const phone = document.getElementById('bookingPhone').value.trim();
       const service = document.getElementById('bookingService').value;
       const location = document.getElementById('bookingLocation').value.trim();
-      const details = document.getElementById('bookingDetails').value.trim();
 
       if (!name || !phone || !location) {
-        showToast("Please fill Name, Phone, and Society!", true);
+        showToast("Please fill all required fields!", true);
         return;
       }
 
-      const bookingMsg = {
-        id: Date.now(),
+      const booking = {
         name,
         phone,
         email: 'bintahacrm@gmail.com',
         subject: `Service: ${service} at ${location}`,
-        text: `Client: ${name}, Phone: ${phone}, Service: ${service}, Location: ${location}, Notes: ${details}`,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: `Booking for ${service} at ${location}`
       };
 
-      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
-      inboxList.unshift(bookingMsg);
-      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
-
-      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
-      if(navigator.onLine && googleScriptUrl) {
-        fetch(googleScriptUrl, {
-          method: 'POST', mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(bookingMsg)
-        }).then(() => {
-          showToast("Booking Dispatched & Synced to CRM!");
-        }).catch(() => {
-          queueForSync(bookingMsg);
-          showToast("Booking saved locally (will sync when online)");
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(booking, "Services", function() {
+          showToast("Booking Dispatched & Synced to Sheet!");
         });
       } else {
-        queueForSync(bookingMsg);
-        showToast("Offline: Saved locally! Will sync when connected.");
+        showToast("Booking saved locally!");
       }
-
-      document.getElementById('bookingName').value = '';
-      document.getElementById('bookingLocation').value = '';
-      document.getElementById('bookingDetails').value = '';
       toggleServiceModal();
     }
 
-    function sendToGeminiAI() {
-      const input = document.getElementById('geminiUserInput');
-      const history = document.getElementById('geminiChatHistory');
-      let text = input.value.trim();
-      if(!text) return;
-
-      history.innerHTML += `<div class="bg-slate-900 p-2 rounded-xl text-right text-white text-[11px]">👤 ${text}</div>`;
-      input.value = '';
-      history.scrollTop = history.scrollHeight;
-
-      setTimeout(() => {
-        let reply = `🤖 Gemini: For construction in LDA Avenue 1 or Jubilee Town, gray structure standard rate is PKR 3,500/sq.ft with Grade-60 steel. Overseas CCTV tracking is active! CEO Taha Mobeen Bhutta has been alerted!`;
-        history.innerHTML += `<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/30 text-amber-300 text-[11px]">${reply}</div>`;
-        history.scrollTop = history.scrollHeight;
-      }, 700);
-    }
-
-    function queueForSync(payload) {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
-      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
-    }
-
-    function flushOfflineQueue() {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      if(queue.length === 0) return;
-
-      queue.forEach(item => {
-        fetch(item.url, {
-          method: 'POST', mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item.data)
-        }).catch(err => console.log('Sync retry failed:', err));
-      });
-
-      localStorage.removeItem('bintaha_offline_queue');
-      showToast("Offline services bookings synced to Google Sheets!");
-    }
-
     window.onload = function() {
-      checkConnectivity();
       drawCadBlueprint();
       renderCctvCanvas();
       calculateIntegratedPackage();
       calculateMaterialBreakdown();
-      runLdaValidator();
-      calculateConcreteStrength();
-      calculateSolarSystem();
-      calculateRoiAppreciation();
     };
   </script>
 </body>
