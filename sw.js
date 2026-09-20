@@ -1,24 +1,5 @@
-// Bin Taha App - Instant Cache Bypass & Unregister Script
-self.addEventListener('install', (e) => {
-  self.skipWaiting();
-});
-
+self.addEventListener('install', (e) => { self.skipWaiting(); });
 self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          return caches.delete(cacheName);
-        })
-      );
-    }).then(() => {
-      return self.registration.unregister();
-    }).then(() => {
-      return self.clients.claim();
-    })
-  );
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).then(() => self.registration.unregister()));
 });
-
-self.addEventListener('fetch', (e) => {
-  e.respondWith(fetch(e.request));
-});
+self.addEventListener('fetch', (e) => { e.respondWith(fetch(e.request)); });
