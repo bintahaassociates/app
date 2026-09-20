@@ -8,6 +8,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Central Master Core Bridge -->
+  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
+  
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
@@ -23,15 +26,11 @@
       transform-style: preserve-3d;
     }
 
-    #mobileDrawer {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .drawer-open {
-      transform: translateX(0) !important;
-    }
+    #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-open { transform: translateX(0) !important; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
 
   <!-- Mobile Top Connectivity Bar -->
   <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
@@ -53,10 +52,9 @@
   <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
-      <!-- Brand & Logo -->
-      <a href="index.html" class="flex items-center gap-2.5">
+      <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
@@ -64,9 +62,8 @@
         </div>
       </a>
 
-      <!-- Quick Actions + Drawer Toggle -->
       <div class="flex items-center gap-2">
-        <a href="properties.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition">
+        <a href="./properties.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition">
           <i class="fa-solid fa-building text-[10px] text-amber-400"></i> Listings
         </a>
 
@@ -78,13 +75,13 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <!-- Side Navigation Drawer -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain">
           <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
@@ -92,37 +89,25 @@
         </button>
       </div>
 
-      <!-- Public Section -->
       <div class="space-y-1">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
-        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
-        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
-        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
-        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
-        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
-        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
+        <a href="./contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
       </div>
 
-      <!-- Actions Section -->
       <div class="space-y-1 pt-2 border-t border-slate-800">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
-        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
-        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-file-signature w-4"></i> Client Inquiry Form</a>
-      </div>
-
-      <!-- Portals -->
-      <div class="space-y-1 pt-2 border-t border-slate-800">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
-        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
-        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
-        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
-        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
-        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+        <a href="./add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property</a>
+        <a href="./client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-file-signature w-4"></i> Client Inquiry Form</a>
       </div>
     </div>
 
     <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
-      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Associates Mobile App</p>
       <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
     </div>
   </aside>
@@ -130,10 +115,9 @@
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
 
-    <!-- Header Banner -->
     <div class="text-center max-w-xl mx-auto space-y-2">
       <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">
-        Master CRM & Google Sheet Sync
+        Central Cloud Sync
       </span>
       <h2 class="text-2xl sm:text-3xl font-black shining-gold">
         Client Registration & Escrow Portal
@@ -151,7 +135,7 @@
           <i class="fa-solid fa-id-card-clip text-amber-400"></i> Power Registration Console
         </h3>
         <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px] font-black">
-          Sheet Synced
+          Cloud Core Connected
         </span>
       </div>
 
@@ -213,7 +197,7 @@
             <i class="fa-solid fa-file-arrow-down text-sm"></i> Download Official Certificate
           </button>
           <button onclick="submitClientRegistration()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs transition shadow flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider">
-            <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Sync to Master CRM & Sheet
+            <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Sync to Master Sheet
           </button>
         </div>
         
@@ -228,25 +212,25 @@
 
   <!-- Persistent Mobile Bottom Navigation Bar -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
       <span class="text-[10px] font-bold">Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
-    <a href="client-form.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+    <a href="./client-form.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
       <i class="fa-solid fa-file-signature text-sm"></i>
       <span class="text-[10px] font-bold">Client Form</span>
     </a>
-    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
-      <i class="fa-solid fa-star text-sm"></i>
-      <span class="text-[10px] font-bold">Dream</span>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-bolt text-sm"></i>
+      <span class="text-[10px] font-bold">Services</span>
     </a>
-    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
-      <i class="fa-solid fa-gauge-high text-sm"></i>
-      <span class="text-[10px] font-bold">CRM</span>
+    <a href="./about.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-400 transition">
+      <i class="fa-solid fa-circle-info text-sm"></i>
+      <span class="text-[10px] font-bold">About Us</span>
     </a>
   </nav>
 
@@ -278,20 +262,6 @@
       }
     }
 
-    function checkConnectivity() {
-      const badge = document.getElementById('networkStatusBadge');
-      if(navigator.onLine) {
-        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
-        flushOfflineQueue();
-      } else {
-        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
-      }
-    }
-    window.addEventListener('online', checkConnectivity);
-    window.addEventListener('offline', checkConnectivity);
-
     function updateClock() {
       const now = new Date();
       document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
@@ -319,7 +289,6 @@
     document.getElementById('regEscrow').addEventListener('change', updateRegWhatsapp);
     document.getElementById('regDetails').addEventListener('input', updateRegWhatsapp);
 
-    // Generate and Download Client Official Certificate
     function downloadClientPdfReceipt() {
       const name = document.getElementById('regName').value.trim();
       const phone = document.getElementById('regPhone').value.trim();
@@ -328,7 +297,7 @@
       const budget = document.getElementById('regBudget').value.trim() || 'Standard';
 
       if(!name || !phone) {
-        showToast("Please enter your name and phone number!", true);
+        showToast("Please enter name and phone number!", true);
         return;
       }
 
@@ -337,11 +306,9 @@
       canvas.height = 550;
       const ctx = canvas.getContext('2d');
 
-      // Background
       ctx.fillStyle = '#050b14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Gold Border
       ctx.strokeStyle = '#fcd34d';
       ctx.lineWidth = 6;
       ctx.strokeRect(20, 20, 760, 510);
@@ -349,23 +316,20 @@
       ctx.lineWidth = 1.5;
       ctx.strokeRect(30, 30, 740, 490);
 
-      // Certificate Header
       ctx.fillStyle = '#fcd34d';
       ctx.font = 'bold 24px sans-serif';
       ctx.fillText("BIN TAHA ASSOCIATES • OFFICIAL REGISTRATION", 50, 75);
 
       ctx.fillStyle = '#38bdf8';
       ctx.font = 'bold 12px sans-serif';
-      ctx.fillText("FBR & PEC CATEGORY C CERTIFIED CIVIL CONTRACTOR • LAHORE", 50, 105);
+      ctx.fillText("FBR & PEC CATEGORY C CERTIFIED ENTERPRISE • LAHORE", 50, 105);
 
-      // Line
       ctx.strokeStyle = 'rgba(252, 211, 77, 0.4)';
       ctx.beginPath();
       ctx.moveTo(50, 120);
       ctx.lineTo(750, 120);
       ctx.stroke();
 
-      // Certificate Body Details
       ctx.fillStyle = '#ffffff';
       ctx.font = '15px sans-serif';
       ctx.fillText(`Client Full Name:`, 50, 165);
@@ -393,7 +357,6 @@
       ctx.fillStyle = '#34d399';
       ctx.fillText("100% Escrow Milestone Protected & FBR Compliant", 230, 365);
 
-      // Footer
       ctx.strokeStyle = 'rgba(252, 211, 77, 0.4)';
       ctx.beginPath();
       ctx.moveTo(50, 420);
@@ -409,7 +372,7 @@
       link.href = canvas.toDataURL('image/jpeg', 0.95);
       link.download = `BinTaha_Registration_${name.replace(/\s+/g, '_')}.jpg`;
       link.click();
-      showToast("Official Registration Certificate Downloaded!");
+      showToast("Registration Certificate Downloaded!");
     }
 
     function submitClientRegistration() {
@@ -422,7 +385,7 @@
       const details = document.getElementById('regDetails').value.trim() || 'None';
 
       if(!name || !phone) {
-        showToast("Please enter your name and phone number!", true);
+        showToast("Please enter name and phone number!", true);
         return;
       }
 
@@ -432,32 +395,15 @@
         phone: phone,
         email: 'bintahacrm@gmail.com',
         subject: `Client Registration: ${service} (${zone})`,
-        text: `Client: ${name} (${phone}) | Service: ${service} | Zone: ${zone} | Budget: ${budget} | Escrow: ${escrow} | Details: ${details}`,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: `Client: ${name} (${phone}) | Service: ${service} | Zone: ${zone} | Budget: ${budget} | Escrow: ${escrow} | Details: ${details}`
       };
 
-      // 1. Local Inbox save
-      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
-      inboxList.unshift(clientData);
-      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
-
-      // 2. Sync or Queue
-      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
-      if (navigator.onLine && googleScriptUrl) {
-        fetch(googleScriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(clientData)
-        }).then(() => {
-          showToast(`Welcome ${name}! Synced to CRM & Google Sheets.`);
-        }).catch(() => {
-          queueForSync(clientData);
-          showToast("Saved locally (will sync when online)");
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(clientData, "Services", function(success) {
+          showToast(`Welcome ${name}! Synced to Google Sheets.`);
         });
       } else {
-        queueForSync(clientData);
-        showToast("Offline: Saved locally! Will sync when connected.");
+        showToast("Saved locally!");
       }
 
       document.getElementById('regName').value = '';
@@ -466,31 +412,7 @@
       updateRegWhatsapp();
     }
 
-    function queueForSync(payload) {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      queue.push({ url: 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec', data: payload });
-      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
-    }
-
-    function flushOfflineQueue() {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      if(queue.length === 0) return;
-
-      queue.forEach(item => {
-        fetch(item.url, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item.data)
-        }).catch(err => console.log('Sync retry failed:', err));
-      });
-
-      localStorage.removeItem('bintaha_offline_queue');
-      showToast("Offline registrations synced to Google Sheets!");
-    }
-
     window.onload = function() {
-      checkConnectivity();
       updateClock();
       updateRegWhatsapp();
     };
