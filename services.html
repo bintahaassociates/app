@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Services Hub & CAD Studio | Bin Taha Associates App</title>
+  <title>Services Hub & CAD Studio | Bin Taha Associates</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- JSPDF Library for Professional PDF Quotations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
-    .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(20px); border: 1px solid rgba(252, 211, 77, 0.22); }
+    .glass-inner { background: rgba(2, 6, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); }
     
     @keyframes eagle3DRotate {
       0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
@@ -33,41 +32,36 @@
     .ticker-wrap { overflow: hidden; white-space: nowrap; }
     .ticker-move { display: inline-block; animation: tickerScroll 25s linear infinite; }
 
-    #mobileDrawer {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .drawer-open {
-      transform: translateX(0) !important;
-    }
+    #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-open { transform: translateX(0) !important; }
 
-    /* CCTV Feed Video Simulation Animation */
     @keyframes scanline {
       0% { transform: translateY(-100%); }
       100% { transform: translateY(1000%); }
     }
     .cctv-scanline {
       position: absolute;
-      top: 0; left: 0; right: 0; height: 4px;
-      background: rgba(56, 189, 248, 0.25);
-      animation: scanline 8s linear infinite;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: rgba(56, 189, 248, 0.4);
+      animation: scanline 7s linear infinite;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
 
   <!-- Mobile Top Connectivity Bar -->
-  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+  <div class="bg-slate-950/95 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
     <div class="flex items-center gap-2">
       <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
       </span>
-      <span class="text-slate-600">|</span>
-      <span class="text-slate-400">PEC Category C: <strong class="text-white">Certified</strong></span>
+      <span class="text-slate-700">|</span>
+      <span class="text-slate-400">PEC Category C: <strong class="text-amber-400">C6-Certified</strong></span>
     </div>
     <div class="flex items-center gap-2">
-      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1 hover:text-amber-300">
         <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
       </a>
     </div>
@@ -75,35 +69,37 @@
 
   <!-- Live Market Ticker -->
   <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
-    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">SERVICES</span>
+    <span class="bg-slate-950 text-amber-400 px-2.5 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">ECOSYSTEM</span>
     <div class="ticker-wrap w-full text-[11px]">
       <div class="ticker-move">
         <span>Instant Architectural Blueprints & Dimensions</span> &bull; 
         <span>Grade-60 Saria & Turnkey Civil Engineering</span> &bull; 
         <span>LDA Avenue 1 & Jubilee Town Site Supervision</span> &bull; 
-        <span>Live Overseas CCTV Telecast Active</span> &bull; 
-        <span>Doorstep Construction Materials Supply & Quantity Estimator</span> &bull; 
-        <span>Google Sheets Master 2-Way CRM Integrated</span>
+        <span>Overseas Encrypted Live Telecast</span> &bull; 
+        <span>Doorstep Materials E-Market & Fast Site Dumper Dispatch</span> &bull; 
+        <span>Google Sheets Master 2-Way CRM Active</span>
       </div>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-xl">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
       <a href="index.html" class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+        <div class="w-10 h-10 rounded-2xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
           <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
         </div>
         <div>
-          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
-          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">AI CAD Studio & Services Hub</p>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight flex items-center gap-1.5">
+            Bin Taha Associates <span class="text-[9px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-black border border-amber-500/30">PRO</span>
+          </h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Civil Engineering & Construction App</p>
         </div>
       </a>
 
       <div class="flex items-center gap-2">
-        <button onclick="toggleServiceModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition cursor-pointer">
+        <button onclick="toggleServiceModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow transition cursor-pointer">
           <i class="fa-solid fa-file-signature text-[10px]"></i> Book Service
         </button>
 
@@ -115,26 +111,26 @@
     </div>
   </header>
 
-  <!-- Sticky In-Page Quick Navigation Tabs (Sorting Features) -->
-  <div class="bg-slate-950/95 border-b border-slate-800 sticky top-[80px] z-20 px-4 py-2 backdrop-blur-md">
+  <!-- High-Tech Quick Navigation Sticky Chips -->
+  <div class="bg-slate-950/90 border-b border-slate-800/80 sticky top-[80px] z-20 px-4 py-2.5 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto flex gap-2 overflow-x-auto no-scrollbar text-xs font-bold">
-      <a href="#proCadStudio" class="px-3 py-1.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500 hover:text-slate-950 transition whitespace-nowrap">
-        <i class="fa-solid fa-compass-drafting mr-1"></i> CAD Blueprints
+      <a href="#proCadStudio" class="px-3.5 py-1.5 rounded-xl bg-cyan-950/70 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500 hover:text-slate-950 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-compass-drafting text-[11px]"></i> CAD Blueprint
       </a>
-      <a href="#overseasCctvSection" class="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500 hover:text-slate-950 transition whitespace-nowrap">
-        <i class="fa-solid fa-video mr-1"></i> Overseas CCTV
+      <a href="#overseasCctvSection" class="px-3.5 py-1.5 rounded-xl bg-amber-950/70 text-amber-300 border border-amber-500/40 hover:bg-amber-500 hover:text-slate-950 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-video text-[11px]"></i> Overseas CCTV
       </a>
-      <a href="#integratedPlannerSection" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500 hover:text-slate-950 transition whitespace-nowrap">
-        <i class="fa-solid fa-calculator mr-1"></i> Plot + House Planner
+      <a href="#integratedPlannerSection" class="px-3.5 py-1.5 rounded-xl bg-emerald-950/70 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500 hover:text-slate-950 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-calculator text-[11px]"></i> Plot + Home Planner
       </a>
-      <a href="#materialEstimatorSection" class="px-3 py-1.5 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-500 hover:text-slate-950 transition whitespace-nowrap">
-        <i class="fa-solid fa-boxes-stacked mr-1"></i> Material Estimator
+      <a href="#materialEstimatorSection" class="px-3.5 py-1.5 rounded-xl bg-indigo-950/70 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-500 hover:text-slate-950 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-boxes-stacked text-[11px]"></i> Material BOQ
       </a>
-      <a href="#doorstepOrderSection" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 hover:bg-rose-500 hover:text-slate-950 transition whitespace-nowrap">
-        <i class="fa-solid fa-truck-fast mr-1"></i> Doorstep Supply
+      <a href="#doorstepOrderSection" class="px-3.5 py-1.5 rounded-xl bg-rose-950/70 text-rose-300 border border-rose-500/40 hover:bg-rose-500 hover:text-slate-950 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-cart-shopping text-[11px]"></i> Doorstep Supply
       </a>
-      <a href="#packagesSection" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition whitespace-nowrap">
-        <i class="fa-solid fa-layer-group mr-1"></i> Standard Packages
+      <a href="#packagesSection" class="px-3.5 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-layer-group text-[11px]"></i> Packages
       </a>
     </div>
   </div>
@@ -192,37 +188,43 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-7">
 
     <!-- Hero Card -->
-    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl gold-glow relative overflow-hidden space-y-4">
-      <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-2xl gold-glow relative overflow-hidden space-y-4">
+      <div class="absolute -right-20 -bottom-20 w-72 h-72 bg-gradient-to-br from-amber-500/20 to-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
       
-      <span class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block">
-        PEC Category C Registered Civil Contractor
-      </span>
-      <h2 class="text-2xl sm:text-3xl font-black shining-gold leading-tight">
-        Turnkey Civil Construction, AI CAD & Live Site Studio
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block">
+          PEC Category C Registered Civil Contractor
+        </span>
+        <span class="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block">
+          ISO 9001 Construction Protocols
+        </span>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+        Next-Gen Civil Engineering, <span class="shining-gold">AI Architecture</span> & Doorstep Material Supply
       </h2>
-      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-        Computerized 2D/3D layouts, LDA setback bylaws, doorstep material supply, and overseas live CCTV surveillance across Lahore directed by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>.
+      <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+        Autonomous CAD design, computerized structural layouts, LDA regulation setbacks, doorstep material supply, and overseas live CCTV surveillance across Lahore directed by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>.
       </p>
 
-      <div class="flex flex-wrap gap-2 pt-1">
-        <button onclick="toggleServiceModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-1.5 cursor-pointer">
+      <div class="flex flex-wrap gap-2.5 pt-2">
+        <button onclick="toggleServiceModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs shadow-lg transition flex items-center gap-2 cursor-pointer">
           <i class="fa-solid fa-calendar-check"></i> Book Project Consultation
         </button>
-        <a href="tel:03219404812" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 flex items-center gap-1.5">
+        <a href="tel:03219404812" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 flex items-center gap-2">
           <i class="fa-solid fa-phone text-emerald-400"></i> Direct Call CEO
         </a>
       </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 1: PRO CAD STUDIO (PRESERVED) -->
+    <!-- 1. PRO CAD STUDIO BLUEPRINT GENERATOR -->
     <!-- ========================================== -->
     <div id="proCadStudio" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
+          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
             <i class="fa-solid fa-compass-drafting text-base"></i>
           </div>
           <div>
@@ -231,7 +233,6 @@
           </div>
         </div>
 
-        <!-- Layout Option Tabs (Mobile Scrollable) -->
         <div class="flex gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 no-scrollbar text-xs font-bold">
           <button onclick="selectLayoutOption(1)" id="btnOpt1" class="bg-cyan-600 text-slate-950 font-black px-3 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer">Opt 1: Executive</button>
           <button onclick="selectLayoutOption(2)" id="btnOpt2" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Opt 2: Modern Open</button>
@@ -303,71 +304,61 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 2: OVERSEAS LIVE SITE TRACKING & CCTV (RE-ENGINEERED NO BROKEN IMG) -->
+    <!-- 2. HIGH-TECH OVERSEAS LIVE SITE TELECAST -->
     <!-- ========================================== -->
     <div id="overseasCctvSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-amber-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
+          <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
             <i class="fa-solid fa-video text-base"></i>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h3 class="text-base font-black text-white">Overseas Live Site Monitoring & CCTV</h3>
-              <span class="bg-rose-600/30 text-rose-400 border border-rose-500/50 text-[9px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Telecast
+              <h3 class="text-base font-black text-white">Overseas Live Site Monitoring & CCTV Telecast</h3>
+              <span class="bg-rose-600/30 text-rose-400 border border-rose-500/50 text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> 60 FPS Telecast
               </span>
             </div>
-            <p class="text-[10px] text-amber-400 font-bold">High-Transparency Remote Civil Engineering for Clients in UK, USA, Gulf & Overseas</p>
+            <p class="text-[10px] text-amber-400 font-bold">Encrypted Multi-Angle Site Inspection for Overseas Clients in UK, USA & Gulf</p>
           </div>
         </div>
 
         <div class="flex items-center gap-2 w-full sm:w-auto">
-          <select id="liveProjectSelector" onchange="changeLiveStreamProject()" class="bg-slate-950 border border-slate-700 text-xs text-white px-3 py-1.5 rounded-xl outline-none focus:border-amber-500 w-full sm:w-auto font-bold">
-            <option value="LDA Avenue 1 - Block J (Plot 138)">LDA Avenue-1 (J-Block Villa)</option>
+          <select id="liveProjectSelector" onchange="changeLiveStreamProject()" class="bg-slate-950 border border-slate-700 text-xs text-white px-3 py-2 rounded-xl outline-none focus:border-amber-500 w-full sm:w-auto font-bold cursor-pointer">
+            <option value="LDA Avenue 1 - Block J (Plot 138)">LDA Avenue-1 (J-Block Villa 138)</option>
             <option value="LDA Avenue 1 - Block K (Possession Site)">LDA Avenue-1 (K-Block New Site)</option>
-            <option value="Jubilee Town - Sector B Commercial">Jubilee Town (B-Sector Plaza)</option>
+            <option value="Jubilee Town - Sector B Commercial">Jubilee Town (B-Sector Commercial)</option>
             <option value="DHA Rahbar - Phase 2 Modern Villa">DHA Rahbar (Phase 2 Luxury)</option>
           </select>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <!-- Live Video Simulation Screen (Pure CSS / Canvas - No Broken Images) -->
+        <!-- Live Video Simulation Screen (HD Simulation with Canvas Stream) -->
         <div class="lg:col-span-2 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden relative group">
-          <div class="relative w-full h-72 sm:h-80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center overflow-hidden">
-            
+          <div class="relative w-full h-80 bg-slate-950 flex flex-col items-center justify-center overflow-hidden">
+            <canvas id="cctvSimCanvas" width="700" height="360" class="w-full h-full object-cover opacity-90"></canvas>
             <div class="cctv-scanline"></div>
-            
-            <!-- Construction Site Wireframe Simulation Graphic -->
-            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
-              <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 animate-pulse">
-                <i class="fa-solid fa-tower-broadcast text-2xl"></i>
-              </div>
-              <div>
-                <p id="cctvStreamStatus" class="text-sm font-black text-white uppercase tracking-wider">LIVE PTZ STREAM CONNECTED</p>
-                <p id="cctvCameraLocation" class="text-[11px] text-cyan-400 font-mono mt-0.5">CAMERA #01: LDA AVENUE-1 SECTOR-J • 1080P 60FPS</p>
-              </div>
-              <div class="flex items-center gap-3 text-[10px] font-mono text-slate-400">
-                <span>BITRATE: 4.8 Mbps</span> &bull; 
-                <span>LATENCY: 12ms</span> &bull; 
-                <span class="text-emerald-400 font-bold">ENCRYPTED FEED</span>
-              </div>
+
+            <!-- CCTV Top Information Overlay -->
+            <div class="absolute top-3 left-3 bg-slate-950/85 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1.5 rounded-xl backdrop-blur-md z-20 flex items-center gap-2.5">
+              <span class="text-rose-400 font-black flex items-center gap-1"><i class="fa-solid fa-circle text-[7px] animate-pulse"></i> LIVE</span>
+              <span id="cctvLiveClock">2026-09-20 11:00:00 PKT</span>
+              <span class="text-slate-600">|</span>
+              <span class="text-emerald-400 font-bold">PEC QA-PASSED</span>
             </div>
 
-            <!-- CCTV Top Overlay -->
-            <div class="absolute top-3 left-3 bg-slate-950/85 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1 rounded-lg backdrop-blur-md z-20 flex items-center gap-2">
-              <span class="text-rose-400 font-bold flex items-center gap-1"><i class="fa-solid fa-circle text-[7px] animate-pulse"></i> REC</span>
-              <span id="cctvLiveClock">2026-09-20 11:00:00 PKT</span>
+            <div class="absolute top-3 right-3 bg-slate-950/85 border border-slate-700 text-[10px] text-cyan-300 font-mono px-2.5 py-1 rounded-xl backdrop-blur-md z-20">
+              <i class="fa-solid fa-satellite-dish mr-1"></i> PTZ CAMERA #01
             </div>
 
             <!-- CCTV Bottom Control Bar -->
-            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/90 border border-slate-800 text-xs p-3 rounded-xl backdrop-blur-md flex justify-between items-center z-20">
+            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/90 border border-slate-800 text-xs p-3 rounded-2xl backdrop-blur-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 z-20">
               <div>
                 <p id="cctvProjectTitle" class="font-bold text-white text-xs">LDA Avenue-1 Block J • Project #BT-884</p>
-                <p class="text-[10px] text-slate-400">Civil Lead: Engr. M. Naveed | Shift Active</p>
+                <p class="text-[10px] text-slate-400">Site Engineer: Engr. M. Naveed | Shift Active: 08:00 AM - 05:00 PM</p>
               </div>
-              <button onclick="requestOverseasSiteAccess()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-1.5 rounded-lg text-xs font-black cursor-pointer shadow">
+              <button onclick="requestOverseasSiteAccess()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 px-4 py-1.5 rounded-xl text-xs font-black cursor-pointer shadow">
                 Request Stream Passcode
               </button>
             </div>
@@ -375,39 +366,39 @@
         </div>
 
         <!-- Daily Site Progress Log & Inspection Reports -->
-        <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between space-y-3">
+        <div class="glass-inner p-4 rounded-2xl flex flex-col justify-between space-y-3">
           <div>
             <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
               <span class="text-xs font-black text-white flex items-center gap-1.5">
                 <i class="fa-solid fa-clipboard-check text-emerald-400"></i> Daily Quality Inspection
               </span>
-              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">PEC Passed</span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full font-bold">100% Passed</span>
             </div>
             
-            <ul class="space-y-2.5 text-xs text-slate-300">
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
                 <div>
                   <strong class="text-white">Steel Curing & Binding:</strong> Grade-60 saria spacing inspected per PEC standard drawings.
                 </div>
               </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
                 <div>
-                  <strong class="text-white">Concrete Ratio:</strong> 1:2:4 batching machine mix with Margalla crush.
+                  <strong class="text-white">Concrete Batching:</strong> 1:2:4 batching machine mix with Margalla crush.
                 </div>
               </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
                 <div>
-                  <strong class="text-white">Boundary Setbacks:</strong> LDA by-laws 5ft front & 4ft rear verified.
+                  <strong class="text-white">LDA By-laws Verified:</strong> 5ft front & 4ft rear setbacks strictly checked.
                 </div>
               </li>
             </ul>
           </div>
 
-          <div class="pt-3 border-t border-slate-800">
-            <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20am%20an%20Overseas%20Client%20requesting%20live%20CCTV%20access%20for%20my%20plot." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+          <div class="pt-2 border-t border-slate-800">
+            <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20am%20an%20Overseas%20Client%20requesting%20live%20CCTV%20access%20for%20my%20plot." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition">
               <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Site Manager
             </a>
           </div>
@@ -416,21 +407,21 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 3: INTEGRATED PLOT + CONSTRUCTION BUDGET PLANNER -->
+    <!-- 3. INTEGRATED PLOT + CONSTRUCTION BUDGET PLANNER -->
     <!-- ========================================== -->
     <div id="integratedPlannerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-emerald-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
             <i class="fa-solid fa-hand-holding-dollar text-base"></i>
           </div>
           <div>
-            <h3 class="text-base font-black text-white">Integrated Plot + Construction Planner</h3>
-            <p class="text-[10px] text-emerald-400 font-bold">Calculate Complete Land Acquisition + Gray + Turnkey Finish Budget</p>
+            <h3 class="text-base font-black text-white">Integrated Plot + Construction Total Planner</h3>
+            <p class="text-[10px] text-emerald-400 font-bold">Land Acquisition + Gray + Turnkey Finish in One Combined Estimate</p>
           </div>
         </div>
         <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black px-3 py-1 rounded-full border border-emerald-500/30 uppercase">
-          Direct Turnkey Solution
+          All-in-One Turnkey Solution
         </span>
       </div>
 
@@ -476,17 +467,17 @@
       </div>
 
       <!-- Financial Calculation Summary Card -->
-      <div class="bg-slate-950 border border-emerald-500/30 p-4 sm:p-5 rounded-2xl space-y-4">
+      <div class="bg-slate-950 border border-emerald-500/30 p-4 sm:p-6 rounded-2xl space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+          <div class="glass-inner p-3.5 rounded-2xl">
             <span class="text-[10px] text-slate-400 font-bold uppercase block">Estimated Plot Value</span>
             <span id="displayPlotCost" class="text-emerald-400 font-black text-sm sm:text-base">PKR 6,000,000</span>
           </div>
-          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+          <div class="glass-inner p-3.5 rounded-2xl">
             <span class="text-[10px] text-slate-400 font-bold uppercase block">Total Covered Construction</span>
             <span id="displayConstCost" class="text-amber-400 font-black text-sm sm:text-base">PKR 14,960,000</span>
           </div>
-          <div class="bg-slate-900/80 p-3 rounded-xl border border-emerald-500/40">
+          <div class="glass-inner p-3.5 rounded-2xl border border-emerald-500/40">
             <span class="text-[10px] text-emerald-400 font-black uppercase block">Grand Total Package Budget</span>
             <span id="displayTotalCost" class="text-white font-black text-base sm:text-lg shining-gold">PKR 20,960,000</span>
           </div>
@@ -494,10 +485,10 @@
 
         <!-- Action Buttons: Download PDF & WhatsApp Booking -->
         <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-          <button onclick="generateInstantPDFQuotation()" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
+          <button onclick="generateInstantPDFQuotation()" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
             <i class="fa-solid fa-file-pdf text-sm"></i> Download Official PDF Quotation
           </button>
-          <button onclick="shareEstimateToWhatsApp()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
+          <button onclick="shareEstimateToWhatsApp()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
             <i class="fa-brands fa-whatsapp text-sm"></i> Discuss Package on WhatsApp
           </button>
         </div>
@@ -505,16 +496,16 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 4: NEW MATERIAL QUANTITY ESTIMATOR (SARIA, CEMENT, BRICKS BREAKDOWN) -->
+    <!-- 4. CIVIL MATERIAL QUANTITY BOQ ESTIMATOR -->
     <!-- ========================================== -->
     <div id="materialEstimatorSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-indigo-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/30">
+          <div class="w-10 h-10 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/30">
             <i class="fa-solid fa-boxes-stacked text-base"></i>
           </div>
           <div>
-            <h3 class="text-base font-black text-white">Civil Material Quantity Breakdown Estimator</h3>
+            <h3 class="text-base font-black text-white">Civil Material Quantity Breakdown Estimator (BOQ)</h3>
             <p class="text-[10px] text-indigo-400 font-bold">Know exact quantity of Saria, Cement, Bricks, Sand & Crush for your home</p>
           </div>
         </div>
@@ -546,22 +537,22 @@
 
       <!-- Quantity Output Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
           <span class="text-[10px] text-slate-400 font-bold block uppercase">Deformed Steel (Saria)</span>
           <span id="qtySteel" class="text-amber-400 font-black text-base">7.8 Tons</span>
           <span id="costSteel" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 2,012,400</span>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
           <span class="text-[10px] text-slate-400 font-bold block uppercase">Cement Bags</span>
           <span id="qtyCement" class="text-amber-400 font-black text-base">900 Bags</span>
           <span id="costCement" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 1,314,000</span>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
           <span class="text-[10px] text-slate-400 font-bold block uppercase">Awwal Red Bricks</span>
           <span id="qtyBricks" class="text-amber-400 font-black text-base">63,000 Pcs</span>
           <span id="costBricks" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 882,000</span>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
           <span class="text-[10px] text-slate-400 font-bold block uppercase">Sand & Crush Mix</span>
           <span id="qtyCrush" class="text-amber-400 font-black text-base">7,200 Cu.Ft</span>
           <span id="costCrush" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 972,000</span>
@@ -570,57 +561,96 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 5: DOORSTEP MATERIALS & LIVE MARKET RATES (WITH ORDER CHECKOUT FORM) -->
+    <!-- 5. DOORSTEP CIVIL MATERIAL STORE & DISPATCH CART -->
     <!-- ========================================== -->
-    <div id="doorstepOrderSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
+    <div id="doorstepOrderSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-6 border border-cyan-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
+          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
             <i class="fa-solid fa-truck-ramp-box text-base"></i>
           </div>
           <div>
-            <h3 class="text-base font-black text-white">Doorstep Materials Delivery & Live Lahore Rates</h3>
-            <p class="text-[10px] text-cyan-400 font-bold">Factory-Direct Grade-60 Steel, DG/Bestway Cement & Awwal Bricks</p>
+            <h3 class="text-base font-black text-white">Doorstep Construction Material Market & Site Delivery</h3>
+            <p class="text-[10px] text-cyan-400 font-bold">Direct Factory Supply with Verified Weighbridge Slips across Lahore</p>
           </div>
         </div>
         <span class="text-[10px] font-mono text-slate-400">Live Rates: Sep 20, 2026</span>
       </div>
 
-      <!-- Live Rate Cards -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
-          <span class="text-[10px] text-slate-400 font-bold block">Deformed Steel (Grade-60)</span>
-          <span class="text-amber-400 font-black text-sm">PKR 258 / Kg</span>
-          <span class="text-[9px] text-emerald-400 block mt-0.5"><i class="fa-solid fa-arrow-trend-up"></i> Mughal / Amreli</span>
+      <!-- Live Rate Interactive Cards with Quick Add Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs">
+        
+        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-start">
+              <span class="text-slate-400 text-[11px] font-bold">Grade-60 Steel</span>
+              <span class="bg-amber-500/20 text-amber-400 text-[9px] font-black px-2 py-0.5 rounded">Mughal / Amreli</span>
+            </div>
+            <p class="text-xl font-black text-white mt-1">PKR 258 <span class="text-[10px] font-normal text-slate-400">/ Kg</span></p>
+            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Free Transit Insurance</p>
+          </div>
+          <button onclick="quickSelectMaterial('Mughal Grade-60 Steel', '5 Tons')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
+            + Add to Order
+          </button>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
-          <span class="text-[10px] text-slate-400 font-bold block">Cement (Per 50kg Bag)</span>
-          <span class="text-amber-400 font-black text-sm">PKR 1,460 / Bag</span>
-          <span class="text-[9px] text-slate-400 block mt-0.5">Bestway / Maple Leaf</span>
+
+        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-start">
+              <span class="text-slate-400 text-[11px] font-bold">Bestway / DG Cement</span>
+              <span class="bg-cyan-500/20 text-cyan-400 text-[9px] font-black px-2 py-0.5 rounded">Fresh Stock</span>
+            </div>
+            <p class="text-xl font-black text-white mt-1">PKR 1,460 <span class="text-[10px] font-normal text-slate-400">/ Bag</span></p>
+            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Factory Direct Trailer</p>
+          </div>
+          <button onclick="quickSelectMaterial('Bestway/DG Cement', '300 Bags')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
+            + Add to Order
+          </button>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
-          <span class="text-[10px] text-slate-400 font-bold block">Awwal Bricks (A-Grade)</span>
-          <span class="text-amber-400 font-black text-sm">PKR 14,000 / 1000</span>
-          <span class="text-[9px] text-slate-400 block mt-0.5">Kiln Clay Baked</span>
+
+        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-start">
+              <span class="text-slate-400 text-[11px] font-bold">Awwal Baked Bricks</span>
+              <span class="bg-rose-500/20 text-rose-400 text-[9px] font-black px-2 py-0.5 rounded">Red Clay</span>
+            </div>
+            <p class="text-xl font-black text-white mt-1">PKR 14,000 <span class="text-[10px] font-normal text-slate-400">/ 1,000 Pcs</span></p>
+            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Zero Breakage Guarantee</p>
+          </div>
+          <button onclick="quickSelectMaterial('Awwal Baked Bricks', '10,000 Pcs')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
+            + Add to Order
+          </button>
         </div>
-        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
-          <span class="text-[10px] text-slate-400 font-bold block">Chenab Sand & Margalla Crush</span>
-          <span class="text-amber-400 font-black text-sm">PKR 135 / Cu.Ft</span>
-          <span class="text-[9px] text-emerald-400 block mt-0.5">Washed & Screened</span>
+
+        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-start">
+              <span class="text-slate-400 text-[11px] font-bold">Chenab Sand & Crush</span>
+              <span class="bg-purple-500/20 text-purple-400 text-[9px] font-black px-2 py-0.5 rounded">Margalla 1/2</span>
+            </div>
+            <p class="text-xl font-black text-white mt-1">PKR 135 <span class="text-[10px] font-normal text-slate-400">/ Cu.Ft</span></p>
+            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Screened & Washed</p>
+          </div>
+          <button onclick="quickSelectMaterial('Chenab Sand & Crush Dumper', '1 Dumper (800 Cu.Ft)')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
+            + Add to Order
+          </button>
         </div>
+
       </div>
 
-      <!-- Doorstep Order Direct Form (2-Way CRM Sync) -->
-      <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3">
-        <div class="flex items-center gap-2 border-b border-slate-800 pb-2">
-          <i class="fa-solid fa-cart-flatbed text-amber-400 text-sm"></i>
-          <h4 class="text-xs font-black text-white uppercase tracking-wider">Fast Doorstep Site Dispatch</h4>
+      <!-- Direct Doorstep Order Form (Connected to 2-Way CRM & WhatsApp) -->
+      <div class="glass-inner p-5 sm:p-6 rounded-2xl space-y-4 border border-cyan-500/30">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-truck-fast text-amber-400 text-sm"></i> Doorstep Supply Fast Dispatch Cart
+          </h4>
+          <span class="text-[10px] text-amber-400 font-bold">Same-Day Site Delivery Available</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs font-bold">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs font-bold">
           <div>
-            <label class="block text-slate-300 mb-1">Item to Dispatch:</label>
-            <select id="doorstepItem" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+            <label class="block text-slate-300 mb-1">Selected Item: *</label>
+            <select id="doorstepItem" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
               <option value="Mughal Grade-60 Steel">Mughal Grade-60 Steel</option>
               <option value="Bestway/DG Cement">Bestway/DG Cement Bags</option>
               <option value="Awwal Baked Bricks">Awwal Clay Bricks</option>
@@ -628,24 +658,24 @@
             </select>
           </div>
           <div>
-            <label class="block text-slate-300 mb-1">Quantity Needed:</label>
-            <input type="text" id="doorstepQty" placeholder="e.g. 500 Bags or 5 Tons" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+            <label class="block text-slate-300 mb-1">Quantity Needed: *</label>
+            <input type="text" id="doorstepQty" placeholder="e.g. 500 Bags or 5 Tons" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
           </div>
           <div>
-            <label class="block text-slate-300 mb-1">Site Delivery Address:</label>
-            <input type="text" id="doorstepAddress" placeholder="Plot #, Block, Society (e.g. LDA Ave-1)" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+            <label class="block text-slate-300 mb-1">Site Delivery Address: *</label>
+            <input type="text" id="doorstepAddress" placeholder="Plot #, Block, Society (e.g. LDA Ave-1)" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
           </div>
           <div>
-            <label class="block text-slate-300 mb-1">Contact Phone:</label>
-            <input type="text" id="doorstepPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+            <label class="block text-slate-300 mb-1">Your Phone / WhatsApp: *</label>
+            <input type="text" id="doorstepPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-2 pt-1">
-          <button onclick="submitDoorstepOrder()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex-1 flex items-center justify-center gap-1.5 cursor-pointer shadow">
-            <i class="fa-solid fa-truck-arrow-right"></i> Place Doorstep Order (Sync to CRM)
+        <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+          <button onclick="submitDoorstepOrder()" class="bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-slate-950 font-black py-3 px-4 rounded-xl text-xs flex-1 flex items-center justify-center gap-2 cursor-pointer shadow-lg transition">
+            <i class="fa-solid fa-truck-arrow-right"></i> Place Doorstep Order (Sync to Master CRM)
           </button>
-          <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20want%20doorstep%20civil%20material%20delivery%20for%20my%20Lahore%20site." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow">
+          <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20want%20doorstep%20civil%20material%20delivery%20for%20my%20Lahore%20site." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 px-5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition">
             <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Dispatch Desk
           </a>
         </div>
@@ -653,11 +683,11 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 6: CORE PACKAGES (PRESERVED) -->
+    <!-- 6. STANDARD CONSTRUCTION PACKAGES (PRESERVED) -->
     <!-- ========================================== -->
     <div id="packagesSection" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between">
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between shadow-xl">
         <div>
           <span class="bg-amber-500/20 text-amber-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 01</span>
           <h4 class="text-base font-black text-white">Gray Structure Super</h4>
@@ -669,7 +699,7 @@
         </div>
       </div>
 
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-emerald-500/30 flex flex-col justify-between">
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-emerald-500/30 flex flex-col justify-between shadow-xl">
         <div>
           <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 02</span>
           <h4 class="text-base font-black text-white">Turnkey Luxury Finishing</h4>
@@ -681,7 +711,7 @@
         </div>
       </div>
 
-      <div class="glass-card p-5 rounded-3xl space-y-3 border border-cyan-500/30 flex flex-col justify-between">
+      <div class="glass-card p-5 rounded-3xl space-y-3 border border-cyan-500/30 flex flex-col justify-between shadow-xl">
         <div>
           <span class="bg-cyan-500/20 text-cyan-400 text-[10px] font-black uppercase px-2.5 py-1 rounded-md inline-block mb-2">Package 03</span>
           <h4 class="text-base font-black text-white">CAD & Society Approvals</h4>
@@ -743,7 +773,7 @@
           <textarea id="bookingDetails" rows="2" placeholder="e.g. 10 Marla Double Storey Gray Structure..." class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500 font-normal"></textarea>
         </div>
 
-        <button onclick="submitServiceBooking()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 py-3 rounded-xl font-black text-xs transition shadow-lg cursor-pointer uppercase tracking-wider">
+        <button onclick="submitServiceBooking()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 py-3 rounded-xl font-black text-xs transition shadow-lg cursor-pointer uppercase tracking-wider">
           <i class="fa-solid fa-paper-plane mr-1"></i> Confirm Booking & Sync
         </button>
       </div>
@@ -952,11 +982,59 @@
       showToast("Blueprint Downloaded to Device!");
     }
 
-    // Overseas Live CCTV Camera Simulation (Zero Broken Images)
+    // Dynamic Construction Site Telecast Simulator Canvas (100% Reliable, Zero Image Dependance)
+    function renderCctvCanvas() {
+      const canvas = document.getElementById('cctvSimCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#0a1120');
+      gradient.addColorStop(0.5, '#0f172a');
+      gradient.addColorStop(1, '#020617');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Perspective Grid Lines (Construction Slab Perspective)
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)';
+      ctx.lineWidth = 1;
+      for (let i = -200; i <= canvas.width + 200; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, 80);
+        ctx.lineTo(i, canvas.height);
+        ctx.stroke();
+      }
+
+      // Concrete Columns and Foundation Simulation
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(80, 140, 45, 180);
+      ctx.fillRect(280, 120, 50, 200);
+      ctx.fillRect(520, 150, 45, 170);
+
+      // Steel Rebar Cages on Columns
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 2;
+      for (let y = 140; y <= 300; y += 15) {
+        ctx.beginPath(); ctx.moveTo(80, y); ctx.lineTo(125, y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(280, y); ctx.lineTo(330, y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(520, y); ctx.lineTo(565, y); ctx.stroke();
+      }
+
+      // Center High-Tech Telemetry Circle
+      ctx.strokeStyle = 'rgba(252, 211, 77, 0.4)';
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = '#fcd34d';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('+ TARGET LOCK: MAIN SLAB', canvas.width / 2 - 80, canvas.height / 2 + 70);
+    }
+
     function changeLiveStreamProject() {
       const selected = document.getElementById('liveProjectSelector').value;
       document.getElementById('cctvProjectTitle').innerText = `${selected} • Active Feed`;
-      document.getElementById('cctvCameraLocation').innerText = `CAMERA FEED: ${selected.toUpperCase()} • 1080P 60FPS`;
+      renderCctvCanvas();
       showToast(`Switched Live CCTV Stream to ${selected}`);
     }
 
@@ -996,7 +1074,6 @@
       document.getElementById('displayConstCost').innerText = `PKR ${constTotal.toLocaleString()}`;
       document.getElementById('displayTotalCost').innerText = `PKR ${grandTotal.toLocaleString()}`;
 
-      // Automatically update Material breakdown area
       document.getElementById('matCoveredArea').value = Math.round(totalCoveredArea);
       calculateMaterialBreakdown();
     }
@@ -1121,21 +1198,16 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
     function calculateMaterialBreakdown() {
       const area = parseFloat(document.getElementById('matCoveredArea').value) || 2250;
       
-      // Standard Civil Engineering Factors per Sq.Ft of covered area
-      // Steel: approx 3.5 to 4.2 kg per sq.ft
       const steelKg = Math.round(area * 3.8);
       const steelTons = (steelKg / 1000).toFixed(1);
       const steelCost = Math.round(steelKg * 258);
 
-      // Cement: approx 0.4 bags per sq.ft
       const cementBags = Math.round(area * 0.40);
       const cementCost = Math.round(cementBags * 1460);
 
-      // Bricks: approx 28 to 32 bricks per sq.ft
       const bricksCount = Math.round(area * 28);
       const bricksCost = Math.round((bricksCount / 1000) * 14000);
 
-      // Sand & Crush: approx 3.2 cu.ft per sq.ft
       const crushCuFt = Math.round(area * 3.2);
       const crushCost = Math.round(crushCuFt * 135);
 
@@ -1152,7 +1224,14 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
       document.getElementById('costCrush').innerText = `Est: PKR ${crushCost.toLocaleString()}`;
     }
 
-    // Doorstep Material Ordering Trigger with 2-Way CRM Sync
+    function quickSelectMaterial(itemName, defaultQty) {
+      document.getElementById('doorstepItem').value = itemName;
+      document.getElementById('doorstepQty').value = defaultQty;
+      document.getElementById('doorstepOrderSection').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Added ${itemName} to Cart!`);
+    }
+
+    // Doorstep Material Ordering Trigger with 2-Way CRM Sync (Preserved)
     function submitDoorstepOrder() {
       const item = document.getElementById('doorstepItem').value;
       const qty = document.getElementById('doorstepQty').value.trim();
@@ -1174,12 +1253,10 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
-      // Save to Local Inbox
       const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
       inboxList.unshift(orderPayload);
       localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
 
-      // 2-Way Webhook Sync to Master CRM
       const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
       if(navigator.onLine && googleScriptUrl) {
         fetch(googleScriptUrl, {
@@ -1197,7 +1274,6 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         showToast("Offline: Order saved locally! Will sync when connected.");
       }
 
-      // Open WhatsApp Dispatch directly
       const waText = encodeURIComponent(`*NEW DOORSTEP MATERIAL ORDER*\n\n📦 *Item:* ${item}\n⚖️ *Quantity:* ${qty}\n📍 *Site Address:* ${address}\n📞 *Phone:* ${phone}`);
       window.open(`https://wa.me/923219404812?text=${waText}`, '_blank');
       
@@ -1228,12 +1304,10 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
-      // Local Inbox save
       const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
       inboxList.unshift(bookingMsg);
       localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
 
-      // Sync or Queue (Preserved 2-Way CRM Integration)
       const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
       if(navigator.onLine && googleScriptUrl) {
         fetch(googleScriptUrl, {
@@ -1299,6 +1373,7 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
     window.onload = function() {
       checkConnectivity();
       drawCadBlueprint();
+      renderCctvCanvas();
       calculateIntegratedPackage();
       calculateMaterialBreakdown();
     };
