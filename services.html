@@ -14,7 +14,7 @@
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
-    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
     
     @keyframes eagle3DRotate {
       0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
@@ -39,6 +39,20 @@
     .drawer-open {
       transform: translateX(0) !important;
     }
+
+    /* CCTV Feed Video Simulation Animation */
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(1000%); }
+    }
+    .cctv-scanline {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: rgba(56, 189, 248, 0.25);
+      animation: scanline 8s linear infinite;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
@@ -61,15 +75,15 @@
 
   <!-- Live Market Ticker -->
   <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
-    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">AI CAD</span>
+    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">SERVICES</span>
     <div class="ticker-wrap w-full text-[11px]">
       <div class="ticker-move">
         <span>Instant Architectural Blueprints & Dimensions</span> &bull; 
         <span>Grade-60 Saria & Turnkey Civil Engineering</span> &bull; 
         <span>LDA Avenue 1 & Jubilee Town Site Supervision</span> &bull; 
-        <span>Live Overseas CCTV Telecast</span> &bull; 
-        <span>Doorstep Construction Materials Supply</span> &bull; 
-        <span>Google Sheets Master CRM Integrated</span>
+        <span>Live Overseas CCTV Telecast Active</span> &bull; 
+        <span>Doorstep Construction Materials Supply & Quantity Estimator</span> &bull; 
+        <span>Google Sheets Master 2-Way CRM Integrated</span>
       </div>
     </div>
   </div>
@@ -101,7 +115,31 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer -->
+  <!-- Sticky In-Page Quick Navigation Tabs (Sorting Features) -->
+  <div class="bg-slate-950/95 border-b border-slate-800 sticky top-[80px] z-20 px-4 py-2 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex gap-2 overflow-x-auto no-scrollbar text-xs font-bold">
+      <a href="#proCadStudio" class="px-3 py-1.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500 hover:text-slate-950 transition whitespace-nowrap">
+        <i class="fa-solid fa-compass-drafting mr-1"></i> CAD Blueprints
+      </a>
+      <a href="#overseasCctvSection" class="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500 hover:text-slate-950 transition whitespace-nowrap">
+        <i class="fa-solid fa-video mr-1"></i> Overseas CCTV
+      </a>
+      <a href="#integratedPlannerSection" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500 hover:text-slate-950 transition whitespace-nowrap">
+        <i class="fa-solid fa-calculator mr-1"></i> Plot + House Planner
+      </a>
+      <a href="#materialEstimatorSection" class="px-3 py-1.5 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-500 hover:text-slate-950 transition whitespace-nowrap">
+        <i class="fa-solid fa-boxes-stacked mr-1"></i> Material Estimator
+      </a>
+      <a href="#doorstepOrderSection" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 hover:bg-rose-500 hover:text-slate-950 transition whitespace-nowrap">
+        <i class="fa-solid fa-truck-fast mr-1"></i> Doorstep Supply
+      </a>
+      <a href="#packagesSection" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition whitespace-nowrap">
+        <i class="fa-solid fa-layer-group mr-1"></i> Standard Packages
+      </a>
+    </div>
+  </div>
+
+  <!-- Side Navigation Drawer (Preserved 100%) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
@@ -133,7 +171,7 @@
         <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
       </div>
 
-      <!-- Portals -->
+      <!-- Portals & CRM -->
       <div class="space-y-1 pt-2 border-t border-slate-800">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
         <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
@@ -151,7 +189,7 @@
   </aside>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-7">
 
     <!-- Hero Card -->
     <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl gold-glow relative overflow-hidden space-y-4">
@@ -161,10 +199,10 @@
         PEC Category C Registered Civil Contractor
       </span>
       <h2 class="text-2xl sm:text-3xl font-black shining-gold leading-tight">
-        Pro Architectural CAD & Construction Engineering Hub
+        Turnkey Civil Construction, AI CAD & Live Site Studio
       </h2>
       <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-        Autonomous CAD design, computerized structural layouts, LDA regulation setbacks, and turnkey civil construction across Lahore directed by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>.
+        Computerized 2D/3D layouts, LDA setback bylaws, doorstep material supply, and overseas live CCTV surveillance across Lahore directed by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>.
       </p>
 
       <div class="flex flex-wrap gap-2 pt-1">
@@ -178,101 +216,8 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- NEW FEATURE 1: OVERSEAS LIVE SITE TRACKING & CCTV -->
+    <!-- SECTION 1: PRO CAD STUDIO (PRESERVED) -->
     <!-- ========================================== -->
-    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-amber-500/40">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
-            <i class="fa-solid fa-video text-base"></i>
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <h3 class="text-base font-black text-white">Overseas Live Site Monitoring & CCTV</h3>
-              <span class="bg-rose-600/30 text-rose-400 border border-rose-500/50 text-[9px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Live Stream
-              </span>
-            </div>
-            <p class="text-[10px] text-amber-400 font-bold">100% Transparency for Overseas Clients in UK, USA, Gulf & Worldwide</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2 w-full sm:w-auto">
-          <select id="liveProjectSelector" onchange="changeLiveStreamProject()" class="bg-slate-950 border border-slate-700 text-xs text-white px-3 py-1.5 rounded-xl outline-none focus:border-amber-500 w-full sm:w-auto">
-            <option value="LDA Avenue 1 - Block J (Plot 138)">LDA Avenue-1 (J-Block Villa)</option>
-            <option value="LDA Avenue 1 - Block K (Possession Site)">LDA Avenue-1 (K-Block New Site)</option>
-            <option value="Jubilee Town - Sector B Commercial">Jubilee Town (B-Sector Plaza)</option>
-            <option value="DHA Rahbar - Phase 2 Modern Villa">DHA Rahbar (Phase 2 Luxury)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <!-- Live Video Simulation Screen -->
-        <div class="lg:col-span-2 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden relative group">
-          <div class="relative w-full h-64 sm:h-80 bg-slate-900 flex items-center justify-center overflow-hidden">
-            <img id="cctvDisplayImage" src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f3?auto=format&fit=crop&w=1000&q=80" alt="Construction Camera" class="w-full h-full object-cover opacity-80">
-            
-            <!-- CCTV OSD Overlay -->
-            <div class="absolute top-3 left-3 bg-slate-950/80 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1 rounded-lg backdrop-blur-md">
-              <span class="text-rose-400 font-bold mr-2"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> REC</span>
-              <span id="cctvTimestamp">CAM-01 [Main Slab View]</span>
-            </div>
-
-            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/85 border border-slate-800 text-xs p-3 rounded-xl backdrop-blur-md flex justify-between items-center">
-              <div>
-                <p id="cctvProjectTitle" class="font-bold text-white text-xs">LDA Avenue-1 Block J • Project #BT-884</p>
-                <p class="text-[10px] text-slate-400">Supervisor: Engr. M. Naveed | Shift: 08:00 AM - 05:00 PM</p>
-              </div>
-              <button onclick="requestOverseasSiteAccess()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-1.5 rounded-lg text-[11px] font-black cursor-pointer shadow">
-                Request Private Passcode
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Daily Site Progress Log & Inspection Reports -->
-        <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
-              <span class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-clipboard-check text-emerald-400"></i> Daily Quality Inspection
-              </span>
-              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">Passed</span>
-            </div>
-            
-            <ul class="space-y-2.5 text-xs text-slate-300">
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
-                <div>
-                  <strong class="text-white">Steel Curing & Binding:</strong> Grade-60 saria spacing inspected per PEC standard drawings.
-                </div>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
-                <div>
-                  <strong class="text-white">Concrete Ratio:</strong> 1:2:4 batching machine mix with Margalla crush.
-                </div>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
-                <div>
-                  <strong class="text-white">Boundary Setbacks:</strong> LDA by-laws 5ft front & 4ft rear verified.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pt-3 border-t border-slate-800">
-            <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20am%20an%20Overseas%20Client%20requesting%20live%20CCTV%20access%20for%20my%20plot." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Site Manager
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRO CAD STUDIO -->
     <div id="proCadStudio" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
@@ -358,10 +303,122 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- NEW FEATURE 2: INTEGRATED PLOT + CONSTRUCTION BUDGET PLANNER -->
-    <!-- NEW FEATURE 4: INSTANT PDF QUOTATION & WHATSAPP SYNC -->
+    <!-- SECTION 2: OVERSEAS LIVE SITE TRACKING & CCTV (RE-ENGINEERED NO BROKEN IMG) -->
     <!-- ========================================== -->
-    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-emerald-500/40">
+    <div id="overseasCctvSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-amber-500/40">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
+            <i class="fa-solid fa-video text-base"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base font-black text-white">Overseas Live Site Monitoring & CCTV</h3>
+              <span class="bg-rose-600/30 text-rose-400 border border-rose-500/50 text-[9px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Telecast
+              </span>
+            </div>
+            <p class="text-[10px] text-amber-400 font-bold">High-Transparency Remote Civil Engineering for Clients in UK, USA, Gulf & Overseas</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <select id="liveProjectSelector" onchange="changeLiveStreamProject()" class="bg-slate-950 border border-slate-700 text-xs text-white px-3 py-1.5 rounded-xl outline-none focus:border-amber-500 w-full sm:w-auto font-bold">
+            <option value="LDA Avenue 1 - Block J (Plot 138)">LDA Avenue-1 (J-Block Villa)</option>
+            <option value="LDA Avenue 1 - Block K (Possession Site)">LDA Avenue-1 (K-Block New Site)</option>
+            <option value="Jubilee Town - Sector B Commercial">Jubilee Town (B-Sector Plaza)</option>
+            <option value="DHA Rahbar - Phase 2 Modern Villa">DHA Rahbar (Phase 2 Luxury)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Live Video Simulation Screen (Pure CSS / Canvas - No Broken Images) -->
+        <div class="lg:col-span-2 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden relative group">
+          <div class="relative w-full h-72 sm:h-80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center overflow-hidden">
+            
+            <div class="cctv-scanline"></div>
+            
+            <!-- Construction Site Wireframe Simulation Graphic -->
+            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
+              <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 animate-pulse">
+                <i class="fa-solid fa-tower-broadcast text-2xl"></i>
+              </div>
+              <div>
+                <p id="cctvStreamStatus" class="text-sm font-black text-white uppercase tracking-wider">LIVE PTZ STREAM CONNECTED</p>
+                <p id="cctvCameraLocation" class="text-[11px] text-cyan-400 font-mono mt-0.5">CAMERA #01: LDA AVENUE-1 SECTOR-J • 1080P 60FPS</p>
+              </div>
+              <div class="flex items-center gap-3 text-[10px] font-mono text-slate-400">
+                <span>BITRATE: 4.8 Mbps</span> &bull; 
+                <span>LATENCY: 12ms</span> &bull; 
+                <span class="text-emerald-400 font-bold">ENCRYPTED FEED</span>
+              </div>
+            </div>
+
+            <!-- CCTV Top Overlay -->
+            <div class="absolute top-3 left-3 bg-slate-950/85 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1 rounded-lg backdrop-blur-md z-20 flex items-center gap-2">
+              <span class="text-rose-400 font-bold flex items-center gap-1"><i class="fa-solid fa-circle text-[7px] animate-pulse"></i> REC</span>
+              <span id="cctvLiveClock">2026-09-20 11:00:00 PKT</span>
+            </div>
+
+            <!-- CCTV Bottom Control Bar -->
+            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/90 border border-slate-800 text-xs p-3 rounded-xl backdrop-blur-md flex justify-between items-center z-20">
+              <div>
+                <p id="cctvProjectTitle" class="font-bold text-white text-xs">LDA Avenue-1 Block J • Project #BT-884</p>
+                <p class="text-[10px] text-slate-400">Civil Lead: Engr. M. Naveed | Shift Active</p>
+              </div>
+              <button onclick="requestOverseasSiteAccess()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-1.5 rounded-lg text-xs font-black cursor-pointer shadow">
+                Request Stream Passcode
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Site Progress Log & Inspection Reports -->
+        <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-black text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-clipboard-check text-emerald-400"></i> Daily Quality Inspection
+              </span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">PEC Passed</span>
+            </div>
+            
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Steel Curing & Binding:</strong> Grade-60 saria spacing inspected per PEC standard drawings.
+                </div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Concrete Ratio:</strong> 1:2:4 batching machine mix with Margalla crush.
+                </div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Boundary Setbacks:</strong> LDA by-laws 5ft front & 4ft rear verified.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800">
+            <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20am%20an%20Overseas%20Client%20requesting%20live%20CCTV%20access%20for%20my%20plot." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Site Manager
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: INTEGRATED PLOT + CONSTRUCTION BUDGET PLANNER -->
+    <!-- ========================================== -->
+    <div id="integratedPlannerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-emerald-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
           <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
@@ -448,9 +505,74 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- NEW FEATURE 3: DOORSTEP MATERIALS & LIVE MARKET RATES -->
+    <!-- SECTION 4: NEW MATERIAL QUANTITY ESTIMATOR (SARIA, CEMENT, BRICKS BREAKDOWN) -->
     <!-- ========================================== -->
-    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
+    <div id="materialEstimatorSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-indigo-500/40">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/30">
+            <i class="fa-solid fa-boxes-stacked text-base"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white">Civil Material Quantity Breakdown Estimator</h3>
+            <p class="text-[10px] text-indigo-400 font-bold">Know exact quantity of Saria, Cement, Bricks, Sand & Crush for your home</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-mono bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30 uppercase font-black">
+          Civil BOQ Generator
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Total Covered Area (Sq.Ft):</label>
+          <input type="number" id="matCoveredArea" value="2250" onkeyup="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Construction Grade:</label>
+          <select id="matSteelGrade" onchange="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500 font-normal">
+            <option value="grade60">Grade-60 Deformed Steel (PEC Standard)</option>
+            <option value="grade40">Grade-40 Standard Steel</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Bricks Type:</label>
+          <select id="matBrickType" onchange="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500 font-normal">
+            <option value="awwal">Awwal Bhatta Clay Baked</option>
+            <option value="block">Solid Concrete Blocks</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quantity Output Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block uppercase">Deformed Steel (Saria)</span>
+          <span id="qtySteel" class="text-amber-400 font-black text-base">7.8 Tons</span>
+          <span id="costSteel" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 2,012,400</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block uppercase">Cement Bags</span>
+          <span id="qtyCement" class="text-amber-400 font-black text-base">900 Bags</span>
+          <span id="costCement" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 1,314,000</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block uppercase">Awwal Red Bricks</span>
+          <span id="qtyBricks" class="text-amber-400 font-black text-base">63,000 Pcs</span>
+          <span id="costBricks" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 882,000</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block uppercase">Sand & Crush Mix</span>
+          <span id="qtyCrush" class="text-amber-400 font-black text-base">7,200 Cu.Ft</span>
+          <span id="costCrush" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 972,000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 5: DOORSTEP MATERIALS & LIVE MARKET RATES (WITH ORDER CHECKOUT FORM) -->
+    <!-- ========================================== -->
+    <div id="doorstepOrderSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
           <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
@@ -461,7 +583,7 @@
             <p class="text-[10px] text-cyan-400 font-bold">Factory-Direct Grade-60 Steel, DG/Bestway Cement & Awwal Bricks</p>
           </div>
         </div>
-        <span class="text-[10px] font-mono text-slate-400">Live Updated: Sep 20, 2026</span>
+        <span class="text-[10px] font-mono text-slate-400">Live Rates: Sep 20, 2026</span>
       </div>
 
       <!-- Live Rate Cards -->
@@ -488,24 +610,52 @@
         </div>
       </div>
 
-      <!-- Doorstep Order Bar -->
-      <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-truck-fast"></i>
-          </div>
-          <p class="text-slate-300">
-            Need urgent bulk delivery to your construction site in <strong class="text-white">LDA Avenue-1, Jubilee Town, or Raiwind Road</strong>?
-          </p>
+      <!-- Doorstep Order Direct Form (2-Way CRM Sync) -->
+      <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl space-y-3">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-2">
+          <i class="fa-solid fa-cart-flatbed text-amber-400 text-sm"></i>
+          <h4 class="text-xs font-black text-white uppercase tracking-wider">Fast Doorstep Site Dispatch</h4>
         </div>
-        <button onclick="orderDoorstepMaterials()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs whitespace-nowrap cursor-pointer shadow">
-          Order Doorstep Supply
-        </button>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs font-bold">
+          <div>
+            <label class="block text-slate-300 mb-1">Item to Dispatch:</label>
+            <select id="doorstepItem" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+              <option value="Mughal Grade-60 Steel">Mughal Grade-60 Steel</option>
+              <option value="Bestway/DG Cement">Bestway/DG Cement Bags</option>
+              <option value="Awwal Baked Bricks">Awwal Clay Bricks</option>
+              <option value="Chenab Sand & Crush Dumper">Chenab Sand / Margalla Dumper</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Quantity Needed:</label>
+            <input type="text" id="doorstepQty" placeholder="e.g. 500 Bags or 5 Tons" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Site Delivery Address:</label>
+            <input type="text" id="doorstepAddress" placeholder="Plot #, Block, Society (e.g. LDA Ave-1)" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Contact Phone:</label>
+            <input type="text" id="doorstepPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2 pt-1">
+          <button onclick="submitDoorstepOrder()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex-1 flex items-center justify-center gap-1.5 cursor-pointer shadow">
+            <i class="fa-solid fa-truck-arrow-right"></i> Place Doorstep Order (Sync to CRM)
+          </button>
+          <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20want%20doorstep%20civil%20material%20delivery%20for%20my%20Lahore%20site." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Dispatch Desk
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Core Construction Packages (Preserved) -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <!-- ========================================== -->
+    <!-- SECTION 6: CORE PACKAGES (PRESERVED) -->
+    <!-- ========================================== -->
+    <div id="packagesSection" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       
       <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between">
         <div>
@@ -547,7 +697,7 @@
 
   </main>
 
-  <!-- Service Booking Modal (Offline Storage + Online Webhook Sync Preserved) -->
+  <!-- Service Booking Modal (Offline Storage + Online Webhook 2-Way Sync Preserved 100%) -->
   <div id="serviceModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
     <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -621,7 +771,7 @@
     </button>
   </div>
 
-  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <!-- Persistent Mobile Bottom Navigation Bar (Preserved) -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
     <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
@@ -645,7 +795,7 @@
     </a>
   </nav>
 
-  <!-- In-App Toast -->
+  <!-- In-App Toast (Preserved) -->
   <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-cyan-500 text-cyan-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
     <span id="appToastMsg">Notification</span>
@@ -699,7 +849,7 @@
     window.addEventListener('online', checkConnectivity);
     window.addEventListener('offline', checkConnectivity);
 
-    // CAD Functions (Preserved)
+    // CAD Blueprint System (Preserved)
     function selectLayoutOption(optNum) {
       currentLayoutOption = optNum;
       for(let i=1; i<=3; i++) {
@@ -802,27 +952,20 @@
       showToast("Blueprint Downloaded to Device!");
     }
 
-    // ==========================================
-    // NEW JAVASCRIPT FUNCTIONS FOR 4 NEW FEATURES
-    // ==========================================
-
-    // 1. Overseas Live Site Monitoring Functions
+    // Overseas Live CCTV Camera Simulation (Zero Broken Images)
     function changeLiveStreamProject() {
-      const selector = document.getElementById('liveProjectSelector');
-      const selected = selector.value;
-      const title = document.getElementById('cctvProjectTitle');
-      const img = document.getElementById('cctvDisplayImage');
-      
-      title.innerText = `${selected} • Active Site Feed`;
-      if(selected.includes('K-Block')) {
-        img.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80';
-      } else if(selected.includes('Jubilee')) {
-        img.src = 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80';
-      } else {
-        img.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18615f3?auto=format&fit=crop&w=1000&q=80';
-      }
-      showToast("Switching Live Camera Feed...");
+      const selected = document.getElementById('liveProjectSelector').value;
+      document.getElementById('cctvProjectTitle').innerText = `${selected} • Active Feed`;
+      document.getElementById('cctvCameraLocation').innerText = `CAMERA FEED: ${selected.toUpperCase()} • 1080P 60FPS`;
+      showToast(`Switched Live CCTV Stream to ${selected}`);
     }
+
+    function updateCctvClock() {
+      const now = new Date();
+      const clock = document.getElementById('cctvLiveClock');
+      if (clock) clock.innerText = now.toLocaleString() + ' PKT';
+    }
+    setInterval(updateCctvClock, 1000);
 
     function requestOverseasSiteAccess() {
       const project = document.getElementById('liveProjectSelector').value;
@@ -830,7 +973,7 @@
       window.open(`https://wa.me/923219404812?text=${text}`, '_blank');
     }
 
-    // 2. Integrated Package Calculator (Plot + Construction)
+    // Integrated Package Planner
     function calculateIntegratedPackage() {
       const societySelect = document.getElementById('calcSociety');
       const ratePerMarla = parseFloat(societySelect.options[societySelect.selectedIndex].getAttribute('data-plotrate')) || 0;
@@ -838,11 +981,7 @@
       const packageType = document.getElementById('calcPackageType').value;
       const floors = parseFloat(document.getElementById('calcFloors').value) || 2;
 
-      // Plot Cost
       const plotTotal = ratePerMarla * marla;
-
-      // Construction Rate & Covered Area
-      // (1 Marla ~ 225 sqft. Covered area ~ 85% per floor)
       const groundFloorArea = marla * 225 * 0.88;
       const totalCoveredArea = groundFloorArea * floors;
 
@@ -856,9 +995,12 @@
       document.getElementById('displayPlotCost').innerText = `PKR ${plotTotal.toLocaleString()}`;
       document.getElementById('displayConstCost').innerText = `PKR ${constTotal.toLocaleString()}`;
       document.getElementById('displayTotalCost').innerText = `PKR ${grandTotal.toLocaleString()}`;
+
+      // Automatically update Material breakdown area
+      document.getElementById('matCoveredArea').value = Math.round(totalCoveredArea);
+      calculateMaterialBreakdown();
     }
 
-    // 3. Share Estimate Directly to WhatsApp
     function shareEstimateToWhatsApp() {
       const society = document.getElementById('calcSociety').value;
       const marla = document.getElementById('calcMarla').value;
@@ -883,7 +1025,6 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
       window.open(`https://wa.me/923219404812?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    // 4. Generate Instant Professional PDF Quotation
     function generateInstantPDFQuotation() {
       try {
         const { jsPDF } = window.jspdf;
@@ -897,11 +1038,10 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         const constCost = document.getElementById('displayConstCost').innerText;
         const total = document.getElementById('displayTotalCost').innerText;
 
-        // Background Header & Styling
-        doc.setFillColor(15, 23, 42); // Slate 950
+        doc.setFillColor(15, 23, 42);
         doc.rect(0, 0, 210, 42, 'F');
 
-        doc.setTextColor(252, 211, 77); // Amber gold
+        doc.setTextColor(252, 211, 77);
         doc.setFontSize(18);
         doc.setFont('helvetica', 'bold');
         doc.text('BIN TAHA ASSOCIATES', 14, 18);
@@ -911,7 +1051,6 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         doc.text('Civil Engineering • AI CAD Architecture • Turnkey Construction Hub', 14, 25);
         doc.text('Office: 138-J, LDA Avenue 1, Raiwind Road, Lahore | Phone: 0321-9404812', 14, 32);
 
-        // Document Title
         doc.setFontSize(14);
         doc.setTextColor(15, 23, 42);
         doc.text('PRELIMINARY TURNKEY PROJECT ESTIMATE', 14, 55);
@@ -920,7 +1059,6 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         doc.setTextColor(100);
         doc.text(`Quotation Date: ${new Date().toLocaleDateString()} | Ref ID: BT-${Math.floor(100000 + Math.random() * 900000)}`, 14, 62);
 
-        // Table Box
         doc.setDrawColor(200);
         doc.setFillColor(248, 250, 252);
         doc.roundedRect(14, 70, 182, 95, 3, 3, 'FD');
@@ -939,7 +1077,6 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         doc.text(`5. Overseas Live CCTV Supervision Access: Included (Complimentary)`, 20, 132);
         doc.text(`6. Doorstep Material Dispatch: Verified Grade-A Supply`, 20, 142);
 
-        // Financial Breakdown Table
         doc.setFillColor(241, 245, 249);
         doc.rect(14, 175, 182, 35, 'F');
         doc.setDrawColor(203, 213, 225);
@@ -955,11 +1092,10 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         doc.text(`${constCost}`, 145, 195);
 
         doc.setFontSize(12);
-        doc.setTextColor(180, 83, 9); // Amber 700
+        doc.setTextColor(180, 83, 9);
         doc.text(`Grand Total Turnkey Budget:`, 20, 205);
         doc.text(`${total}`, 145, 205);
 
-        // Footer & Signatures
         doc.setFontSize(9);
         doc.setTextColor(100);
         doc.text('* Note: Rates are based on current market trends and are confirmed upon site inspection and CAD plan finalization.', 14, 230);
@@ -981,13 +1117,95 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
       }
     }
 
-    // Doorstep Material Ordering Trigger
-    function orderDoorstepMaterials() {
-      const text = encodeURIComponent("Hello Bin Taha Associates! I want to place a bulk doorstep construction material order (Steel / Cement / Bricks) for my Lahore site.");
-      window.open(`https://wa.me/923219404812?text=${text}`, '_blank');
+    // Material Quantity Breakdown Estimator Calculation
+    function calculateMaterialBreakdown() {
+      const area = parseFloat(document.getElementById('matCoveredArea').value) || 2250;
+      
+      // Standard Civil Engineering Factors per Sq.Ft of covered area
+      // Steel: approx 3.5 to 4.2 kg per sq.ft
+      const steelKg = Math.round(area * 3.8);
+      const steelTons = (steelKg / 1000).toFixed(1);
+      const steelCost = Math.round(steelKg * 258);
+
+      // Cement: approx 0.4 bags per sq.ft
+      const cementBags = Math.round(area * 0.40);
+      const cementCost = Math.round(cementBags * 1460);
+
+      // Bricks: approx 28 to 32 bricks per sq.ft
+      const bricksCount = Math.round(area * 28);
+      const bricksCost = Math.round((bricksCount / 1000) * 14000);
+
+      // Sand & Crush: approx 3.2 cu.ft per sq.ft
+      const crushCuFt = Math.round(area * 3.2);
+      const crushCost = Math.round(crushCuFt * 135);
+
+      document.getElementById('qtySteel').innerText = `${steelTons} Tons (${steelKg.toLocaleString()} Kg)`;
+      document.getElementById('costSteel').innerText = `Est: PKR ${steelCost.toLocaleString()}`;
+
+      document.getElementById('qtyCement').innerText = `${cementBags.toLocaleString()} Bags`;
+      document.getElementById('costCement').innerText = `Est: PKR ${cementCost.toLocaleString()}`;
+
+      document.getElementById('qtyBricks').innerText = `${bricksCount.toLocaleString()} Pcs`;
+      document.getElementById('costBricks').innerText = `Est: PKR ${bricksCost.toLocaleString()}`;
+
+      document.getElementById('qtyCrush').innerText = `${crushCuFt.toLocaleString()} Cu.Ft`;
+      document.getElementById('costCrush').innerText = `Est: PKR ${crushCost.toLocaleString()}`;
     }
 
-    // CRM 2-Way Booking & Submission (Completely Preserved)
+    // Doorstep Material Ordering Trigger with 2-Way CRM Sync
+    function submitDoorstepOrder() {
+      const item = document.getElementById('doorstepItem').value;
+      const qty = document.getElementById('doorstepQty').value.trim();
+      const address = document.getElementById('doorstepAddress').value.trim();
+      const phone = document.getElementById('doorstepPhone').value.trim();
+
+      if (!qty || !address) {
+        showToast("Please enter Quantity and Site Address!", true);
+        return;
+      }
+
+      const orderPayload = {
+        id: Date.now(),
+        name: 'Doorstep Material Customer',
+        phone: phone,
+        email: 'bintahacrm@gmail.com',
+        subject: `Doorstep Order: ${item}`,
+        text: `Material: ${item} | Quantity: ${qty} | Delivery Address: ${address} | Phone: ${phone}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      // Save to Local Inbox
+      const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+      inboxList.unshift(orderPayload);
+      localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
+
+      // 2-Way Webhook Sync to Master CRM
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+      if(navigator.onLine && googleScriptUrl) {
+        fetch(googleScriptUrl, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload)
+        }).then(() => {
+          showToast("Order Dispatched & Synced to Master CRM!");
+        }).catch(() => {
+          queueForSync(orderPayload);
+          showToast("Saved locally (will sync to CRM when online)");
+        });
+      } else {
+        queueForSync(orderPayload);
+        showToast("Offline: Order saved locally! Will sync when connected.");
+      }
+
+      // Open WhatsApp Dispatch directly
+      const waText = encodeURIComponent(`*NEW DOORSTEP MATERIAL ORDER*\n\n📦 *Item:* ${item}\n⚖️ *Quantity:* ${qty}\n📍 *Site Address:* ${address}\n📞 *Phone:* ${phone}`);
+      window.open(`https://wa.me/923219404812?text=${waText}`, '_blank');
+      
+      document.getElementById('doorstepQty').value = '';
+      document.getElementById('doorstepAddress').value = '';
+    }
+
+    // 2-Way CRM Integration - Booking Consultation (Preserved 100%)
     function submitServiceBooking() {
       const name = document.getElementById('bookingName').value.trim();
       const phone = document.getElementById('bookingPhone').value.trim();
@@ -1010,7 +1228,7 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
-      // Local Inbox save (Preserved)
+      // Local Inbox save
       const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
       inboxList.unshift(bookingMsg);
       localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
@@ -1082,6 +1300,7 @@ Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consult
       checkConnectivity();
       drawCadBlueprint();
       calculateIntegratedPackage();
+      calculateMaterialBreakdown();
     };
   </script>
 </body>
