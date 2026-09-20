@@ -8,6 +8,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- JSPDF Library for Professional PDF Quotations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
@@ -64,6 +67,8 @@
         <span>Instant Architectural Blueprints & Dimensions</span> &bull; 
         <span>Grade-60 Saria & Turnkey Civil Engineering</span> &bull; 
         <span>LDA Avenue 1 & Jubilee Town Site Supervision</span> &bull; 
+        <span>Live Overseas CCTV Telecast</span> &bull; 
+        <span>Doorstep Construction Materials Supply</span> &bull; 
         <span>Google Sheets Master CRM Integrated</span>
       </div>
     </div>
@@ -96,7 +101,7 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (17 Pages) -->
+  <!-- Side Navigation Drawer -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
@@ -169,6 +174,101 @@
         <a href="tel:03219404812" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 flex items-center gap-1.5">
           <i class="fa-solid fa-phone text-emerald-400"></i> Direct Call CEO
         </a>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- NEW FEATURE 1: OVERSEAS LIVE SITE TRACKING & CCTV -->
+    <!-- ========================================== -->
+    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-amber-500/40">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
+            <i class="fa-solid fa-video text-base"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base font-black text-white">Overseas Live Site Monitoring & CCTV</h3>
+              <span class="bg-rose-600/30 text-rose-400 border border-rose-500/50 text-[9px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Live Stream
+              </span>
+            </div>
+            <p class="text-[10px] text-amber-400 font-bold">100% Transparency for Overseas Clients in UK, USA, Gulf & Worldwide</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <select id="liveProjectSelector" onchange="changeLiveStreamProject()" class="bg-slate-950 border border-slate-700 text-xs text-white px-3 py-1.5 rounded-xl outline-none focus:border-amber-500 w-full sm:w-auto">
+            <option value="LDA Avenue 1 - Block J (Plot 138)">LDA Avenue-1 (J-Block Villa)</option>
+            <option value="LDA Avenue 1 - Block K (Possession Site)">LDA Avenue-1 (K-Block New Site)</option>
+            <option value="Jubilee Town - Sector B Commercial">Jubilee Town (B-Sector Plaza)</option>
+            <option value="DHA Rahbar - Phase 2 Modern Villa">DHA Rahbar (Phase 2 Luxury)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Live Video Simulation Screen -->
+        <div class="lg:col-span-2 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden relative group">
+          <div class="relative w-full h-64 sm:h-80 bg-slate-900 flex items-center justify-center overflow-hidden">
+            <img id="cctvDisplayImage" src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f3?auto=format&fit=crop&w=1000&q=80" alt="Construction Camera" class="w-full h-full object-cover opacity-80">
+            
+            <!-- CCTV OSD Overlay -->
+            <div class="absolute top-3 left-3 bg-slate-950/80 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1 rounded-lg backdrop-blur-md">
+              <span class="text-rose-400 font-bold mr-2"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> REC</span>
+              <span id="cctvTimestamp">CAM-01 [Main Slab View]</span>
+            </div>
+
+            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/85 border border-slate-800 text-xs p-3 rounded-xl backdrop-blur-md flex justify-between items-center">
+              <div>
+                <p id="cctvProjectTitle" class="font-bold text-white text-xs">LDA Avenue-1 Block J • Project #BT-884</p>
+                <p class="text-[10px] text-slate-400">Supervisor: Engr. M. Naveed | Shift: 08:00 AM - 05:00 PM</p>
+              </div>
+              <button onclick="requestOverseasSiteAccess()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-1.5 rounded-lg text-[11px] font-black cursor-pointer shadow">
+                Request Private Passcode
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Site Progress Log & Inspection Reports -->
+        <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-black text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-clipboard-check text-emerald-400"></i> Daily Quality Inspection
+              </span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">Passed</span>
+            </div>
+            
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Steel Curing & Binding:</strong> Grade-60 saria spacing inspected per PEC standard drawings.
+                </div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Concrete Ratio:</strong> 1:2:4 batching machine mix with Margalla crush.
+                </div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-1 text-[10px]"></i>
+                <div>
+                  <strong class="text-white">Boundary Setbacks:</strong> LDA by-laws 5ft front & 4ft rear verified.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800">
+            <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20am%20an%20Overseas%20Client%20requesting%20live%20CCTV%20access%20for%20my%20plot." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Site Manager
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -257,7 +357,154 @@
 
     </div>
 
-    <!-- Core Construction Packages -->
+    <!-- ========================================== -->
+    <!-- NEW FEATURE 2: INTEGRATED PLOT + CONSTRUCTION BUDGET PLANNER -->
+    <!-- NEW FEATURE 4: INSTANT PDF QUOTATION & WHATSAPP SYNC -->
+    <!-- ========================================== -->
+    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-emerald-500/40">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
+            <i class="fa-solid fa-hand-holding-dollar text-base"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white">Integrated Plot + Construction Planner</h3>
+            <p class="text-[10px] text-emerald-400 font-bold">Calculate Complete Land Acquisition + Gray + Turnkey Finish Budget</p>
+          </div>
+        </div>
+        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black px-3 py-1 rounded-full border border-emerald-500/30 uppercase">
+          Direct Turnkey Solution
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs font-bold">
+        <div>
+          <label class="block text-slate-300 mb-1">Target Society / Sector:</label>
+          <select id="calcSociety" onchange="calculateIntegratedPackage()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500 font-normal">
+            <option value="LDA Avenue 1 (Lahore)" data-plotrate="1200000">LDA Avenue-1 (Avg 12-14 Lac/Marla)</option>
+            <option value="Jubilee Town (Lahore)" data-plotrate="1400000">Jubilee Town (Avg 14-16 Lac/Marla)</option>
+            <option value="DHA Rahbar / Phase 11" data-plotrate="2200000">DHA Rahbar (Avg 22-25 Lac/Marla)</option>
+            <option value="Johar Town / Near Emporium" data-plotrate="3500000">Johar Town (Avg 35-40 Lac/Marla)</option>
+            <option value="Own Land (Plot Already Owned)" data-plotrate="0">Already Have Plot (Land PKR 0)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Plot Size:</label>
+          <select id="calcMarla" onchange="calculateIntegratedPackage()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500 font-normal">
+            <option value="3">3 Marla (Approx 675 Sq Ft Land)</option>
+            <option value="5" selected>5 Marla (Approx 1,125 Sq Ft Land)</option>
+            <option value="10">10 Marla (Approx 2,250 Sq Ft Land)</option>
+            <option value="20">1 Kanal (Approx 4,500 Sq Ft Land)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Construction Package:</label>
+          <select id="calcPackageType" onchange="calculateIntegratedPackage()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500 font-normal">
+            <option value="gray">Gray Structure (PKR 3,500/Sq Ft)</option>
+            <option value="turnkey" selected>Turnkey A-Plus Finish (PKR 6,800/Sq Ft)</option>
+            <option value="royal">Executive Royal Palace (PKR 8,500/Sq Ft)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Storeys / Floors:</label>
+          <select id="calcFloors" onchange="calculateIntegratedPackage()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500 font-normal">
+            <option value="1">Single Storey</option>
+            <option value="2" selected>Double Storey (G+1)</option>
+            <option value="3">Triple Storey (G+2)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Financial Calculation Summary Card -->
+      <div class="bg-slate-950 border border-emerald-500/30 p-4 sm:p-5 rounded-2xl space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-[10px] text-slate-400 font-bold uppercase block">Estimated Plot Value</span>
+            <span id="displayPlotCost" class="text-emerald-400 font-black text-sm sm:text-base">PKR 6,000,000</span>
+          </div>
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+            <span class="text-[10px] text-slate-400 font-bold uppercase block">Total Covered Construction</span>
+            <span id="displayConstCost" class="text-amber-400 font-black text-sm sm:text-base">PKR 14,960,000</span>
+          </div>
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-emerald-500/40">
+            <span class="text-[10px] text-emerald-400 font-black uppercase block">Grand Total Package Budget</span>
+            <span id="displayTotalCost" class="text-white font-black text-base sm:text-lg shining-gold">PKR 20,960,000</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons: Download PDF & WhatsApp Booking -->
+        <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+          <button onclick="generateInstantPDFQuotation()" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Download Official PDF Quotation
+          </button>
+          <button onclick="shareEstimateToWhatsApp()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Discuss Package on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- NEW FEATURE 3: DOORSTEP MATERIALS & LIVE MARKET RATES -->
+    <!-- ========================================== -->
+    <div class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-cyan-500/40">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
+            <i class="fa-solid fa-truck-ramp-box text-base"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white">Doorstep Materials Delivery & Live Lahore Rates</h3>
+            <p class="text-[10px] text-cyan-400 font-bold">Factory-Direct Grade-60 Steel, DG/Bestway Cement & Awwal Bricks</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-mono text-slate-400">Live Updated: Sep 20, 2026</span>
+      </div>
+
+      <!-- Live Rate Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block">Deformed Steel (Grade-60)</span>
+          <span class="text-amber-400 font-black text-sm">PKR 258 / Kg</span>
+          <span class="text-[9px] text-emerald-400 block mt-0.5"><i class="fa-solid fa-arrow-trend-up"></i> Mughal / Amreli</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block">Cement (Per 50kg Bag)</span>
+          <span class="text-amber-400 font-black text-sm">PKR 1,460 / Bag</span>
+          <span class="text-[9px] text-slate-400 block mt-0.5">Bestway / Maple Leaf</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block">Awwal Bricks (A-Grade)</span>
+          <span class="text-amber-400 font-black text-sm">PKR 14,000 / 1000</span>
+          <span class="text-[9px] text-slate-400 block mt-0.5">Kiln Clay Baked</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 font-bold block">Chenab Sand & Margalla Crush</span>
+          <span class="text-amber-400 font-black text-sm">PKR 135 / Cu.Ft</span>
+          <span class="text-[9px] text-emerald-400 block mt-0.5">Washed & Screened</span>
+        </div>
+      </div>
+
+      <!-- Doorstep Order Bar -->
+      <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <p class="text-slate-300">
+            Need urgent bulk delivery to your construction site in <strong class="text-white">LDA Avenue-1, Jubilee Town, or Raiwind Road</strong>?
+          </p>
+        </div>
+        <button onclick="orderDoorstepMaterials()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs whitespace-nowrap cursor-pointer shadow">
+          Order Doorstep Supply
+        </button>
+      </div>
+    </div>
+
+    <!-- Core Construction Packages (Preserved) -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       
       <div class="glass-card p-5 rounded-3xl space-y-3 border border-amber-500/30 flex flex-col justify-between">
@@ -300,7 +547,7 @@
 
   </main>
 
-  <!-- Service Booking Modal (Offline Storage + Online Webhook Sync) -->
+  <!-- Service Booking Modal (Offline Storage + Online Webhook Sync Preserved) -->
   <div id="serviceModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
     <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -330,6 +577,8 @@
               <option value="Turnkey Luxury Finish">Turnkey Finish</option>
               <option value="Architectural CAD & Map Approval">CAD & Map Approval</option>
               <option value="Site Supervision Consultation">Site Supervision</option>
+              <option value="Overseas Live CCTV Supervision">Overseas Live CCTV Supervision</option>
+              <option value="Doorstep Material Bulk Order">Doorstep Material Order</option>
             </select>
           </div>
         </div>
@@ -351,7 +600,7 @@
     </div>
   </div>
 
-  <!-- Floating Gemini AI Assistant Widget -->
+  <!-- Floating Gemini AI Assistant Widget (Preserved) -->
   <div class="fixed bottom-20 right-4 z-40">
     <div id="geminiChatBox" class="hidden glass-card p-4 rounded-3xl w-72 sm:w-80 shadow-2xl mb-3 space-y-3 border border-amber-500/60">
       <div class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -405,6 +654,7 @@
   <script>
     let currentLayoutOption = 1;
 
+    // Toast Utility (Preserved)
     function showToast(msg, isError = false) {
       const toast = document.getElementById('appToast');
       const toastMsg = document.getElementById('appToastMsg');
@@ -434,6 +684,7 @@
       document.getElementById('geminiChatBox').classList.toggle('hidden');
     }
 
+    // Connectivity & Offline Sync (Preserved)
     function checkConnectivity() {
       const badge = document.getElementById('networkStatusBadge');
       if(navigator.onLine) {
@@ -448,6 +699,7 @@
     window.addEventListener('online', checkConnectivity);
     window.addEventListener('offline', checkConnectivity);
 
+    // CAD Functions (Preserved)
     function selectLayoutOption(optNum) {
       currentLayoutOption = optNum;
       for(let i=1; i<=3; i++) {
@@ -550,6 +802,192 @@
       showToast("Blueprint Downloaded to Device!");
     }
 
+    // ==========================================
+    // NEW JAVASCRIPT FUNCTIONS FOR 4 NEW FEATURES
+    // ==========================================
+
+    // 1. Overseas Live Site Monitoring Functions
+    function changeLiveStreamProject() {
+      const selector = document.getElementById('liveProjectSelector');
+      const selected = selector.value;
+      const title = document.getElementById('cctvProjectTitle');
+      const img = document.getElementById('cctvDisplayImage');
+      
+      title.innerText = `${selected} • Active Site Feed`;
+      if(selected.includes('K-Block')) {
+        img.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80';
+      } else if(selected.includes('Jubilee')) {
+        img.src = 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80';
+      } else {
+        img.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18615f3?auto=format&fit=crop&w=1000&q=80';
+      }
+      showToast("Switching Live Camera Feed...");
+    }
+
+    function requestOverseasSiteAccess() {
+      const project = document.getElementById('liveProjectSelector').value;
+      const text = encodeURIComponent(`Hello Bin Taha Associates! I am an Overseas Client requesting private CCTV Stream credentials for project: ${project}.`);
+      window.open(`https://wa.me/923219404812?text=${text}`, '_blank');
+    }
+
+    // 2. Integrated Package Calculator (Plot + Construction)
+    function calculateIntegratedPackage() {
+      const societySelect = document.getElementById('calcSociety');
+      const ratePerMarla = parseFloat(societySelect.options[societySelect.selectedIndex].getAttribute('data-plotrate')) || 0;
+      const marla = parseFloat(document.getElementById('calcMarla').value) || 5;
+      const packageType = document.getElementById('calcPackageType').value;
+      const floors = parseFloat(document.getElementById('calcFloors').value) || 2;
+
+      // Plot Cost
+      const plotTotal = ratePerMarla * marla;
+
+      // Construction Rate & Covered Area
+      // (1 Marla ~ 225 sqft. Covered area ~ 85% per floor)
+      const groundFloorArea = marla * 225 * 0.88;
+      const totalCoveredArea = groundFloorArea * floors;
+
+      let sqftRate = 3500;
+      if (packageType === 'turnkey') sqftRate = 6800;
+      if (packageType === 'royal') sqftRate = 8500;
+
+      const constTotal = Math.round(totalCoveredArea * sqftRate);
+      const grandTotal = plotTotal + constTotal;
+
+      document.getElementById('displayPlotCost').innerText = `PKR ${plotTotal.toLocaleString()}`;
+      document.getElementById('displayConstCost').innerText = `PKR ${constTotal.toLocaleString()}`;
+      document.getElementById('displayTotalCost').innerText = `PKR ${grandTotal.toLocaleString()}`;
+    }
+
+    // 3. Share Estimate Directly to WhatsApp
+    function shareEstimateToWhatsApp() {
+      const society = document.getElementById('calcSociety').value;
+      const marla = document.getElementById('calcMarla').value;
+      const pkg = document.getElementById('calcPackageType').value;
+      const floors = document.getElementById('calcFloors').value;
+      const plot = document.getElementById('displayPlotCost').innerText;
+      const constCost = document.getElementById('displayConstCost').innerText;
+      const total = document.getElementById('displayTotalCost').innerText;
+
+      const msg = `*BIN TAHA ASSOCIATES - PROJECT ESTIMATE INQUIRY*
+━━━━━━━━━━━━━━━━━━━━
+📍 *Target Location:* ${society}
+📐 *Plot Size:* ${marla} Marla (${floors} Storey)
+🏗️ *Package Selected:* ${pkg.toUpperCase()}
+━━━━━━━━━━━━━━━━━━━━
+💰 *Plot Value Est:* ${plot}
+🔨 *Construction Est:* ${constCost}
+⭐ *Grand Total Budget:* ${total}
+━━━━━━━━━━━━━━━━━━━━
+Please connect me with CEO Taha Mobeen Bhutta for detailed architectural consultation and site booking.`;
+
+      window.open(`https://wa.me/923219404812?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // 4. Generate Instant Professional PDF Quotation
+    function generateInstantPDFQuotation() {
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const society = document.getElementById('calcSociety').value;
+        const marla = document.getElementById('calcMarla').value;
+        const pkg = document.getElementById('calcPackageType').value;
+        const floors = document.getElementById('calcFloors').value;
+        const plot = document.getElementById('displayPlotCost').innerText;
+        const constCost = document.getElementById('displayConstCost').innerText;
+        const total = document.getElementById('displayTotalCost').innerText;
+
+        // Background Header & Styling
+        doc.setFillColor(15, 23, 42); // Slate 950
+        doc.rect(0, 0, 210, 42, 'F');
+
+        doc.setTextColor(252, 211, 77); // Amber gold
+        doc.setFontSize(18);
+        doc.setFont('helvetica', 'bold');
+        doc.text('BIN TAHA ASSOCIATES', 14, 18);
+
+        doc.setFontSize(9);
+        doc.setTextColor(203, 213, 225);
+        doc.text('Civil Engineering • AI CAD Architecture • Turnkey Construction Hub', 14, 25);
+        doc.text('Office: 138-J, LDA Avenue 1, Raiwind Road, Lahore | Phone: 0321-9404812', 14, 32);
+
+        // Document Title
+        doc.setFontSize(14);
+        doc.setTextColor(15, 23, 42);
+        doc.text('PRELIMINARY TURNKEY PROJECT ESTIMATE', 14, 55);
+
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text(`Quotation Date: ${new Date().toLocaleDateString()} | Ref ID: BT-${Math.floor(100000 + Math.random() * 900000)}`, 14, 62);
+
+        // Table Box
+        doc.setDrawColor(200);
+        doc.setFillColor(248, 250, 252);
+        doc.roundedRect(14, 70, 182, 95, 3, 3, 'FD');
+
+        doc.setFontSize(11);
+        doc.setTextColor(30);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Project Parameters & Specifications', 20, 80);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.text(`1. Selected Location: ${society}`, 20, 92);
+        doc.text(`2. Plot Category / Land Size: ${marla} Marla`, 20, 102);
+        doc.text(`3. Structural Height: ${floors} Storey (PEC Standard Design)`, 20, 112);
+        doc.text(`4. Package Type: ${pkg.toUpperCase()} (Grade-60 Steel & Margalla Crush)`, 20, 122);
+        doc.text(`5. Overseas Live CCTV Supervision Access: Included (Complimentary)`, 20, 132);
+        doc.text(`6. Doorstep Material Dispatch: Verified Grade-A Supply`, 20, 142);
+
+        // Financial Breakdown Table
+        doc.setFillColor(241, 245, 249);
+        doc.rect(14, 175, 182, 35, 'F');
+        doc.setDrawColor(203, 213, 225);
+        doc.rect(14, 175, 182, 35, 'S');
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(11);
+        doc.setTextColor(15, 23, 42);
+        doc.text(`Land Acquisition Estimate:`, 20, 185);
+        doc.text(`${plot}`, 145, 185);
+
+        doc.text(`Civil Construction Estimate:`, 20, 195);
+        doc.text(`${constCost}`, 145, 195);
+
+        doc.setFontSize(12);
+        doc.setTextColor(180, 83, 9); // Amber 700
+        doc.text(`Grand Total Turnkey Budget:`, 20, 205);
+        doc.text(`${total}`, 145, 205);
+
+        // Footer & Signatures
+        doc.setFontSize(9);
+        doc.setTextColor(100);
+        doc.text('* Note: Rates are based on current market trends and are confirmed upon site inspection and CAD plan finalization.', 14, 230);
+        doc.text('* Live CCTV tracking credentials are provided upon ground breaking.', 14, 236);
+
+        doc.setDrawColor(180, 83, 9);
+        doc.line(140, 260, 195, 260);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(15, 23, 42);
+        doc.text('CEO Taha Mobeen Bhutta', 140, 266);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Bin Taha Associates Lahore', 140, 272);
+
+        doc.save(`Bin_Taha_Project_Estimate_${marla}Marla.pdf`);
+        showToast("PDF Quotation Generated & Downloaded!");
+      } catch (err) {
+        console.error(err);
+        showToast("Error generating PDF, Please try again!", true);
+      }
+    }
+
+    // Doorstep Material Ordering Trigger
+    function orderDoorstepMaterials() {
+      const text = encodeURIComponent("Hello Bin Taha Associates! I want to place a bulk doorstep construction material order (Steel / Cement / Bricks) for my Lahore site.");
+      window.open(`https://wa.me/923219404812?text=${text}`, '_blank');
+    }
+
+    // CRM 2-Way Booking & Submission (Completely Preserved)
     function submitServiceBooking() {
       const name = document.getElementById('bookingName').value.trim();
       const phone = document.getElementById('bookingPhone').value.trim();
@@ -572,12 +1010,12 @@
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
-      // Local Inbox save
+      // Local Inbox save (Preserved)
       const inboxList = JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
       inboxList.unshift(bookingMsg);
       localStorage.setItem('bintaha_inbox_messages', JSON.stringify(inboxList));
 
-      // Sync or Queue
+      // Sync or Queue (Preserved 2-Way CRM Integration)
       const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
       if(navigator.onLine && googleScriptUrl) {
         fetch(googleScriptUrl, {
@@ -612,7 +1050,7 @@
       history.scrollTop = history.scrollHeight;
 
       setTimeout(() => {
-        let reply = `🤖 Gemini: For construction in LDA Avenue 1 or Jubilee Town, gray structure standard rate is PKR 3,500/sq.ft with Grade-60 steel. CEO Taha Mobeen Bhutta has been alerted!`;
+        let reply = `🤖 Gemini: For construction in LDA Avenue 1 or Jubilee Town, gray structure standard rate is PKR 3,500/sq.ft with Grade-60 steel. Overseas CCTV tracking is active! CEO Taha Mobeen Bhutta has been alerted!`;
         history.innerHTML += `<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/30 text-amber-300 text-[11px]">${reply}</div>`;
         history.scrollTop = history.scrollHeight;
       }, 700);
@@ -643,6 +1081,7 @@
     window.onload = function() {
       checkConnectivity();
       drawCadBlueprint();
+      calculateIntegratedPackage();
     };
   </script>
 </body>
