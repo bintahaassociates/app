@@ -18,7 +18,7 @@
 
     @keyframes eagle3DRotate {
       0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
-      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
       100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
     }
     .moving-eagle-3d {
@@ -54,7 +54,7 @@
       
       <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
@@ -81,7 +81,7 @@
     <div class="p-5 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain" onerror="this.src='logo.png.png'">
           <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
