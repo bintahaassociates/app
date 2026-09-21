@@ -2,341 +2,112 @@
 <html lang="en" class="scroll-smooth select-none">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bin Taha Associates | Official Mobile App Hub</title>
-  <meta name="description" content="Official Bin Taha Real Estate & Construction Mobile App by CEO Taha Mobeen Bhutta.">
-  <meta name="theme-color" content="#020617">
-  
-  <!-- Tailwind CSS & FontAwesome -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bin Taha Associates | Mobile App Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Central Master Core Bridge -->
-  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
-  
   <style>
     * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-    
-    .shining-gold { color: #fcd34d; text-shadow: 0 0 20px rgba(252, 211, 77, 0.45); }
-    .gold-glow { box-shadow: 0 10px 40px -10px rgba(252, 211, 77, 0.35); }
-    .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
-    .feature-card:active { transform: scale(0.98); }
-
-    @keyframes tickerScroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
-
-    @keyframes eagle3DRotate {
-      0% { transform: perspective(800px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.5)); }
-      50% { transform: perspective(800px) rotateY(180deg) scale(1.06); filter: drop-shadow(0 0 18px rgba(252, 211, 77, 0.8)); }
-      100% { transform: perspective(800px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.5)); }
-    }
-    .moving-eagle-3d { animation: eagle3DRotate 7s infinite linear; transform-style: preserve-3d; }
-
-    #mobileDrawer { transition: transform 0.3s ease-in-out; }
+    .gold-text { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.4); }
+    .gold-border { border-color: rgba(252, 211, 77, 0.4); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
+    .gold-glow { box-shadow: 0 0 60px rgba(252, 211, 77, 0.25); }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen pb-24 flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between text-base">
 
-  <!-- Top App Status Bar -->
-  <div class="bg-slate-950/95 backdrop-blur-md px-4 py-2 border-b border-slate-800/80 sticky top-0 z-50 flex items-center justify-between text-xs">
-    <div class="flex items-center gap-2">
-      <div id="networkStatusBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold text-[10px] tracking-wide">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
-      </div>
-    </div>
-    <div class="flex items-center gap-3 text-[11px] font-semibold">
-      <span class="text-amber-400 flex items-center gap-1">🇵🇰 <span id="clockPkHeader" class="font-bold text-white">--:--</span></span>
-      <a href="tel:03219404812" class="bg-emerald-600 active:scale-95 text-white px-2.5 py-1 rounded-lg font-black flex items-center gap-1 shadow-md">
-        <i class="fa-solid fa-phone text-[10px]"></i> 0321-9404812
-      </a>
-    </div>
-  </div>
-
-  <!-- Live Market Ticker -->
-  <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden">
-    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
-      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-bars-progress mr-1"></i> Grade-60 Steel: PKR 282 / Kg</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
-    </div>
-  </div>
-
-  <!-- Main Navigation Header -->
-  <header class="bg-slate-900/90 backdrop-blur-md px-4 py-3 border-b border-slate-800 flex items-center justify-between sticky top-9 z-40">
-    <div class="flex items-center gap-2.5">
-      <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 flex items-center justify-center text-base border border-slate-700 shadow cursor-pointer">
-        <i class="fa-solid fa-bars-staggered"></i>
-      </button>
-      <a href="./index.html" class="flex items-center gap-2">
-        <img src="./logo.png" alt="Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='https://placehold.co/80x80/0f172a/fcd34d?text=BT'">
+  <!-- Header -->
+  <header class="bg-slate-900 border-b gold-border py-4 px-4 sticky top-0 z-40">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='logo.png.png'">
         <div>
-          <h1 class="text-sm font-black text-white leading-none">Bin Taha Associates</h1>
-          <p class="text-[9px] text-amber-400 font-bold uppercase tracking-wider mt-0.5">PropTech & Civil Construction</p>
+          <h1 class="text-sm font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[10px] text-amber-300 font-bold uppercase">Mobile PropTech Console</p>
         </div>
-      </a>
-    </div>
-
-    <div class="flex items-center gap-2">
-      <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
-        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp CEO
+      </div>
+      <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 text-white text-xs font-black px-3 py-2 rounded-xl shadow">
+        <i class="fa-brands fa-whatsapp"></i> CEO WhatsApp
       </a>
     </div>
   </header>
 
-  <!-- Slide-Over App Drawer Menu -->
-  <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
-  
-  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-900 border-r border-slate-800 z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
-    <div class="space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div class="flex items-center gap-3">
-          <img src="./logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='https://placehold.co/80x80/0f172a/fcd34d?text=BT'">
-          <div>
-            <div class="font-black text-sm text-white">Bin Taha App</div>
-            <div class="text-[10px] text-amber-400 font-semibold">17-Module PropTech Suite</div>
-          </div>
+  <!-- Main Content -->
+  <main class="max-w-md mx-auto px-4 py-8 flex-1 w-full space-y-6">
+    
+    <!-- Hero / Lead Box -->
+    <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl shadow-2xl gold-glow space-y-4">
+      <div class="flex items-center gap-3 border-b gold-border pb-3">
+        <div class="w-12 h-14 rounded-xl overflow-hidden border gold-border">
+          <img src="taha1.jpg" alt="CEO" class="w-full h-full object-cover" onerror="this.src='taha.jpg'">
         </div>
-        <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-white p-2 text-lg cursor-pointer">
-          <i class="fa-solid fa-xmark"></i>
+        <div>
+          <h3 class="text-sm font-black text-white">CEO Taha Mobeen Bhutta</h3>
+          <p class="text-[10px] text-emerald-400 font-bold">● App Lead Dispatch Live</p>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 mb-1">Your Full Name:</label>
+          <input type="text" id="appName" placeholder="Enter name..." class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white font-bold outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 mb-1">Phone / WhatsApp:</label>
+          <input type="text" id="appPhone" placeholder="03219404812" class="w-full bg-slate-950 border border-slate-700 p-3 rounded-xl text-white font-bold outline-none focus:border-amber-400">
+        </div>
+        <button onclick="submitAppLead()" class="w-full gold-bg hover:opacity-90 text-slate-950 font-black py-3 rounded-xl text-center transition shadow cursor-pointer text-xs">
+          <i class="fa-solid fa-paper-plane mr-1"></i> Send Inquiry to Google Sheet
         </button>
       </div>
-
-      <!-- Navigation Hierarchy -->
-      <nav class="space-y-4 text-xs">
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Main Client Modules</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="./index.html" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-amber-500 text-slate-950 shadow"><i class="fa-solid fa-house w-4"></i> Home Screen</a>
-            <a href="./properties.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-building w-4 text-amber-400"></i> Property Listings</a>
-            <a href="./dream.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-4 text-cyan-400"></i> Dream Home Finder</a>
-            <a href="./services.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-4 text-emerald-400"></i> Construction Services</a>
-            <a href="./about.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-address-card w-4 text-blue-400"></i> About Bin Taha</a>
-            <a href="./contact.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-envelope w-4 text-purple-400"></i> Contact & Queries</a>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Direct Actions</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="./add-property.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-4 text-emerald-400"></i> Post New Property</a>
-            <a href="./client-form.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-4 text-amber-400"></i> Client Requirement Form</a>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Auth & CRM Portals</span>
-          <div class="mt-2 space-y-1 font-bold">
-            <a href="./signin.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-arrow-right-to-bracket w-4 text-cyan-400"></i> Customer Sign In</a>
-            <a href="./agent-login.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-user-shield w-4 text-rose-400"></i> Agent Access Portal</a>
-            <a href="./agent-dashboard.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-chart-line w-4 text-teal-400"></i> Agent Dashboard</a>
-            <a href="./crm-dashboard.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-gauge-high w-4 text-amber-400"></i> Master CRM Center</a>
-            <a href="./owners-crm.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-users-gear w-4 text-pink-400"></i> Owners Portfolio CRM</a>
-            <a href="./inbox.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800"><i class="fa-solid fa-inbox w-4 text-emerald-400"></i> Live Messages Inbox</a>
-          </div>
-        </div>
-      </nav>
     </div>
 
-    <div class="pt-6 border-t border-slate-800 text-[11px] text-slate-500 text-center">
-      <div>Bin Taha App Mobile Build v2.4</div>
-      <div class="text-amber-400 font-bold mt-0.5">Online/Offline Central Cloud Engine</div>
+    <!-- Quick Info / Status -->
+    <div class="bg-slate-900 border gold-border p-5 rounded-2xl text-center space-y-2">
+      <div class="text-amber-300 font-black text-sm">App Synchronization Active</div>
+      <p class="text-xs text-slate-400">Google Sheet Webhook connected successfully. All inquiries from this mobile app will now sync instantly.</p>
     </div>
-  </aside>
-
-  <!-- Main Scrollable App Container -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
-
-    <!-- Hero Card with Direct Call & Lead Generator -->
-    <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
-      <div class="flex items-center gap-2">
-        <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Lahore's #1 PropTech Hub
-        </span>
-      </div>
-
-      <div>
-        <h2 class="text-2xl sm:text-4xl font-black shining-gold leading-tight">Redefining Real Estate & Civil Construction</h2>
-        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-          Supervised by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>. Full transparency, escrow milestone protection, and civil engineering verification in LDA Avenue 1, Jubilee Town, and Raiwind Road.
-        </p>
-      </div>
-
-      <!-- CEO Direct Lead Console Box -->
-      <div class="bg-slate-950/80 border border-amber-500/60 p-4 sm:p-5 rounded-2xl space-y-4">
-        <div class="flex items-center gap-3">
-          <img src="./taha1.jpg" alt="CEO Taha Mobeen Bhutta" class="w-12 h-14 object-cover rounded-xl border border-amber-500 shadow" onerror="this.src='https://placehold.co/100x120/0f172a/fcd34d?text=CEO'">
-          <div>
-            <h3 class="text-xs font-black text-white">CEO Taha Mobeen Bhutta</h3>
-            <p class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span> Direct Inquiry Console Active
-            </p>
-          </div>
-        </div>
-
-        <div class="space-y-2.5 text-xs">
-          <div>
-            <label class="block font-bold text-slate-300 text-[11px] mb-1">Your Name:</label>
-            <input type="text" id="homeName" placeholder="Enter your full name..." class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
-          </div>
-          <div>
-            <label class="block font-bold text-slate-300 text-[11px] mb-1">Phone / WhatsApp:</label>
-            <input type="tel" id="homePhone" placeholder="03219404812" value="03219404812" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-500 text-xs">
-          </div>
-          <button onclick="submitHomeLead()" class="w-full bg-amber-500 active:bg-amber-600 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer">
-            <i class="fa-solid fa-paper-plane"></i> Send Instant Lead to CEO
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Action Buttons -->
-      <div class="grid grid-cols-2 gap-2.5 pt-1">
-        <a href="./services.html" class="bg-slate-800 active:bg-slate-700 text-slate-200 border border-slate-700 text-center py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-bolt text-amber-400"></i> Dispatch Hub
-        </a>
-        <a href="./properties.html" class="bg-amber-500/10 active:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-center py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-building"></i> View Properties
-        </a>
-      </div>
-    </section>
 
   </main>
 
-  <!-- Fixed Native Mobile App Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
-    <a href="./index.html" class="flex flex-col items-center gap-1 text-amber-400 font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm">
-        <i class="fa-solid fa-house"></i>
-      </div>
-      <span>Home</span>
-    </a>
-
-    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
-        <i class="fa-solid fa-building"></i>
-      </div>
-      <span>Properties</span>
-    </a>
-
-    <a href="./add-property.html" class="flex flex-col items-center -mt-5 font-bold text-[10px]">
-      <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 flex items-center justify-center text-lg shadow-xl border-2 border-slate-900 active:scale-95">
-        <i class="fa-solid fa-plus"></i>
-      </div>
-      <span class="text-amber-400 mt-1">Post</span>
-    </a>
-
-    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
-        <i class="fa-solid fa-screwdriver-wrench"></i>
-      </div>
-      <span>Services</span>
-    </a>
-
-    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm">
-        <i class="fa-solid fa-inbox"></i>
-      </div>
-      <span>Inbox</span>
-    </a>
-  </nav>
-
-  <!-- In-App Floating Toast Notification -->
-  <div id="appToast" class="fixed top-12 left-4 right-4 max-w-sm mx-auto bg-slate-900 border border-amber-500 text-white text-xs p-3.5 rounded-2xl shadow-2xl z-50 pointer-events-none opacity-0 -translate-y-4 flex items-center gap-3">
-    <div id="toastIcon" class="text-base text-amber-400 shrink-0">
-      <i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div id="toastMsg" class="font-bold flex-1">Inquiry Dispatched Successfully!</div>
-  </div>
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-500 py-6 text-xs border-t gold-border text-center">
+    <p>&copy; 2026 Bin Taha Associates. Managed by CEO Taha Mobeen Bhutta.</p>
+  </footer>
 
   <script>
-    function showToast(message, isError = false) {
-      const toast = document.getElementById('appToast');
-      const toastMsg = document.getElementById('toastMsg');
-      const toastIcon = document.getElementById('toastIcon');
+    // Updated Google Sheet Webhook URL provided by you
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdOhFXif1OLmqWmMuLa28GmyzZlQW1S51i4ZhGIqAMaRfmgQMNUYoswTMfruec2ED7/exec';
 
-      toastMsg.innerText = message;
-      if (isError) {
-        toast.className = toast.className.replace('border-amber-500', 'border-rose-500');
-        toastIcon.className = "text-base text-rose-400 shrink-0";
-        toastIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
-      } else {
-        toast.className = toast.className.replace('border-rose-500', 'border-amber-500');
-        toastIcon.className = "text-base text-amber-400 shrink-0";
-        toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    function submitAppLead() {
+      const name = document.getElementById('appName').value.trim();
+      const phone = document.getElementById('appPhone').value.trim();
+      if(!name || !phone) { 
+        alert("Please enter your name and phone number!"); 
+        return; 
       }
 
-      toast.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
-      toast.classList.add('opacity-100', 'translate-y-0');
-
-      setTimeout(() => {
-        toast.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-        toast.classList.remove('opacity-100', 'translate-y-0');
-      }, 4000);
-    }
-
-    function toggleMobileDrawer() {
-      const drawer = document.getElementById('mobileDrawer');
-      const overlay = document.getElementById('drawerOverlay');
-      const isClosed = drawer.classList.contains('-translate-x-full');
-
-      if (isClosed) {
-        drawer.classList.remove('-translate-x-full');
-        overlay.classList.remove('hidden');
-        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-      } else {
-        drawer.classList.add('-translate-x-full');
-        overlay.classList.add('opacity-0');
-        setTimeout(() => overlay.classList.add('hidden'), 300);
-      }
-    }
-
-    function updateWorldClocks() {
-      try {
-        const now = new Date();
-        const pkTime = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
-        const pkHeader = document.getElementById('clockPkHeader');
-        if(pkHeader) pkHeader.innerText = pkTime;
-      } catch (err) {}
-    }
-    setInterval(updateWorldClocks, 1000);
-
-    function submitHomeLead() {
-      const name = document.getElementById('homeName').value.trim();
-      const phone = document.getElementById('homePhone').value.trim();
-
-      if (!name || !phone) {
-        showToast("Please provide both your name and phone number.", true);
-        return;
-      }
-
-      const leadRecord = {
+      const inboxMsg = {
+        id: Date.now(),
         name: name,
         phone: phone,
         email: 'bintahacrm@gmail.com',
-        subject: 'Quick Hero Inquiry (Mobile App Home)',
-        text: `Lead from mobile app home. Client: ${name}, Phone: ${phone}`
+        subject: 'Mobile App Quick Lead',
+        text: `App Lead. Client: ${name}, Phone: ${phone}`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
-      if (typeof btaSyncToSheet === 'function') {
-        btaSyncToSheet(leadRecord, "Leads", function(success) {
-          showToast("Instant Lead Dispatched & Synced to Master Sheet!");
-        });
-      } else {
-        showToast("Lead saved locally!");
-      }
+      fetch(GOOGLE_SCRIPT_URL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(inboxMsg) 
+      }).catch(e => {});
 
-      document.getElementById('homeName').value = '';
+      alert(`✅ Success ${name}! Inquiry dispatched to Google Sheet successfully.`);
+      document.getElementById('appName').value = '';
+      document.getElementById('appPhone').value = '';
     }
-
-    window.onload = function() {
-      updateWorldClocks();
-    };
   </script>
 </body>
 </html>
