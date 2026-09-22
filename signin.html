@@ -15,6 +15,26 @@
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
     .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
+
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-open { transform: translateX(0) !important; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
@@ -29,12 +49,25 @@
     <a href="tel:03219404812" class="text-amber-400 font-bold"><i class="fa-solid fa-phone text-xs"></i> 0321-9404812</a>
   </div>
 
+  <!-- Golden Market Ticker Tape -->
+  <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden z-30 sticky top-[29px]">
+    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
+    </div>
+  </section>
+
   <!-- Header -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[61px] z-30 backdrop-blur-md shadow-lg">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="./logo.png" alt="Logo" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
@@ -42,7 +75,7 @@
         </div>
       </a>
       <div class="flex items-center gap-2">
-        <a href="./signup.html" class="bg-amber-500 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs shadow">Sign Up</a>
+        <a href="./signup.html" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs shadow transition">Sign Up</a>
       </div>
     </div>
   </header>
@@ -76,10 +109,10 @@
 
   <!-- Persistent Mobile Bottom Navigation Bar -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-house text-sm"></i><span class="text-[10px]">Home</span></a>
-    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-building text-sm"></i><span class="text-[10px]">Properties</span></a>
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition"><i class="fa-solid fa-house text-sm"></i><span class="text-[10px]">Home</span></a>
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition"><i class="fa-solid fa-building text-sm"></i><span class="text-[10px]">Properties</span></a>
     <a href="./signin.html" class="flex flex-col items-center gap-1 text-amber-400 font-black"><i class="fa-solid fa-lock text-sm"></i><span class="text-[10px]">Sign In</span></a>
-    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-bolt text-sm"></i><span class="text-[10px]">Services</span></a>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition"><i class="fa-solid fa-bolt text-sm"></i><span class="text-[10px]">Services</span></a>
   </nav>
 
   <script>
