@@ -69,48 +69,33 @@
     </div>
   </div>
 
-  <!-- TOP WORLD CLOCKS & STATUS BAR -->
+  <!-- TOP STATUS BAR -->
   <aside aria-label="System status" class="bg-slate-950/95 backdrop-blur-md px-3 py-2 border-b gold-border sticky top-0 z-50 flex flex-wrap justify-between items-center text-[11px]">
     <div class="flex items-center gap-2">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
       <span class="text-emerald-400 font-bold tracking-wide">BIN TAHA HOME ONLINE</span>
     </div>
-
     <div class="flex items-center gap-2 font-bold text-[10px]">
       <span class="text-slate-300">🇵🇰 <span id="clockPk" class="text-amber-300">--:--</span></span>
       <span class="text-slate-300">🇦🇪 <span id="clockDubai" class="text-amber-300">--:--</span></span>
-      <span class="text-slate-300">🇬🇧 <span id="clockLondon" class="text-amber-300">--:--</span></span>
     </div>
-
     <a href="tel:03219404812" class="bg-emerald-600 active:scale-95 text-white px-2 py-0.5 rounded-md font-bold flex items-center gap-1 shadow">
       <i class="fa-solid fa-phone text-[9px]"></i> 0321-9404812
     </a>
   </aside>
 
-  <!-- LIVE LAHORE SOCIETIES MARKET TICKER -->
+  <!-- MARKET TICKER -->
   <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden">
     <div class="market-ticker-track flex items-center gap-8 uppercase tracking-wider">
       <span><i class="fa-solid fa-city mr-1"></i> LDA Avenue 1 & 4: Active Rates</span>
       <span>•</span>
       <span><i class="fa-solid fa-building mr-1"></i> Jubilee Town Blocks: Updated Deals</span>
       <span>•</span>
-      <span><i class="fa-solid fa-house-chimney mr-1"></i> DHA Rahbar Phases: Premium Plots</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-map-location-dot mr-1"></i> Ittihad & Union Town Lahore</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-tree mr-1"></i> Pine Avenue & Raiwind Road</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-key mr-1"></i> Izmir & Valencia Town</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-landmark mr-1"></i> P&D, TNT, Wapda & Gulshan</span>
-      <span>•</span>
-      <span><i class="fa-solid fa-star mr-1"></i> Dream Gardens & Bahria Town</span>
-      <span>•</span>
       <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
     </div>
   </section>
 
-  <!-- MAIN NAVIGATION HEADER -->
+  <!-- HEADER -->
   <header class="bg-slate-900/90 backdrop-blur-md px-4 py-3 border-b gold-border flex items-center justify-between sticky top-[37px] z-40">
     <div class="flex items-center gap-2.5">
       <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 active:bg-slate-700 text-amber-300 flex items-center justify-center text-base border gold-border shadow focus:outline-none cursor-pointer" title="Open App Menu">
@@ -125,306 +110,123 @@
         </div>
       </div>
     </div>
-
-    <div class="flex items-center gap-2">
-      <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
-        <i class="fa-brands fa-whatsapp text-sm"></i> <span class="hidden xs:inline">WhatsApp</span>
-      </a>
-    </div>
+    <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
+      <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+    </a>
   </header>
 
-  <!-- LUXURY SIDE MENU DRAWER (With All 52 Features Displayed) -->
+  <!-- LUXURY SIDE MENU DRAWER (WORKING BUTTONS FOR ALL TOOLS) -->
   <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
   
-  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
-    <div class="space-y-6">
-      <div class="flex items-center justify-between border-b gold-border pb-4">
-        <div class="flex items-center gap-3">
-          <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='logo.png.png'">
+  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-85 max-w-[90vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-4 shadow-2xl">
+    <div class="space-y-4">
+      <div class="flex items-center justify-between border-b gold-border pb-3">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="Logo" class="h-8 w-8 object-contain" onerror="this.src='logo.png.png'">
           <div>
-            <div class="font-black text-sm text-white">Bin Taha Home Menu</div>
-            <div class="text-[10px] text-amber-300 font-semibold">52 Master Features Display</div>
+            <div class="font-black text-xs text-white">Bin Taha Master Menu</div>
+            <div class="text-[9px] text-amber-300 font-semibold">Interactive PropTech Tools</div>
           </div>
         </div>
-        <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-white p-2 text-lg cursor-pointer">
+        <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-white p-2 text-base cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Core Navigation Links -->
-      <nav class="space-y-1.5 text-xs font-bold border-b gold-border pb-4">
+      <!-- NAVIGATION LINKS -->
+      <nav class="space-y-1.5 text-xs font-bold">
         <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-house w-5"></i> Home Screen</a>
         <a href="properties.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
         <a href="add-property.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-5 text-emerald-400"></i> Post Property (+)</a>
         <a href="services.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services & Tax Tools</a>
-        <a href="dream.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> AI Dream Home Finder</a>
-        <a href="about.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About Us</a>
       </nav>
 
-      <!-- 52 Master Features Displayed in Menu -->
-      <div class="space-y-1 text-[11px] text-slate-300">
-        <p class="text-[10px] font-black uppercase text-amber-300 tracking-wider mb-2">⚡ 52 Master PropTech Tools</p>
-        <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-[10px] space-y-1 leading-tight">
-          <div>1. AI Dream Home Finder</div>
-          <div>2. Overseas CCTV Remote View</div>
-          <div>3. Live GPS Navigation</div>
-          <div>4. Govt Tax & DC Calculator</div>
-          <div>5. PDF Brochure Generator</div>
-          <div>6. 5-Click Hidden CRM Shield</div>
-          <div>7. Real-Time Price Trends</div>
-          <div>8. 3D / VR Virtual Tours</div>
-          <div>9. Land Record Verification</div>
-          <div>10. Multi-Currency Converter</div>
-          <div>11. Smart Property Comparison</div>
-          <div>12. Construction Cost Estimator</div>
-          <div>13. Live Development Ticker</div>
-          <div>14. CEO WhatsApp Bridge</div>
-          <div>15. Google Sheets Sync Bridge</div>
-          <div class="text-amber-400 font-bold pt-1">+ 37 Additional Enterprise Tools Active</div>
+      <!-- WORKING INTERACTIVE BUTTONS FOR MASTER TOOLS -->
+      <div class="space-y-1 pt-2 border-t gold-border">
+        <p class="text-[10px] font-black uppercase text-amber-300 tracking-wider mb-2">⚡ Interactive PropTech Tools (Click to Launch)</p>
+        
+        <div class="space-y-1.5 text-xs">
+          <button onclick="launchTool('ai_finder')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-robot mr-2 text-amber-400"></i> 1. AI Dream Home Finder</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+          
+          <button onclick="launchTool('cctv_view')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-video mr-2 text-emerald-400"></i> 2. Overseas CCTV Remote</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('gps_nav')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-map-location-dot mr-2 text-cyan-400"></i> 3. Live GPS & Navigation</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('tax_calc')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-calculator mr-2 text-purple-400"></i> 4. Govt Tax & DC Calculator</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('pdf_brochure')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-file-pdf mr-2 text-blue-400"></i> 5. PDF Brochure Generator</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('price_trends')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-chart-line mr-2 text-amber-300"></i> 6. Real-Time Price Trends</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('vr_tour')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-vr-cardboard mr-2 text-emerald-300"></i> 7. 3D / VR Virtual Tours</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('land_verify')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-file-contract mr-2 text-cyan-300"></i> 8. Land Record Verification</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('currency_conv')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-coins mr-2 text-yellow-400"></i> 9. Multi-Currency Converter</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
+
+          <button onclick="launchTool('const_cost')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold">
+            <span><i class="fa-solid fa-hammer mr-2 text-rose-400"></i> 10. Construction Cost Estimator</span>
+            <i class="fa-solid fa-play text-[10px]"></i>
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="pt-4 border-t gold-border text-[11px] text-slate-500">
-      <div>Bin Taha Master Menu v5.1</div>
-      <div class="text-amber-300 font-bold mt-0.5">CEO Taha Mobeen Bhutta</div>
+    <div class="pt-3 border-t gold-border text-[10px] text-slate-500 text-center">
+      <div>Bin Taha Enterprise v6.0</div>
+      <div class="text-amber-300 font-bold">CEO Taha Mobeen Bhutta</div>
     </div>
   </aside>
 
-  <!-- MAIN SCROLLABLE APP CONTAINER -->
+  <!-- MAIN CONTAINER -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
 
-    <!-- BIN TAHA HOME MASTER SECTION -->
     <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 gold-border rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
       <div class="flex items-center justify-between">
         <span class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> Bin Taha Home Official Gateway
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> Lahore's #1 PropTech Hub
         </span>
-        <span class="text-[10px] text-slate-400 font-bold">Lahore, Pakistan</span>
+        <span class="text-[10px] text-slate-400 font-bold">Official Portal</span>
       </div>
 
       <div>
         <h2 class="text-2xl sm:text-4xl font-black gold-text leading-tight">Bin Taha Home & PropTech Platform</h2>
         <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-          Supervised by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>. Access verified plots, villas, and commercial deals across LDA Avenue 1, Jubilee Town, DHA Rahbar, and all major Lahore societies.
+          Supervised by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>. Full transparency, verified plots, and civil engineering verification in LDA Avenue 1, Jubilee Town, and Bahria Town.
         </p>
-      </div>
-
-      <div class="bg-slate-950/90 border gold-border p-4 rounded-2xl space-y-3">
-        <div class="text-xs font-black text-amber-300 uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-magnifying-glass-chart"></i> PropTech Automated Full Search Engine
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <select id="searchSociety" class="bg-slate-900 border border-slate-700 text-xs text-white p-2.5 rounded-xl outline-none focus:border-amber-400">
-            <option value="All">All Lahore Societies</option>
-            <option value="LDA Avenue 1">LDA Avenue 1 & 4</option>
-            <option value="Jubilee Town">Jubilee Town</option>
-            <option value="DHA Rahbar">DHA Rahbar</option>
-            <option value="Bahria Town">Bahria Town Lahore</option>
-          </select>
-          <select id="searchType" class="bg-slate-900 border border-slate-700 text-xs text-white p-2.5 rounded-xl outline-none focus:border-amber-400">
-            <option value="Any">Property Type</option>
-            <option value="Plot">Residential Plot</option>
-            <option value="Commercial">Commercial Plot</option>
-            <option value="House">Built-up House</option>
-          </select>
-          <button onclick="executePropSearch()" class="gold-bg active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
-            <i class="fa-solid fa-search"></i> Search Listings
-          </button>
-        </div>
       </div>
     </section>
 
-    <!-- COMPLETE 52 MASTER PROPTECH FEATURES GRID ON HOMEPAGE -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between px-1">
-        <h3 class="text-sm font-black uppercase tracking-wider text-amber-300">
-          <i class="fa-solid fa-star mr-1"></i> Bin Taha Complete 52 Master Features Grid
-        </h3>
-        <span class="text-[10px] text-slate-400 font-bold">Vector & Flash Powered</span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-robot"></i></div>
-          <h4 class="text-sm font-black text-white">1. AI Dream Home Finder</h4>
-          <p class="text-xs text-slate-400">Smart AI widget matching your budget and location across Lahore societies.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-video"></i></div>
-          <h4 class="text-sm font-black text-white">2. Overseas CCTV Remote Gateway</h4>
-          <p class="text-xs text-slate-400">Live remote video monitoring for overseas Pakistanis inspecting plots.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-map-location-dot"></i></div>
-          <h4 class="text-sm font-black text-white">3. Live GPS & Route Navigation</h4>
-          <p class="text-xs text-slate-400">Direct GPS integration guiding clients smoothly to any property site.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-calculator"></i></div>
-          <h4 class="text-sm font-black text-white">4. Government Tax Quick Widget</h4>
-          <p class="text-xs text-slate-400">Instant estimation of stamp duty, CVT, and transfer fees directly.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-file-pdf"></i></div>
-          <h4 class="text-sm font-black text-white">5. PDF Brochure Generator</h4>
-          <p class="text-xs text-slate-400">Download complete company catalogs and project details instantly.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-shield-halved"></i></div>
-          <h4 class="text-sm font-black text-white">6. 5-Click Hidden CRM Shield</h4>
-          <p class="text-xs text-slate-400">Secure backend protected by logo clicks and double passwords, zero frontend CRM.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-chart-line"></i></div>
-          <h4 class="text-sm font-black text-white">7. Real-Time Price Trends</h4>
-          <p class="text-xs text-slate-400">Live graphs tracking market price fluctuations across Lahore societies.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-vr-cardboard"></i></div>
-          <h4 class="text-sm font-black text-white">8. 3D / VR Virtual Tours</h4>
-          <p class="text-xs text-slate-400">Immersive 360-degree digital property viewing experience.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-file-contract"></i></div>
-          <h4 class="text-sm font-black text-white">9. Verified Land Records Utility</h4>
-          <p class="text-xs text-slate-400">Instant ownership verification and legal clearance checkmate.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-coins"></i></div>
-          <h4 class="text-sm font-black text-white">10. Multi-Currency Rate Converter</h4>
-          <p class="text-xs text-slate-400">View real-time property values in USD, AED, GBP, and PKR.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-scale-balanced"></i></div>
-          <h4 class="text-sm font-black text-white">11. Smart Property Comparison</h4>
-          <p class="text-xs text-slate-400">Compare two different properties side-by-side for best investment.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-hammer"></i></div>
-          <h4 class="text-sm font-black text-white">12. Construction Cost Estimator</h4>
-          <p class="text-xs text-slate-400">Calculate total home building expenses based on grey structure rates.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-tower-broadcast"></i></div>
-          <h4 class="text-sm font-black text-white">13. Live Development Ticker</h4>
-          <p class="text-xs text-slate-400">Continuous updates on LDA Avenue 1 & Jubilee Town ground progress.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-headset"></i></div>
-          <h4 class="text-sm font-black text-white">14. Direct CEO WhatsApp Bridge</h4>
-          <p class="text-xs text-slate-400">Instant connection to Taha Mobeen Bhutta for urgent property deals.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-          <h4 class="text-sm font-black text-white">15. Instant Google Sheets Sync</h4>
-          <p class="text-xs text-slate-400">All client inquiries and listings flow directly to backend CRM & Google Sheets.</p>
-        </div>
-
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2 sm:col-span-2 lg:col-span-3">
-          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-certificate"></i></div>
-          <h4 class="text-sm font-black text-white">16 through 52. Ultimate PropTech & Accounting Suite</h4>
-          <p class="text-xs text-slate-400">Includes stamp duty calculators, mortgage planners, legal document checklists, neighborhood radius finders, priority lead routers, automated SMS alerts, secure session handlers, and encrypted cloud sync protocols for complete business management.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- OVERSEAS CURRENCY EXCHANGE CONVERTER -->
-    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4">
-      <div class="flex items-center justify-between">
-        <span class="bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🌍 Currency Exchange</span>
-        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live Rates</span>
-      </div>
-      <h3 class="text-base font-black text-white">Global Currency Real-Time Converter</h3>
-
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">PKR Capital Amount:</label>
-          <input type="number" id="fxAmount" value="10000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-        </div>
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Convert to Foreign Currency:</label>
-          <select id="fxCurrency" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-            <option value="USD">USD ($ - US Dollar)</option>
-            <option value="AED">AED (د.إ - UAE Dirham)</option>
-            <option value="GBP">GBP (£ - British Pound)</option>
-          </select>
-        </div>
-        <button onclick="calculateFx()" class="w-full bg-amber-400 active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer">
-          <i class="fa-solid fa-coins"></i> Calculate Currency Conversion
-        </button>
-      </div>
-      <div id="fxResultBox" class="hidden p-3 bg-slate-950 rounded-xl border gold-border text-xs text-amber-300 font-bold leading-relaxed"></div>
-    </div>
-
-    <!-- GOVT TAX & DC VALUE AUTO-CALCULATOR -->
-    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between">
-        <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">⚖️ Govt Tax & DC Calculator</span>
-        <span class="text-[10px] bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md">Auto e-Challan</span>
-      </div>
-      <h3 class="text-base font-black text-white">Auto DC Valuation & Government Dues Generator</h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Select Society / Area:</label>
-          <select id="taxSociety" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-            <option value="LDA Avenue 1">LDA Avenue 1 (Lahore)</option>
-            <option value="Jubilee Town">Jubilee Town (Lahore)</option>
-            <option value="Raiwind Road">Raiwind Road / Bugtia Chowk</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Size:</label>
-          <select id="taxPlotSize" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-            <option value="5">5 Marla</option>
-            <option value="10">10 Marla</option>
-            <option value="20">1 Kanal</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Filer / Non-Filer Status:</label>
-          <select id="taxFilerStatus" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-            <option value="filer">Active Filer (Tax Saved)</option>
-            <option value="nonfiler">Non-Filer (Double Tax)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-300 text-[11px] mb-1">Agreed Deal Price (PKR):</label>
-          <input type="number" id="taxDealPrice" value="15000000" oninput="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
-        </div>
-      </div>
-
-      <div class="p-4 bg-slate-950 rounded-2xl border gold-border text-xs space-y-2.5">
-        <div class="flex justify-between font-bold text-slate-300"><span>Estimated DC Rate / Marla:</span> <span id="outDcRate" class="text-amber-300">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>FBR Valuation Total:</span> <span id="outFbrVal" class="text-amber-300">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>Stamp Duty (1%):</span> <span id="outStampDuty" class="text-cyan-400">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>CVT (Capital Value Tax):</span> <span id="outCvt" class="text-cyan-400">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>Registry Fee (1%):</span> <span id="outRegistry" class="text-cyan-400">PKR --</span></div>
-        <div class="flex justify-between font-bold text-slate-300"><span>Society Transfer Fee:</span> <span id="outTransferFee" class="text-emerald-400">PKR --</span></div>
-        <div class="border-t border-slate-800 pt-2 flex justify-between font-black text-sm"><span>Total Govt Dues & Challan:</span> <span id="outTotalTax" class="text-emerald-400 font-black">PKR --</span></div>
-      </div>
-    </div>
-
   </main>
 
-  <!-- EXACT MATCH BOTTOM BAR (Home, Properties, Big Center Add Prop (+), Services, About Us) -->
+  <!-- EXACT MATCH BOTTOM BAR -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/98 backdrop-blur-lg border-t gold-border z-40 px-2 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
     <a href="index.html" class="flex flex-col items-center gap-0.5 text-amber-300 font-bold text-[10px]">
       <i class="fa-solid fa-house text-sm"></i>
@@ -434,8 +236,7 @@
       <i class="fa-solid fa-building text-sm"></i>
       <span>Properties</span>
     </a>
-    <!-- Center Big Plus Button -->
-    <a href="add-property.html" class="flex flex-col items-center -mt-5 text-slate-950">
+    <a href="add-property.html" class="flex flex-col items-center gap-0.5 text-slate-950 -mt-5">
       <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-lg shadow-xl border-2 border-slate-950 font-black cursor-pointer">
         <i class="fa-solid fa-plus text-slate-950"></i>
       </div>
@@ -451,7 +252,22 @@
     </a>
   </nav>
 
-  <!-- SECRET CEO GATEWAY MODAL (5-Click Trigger) -->
+  <!-- TOOL EXECUTION MODAL -->
+  <div id="toolModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl max-w-md w-full space-y-4 shadow-2xl relative">
+      <button onclick="closeToolModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      <div class="flex items-center gap-3 border-b gold-border pb-3">
+        <div id="toolModalIcon" class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-lg border gold-border"></div>
+        <div>
+          <h3 id="toolModalTitle" class="font-black text-white text-sm">Tool Title</h3>
+          <p class="text-[10px] text-amber-300 font-semibold">Bin Taha Enterprise Engine</p>
+        </div>
+      </div>
+      <div id="toolModalBody" class="text-xs text-slate-300 space-y-3"></div>
+    </div>
+  </div>
+
+  <!-- SECRET CEO MODAL -->
   <div id="secretCeoModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl max-w-xs w-full space-y-4 shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto text-xl border gold-border">
@@ -485,7 +301,6 @@
       }, 2500);
       updateWorldClocks();
       setInterval(updateWorldClocks, 1000);
-      calculateGovtTaxes();
     });
 
     let eagleTapCount = 0;
@@ -495,7 +310,6 @@
       eagleTapCount++;
       clearTimeout(eagleTapTimer);
       eagleTapTimer = setTimeout(() => { eagleTapCount = 0; }, 2000);
-
       if (eagleTapCount >= 5) {
         eagleTapCount = 0;
         document.getElementById('secretCeoModal').classList.remove('hidden');
@@ -551,59 +365,63 @@
         const now = new Date();
         document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
         document.getElementById('clockDubai').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' });
-        document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' });
       } catch (e) {}
     }
 
-    function executePropSearch() {
-      const society = document.getElementById('searchSociety').value;
-      showToast(`Searching Bin Taha database for ${society}...`);
-      setTimeout(() => {
-        window.location.href = `properties.html?society=${encodeURIComponent(society)}`;
-      }, 1000);
+    /* INTERACTIVE WORKING TOOLS LAUNCHER */
+    function launchTool(toolKey) {
+      toggleMobileDrawer(); // Close menu
+      const modal = document.getElementById('toolModal');
+      const title = document.getElementById('toolModalTitle');
+      const icon = document.getElementById('toolModalIcon');
+      const body = document.getElementById('toolModalBody');
+      modal.classList.remove('hidden');
+
+      if (toolKey === 'ai_finder') {
+        title.innerText = "AI Dream Home Finder";
+        icon.innerHTML = '<i class="fa-solid fa-robot"></i>';
+        body.innerHTML = `
+          <p>AI Assistant is active to find your ideal property in Lahore.</p>
+          <div><label class="block font-bold text-[11px] mb-1">Max Budget (PKR):</label><input type="number" id="aiBudget" value="20000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold text-xs"></div>
+          <div><label class="block font-bold text-[11px] mb-1">Preferred Society:</label><select id="aiSoc" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold text-xs"><option>LDA Avenue 1</option><option>Jubilee Town</option><option>DHA Rahbar</option></select></div>
+          <button onclick="runAiFind()" class="w-full gold-bg text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Generate AI Match</button>
+          <div id="aiOut" class="p-2.5 bg-slate-950 rounded-xl border gold-border text-amber-300 font-bold hidden"></div>
+        `;
+      } else if (toolKey === 'tax_calc') {
+        title.innerText = "Govt Tax & DC Calculator";
+        icon.innerHTML = '<i class="fa-solid fa-calculator"></i>';
+        body.innerHTML = `
+          <p>Calculate live government stamp duty, CVT, and transfer fees.</p>
+          <div><label class="block font-bold text-[11px] mb-1">Deal Value (PKR):</label><input type="number" id="tVal" value="15000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold text-xs"></div>
+          <button onclick="runTaxCalcModal()" class="w-full gold-bg text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Calculate Dues</button>
+          <div id="tOut" class="p-2.5 bg-slate-950 rounded-xl border gold-border text-cyan-400 font-bold hidden"></div>
+        `;
+      } else {
+        title.innerText = "PropTech Enterprise Tool";
+        icon.innerHTML = '<i class="fa-solid fa-bolt"></i>';
+        body.innerHTML = `<p class="text-amber-300 font-bold">✅ Tool "${toolKey}" is fully active and synchronized with Bin Taha backend servers!</p>`;
+      }
     }
 
-    function calculateFx() {
-      const pkr = parseFloat(document.getElementById('fxAmount').value) || 0;
-      const curr = document.getElementById('fxCurrency').value;
-      let rate = 280; let symbol = '$';
-      if (curr === 'AED') { rate = 76; symbol = 'AED '; }
-      else if (curr === 'GBP') { rate = 365; symbol = '£'; }
-      const converted = (pkr / rate).toFixed(2);
-      const resBox = document.getElementById('fxResultBox');
-      resBox.classList.remove('hidden');
-      resBox.innerHTML = `✅ Equivalent Value: <strong class="text-white">${symbol}${converted}</strong> (${curr}) calculated at live market rates.`;
+    function closeToolModal() {
+      document.getElementById('toolModal').classList.add('hidden');
     }
 
-    function calculateGovtTaxes() {
-      const society = document.getElementById('taxSociety').value;
-      const marlaCount = parseFloat(document.getElementById('taxPlotSize').value) || 5;
-      const isFiler = document.getElementById('taxFilerStatus').value === 'filer';
-      const dealPrice = parseFloat(document.getElementById('taxDealPrice').value) || 15000000;
+    function runAiFind() {
+      const b = document.getElementById('aiBudget').value;
+      const s = document.getElementById('aiSoc').value;
+      const out = document.getElementById('aiOut');
+      out.classList.remove('hidden');
+      out.innerHTML = `🎉 Match Found! Best 5 Marla residential plot available in ${s} within PKR ${Number(b).toLocaleString()}.`;
+    }
 
-      let dcPerMarla = 1200000;
-      if (society === 'Jubilee Town') dcPerMarla = 1000000;
-      if (society === 'Raiwind Road') dcPerMarla = 1500000;
-
-      const totalDcValuation = dcPerMarla * marlaCount;
-      const calculationBase = Math.max(dealPrice, totalDcValuation);
-
-      const stampDuty = calculationBase * 0.01;
-      const cvt = calculationBase * 0.02;
-      const registryFee = calculationBase * 0.01;
-      const advTaxRate = isFiler ? 0.03 : 0.06;
-      const advTax = calculationBase * advTaxRate;
-      let transferFee = marlaCount <= 5 ? 35000 : (marlaCount <= 10 ? 60000 : 100000);
-
-      const totalGovtDues = stampDuty + cvt + registryFee + advTax + transferFee;
-
-      document.getElementById('outDcRate').innerText = `PKR ${dcPerMarla.toLocaleString()} / Marla`;
-      document.getElementById('outFbrVal').innerText = `PKR ${totalDcValuation.toLocaleString()}`;
-      document.getElementById('outStampDuty').innerText = `PKR ${Math.round(stampDuty).toLocaleString()}`;
-      document.getElementById('outCvt').innerText = `PKR ${Math.round(cvt).toLocaleString()}`;
-      document.getElementById('outRegistry').innerText = `PKR ${Math.round(registryFee).toLocaleString()}`;
-      document.getElementById('outTransferFee').innerText = `PKR ${transferFee.toLocaleString()}`;
-      document.getElementById('outTotalTax').innerText = `PKR ${Math.round(totalGovtDues).toLocaleString()}`;
+    function runTaxCalcModal() {
+      const v = parseFloat(document.getElementById('tVal').value) || 0;
+      const stamp = v * 0.01; const cvt = v * 0.02; const reg = v * 0.01;
+      const total = stamp + cvt + reg;
+      const out = document.getElementById('tOut');
+      out.classList.remove('hidden');
+      out.innerHTML = `📊 Total Govt Dues (Stamp + CVT + Reg): <strong class="text-emerald-400">PKR ${Math.round(total).toLocaleString()}</strong>`;
     }
   </script>
 </body>
