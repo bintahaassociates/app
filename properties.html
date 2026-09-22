@@ -8,14 +8,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Central Master Core Bridge -->
+  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
+  
   <style>
     .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
     .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
     
     @keyframes eagle3DRotate {
       0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
-      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.8)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
       100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
     }
     .moving-eagle-3d {
@@ -27,10 +31,8 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-    .ticker-wrap { overflow: hidden; white-space: nowrap; }
-    .ticker-move { display: inline-block; animation: tickerScroll 25s linear infinite; }
+    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
     
-    /* Smooth mobile drawer transition */
     #mobileDrawer {
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -41,7 +43,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
 
-  <!-- Mobile Top Bar: Connectivity Badge + Mini Clock -->
+  <!-- Mobile Top Connectivity Bar -->
   <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
     <div class="flex items-center gap-2">
       <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
@@ -57,27 +59,27 @@
     </div>
   </div>
 
-  <!-- Live Market Ticker -->
-  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
-    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">Live</span>
-    <div class="ticker-wrap w-full text-[11px]">
-      <div class="ticker-move">
-        <span>LDA Avenue 1: Prime Plots Available</span> &bull; 
-        <span>Jubilee Town: Turnkey Luxury Villas</span> &bull; 
-        <span>Bugtia Chowk Raiwind: Commercial High ROI</span> &bull; 
-        <span>Valencia & Izmir: Ready Registry</span>
-      </div>
+  <!-- Golden Market Ticker Tape -->
+  <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden z-30 sticky top-[29px]">
+    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
     </div>
-  </div>
+  </section>
 
   <!-- In-App Header & Navigation Trigger -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[61px] z-30 backdrop-blur-md shadow-lg">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
       <!-- Brand & Logo -->
-      <a href="index.html" class="flex items-center gap-2.5">
+      <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
@@ -99,13 +101,13 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (All 17 App Pages) -->
+  <!-- Side Navigation Drawer (Clean App Internal Links) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="logo.png" alt="Logo" class="w-7 h-7 object-contain">
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain" onerror="this.src='logo.png.png'">
           <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base">
@@ -113,37 +115,21 @@
         </button>
       </div>
 
-      <!-- Public Section -->
-      <div class="space-y-1">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
-        <a href="index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
-        <a href="properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-building w-4"></i> Properties Hub</a>
-        <a href="dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Dream Home Finder</a>
-        <a href="services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
-        <a href="about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
-        <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
-      </div>
-
-      <!-- Actions Section -->
-      <div class="space-y-1 pt-2 border-t border-slate-800">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Submit & Leads</p>
-        <a href="add-property.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-cloud-arrow-up w-4 text-amber-400"></i> Add Property (Wizard)</a>
-        <a href="client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
-      </div>
-
-      <!-- Auth & CRM Portal -->
-      <div class="space-y-1 pt-2 border-t border-slate-800">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
-        <a href="crm-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-gauge-high w-4 text-rose-400"></i> Master CRM</a>
-        <a href="agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
-        <a href="owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
-        <a href="inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-inbox w-4 text-amber-400"></i> Central Inbox</a>
-        <a href="signin.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-lock w-4 text-yellow-400"></i> Portal Login</a>
+      <div class="space-y-1 text-xs font-bold">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Executive Navigation</p>
+        <a href="./index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-house w-5 text-amber-400"></i> Home Screen</a>
+        <a href="./properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-building w-5"></i> Property Listings</a>
+        <a href="./services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services Hub</a>
+        <a href="./dream.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
+        <a href="./add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-cloud-arrow-up w-5 text-amber-300"></i> Post Property</a>
+        <a href="./client-form.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-5 text-indigo-400"></i> Client Inquiry</a>
+        <a href="./inbox.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-inbox w-5 text-purple-400"></i> CRM Inbox</a>
+        <a href="./about.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO</a>
       </div>
     </div>
 
     <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
-      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Associates Mobile App</p>
       <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
     </div>
   </aside>
@@ -169,8 +155,8 @@
         <i class="fa-solid fa-search absolute left-3 top-3.5 text-slate-500 text-xs"></i>
       </div>
 
-      <!-- Category Filter Chips (Horizontal Scroll on Mobile) -->
-      <div class="flex gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+      <!-- Category Filter Chips -->
+      <div class="flex gap-2 overflow-x-auto pb-1 text-xs no-scrollbar font-bold">
         <button onclick="filterProperties('All')" id="btnFilterAll" class="filter-btn bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl shadow whitespace-nowrap cursor-pointer">All Types</button>
         <button onclick="filterProperties('Plot')" id="btnFilterPlot" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Plots</button>
         <button onclick="filterProperties('House')" id="btnFilterHouse" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-1.5 rounded-xl whitespace-nowrap cursor-pointer">Houses / Villas</button>
@@ -178,13 +164,12 @@
       </div>
     </div>
 
-    <!-- Quick Utilities Bar (Currency & Broadcast) -->
+    <!-- Quick Utilities Bar -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <!-- Currency Converter Quick Bar -->
-      <div class="bg-slate-900/80 border border-slate-800 p-3 rounded-2xl flex items-center justify-between text-xs">
+      <div class="bg-slate-900/80 border border-slate-800 p-3 rounded-2xl flex items-center justify-between text-xs font-bold">
         <div class="flex items-center gap-2">
           <i class="fa-solid fa-coins text-amber-400"></i>
-          <span class="font-bold text-slate-300">FX Rate:</span>
+          <span class="text-slate-300">FX Rate:</span>
           <select id="currSelect" onchange="convertCurrency()" class="bg-slate-950 text-white rounded px-2 py-1 border border-slate-700 outline-none text-[11px]">
             <option value="USD">USD ($)</option>
             <option value="AED">AED (Dh)</option>
@@ -196,7 +181,6 @@
         <span id="currResult" class="text-emerald-400 font-black text-xs text-right">= PKR 2,800,000</span>
       </div>
 
-      <!-- Broadcast to WhatsApp -->
       <button onclick="broadcastAllProperties()" class="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-black px-4 py-3 rounded-2xl text-xs flex items-center justify-center gap-2 shadow transition cursor-pointer">
         <i class="fa-brands fa-whatsapp text-sm"></i> Share Hot Properties on WhatsApp
       </button>
@@ -207,8 +191,8 @@
       <!-- Injected dynamically -->
     </div>
 
-    <!-- ROI Calculator Collapsible Box -->
-    <div id="roiCalculator" class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+    <!-- ROI Calculator Box -->
+    <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
           <i class="fa-solid fa-calculator"></i>
@@ -222,11 +206,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
         <div>
           <label class="block text-slate-300 mb-1">Capital (PKR):</label>
-          <input type="number" id="roiAmount" value="20000000" onkeyup="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500">
+          <input type="number" id="roiAmount" value="20000000" onkeyup="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500 font-normal">
         </div>
         <div>
           <label class="block text-slate-300 mb-1">Growth Forecast:</label>
-          <select id="roiRate" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+          <select id="roiRate" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
             <option value="15">15% (General Market)</option>
             <option value="25" selected>25% (LDA & Jubilee Growth)</option>
             <option value="35">35% (Raiwind Commercial)</option>
@@ -234,7 +218,7 @@
         </div>
         <div>
           <label class="block text-slate-300 mb-1">Holding Period:</label>
-          <select id="roiYears" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none">
+          <select id="roiYears" onchange="calculateRoi()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none font-normal">
             <option value="1">1 Year</option>
             <option value="2" selected>2 Years</option>
             <option value="3">3 Years</option>
@@ -271,7 +255,7 @@
 
   </main>
 
-  <!-- In-App Modal: Add Property (AI Wizard + Offline Queue) -->
+  <!-- In-App Modal: Add Property -->
   <div id="addPropModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
     <div class="glass-card p-5 sm:p-7 rounded-3xl max-w-lg w-full space-y-4 shadow-2xl gold-glow my-auto">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -321,7 +305,6 @@
           </div>
         </div>
 
-        <!-- AI Price Insight Box -->
         <div class="bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl text-[11px]">
           <span class="text-amber-400 font-black"><i class="fa-solid fa-robot mr-1"></i> AI Valuation Insight:</span>
           <div id="aiValuationText" class="text-slate-200 mt-0.5">Select society and category for estimate.</div>
@@ -344,49 +327,45 @@
     </div>
   </div>
 
-  <!-- Persistent Mobile Bottom Navigation Bar (Thumb Friendly) -->
+  <!-- Persistent Mobile Bottom Navigation Bar -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
       <span class="text-[10px] font-bold">Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
     <button onclick="toggleAddModal()" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
       <i class="fa-solid fa-plus text-base"></i>
     </button>
-    <a href="dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+    <a href="./dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
       <i class="fa-solid fa-star text-sm"></i>
       <span class="text-[10px] font-bold">Dream</span>
     </a>
-    <a href="crm-dashboard.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
-      <i class="fa-solid fa-gauge-high text-sm"></i>
-      <span class="text-[10px] font-bold">CRM</span>
+    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
+      <i class="fa-solid fa-inbox text-sm"></i>
+      <span class="text-[10px] font-bold">Inbox</span>
     </a>
   </nav>
 
-  <!-- In-App Toast Notification -->
+  <!-- In-App Toast -->
   <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-amber-500 text-amber-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
     <span id="appToastMsg">Notification</span>
   </div>
 
   <script>
-    // In-App Toast Messenger
     function showToast(msg, isError = false) {
       const toast = document.getElementById('appToast');
       const toastMsg = document.getElementById('appToastMsg');
       toastMsg.innerText = msg;
       toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-amber-500 text-amber-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
       toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3500);
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
     }
 
-    // Drawer Toggle
     function toggleDrawer() {
       const drawer = document.getElementById('mobileDrawer');
       const overlay = document.getElementById('drawerOverlay');
@@ -404,21 +383,6 @@
       modal.classList.toggle('hidden');
       runAiValuation();
     }
-
-    // Online/Offline Detection & Auto Sync
-    function checkConnectivity() {
-      const badge = document.getElementById('networkStatusBadge');
-      if(navigator.onLine) {
-        badge.className = 'flex items-center gap-1 text-emerald-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online';
-        flushOfflineQueue();
-      } else {
-        badge.className = 'flex items-center gap-1 text-rose-400 font-bold';
-        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Offline Mode';
-      }
-    }
-    window.addEventListener('online', checkConnectivity);
-    window.addEventListener('offline', checkConnectivity);
 
     function updateClock() {
       const now = new Date();
@@ -460,7 +424,6 @@
       document.getElementById('aiValuationText').innerText = `Est. Value: PKR ${base.toLocaleString()} (AI Verified by Bin Taha)`;
     }
 
-    // Storage Engine (Local + Fallback Defaults)
     function getStoredProperties() {
       let defaults = [
         { id: 1, title: "5 Marla Commercial Plot", type: "Commercial", society: "Bugtia Chowk", price: 32000000, phone: "03219404812", views: 420, desc: "High rental yield commercial plot on main Raiwind Road hub.", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
@@ -504,7 +467,7 @@
         text += `${index + 1}. *${p.title}* (${p.society})\n💰 Demand: PKR ${Number(p.price).toLocaleString()}\n📞 Contact: 03219404812\n\n`;
       });
       text += "Managed by CEO Taha Mobeen Bhutta • Bin Taha Associates Lahore.";
-      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/?text=` + encodeURIComponent(text), '_blank');
     }
 
     function renderDreamWishlist() {
@@ -605,7 +568,6 @@
       }).join('');
     }
 
-    // Submit Property with Offline Queue & Google Sheet Webhook
     function submitNewProperty() {
       const title = document.getElementById('newTitle').value.trim();
       const type = document.getElementById('newType').value;
@@ -636,57 +598,22 @@
       props.unshift(newProp);
       localStorage.setItem('bintaha_properties_hub', JSON.stringify(props));
 
-      // Sync or Queue for Offline
-      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwtDCdqZjTSWdLfhJZUVM6N8stSXvKTjocrSCrzF_4V6CnaCXy8Gh00W7odchH6xu9f/exec';
-      const payload = { action: 'sync_new_property', property: newProp, time: new Date().toISOString() };
+      const payload = { id: newProp.id, name: `Property: ${title}`, phone: phone, email: 'bintahacrm@gmail.com', subject: `New Property Listing (${society})`, text: `Demand: PKR ${price.toLocaleString()} | Type: ${type} | Desc: ${desc}` };
 
-      if(navigator.onLine && googleScriptUrl) {
-        fetch(googleScriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(() => {
-          showToast("Property Published & Synced to Google Sheet!");
-        }).catch(() => {
-          queueForSync(payload);
-          showToast("Property Saved locally (Offline Sync queued)");
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(payload, "Orders", function(success) {
+          showToast("Property Published & Synced to Google Sheets!");
         });
       } else {
-        queueForSync(payload);
-        showToast("Offline: Saved locally! Will sync when connected.");
+        showToast("Saved locally!");
       }
 
-      // Reset & Refresh
       document.getElementById('newTitle').value = '';
       document.getElementById('newPrice').value = '';
       document.getElementById('newImg').value = '';
       document.getElementById('newDesc').value = '';
       toggleAddModal();
       renderProperties(props);
-    }
-
-    function queueForSync(payload) {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      queue.push({ url: 'https://script.google.com/macros/s/AKfycbwtDCdqZjTSWdLfhJZUVM6N8stSXvKTjocrSCrzF_4V6CnaCXy8Gh00W7odchH6xu9f/exec', data: payload });
-      localStorage.setItem('bintaha_offline_queue', JSON.stringify(queue));
-    }
-
-    function flushOfflineQueue() {
-      let queue = JSON.parse(localStorage.getItem('bintaha_offline_queue') || '[]');
-      if(queue.length === 0) return;
-
-      queue.forEach(item => {
-        fetch(item.url, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item.data)
-        }).catch(err => console.log('Sync retry failed:', err));
-      });
-
-      localStorage.removeItem('bintaha_offline_queue');
-      showToast("All offline items successfully synced to Google Sheet!");
     }
 
     function filterProperties(type) {
@@ -720,7 +647,6 @@
     }
 
     window.onload = function() {
-      checkConnectivity();
       updateClock();
       renderProperties(getStoredProperties());
       renderDreamWishlist();
