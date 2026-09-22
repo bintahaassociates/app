@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bin Taha App Home | Enterprise Hub</title>
+  <title>Bin Taha Associates | Official Mobile Enterprise App</title>
+  <meta name="theme-color" content="#030712">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,91 +13,199 @@
   <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
   
   <style>
-    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
-    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
-    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    .gold-text { color: #fcd34d; text-shadow: 0 0 20px rgba(252, 211, 77, 0.4); }
+    .gold-border { border-color: rgba(252, 211, 77, 0.4); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
+    .gold-glow { box-shadow: 0 10px 30px -10px rgba(252, 211, 77, 0.3); }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
 
     @keyframes eagle3DRotate {
-      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
-      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
-      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      0% { transform: perspective(800px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.5)); }
+      50% { transform: perspective(800px) rotateY(180deg) scale(1.06); filter: drop-shadow(0 0 18px rgba(252, 211, 77, 0.8)); }
+      100% { transform: perspective(800px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.5)); }
     }
-    .moving-eagle-3d { animation: eagle3DRotate 6s infinite linear; transform-style: preserve-3d; }
+    .moving-eagle-3d { animation: eagle3DRotate 7s infinite linear; transform-style: preserve-3d; cursor: pointer; }
+
+    #mobileDrawer { transition: transform 0.3s ease-in-out; }
+    .drawer-open { transform: translateX(0) !important; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen pb-24 flex flex-col justify-between">
 
-  <!-- Mobile Top Connectivity Bar -->
-  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+  <!-- TOP STATUS BAR -->
+  <div class="bg-slate-950/95 px-3 py-1.5 border-b gold-border sticky top-0 z-50 flex justify-between items-center text-[11px]">
     <div class="flex items-center gap-2">
-      <span class="flex items-center gap-1 text-emerald-400 font-bold"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online</span>
-      <span class="text-slate-600">|</span>
-      <span class="text-slate-400">Lahore: <strong class="text-white">Active</strong></span>
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-emerald-400 font-bold">ONLINE Hub</span>
     </div>
-    <a href="tel:03219404812" class="text-amber-400 font-bold"><i class="fa-solid fa-phone text-xs"></i> 0321-9404812</a>
+    <div class="flex items-center gap-2 font-bold text-[10px]">
+      <span class="text-slate-300">🇵🇰 <span id="clockPk" class="text-amber-300">--:--</span></span>
+    </div>
+    <a href="tel:03219404812" class="bg-emerald-600 text-white px-2 py-0.5 rounded font-bold text-[10px]">
+      <i class="fa-solid fa-phone"></i> 0321-9404812
+    </a>
   </div>
 
-  <!-- Header -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-lg">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
-      <a href="./index.html" class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="./logo.png" alt="Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
-        </div>
+  <!-- GOLDEN MARKET TICKER TAPE -->
+  <section class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow flex items-center overflow-hidden z-40 sticky top-[29px]">
+    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
+    </div>
+  </section>
+
+  <!-- MAIN HEADER -->
+  <header class="bg-slate-900/95 px-4 py-3 border-b gold-border flex items-center justify-between sticky top-[57px] z-30 backdrop-blur-md">
+    <div class="flex items-center gap-2.5">
+      <button onclick="toggleDrawer()" class="w-10 h-10 rounded-xl bg-slate-800 text-amber-300 flex items-center justify-center border gold-border shadow cursor-pointer">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+      
+      <a href="./index.html" class="flex items-center gap-2">
+        <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
-          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
-          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">App Executive Home</p>
+          <h1 class="text-sm font-black text-white leading-none">Bin Taha Associates</h1>
+          <p class="text-[9px] text-amber-300 font-bold uppercase tracking-wider mt-0.5">Enterprise Mobile Hub</p>
         </div>
       </a>
-      <div class="flex items-center gap-2">
-        <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 text-white font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow">
-          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
-        </a>
-      </div>
     </div>
+
+    <a href="https://wa.me/923219404812" target="_blank" class="bg-emerald-600 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow">
+      <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+    </a>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
-    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-2xl gold-glow border-2 border-amber-500/50 space-y-4 text-center">
-      <span class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">Bin Taha Enterprise Hub</span>
-      <h2 class="text-2xl sm:text-3xl font-black shining-gold">Welcome to Mobile App Home</h2>
-      <p class="text-xs text-slate-300">Supervised by CEO Taha Mobeen Bhutta. Choose your module below to proceed.</p>
+  <!-- SIDE NAVIGATION DRAWER -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b gold-border pb-4">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="Logo" class="h-10 w-10 object-contain" onerror="this.src='logo.png.png'">
+          <div>
+            <div class="font-black text-sm text-white">Bin Taha Menu</div>
+            <div class="text-[10px] text-amber-300 font-semibold">Executive Navigation</div>
+          </div>
+        </div>
+        <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white p-2 text-lg cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 text-xs font-bold">
-        <a href="./properties.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-amber-400 transition text-center space-y-2">
-          <i class="fa-solid fa-building text-amber-400 text-lg block"></i>
+      <nav class="space-y-2 text-xs font-bold">
+        <a href="./index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-house w-5"></i> Home Screen</a>
+        <a href="./properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
+        <a href="./services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services Hub</a>
+        <a href="./add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-cloud-arrow-up w-5 text-amber-400"></i> Post Property</a>
+        <a href="./client-form.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-file-signature w-5 text-indigo-400"></i> Client Inquiry Form</a>
+        <a href="./inbox.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-inbox w-5 text-purple-400"></i> CRM Inbox</a>
+        <a href="./about.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO</a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t gold-border text-[11px] text-slate-500">
+      <div>Bin Taha App Build v3.5</div>
+      <div class="text-amber-300 font-bold mt-0.5">CEO Taha Mobeen Bhutta</div>
+    </div>
+  </aside>
+
+  <!-- MAIN APP HOME CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full space-y-6">
+
+    <div class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 gold-border rounded-3xl p-6 shadow-2xl space-y-6 text-center">
+      <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full">
+        Lahore's #1 PropTech Enterprise Hub
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black gold-text leading-tight">Bin Taha Associates Mobile Console</h2>
+      <p class="text-xs text-slate-300">
+        Supervised by CEO <strong class="text-white">Taha Mobeen Bhutta</strong>. Choose your module below to manage listings, inquiries, and real estate assets.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-bold pt-2">
+        <a href="./properties.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-building text-amber-400 text-xl"></i>
           <span class="text-white">Properties Hub</span>
         </a>
-        <a href="./services.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-cyan-400 transition text-center space-y-2">
-          <i class="fa-solid fa-bolt text-cyan-400 text-lg block"></i>
+        <a href="./services.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-bolt text-cyan-400 text-xl"></i>
           <span class="text-white">Services Hub</span>
         </a>
-        <a href="./add-property.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-emerald-400 transition text-center space-y-2">
-          <i class="fa-solid fa-cloud-arrow-up text-emerald-400 text-lg block"></i>
-          <span class="text-white">Add Property</span>
+        <a href="./add-property.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up text-amber-400 text-xl"></i>
+          <span class="text-white">Post Property</span>
         </a>
-        <a href="./client-form.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-indigo-400 transition text-center space-y-2">
-          <i class="fa-solid fa-file-signature text-indigo-400 text-lg block"></i>
+        <a href="./client-form.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-file-signature text-indigo-400 text-xl"></i>
           <span class="text-white">Client Inquiry</span>
         </a>
-        <a href="./inbox.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-purple-400 transition text-center space-y-2">
-          <i class="fa-solid fa-inbox text-purple-400 text-lg block"></i>
+        <a href="./inbox.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-inbox text-purple-400 text-xl"></i>
           <span class="text-white">CRM Inbox</span>
         </a>
-        <a href="./owners-crm.html" class="p-4 bg-slate-900 border border-slate-700 rounded-2xl hover:border-teal-400 transition text-center space-y-2">
-          <i class="fa-solid fa-earth-americas text-teal-400 text-lg block"></i>
-          <span class="text-white">Owners CRM</span>
+        <a href="./about.html" class="p-4 bg-slate-950 border gold-border rounded-2xl hover:bg-slate-900 transition flex flex-col items-center gap-2">
+          <i class="fa-solid fa-circle-info text-blue-400 text-xl"></i>
+          <span class="text-white">About CEO</span>
         </a>
       </div>
     </div>
+
   </main>
 
-  <!-- Persistent Mobile Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
-    <a href="./index.html" class="flex flex-col items-center gap-1 text-amber-400 font-black"><i class="fa-solid fa-house text-sm"></i><span class="text-[10px]">Home</span></a>
-    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-building text-sm"></i><span class="text-[10px]">Properties</span></a>
-    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-bolt text-sm"></i><span class="text-[10px]">Services</span></a>
-    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-slate-400"><i class="fa-solid fa-inbox text-sm"></i><span class="text-[10px]">Inbox</span></a>
+  <!-- BOTTOM NAVIGATION BAR -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur-lg border-t gold-border z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-amber-300 font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></div>
+      <span>Home</span>
+    </a>
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-building"></i></div>
+      <span>Properties</span>
+    </a>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-bolt"></i></div>
+      <span>Services</span>
+    </a>
+    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-inbox"></i></div>
+      <span>Inbox</span>
+    </a>
   </nav>
+
+  <script>
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const isClosed = drawer.classList.contains('-translate-x-full');
+      if (isClosed) {
+        drawer.classList.remove('-translate-x-full');
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      } else {
+        drawer.classList.add('-translate-x-full');
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function updateWorldClock() {
+      try {
+        const now = new Date();
+        document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+      } catch (e) {}
+    }
+    setInterval(updateWorldClock, 1000);
+    window.onload = updateWorldClock;
+  </script>
 </body>
 </html>
