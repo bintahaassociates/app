@@ -1,4 +1,101 @@
-<!-- Side Navigation Drawer -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Master CRM Inbox | Bin Taha Associates App</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Central Master Core Bridge -->
+  <script src="https://bintahaassociates.github.io/bintaha-acconting/bintaha-core.js"></script>
+  
+  <style>
+    .shining-gold { color: #fcd34d; text-shadow: 0 0 25px rgba(252, 211, 77, 0.6); }
+    .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
+    .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(252, 211, 77, 0.25); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
+
+    @keyframes eagle3DRotate {
+      0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+      50% { transform: perspective(1000px) rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 25px rgba(252, 211, 77, 0.9)); }
+      100% { transform: perspective(1000px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
+    }
+    .moving-eagle-3d {
+      animation: eagle3DRotate 6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-open { transform: translateX(0) !important; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
+
+  <!-- Mobile Top Connectivity Bar -->
+  <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Lahore: <strong id="clockPk" class="text-white">--:--</strong></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:03219404812" class="text-amber-400 font-bold flex items-center gap-1">
+        <i class="fa-solid fa-phone text-xs"></i> 0321-9404812
+      </a>
+    </div>
+  </div>
+
+  <!-- Golden Market Ticker Tape -->
+  <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden z-30 sticky top-[29px]">
+    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
+    </div>
+  </section>
+
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[61px] z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <a href="./index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
+          <p class="text-[9px] sm:text-[10px] text-purple-400 font-bold uppercase tracking-wider">Master CRM Inbox & Leads</p>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="syncNowWithGoogleSheets()" class="bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer">
+          <i class="fa-solid fa-arrows-rotate text-[10px]"></i> Sync
+        </button>
+
+        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Side Navigation Drawer -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
@@ -12,21 +109,238 @@
         </button>
       </div>
 
-      <!-- Client & PropTech Menu Options -->
       <div class="space-y-1">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover & Societies</p>
-        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home Screen</a>
-        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties & Lahore Societies</a>
-        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services & Tax Tools</a>
-        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Vision & Dream</a>
-        <a href="./client-form.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-file-signature w-4 text-indigo-400"></i> Client Inquiry Form</a>
-        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About CEO Taha Mubeen</a>
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Discover</p>
+        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
+        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
+        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
+        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-bolt w-4 text-cyan-400"></i> Services Hub</a>
+        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
         <a href="./contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
+      </div>
+
+      <div class="space-y-1 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Control & CRM</p>
+        <a href="./inbox.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-purple-600 text-white font-black"><i class="fa-solid fa-inbox w-4"></i> Central Inbox</a>
+        <a href="./owners-crm.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-users-gear w-4 text-teal-400"></i> Owners Portal</a>
+        <a href="./agent-dashboard.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-chart-line w-4 text-cyan-400"></i> Agent Dashboard</a>
       </div>
     </div>
 
     <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
-      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate App</p>
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & CRM App</p>
       <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
     </div>
   </aside>
+
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
+
+    <!-- Header Summary Card -->
+    <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl gold-glow border border-purple-500/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="space-y-1">
+        <span class="bg-purple-500/20 text-purple-400 px-2.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider">
+          Unified Communications Feed
+        </span>
+        <h2 class="text-xl sm:text-2xl font-black shining-gold">Master CRM Inbox</h2>
+        <p class="text-xs text-slate-300">Managed by CEO Taha Mobeen Bhutta (0321-9404812)</p>
+      </div>
+
+      <div class="flex items-center gap-3 self-stretch sm:self-auto justify-between">
+        <div class="bg-slate-950 px-3 py-2 rounded-2xl border border-slate-800 text-center">
+          <div class="text-[10px] text-slate-400 font-bold">Total Inquiries</div>
+          <div id="inboxCountBadge" class="text-lg font-black text-amber-400">0</div>
+        </div>
+        <button onclick="clearInbox()" class="bg-rose-950/40 hover:bg-rose-900 border border-rose-800/60 text-rose-300 text-xs font-bold px-3 py-2 rounded-xl transition flex items-center gap-1 cursor-pointer">
+          <i class="fa-solid fa-trash-can text-[11px]"></i> Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Input -->
+    <div class="relative">
+      <input type="text" id="inboxSearchInput" onkeyup="searchInbox()" placeholder="Search inquiries by client name, subject, or phone..." class="w-full bg-slate-950 border border-slate-700 p-3 pl-10 rounded-2xl text-xs text-white font-medium outline-none focus:border-purple-500 shadow-inner">
+      <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+    </div>
+
+    <!-- Inquiry Cards Feed Container -->
+    <div class="space-y-3" id="inboxCardsContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a href="./properties.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+      <i class="fa-solid fa-building text-sm"></i>
+      <span class="text-[10px] font-bold">Properties</span>
+    </a>
+    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-purple-400 font-black">
+      <i class="fa-solid fa-inbox text-sm"></i>
+      <span class="text-[10px] font-bold">Inbox</span>
+    </a>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-bolt text-sm"></i>
+      <span class="text-[10px] font-bold">Services</span>
+    </a>
+    <a href="./client-form.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-400 transition">
+      <i class="fa-solid fa-file-signature text-sm"></i>
+      <span class="text-[10px] font-bold">Inquiry</span>
+    </a>
+  </nav>
+
+  <!-- In-App Toast -->
+  <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-purple-500 text-purple-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="appToastMsg">Notification</span>
+  </div>
+
+  <script>
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('appToastMsg');
+      toastMsg.innerText = msg;
+      toast.className = `fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border ${isError ? 'border-rose-500 text-rose-300' : 'border-purple-500 text-purple-300'} text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 flex items-center gap-2`;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if(drawer.classList.contains('drawer-open')) {
+        drawer.classList.remove('drawer-open');
+        overlay.classList.add('hidden');
+      } else {
+        drawer.classList.add('drawer-open');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clockPk').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+
+    function getStoredMessages() {
+      return JSON.parse(localStorage.getItem('bintaha_inbox_messages') || '[]');
+    }
+
+    function renderInbox(messages) {
+      const container = document.getElementById('inboxCardsContainer');
+      document.getElementById('inboxCountBadge').innerText = messages.length;
+
+      if (messages.length === 0) {
+        container.innerHTML = `
+          <div class="glass-card p-10 rounded-3xl border border-slate-800 text-center space-y-2">
+            <i class="fa-solid fa-inbox text-3xl text-purple-400/50 block"></i>
+            <h4 class="text-sm font-bold text-white">No inquiries yet</h4>
+            <p class="text-xs text-slate-400">Customer leads and registration forms will automatically flow here.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = messages.map(msg => {
+        const phone = msg.phone || '03219404812';
+        const phoneClean = phone.replace(/\D/g, '');
+        const clientName = msg.name || msg.sender || 'Client';
+        const content = msg.details || msg.text || 'Inquiry registered.';
+        const waText = encodeURIComponent(`Hello ${clientName}, this is regarding your inquiry at Bin Taha Associates:\n"${content}"\nHow may we assist you further?`);
+        const waLink = `https://wa.me/92${phoneClean.replace(/^0/, '')}?text=${waText}`;
+        const telLink = `tel:${phoneClean}`;
+
+        return `
+          <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-lg border border-slate-800/90 space-y-3 hover:border-purple-500/50 transition">
+            <div class="flex justify-between items-start gap-2">
+              <div>
+                <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded text-[10px] font-black uppercase inline-block mb-1">
+                  ${msg.subject || 'General Inquiry'}
+                </span>
+                <h4 class="text-sm font-black text-white">${clientName}</h4>
+              </div>
+              <span class="text-[10px] text-slate-500 shrink-0 font-medium">
+                <i class="fa-regular fa-clock mr-1"></i>${msg.timestamp || msg.time || 'Today'}
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-300 bg-slate-950/70 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+              ${content}
+            </p>
+
+            <div class="pt-2 border-t border-slate-800/80 flex flex-wrap justify-between items-center gap-2 text-xs">
+              <div class="text-[11px] text-slate-400 font-semibold flex items-center gap-3">
+                <span><i class="fa-solid fa-phone text-emerald-400 mr-1"></i>${phone}</span>
+                <span class="hidden sm:inline"><i class="fa-regular fa-envelope text-blue-400 mr-1"></i>${msg.email || 'crm@bintaha.com'}</span>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <a href="${telLink}" class="bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow">
+                  <i class="fa-solid fa-phone text-emerald-400"></i> Call
+                </a>
+                <a href="${waLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1 shadow">
+                  <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Reply
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function searchInbox() {
+      const query = document.getElementById('inboxSearchInput').value.toLowerCase().trim();
+      const allMsgs = getStoredMessages();
+      const filtered = allMsgs.filter(m => 
+        (m.name && m.name.toLowerCase().includes(query)) ||
+        (m.subject && m.subject.toLowerCase().includes(query)) ||
+        (m.phone && m.phone.includes(query)) ||
+        (m.text && m.text.toLowerCase().includes(query)) ||
+        (m.details && m.details.toLowerCase().includes(query))
+      );
+      renderInbox(filtered);
+    }
+
+    function syncNowWithGoogleSheets() {
+      const messages = getStoredMessages();
+      const payload = {
+        name: 'Inbox Sync Master',
+        phone: '03219404812',
+        email: 'bintahacrm@gmail.com',
+        subject: 'Inbox Leads Snapshot',
+        text: `Total leads in inbox: ${messages.length}`
+      };
+
+      if (typeof btaSyncToSheet === 'function') {
+        btaSyncToSheet(payload, "Leads", function(success) {
+          showToast("Inbox synchronized with Google Sheets!");
+        });
+      } else {
+        showToast("Inbox synced locally.");
+      }
+    }
+
+    function clearInbox() {
+      const messages = getStoredMessages();
+      if(messages.length === 0) {
+        showToast("Inbox is already empty", true);
+        return;
+      }
+      localStorage.removeItem('bintaha_inbox_messages');
+      renderInbox([]);
+      showToast("Inbox cleared successfully");
+    }
+
+    window.onload = function() {
+      updateClock();
+      renderInbox(getStoredMessages());
+    };
+  </script>
+</body>
+</html>
