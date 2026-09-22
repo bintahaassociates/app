@@ -60,7 +60,7 @@
     #mobileDrawer { transition: transform 0.3s ease-in-out; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen pb-24 flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen pb-28 flex flex-col justify-between">
 
   <!-- CINEMATIC 3D SPLASH SCREEN -->
   <div id="splashScreen">
@@ -138,7 +138,7 @@
     </div>
   </header>
 
-  <!-- LUXURY SIDE MENU DRAWER (With Plan-Mandated Button Grid) -->
+  <!-- LUXURY SIDE MENU DRAWER (With Add Property & All Plan Buttons) -->
   <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
   
   <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
@@ -156,10 +156,11 @@
         </button>
       </div>
 
-      <!-- Menu Buttons Grid as per Plan -->
+      <!-- Menu Buttons Grid with Add Property Included -->
       <nav class="space-y-2 text-xs font-bold">
         <a href="index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-house w-5"></i> Bin Taha Home</a>
         <a href="properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings (Lahore)</a>
+        <a href="add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-plus-circle w-5 text-emerald-400"></i> Post / Add Property (+)</a>
         <a href="services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services & Tax Tools</a>
         <a href="dream.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> AI Dream Home Finder</a>
         <a href="contact.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-headset w-5 text-purple-400"></i> Contact CEO Taha</a>
@@ -167,7 +168,7 @@
     </div>
 
     <div class="pt-6 border-t gold-border text-[11px] text-slate-500">
-      <div>Bin Taha Home Build v4.0</div>
+      <div>Bin Taha Home Build v4.1</div>
       <div class="text-amber-300 font-bold mt-0.5">CEO Taha Mobeen Bhutta</div>
     </div>
   </aside>
@@ -358,7 +359,7 @@
 
   </main>
 
-  <!-- FIXED NATIVE MOBILE APP BOTTOM NAVIGATION BAR (Mandatory Plan Buttons) -->
+  <!-- FIXED NATIVE MOBILE APP BOTTOM NAVIGATION BAR (With Add Property Button Added) -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t gold-border z-40 px-3 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
     <a href="index.html" class="flex flex-col items-center gap-1 text-amber-300 font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></div>
@@ -368,13 +369,13 @@
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-building"></i></div>
       <span>Properties</span>
     </a>
+    <a href="add-property.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
+      <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm"><i class="fa-solid fa-plus"></i></div>
+      <span>Add Prop</span>
+    </a>
     <a href="services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
       <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-bolt"></i></div>
       <span>Services</span>
-    </a>
-    <a href="https://wa.me/923219404812" target="_blank" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white font-bold text-[10px]">
-      <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm"><i class="fa-brands fa-whatsapp"></i></div>
-      <span>WhatsApp</span>
     </a>
   </nav>
 
