@@ -17,6 +17,7 @@
     .gold-glow { box-shadow: 0 0 45px rgba(252, 211, 77, 0.35); }
     .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(20px); border: 1px solid rgba(252, 211, 77, 0.22); }
     .glass-inner { background: rgba(2, 6, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); }
     
     @keyframes eagle3DRotate {
       0% { transform: perspective(1000px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(252, 211, 77, 0.4)); }
@@ -32,8 +33,7 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-    .ticker-wrap { overflow: hidden; white-space: nowrap; }
-    .ticker-move { display: inline-block; animation: tickerScroll 25s linear infinite; }
+    .market-ticker-track { display: inline-block; white-space: nowrap; animation: tickerScroll 32s linear infinite; }
 
     #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .drawer-open { transform: translateX(0) !important; }
@@ -70,28 +70,26 @@
     </div>
   </div>
 
-  <!-- Live Market Ticker -->
-  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 text-xs font-black py-1.5 px-3 overflow-hidden shadow-md flex items-center">
-    <span class="bg-slate-950 text-amber-400 px-2.5 py-0.5 rounded text-[10px] uppercase mr-2 tracking-wider shrink-0 font-black">PROPTECH</span>
-    <div class="ticker-wrap w-full text-[11px]">
-      <div class="ticker-move">
-        <span>Instant Architectural Blueprints & Dimensions</span> &bull; 
-        <span>Grade-60 Saria & Turnkey Civil Engineering</span> &bull; 
-        <span>LDA Avenue 1 & Jubilee Town Site Supervision</span> &bull; 
-        <span>Live Overseas CCTV Telecast</span> &bull; 
-        <span>Soil Testing, Solar Sizing & Labor Matrix Portal</span> &bull; 
-        <span>Doorstep Construction Material Dispatch</span>
-      </div>
+  <!-- Golden Market Ticker Tape -->
+  <section aria-label="Market Rates" class="gold-bg text-slate-950 text-[11px] font-black py-1.5 px-3 shadow-md flex items-center overflow-hidden z-30 sticky top-[29px]">
+    <div class="market-ticker-track flex items-center gap-6 uppercase tracking-wider">
+      <span><i class="fa-solid fa-chart-line mr-1"></i> Cement Rate: PKR 1,540 / Bag</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-bars-progress mr-1"></i> Steel Saria: PKR 282 / Kg</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-cube mr-1"></i> Awwal Bricks: PKR 21 / Pc</span>
+      <span>•</span>
+      <span><i class="fa-solid fa-crown mr-1"></i> CEO Taha Mobeen Bhutta • 0321-9404812</span>
     </div>
-  </div>
+  </section>
 
-  <!-- Header -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[33px] z-30 backdrop-blur-md shadow-xl">
+  <!-- In-App Header & Navigation Trigger -->
+  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[61px] z-30 backdrop-blur-md shadow-xl">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
       <a href="./index.html" class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-2xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=150&q=80'">
+          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         </div>
         <div>
           <h1 class="text-sm sm:text-base font-black text-white leading-tight flex items-center gap-1.5">
@@ -115,7 +113,7 @@
   </header>
 
   <!-- Mega 15-Feature Horizontal Quick Navigation Bar -->
-  <div class="bg-slate-950/95 border-b border-slate-800 sticky top-[80px] z-20 px-4 py-2.5 backdrop-blur-lg">
+  <div class="bg-slate-950/95 border-b border-slate-800 sticky top-[108px] z-20 px-4 py-2.5 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-1.5">
         <span class="text-[10px] font-black uppercase text-amber-400 tracking-wider flex items-center gap-1">
@@ -143,54 +141,35 @@
     </div>
   </div>
 
-  <!-- Side Navigation Drawer -->
+  <!-- Side Navigation Drawer (Clean App Internal Links) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain">
-          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Services Directory</span>
+          <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain" onerror="this.src='logo.png.png'">
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <div class="space-y-1">
-        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Pages</p>
-        <a href="./index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-house w-4 text-amber-400"></i> Home</a>
-        <a href="./services.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 font-black"><i class="fa-solid fa-bolt w-4"></i> Services Hub</a>
-        <a href="./properties.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-building w-4 text-emerald-400"></i> Properties Hub</a>
-        <a href="./dream.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-star w-4 text-purple-400"></i> Our Dream</a>
-        <a href="./about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-circle-info w-4 text-blue-400"></i> About Us</a>
-        <a href="./contact.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white"><i class="fa-solid fa-envelope w-4 text-emerald-400"></i> Contact Us</a>
-      </div>
-
-      <div class="space-y-1 pt-2 border-t border-slate-800">
-        <p class="text-[10px] font-black uppercase text-amber-400 tracking-wider">15 Interactive Tools</p>
-        <div class="space-y-0.5 text-[11px] font-bold">
-          <a href="#proCadStudio" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">1. CAD Blueprint Studio</a>
-          <a href="#overseasCctvSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-amber-400">2. Overseas Live CCTV</a>
-          <a href="#integratedPlannerSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-emerald-400">3. Plot + House Planner</a>
-          <a href="#materialEstimatorSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-indigo-400">4. Material Quantity BOQ</a>
-          <a href="#doorstepOrderSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-rose-400">5. Doorstep Material Cart</a>
-          <a href="#ldaCheckerSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-purple-400">6. LDA By-Laws Validator</a>
-          <a href="#pdfQuoteSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-yellow-400">7. Instant PDF Quotation</a>
-          <a href="#soilTestingSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-teal-400">8. Soil Testing Scheduler</a>
-          <a href="#laborMatrixSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-blue-400">9. Labor Attendance Matrix</a>
-          <a href="#concreteLabSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-lime-400">10. Concrete Slump Lab</a>
-          <a href="#escrowTrackerSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-orange-400">11. Milestone Escrow Release</a>
-          <a href="#vrPreviewSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-fuchsia-400">12. VR 360° Walkthrough</a>
-          <a href="#solarSizerSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-amber-400">13. Solar Rooftop Sizer</a>
-          <a href="#contractorMarketSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">14. Sub-Contractor Trade</a>
-          <a href="#roiPredictorSection" onclick="toggleDrawer()" class="block px-2.5 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-emerald-400">15. 3-Year ROI Predictor</a>
-        </div>
+      <div class="space-y-1 text-xs font-bold">
+        <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Executive Navigation</p>
+        <a href="./index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-house w-5 text-amber-400"></i> Home Screen</a>
+        <a href="./properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
+        <a href="./services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-bolt w-5"></i> Services Hub</a>
+        <a href="./dream.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
+        <a href="./add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-cloud-arrow-up w-5 text-amber-300"></i> Post Property</a>
+        <a href="./client-form.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-5 text-indigo-400"></i> Client Inquiry</a>
+        <a href="./inbox.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-inbox w-5 text-purple-400"></i> CRM Inbox</a>
+        <a href="./about.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO</a>
       </div>
     </div>
 
     <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-center">
-      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Real Estate & Engineering</p>
+      <p class="text-[10px] text-slate-500 font-bold">Bin Taha Associates Mobile App</p>
       <p class="text-[9px] text-amber-400">CEO Taha Mobeen Bhutta</p>
     </div>
   </aside>
@@ -481,509 +460,6 @@
       </div>
     </div>
 
-    <!-- 4. CIVIL MATERIAL QUANTITY BOQ ESTIMATOR -->
-    <div id="materialEstimatorSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-5 border border-indigo-500/40">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/30">
-            <i class="fa-solid fa-boxes-stacked text-base"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-white">4. Civil Material Quantity Breakdown Estimator (BOQ)</h3>
-            <p class="text-[10px] text-indigo-400 font-bold">Know exact quantity of Saria, Cement, Bricks, Sand & Crush</p>
-          </div>
-        </div>
-        <span class="text-[10px] font-mono bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30 uppercase font-black">
-          Civil BOQ Generator
-        </span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-        <div>
-          <label class="block text-slate-300 mb-1">Total Covered Area (Sq.Ft):</label>
-          <input type="number" id="matCoveredArea" value="2250" onkeyup="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500">
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">Construction Grade:</label>
-          <select id="matSteelGrade" onchange="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500 font-normal">
-            <option value="grade60">Grade-60 Deformed Steel (PEC Standard)</option>
-            <option value="grade40">Grade-40 Standard Steel</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">Bricks Type:</label>
-          <select id="matBrickType" onchange="calculateMaterialBreakdown()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-indigo-500 font-normal">
-            <option value="awwal">Awwal Bhatta Clay Baked</option>
-            <option value="block">Solid Concrete Blocks</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
-          <span class="text-[10px] text-slate-400 font-bold block uppercase">Deformed Steel (Saria)</span>
-          <span id="qtySteel" class="text-amber-400 font-black text-base">7.8 Tons</span>
-          <span id="costSteel" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 2,012,400</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
-          <span class="text-[10px] text-slate-400 font-bold block uppercase">Cement Bags</span>
-          <span id="qtyCement" class="text-amber-400 font-black text-base">900 Bags</span>
-          <span id="costCement" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 1,314,000</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
-          <span class="text-[10px] text-slate-400 font-bold block uppercase">Awwal Red Bricks</span>
-          <span id="qtyBricks" class="text-amber-400 font-black text-base">63,000 Pcs</span>
-          <span id="costBricks" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 882,000</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl border border-slate-800">
-          <span class="text-[10px] text-slate-400 font-bold block uppercase">Sand & Crush Mix</span>
-          <span id="qtyCrush" class="text-amber-400 font-black text-base">7,200 Cu.Ft</span>
-          <span id="costCrush" class="text-[10px] text-emerald-400 block mt-1">Est: PKR 972,000</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. DOORSTEP MATERIAL MARKET & FAST SITE CART -->
-    <div id="doorstepOrderSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-6 border border-cyan-500/40">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
-            <i class="fa-solid fa-truck-ramp-box text-base"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-white">5. Doorstep Construction Material Market & Site Delivery</h3>
-            <p class="text-[10px] text-cyan-400 font-bold">Direct Factory Supply with Verified Weighbridge Slips across Lahore</p>
-          </div>
-        </div>
-        <span class="text-[10px] font-mono text-slate-400">Live Rates: Sep 20, 2026</span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs">
-        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-slate-400 text-[11px] font-bold">Grade-60 Steel</span>
-              <span class="bg-amber-500/20 text-amber-400 text-[9px] font-black px-2 py-0.5 rounded">Mughal / Amreli</span>
-            </div>
-            <p class="text-xl font-black text-white mt-1">PKR 258 <span class="text-[10px] font-normal text-slate-400">/ Kg</span></p>
-            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Free Transit Insurance</p>
-          </div>
-          <button onclick="quickSelectMaterial('Mughal Grade-60 Steel', '5 Tons')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
-            + Add to Order
-          </button>
-        </div>
-
-        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-slate-400 text-[11px] font-bold">Bestway / DG Cement</span>
-              <span class="bg-cyan-500/20 text-cyan-400 text-[9px] font-black px-2 py-0.5 rounded">Fresh Stock</span>
-            </div>
-            <p class="text-xl font-black text-white mt-1">PKR 1,460 <span class="text-[10px] font-normal text-slate-400">/ Bag</span></p>
-            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Factory Direct Trailer</p>
-          </div>
-          <button onclick="quickSelectMaterial('Bestway/DG Cement', '300 Bags')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
-            + Add to Order
-          </button>
-        </div>
-
-        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-slate-400 text-[11px] font-bold">Awwal Baked Bricks</span>
-              <span class="bg-rose-500/20 text-rose-400 text-[9px] font-black px-2 py-0.5 rounded">Red Clay</span>
-            </div>
-            <p class="text-xl font-black text-white mt-1">PKR 14,000 <span class="text-[10px] font-normal text-slate-400">/ 1,000 Pcs</span></p>
-            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Zero Breakage Guarantee</p>
-          </div>
-          <button onclick="quickSelectMaterial('Awwal Baked Bricks', '10,000 Pcs')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
-            + Add to Order
-          </button>
-        </div>
-
-        <div class="glass-inner p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-slate-400 text-[11px] font-bold">Chenab Sand & Crush</span>
-              <span class="bg-purple-500/20 text-purple-400 text-[9px] font-black px-2 py-0.5 rounded">Margalla 1/2</span>
-            </div>
-            <p class="text-xl font-black text-white mt-1">PKR 135 <span class="text-[10px] font-normal text-slate-400">/ Cu.Ft</span></p>
-            <p class="text-[10px] text-emerald-400 mt-0.5"><i class="fa-solid fa-truck"></i> Screened & Washed</p>
-          </div>
-          <button onclick="quickSelectMaterial('Chenab Sand & Crush Dumper', '1 Dumper (800 Cu.Ft)')" class="w-full bg-slate-800 hover:bg-cyan-600 hover:text-slate-950 text-slate-200 font-bold py-1.5 rounded-xl transition cursor-pointer text-[11px]">
-            + Add to Order
-          </button>
-        </div>
-      </div>
-
-      <!-- Doorstep Order Direct Form -->
-      <div class="glass-inner p-5 sm:p-6 rounded-2xl space-y-4 border border-cyan-500/30">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-truck-fast text-amber-400 text-sm"></i> Doorstep Supply Fast Dispatch Cart
-          </h4>
-          <span class="text-[10px] text-amber-400 font-bold">Same-Day Site Delivery</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs font-bold">
-          <div>
-            <label class="block text-slate-300 mb-1">Selected Item: *</label>
-            <select id="doorstepItem" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
-              <option value="Mughal Grade-60 Steel">Mughal Grade-60 Steel</option>
-              <option value="Bestway/DG Cement">Bestway/DG Cement Bags</option>
-              <option value="Awwal Baked Bricks">Awwal Clay Bricks</option>
-              <option value="Chenab Sand & Crush Dumper">Chenab Sand / Margalla Dumper</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-slate-300 mb-1">Quantity Needed: *</label>
-            <input type="text" id="doorstepQty" placeholder="e.g. 500 Bags or 5 Tons" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
-          </div>
-          <div>
-            <label class="block text-slate-300 mb-1">Site Delivery Address: *</label>
-            <input type="text" id="doorstepAddress" placeholder="Plot #, Block, Society (e.g. LDA Ave-1)" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
-          </div>
-          <div>
-            <label class="block text-slate-300 mb-1">Your Phone / WhatsApp: *</label>
-            <input type="text" id="doorstepPhone" value="03219404812" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-cyan-500 font-normal">
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-          <button onclick="submitDoorstepOrder()" class="bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-slate-950 font-black py-3 px-4 rounded-xl text-xs flex-1 flex items-center justify-center gap-2 cursor-pointer shadow-lg transition">
-            <i class="fa-solid fa-truck-arrow-right"></i> Place Doorstep Order (Dispatch Now)
-          </button>
-          <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen!%20I%20want%20doorstep%20civil%20material%20delivery%20for%20my%20Lahore%20site." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 px-5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition">
-            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Dispatch Desk
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. LDA & HOUSING SOCIETY BY-LAWS VALIDATOR -->
-    <div id="ldaCheckerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-purple-500/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold border border-purple-500/30">
-          <i class="fa-solid fa-scale-balanced text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">6. Interactive LDA & Housing By-Laws Validator</h3>
-          <p class="text-[10px] text-purple-400 font-bold">Select Society & Size to Test Building Setbacks and Heights</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-        <div>
-          <label class="block text-slate-300 mb-1">Select Authority / Society:</label>
-          <select id="valSociety" onchange="runLdaValidator()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-purple-500 font-normal">
-            <option value="lda">LDA (Lahore Development Authority)</option>
-            <option value="dha">DHA (Defence Housing Authority)</option>
-            <option value="bahria">Bahria Town Regulations</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">Plot Area:</label>
-          <select id="valSize" onchange="runLdaValidator()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-purple-500 font-normal">
-            <option value="5m">5 Marla (25x45 or 25x50)</option>
-            <option value="10m">10 Marla (35x65)</option>
-            <option value="1k">1 Kanal (50x90)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">Front Setback (In Feet):</label>
-          <input type="number" id="valInputFront" value="5" onkeyup="runLdaValidator()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-purple-500">
-        </div>
-      </div>
-
-      <div id="ldaValidationResult" class="glass-inner p-4 rounded-2xl border border-emerald-500/40 text-xs flex items-center justify-between">
-        <div>
-          <span class="text-emerald-400 font-black text-sm flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> SETBACK COMPLIANT</span>
-          <p id="ldaValidationText" class="text-slate-300 mt-0.5">Mandatory front lawn setback of 5.0 Ft is verified. Rear open space required: 4.0 Ft. Max building height: 38.0 Ft.</p>
-        </div>
-        <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">Approved</span>
-      </div>
-    </div>
-
-    <!-- 7. INSTANT OFFICIAL PDF QUOTATION ENGINE -->
-    <div id="pdfQuoteSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-yellow-500/40">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold border border-yellow-500/30">
-            <i class="fa-solid fa-file-pdf text-base"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-white">7. Instant Executive PDF Quotation Engine</h3>
-            <p class="text-[10px] text-yellow-400 font-bold">Auto-Generates PEC Category C Certified Quote with Serial ID</p>
-          </div>
-        </div>
-        <button onclick="generateInstantPDFQuotation()" class="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-500 hover:to-amber-500 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs shadow-lg transition cursor-pointer">
-          <i class="fa-solid fa-file-arrow-down mr-1.5"></i> Download PDF Quotation
-        </button>
-      </div>
-      <p class="text-xs text-slate-300 leading-relaxed">
-        Generates an instant official estimate with company header, PEC C6 license stamp, live Lahore civil rates, and breakdown for bank house financing or overseas records.
-      </p>
-    </div>
-
-    <!-- 8. SOIL TESTING & GEO-TECHNICAL SITE SCHEDULER -->
-    <div id="soilTestingSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-teal-500/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold border border-teal-500/30">
-          <i class="fa-solid fa-bore-hole text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">8. Soil Testing & Geo-Technical Investigation</h3>
-          <p class="text-[10px] text-teal-400 font-bold">Standard Penetration Test (SPT), Soil Bearing Capacity & Water Table Profiling</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-        <div class="glass-inner p-4 rounded-2xl">
-          <p class="text-teal-400 font-black">LDA Avenue-1 Bearing Capacity:</p>
-          <p class="text-white font-mono mt-1 font-bold text-sm">0.85 to 1.10 Ton / Sq.Ft</p>
-          <span class="text-[10px] text-slate-400">Raft Foundation or Strip Recommended</span>
-        </div>
-        <div class="glass-inner p-4 rounded-2xl">
-          <p class="text-teal-400 font-black">Jubilee Town Soil Profile:</p>
-          <p class="text-white font-mono mt-1 font-bold text-sm">1.00 to 1.25 Ton / Sq.Ft</p>
-          <span class="text-[10px] text-slate-400">Silt-Clay mix, Low Water Table</span>
-        </div>
-        <div class="glass-inner p-4 rounded-2xl flex items-center justify-center">
-          <button onclick="bookSoilTesting()" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-black py-3 rounded-xl transition cursor-pointer shadow">
-            Book Geo-Drilling Rig
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 9. DAILY SITE LABOUR & ATTENDANCE MATRIX -->
-    <div id="laborMatrixSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-blue-500/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold border border-blue-500/30">
-          <i class="fa-solid fa-users-gear text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">9. Daily Site Labour Matrix & Attendance Ledger</h3>
-          <p class="text-[10px] text-blue-400 font-bold">Real-Time Deployed Headcount on Active Lahore Construction Sites</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-center">
-        <div class="glass-inner p-3.5 rounded-2xl">
-          <span class="text-slate-400 block text-[10px] font-bold">Head Mason (Raj Mistry)</span>
-          <span class="text-blue-400 font-black text-lg">02 On Duty</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl">
-          <span class="text-slate-400 block text-[10px] font-bold">Steel Fixers</span>
-          <span class="text-blue-400 font-black text-lg">06 Active</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl">
-          <span class="text-slate-400 block text-[10px] font-bold">Civil Labourers</span>
-          <span class="text-blue-400 font-black text-lg">14 Working</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl">
-          <span class="text-slate-400 block text-[10px] font-bold">Site Engineer</span>
-          <span class="text-emerald-400 font-black text-lg">Engr. Naveed</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 10. CONCRETE SLUMP & COMPRESSIVE STRENGTH TESTING LAB -->
-    <div id="concreteLabSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-lime-500/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-lime-500/20 text-lime-400 flex items-center justify-center font-bold border border-lime-500/30">
-          <i class="fa-solid fa-flask-vial text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">10. Live Concrete Slump & Compressive PSI Lab</h3>
-          <p class="text-[10px] text-lime-400 font-bold">Enter Slump Inches to Calculate Structural Strength and Suitability</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-        <div>
-          <label class="block text-slate-300 mb-1">Measured Slump Cone (Inches):</label>
-          <input type="number" step="0.5" id="slumpInches" value="3.5" onkeyup="calculateConcreteStrength()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-lime-500">
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">Mix Ratio:</label>
-          <select id="concreteMixRatio" onchange="calculateConcreteStrength()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-lime-500 font-normal">
-            <option value="124">1:2:4 (Columns & Beams Standard)</option>
-            <option value="1153">1:1.5:3 (High Strength Slab)</option>
-          </select>
-        </div>
-        <div class="glass-inner p-3 rounded-xl flex flex-col justify-center">
-          <span class="text-slate-400 text-[10px]">Predicted 28-Day Strength:</span>
-          <span id="predictedPsi" class="text-lime-400 font-mono font-black text-base">3,200 PSI</span>
-        </div>
-      </div>
-
-      <div id="slumpVerdict" class="glass-inner p-3 rounded-xl text-xs text-slate-300">
-        <strong class="text-emerald-400">Slump Verdict:</strong> Normal Workability (True Slump). Perfect for RCC roof slabs, retaining walls and columns.
-      </div>
-    </div>
-
-    <!-- 11. SMART MILESTONE PAYMENT ESCROW TRACKER -->
-    <div id="escrowTrackerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-orange-500/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold border border-orange-500/30">
-          <i class="fa-solid fa-money-bill-transfer text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">11. Interactive Milestone Payment Escrow Release</h3>
-          <p class="text-[10px] text-orange-400 font-bold">Click a Phase to Calculate Milestone Payout Amount</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs">
-        <button onclick="selectEscrowStage(1, 20, 'Excavation & Plinth Beam')" class="glass-inner p-3 rounded-xl text-left border-l-4 border-emerald-500 hover:bg-slate-800 transition cursor-pointer">
-          <span class="text-emerald-400 font-black block">Stage 1 (20%)</span>
-          <span class="text-white text-[11px]">Excavation & Plinth</span>
-        </button>
-        <button onclick="selectEscrowStage(2, 25, 'Ground Floor Slab Casting')" class="glass-inner p-3 rounded-xl text-left border-l-4 border-amber-500 hover:bg-slate-800 transition cursor-pointer">
-          <span class="text-amber-400 font-black block">Stage 2 (25%)</span>
-          <span class="text-white text-[11px]">Ground Slab Casting</span>
-        </button>
-        <button onclick="selectEscrowStage(3, 20, '1st Floor Roof Slab')" class="glass-inner p-3 rounded-xl text-left border-l-4 border-cyan-500 hover:bg-slate-800 transition cursor-pointer">
-          <span class="text-cyan-400 font-black block">Stage 3 (20%)</span>
-          <span class="text-white text-[11px]">1st Floor Slab</span>
-        </button>
-        <button onclick="selectEscrowStage(4, 20, 'Plaster & Electrical Piping')" class="glass-inner p-3 rounded-xl text-left border-l-4 border-indigo-500 hover:bg-slate-800 transition cursor-pointer">
-          <span class="text-indigo-400 font-black block">Stage 4 (20%)</span>
-          <span class="text-white text-[11px]">Plaster & Piping</span>
-        </button>
-        <button onclick="selectEscrowStage(5, 15, 'Flooring & Key Handover')" class="glass-inner p-3 rounded-xl text-left border-l-4 border-purple-500 hover:bg-slate-800 transition cursor-pointer">
-          <span class="text-purple-400 font-black block">Stage 5 (15%)</span>
-          <span class="text-white text-[11px]">Key Handover</span>
-        </button>
-      </div>
-
-      <div id="escrowCalculationOutput" class="glass-inner p-3.5 rounded-2xl border border-orange-500/30 text-xs flex justify-between items-center">
-        <div>
-          <span id="escrowStageTitle" class="text-white font-bold">Selected: Stage 1 (Excavation & Plinth Beam)</span>
-          <p class="text-slate-400 text-[11px]">Payment released only upon supervisor verification slip.</p>
-        </div>
-        <span id="escrowAmountDisplay" class="text-amber-400 font-black text-sm">PKR 2,992,000 (20%)</span>
-      </div>
-    </div>
-
-    <!-- 12. VR 360 SITE WALKTHROUGH SIMULATION -->
-    <div id="vrPreviewSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-fuchsia-500/40">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-bold border border-fuchsia-500/30">
-            <i class="fa-solid fa-vr-cardboard text-base"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-white">12. VR 360° Architectural Site Walkthrough</h3>
-            <p class="text-[10px] text-fuchsia-400 font-bold">Experience 3D Virtual Reality Interior & Exterior on Your Smartphone</p>
-          </div>
-        </div>
-        <button onclick="requestVrModel()" class="bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-black px-4 py-2 rounded-xl text-xs transition cursor-pointer">
-          Launch 360° VR
-        </button>
-      </div>
-      <p class="text-xs text-slate-300">
-        Review ceiling elevations, ambient concealed lights, bathroom porcelain textures, and modern kitchen countertops in 360 panoramic views before concrete pouring starts.
-      </p>
-    </div>
-
-    <!-- 13. SOLAR ROOFTOP SIZING CALCULATOR -->
-    <div id="solarSizerSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-amber-400/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold border border-amber-500/30">
-          <i class="fa-solid fa-solar-panel text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">13. Rooftop Solar Capacity & Net-Metering Sizer</h3>
-          <p class="text-[10px] text-amber-400 font-bold">Enter Monthly Units to Calculate Recommended KW and Monthly Savings</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-        <div>
-          <label class="block text-slate-300 mb-1">Monthly Bill Units (KWh):</label>
-          <input type="number" id="solarUnits" value="850" onkeyup="calculateSolarSystem()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-amber-500">
-        </div>
-        <div class="glass-inner p-3 rounded-xl flex flex-col justify-center">
-          <span class="text-slate-400 text-[10px]">Recommended System:</span>
-          <span id="solarKwResult" class="text-amber-400 font-black text-base">7.0 KW On-Grid</span>
-        </div>
-        <div class="glass-inner p-3 rounded-xl flex flex-col justify-center">
-          <span class="text-slate-400 text-[10px]">Estimated Monthly Saving:</span>
-          <span id="solarSavingResult" class="text-emerald-400 font-black text-base">PKR 55,250 / Month</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 14. SUB-CONTRACTOR TRADE MARKETPLACE -->
-    <div id="contractorMarketSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-cyan-400/40">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold border border-cyan-500/30">
-            <i class="fa-solid fa-id-card-clip text-base"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-white">14. Verified Trade Sub-Contractor Marketplace</h3>
-            <p class="text-[10px] text-cyan-400 font-bold">Direct WhatsApp Booking with Verified Lahore Craftsmen</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-        <button onclick="hireTrade('Sanitary & Plumbing')" class="glass-inner p-3 rounded-xl hover:border-cyan-500 text-left transition cursor-pointer">
-          <i class="fa-solid fa-faucet-drip text-cyan-400 mb-1"></i>
-          <p class="font-bold text-white">PPRC & PVC Plumbing</p>
-          <span class="text-[10px] text-slate-400">Master Grade</span>
-        </button>
-        <button onclick="hireTrade('Concealed Electrification')" class="glass-inner p-3 rounded-xl hover:border-cyan-500 text-left transition cursor-pointer">
-          <i class="fa-solid fa-bolt text-amber-400 mb-1"></i>
-          <p class="font-bold text-white">Concealed Wiring</p>
-          <span class="text-[10px] text-slate-400">Pakistan Cables Standard</span>
-        </button>
-        <button onclick="hireTrade('Woodwork & Doors')" class="glass-inner p-3 rounded-xl hover:border-cyan-500 text-left transition cursor-pointer">
-          <i class="fa-solid fa-door-open text-orange-400 mb-1"></i>
-          <p class="font-bold text-white">Ash Wood & Wardrobes</p>
-          <span class="text-[10px] text-slate-400">Custom Joinery</span>
-        </button>
-        <button onclick="hireTrade('False Ceiling & Paint')" class="glass-inner p-3 rounded-xl hover:border-cyan-500 text-left transition cursor-pointer">
-          <i class="fa-solid fa-paint-roller text-emerald-400 mb-1"></i>
-          <p class="font-bold text-white">Gypsum Ceilings & Polish</p>
-          <span class="text-[10px] text-slate-400">Diamond / Berger</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- 15. PROPERTY RESALE ROI PREDICTOR -->
-    <div id="roiPredictorSection" class="glass-card p-5 sm:p-7 rounded-3xl shadow-xl space-y-4 border border-emerald-400/40">
-      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
-        <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
-          <i class="fa-solid fa-chart-line text-base"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-black text-white">15. 3-Year Resale Capital Appreciation & Rental Yield Predictor</h3>
-          <p class="text-[10px] text-emerald-400 font-bold">Enter Initial House Cost to Predict Valuation in 3 Years</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-        <div>
-          <label class="block text-slate-300 mb-1">Total Project Budget (PKR):</label>
-          <input type="number" id="roiInputBudget" value="21000000" onkeyup="calculateRoiAppreciation()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white outline-none focus:border-emerald-500">
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl flex flex-col justify-center">
-          <span class="text-slate-400 text-[10px]">Predicted 3-Year Resale Value:</span>
-          <span id="roiFutureValue" class="text-emerald-400 font-black text-base">PKR 29,400,000</span>
-          <span class="text-[9px] text-emerald-300 font-bold mt-0.5">+40% Estimated Market Rise</span>
-        </div>
-        <div class="glass-inner p-3.5 rounded-2xl flex flex-col justify-center">
-          <span class="text-slate-400 text-[10px]">Expected Monthly Rental Yield:</span>
-          <span id="roiRentalYield" class="text-amber-400 font-black text-base">PKR 105,000 / mo</span>
-          <span class="text-[9px] text-slate-400 mt-0.5">Approx 6% Annual Yield</span>
-        </div>
-      </div>
-    </div>
-
   </main>
 
   <!-- Service Booking Modal -->
@@ -1208,46 +684,6 @@
       document.getElementById('displayTotalCost').innerText = `PKR ${grandTotal.toLocaleString()}`;
     }
 
-    function calculateMaterialBreakdown() {
-      const area = parseFloat(document.getElementById('matCoveredArea').value) || 2250;
-      document.getElementById('qtySteel').innerText = `${(area * 3.8 / 1000).toFixed(1)} Tons`;
-      document.getElementById('qtyCement').innerText = `${Math.round(area * 0.40)} Bags`;
-    }
-
-    function quickSelectMaterial(item, qty) {
-      document.getElementById('doorstepItem').value = item;
-      document.getElementById('doorstepQty').value = qty;
-      showToast(`Added ${item} to Dispatch Cart!`);
-    }
-
-    function submitDoorstepOrder() {
-      const item = document.getElementById('doorstepItem').value;
-      const qty = document.getElementById('doorstepQty').value.trim();
-      const address = document.getElementById('doorstepAddress').value.trim();
-      const phone = document.getElementById('doorstepPhone').value.trim();
-
-      if (!qty || !address) {
-        showToast("Enter Quantity and Address!", true);
-        return;
-      }
-
-      const order = {
-        name: 'Doorstep Customer',
-        phone: phone,
-        email: 'bintahacrm@gmail.com',
-        subject: `Doorstep Order: ${item}`,
-        text: `Material: ${item} | Qty: ${qty} | Address: ${address}`
-      };
-
-      if (typeof btaSyncToSheet === 'function') {
-        btaSyncToSheet(order, "Orders", function() {
-          showToast("Order Dispatched & Synced to Master Sheet!");
-        });
-      } else {
-        showToast("Order saved locally!");
-      }
-    }
-
     function submitServiceBooking() {
       const name = document.getElementById('bookingName').value.trim();
       const phone = document.getElementById('bookingPhone').value.trim();
@@ -1281,7 +717,6 @@
       drawCadBlueprint();
       renderCctvCanvas();
       calculateIntegratedPackage();
-      calculateMaterialBreakdown();
     };
   </script>
 </body>
