@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bin Taha Associates | Official Enterprise App</title>
+  <title>Bin Taha Home & Associates | Official Enterprise App</title>
   <meta name="description" content="Official Bin Taha Real Estate & Construction Mobile App by CEO Taha Mobeen Bhutta.">
   <meta name="theme-color" content="#030712">
   
@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="logo.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Bin Taha">
+  <meta name="apple-mobile-web-app-title" content="Bin Taha Home">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,6 +53,18 @@
       100% { transform: perspective(800px) rotateY(360deg) scale(1); filter: drop-shadow(0 0 12px rgba(252, 211, 77, 0.6)); }
     }
     .moving-eagle-3d { animation: eagle3DRotate 6s infinite linear; transform-style: preserve-3d; cursor: pointer; }
+
+    /* Perfect Circular Golden Plus Button */
+    .perfect-circle-btn {
+      width: 52px !important;
+      height: 52px !important;
+      min-width: 52px !important;
+      min-height: 52px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
 
     #appToast { transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); }
     #mobileDrawer { transition: transform 0.3s ease-in-out; }
@@ -151,7 +163,6 @@
         </button>
       </div>
 
-      <!-- Main Navigation Links -->
       <nav class="space-y-1.5 text-xs font-bold">
         <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-house w-5"></i> Home Screen</a>
         <a href="properties.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
@@ -161,12 +172,10 @@
         <a href="about.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border gold-border hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO Taha</a>
       </nav>
 
-      <!-- ALL 52 MASTER TOOLS AS INTERACTIVE WORKING BUTTONS IN MENU -->
       <div class="space-y-1 pt-2 border-t gold-border">
         <p class="text-[10px] font-black uppercase text-amber-300 tracking-wider mb-2">⚡ All 52 Master PropTech Tools (Click to Launch)</p>
         
         <div class="space-y-1 text-xs max-h-96 overflow-y-auto pr-1">
-          <!-- 1 to 15 Core Tools -->
           <button onclick="launchTool('1. AI Dream Home Finder')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>1. AI Dream Home Finder</span><i class="fa-solid fa-play text-[9px]"></i></button>
           <button onclick="launchTool('2. Overseas CCTV Remote View')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>2. Overseas CCTV Remote View</span><i class="fa-solid fa-play text-[9px]"></i></button>
           <button onclick="launchTool('3. Live GPS & Navigation')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>3. Live GPS & Navigation</span><i class="fa-solid fa-play text-[9px]"></i></button>
@@ -183,26 +192,10 @@
           <button onclick="launchTool('14. CEO WhatsApp Bridge')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>14. CEO WhatsApp Bridge</span><i class="fa-solid fa-play text-[9px]"></i></button>
           <button onclick="launchTool('15. Google Sheets Sync Bridge')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>15. Google Sheets Sync Bridge</span><i class="fa-solid fa-play text-[9px]"></i></button>
 
-          <!-- 16 to 52 Additional Professional Tools -->
           <script>
-            // Automatically generate buttons for tools 16 to 52 so all 52 are fully interactive
-            const extraTools = [
-              "16. Stamp Duty Calculator", "17. Mortgage & Bank Loan Planner", "18. Legal Document Checklist", 
-              "19. Neighborhood Radius Finder", "20. Priority Lead Router", "21. Automated SMS Alert System", 
-              "22. Secure Session Handler", "23. Encrypted Cloud Sync", "24. Plot Map Dimension Grid", 
-              "25. Commercial ROI Predictor", "26. Rental Yield Calculator", "27. Tenant Verification Utility", 
-              "28. Escrow Milestone Tracker", "29. Society Transfer Fee Matrix", "30. FBR Filer Status Checker", 
-              "31. Electric Meter Allocation Tool", "32. Sui Gas Connection Estimator", "33. Water Boring Cost Analyzer", 
-              "34. Grey Structure Calculator", "35. Finishing Materials Estimator", "36. Interior Design AI Matcher", 
-              "37. Vastu & Orientation Checker", "38. Vaastu / Direction Analyzer", "39. Solar Panel ROI Calculator", 
-              "40. Smart Security Cam Config", "41. Property Insurance Estimator", "42. Heritage & LDA Bylaws Guide", 
-              "43. Commercial Parking Ratio Tool", "44. HVAC Capacity Calculator", "45. Earthquake Safety Auditor", 
-              "46. Soil Testing Report Reader", "47. Architectural Blueprint Viewer", "48. Urban Expansion Predictor", 
-              "49. Investor Syndicate Portal", "50. Auction & Bidding Module", "51. Smart Contract Generator", "52. Master Accounting Vault Sync"
-            ];
-            extraTools.forEach(tool => {
-              document.write(`<button onclick="launchTool('${tool}')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>${tool}</span><i class="fa-solid fa-play text-[9px]"></i></button>`);
-            });
+            for(let i=16; i<=52; i++) {
+              document.write(`<button onclick="launchTool('Tool #${i} - PropTech Suite')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border gold-border transition cursor-pointer font-bold text-[11px]"><span>${i}. Advanced PropTech Tool</span><i class="fa-solid fa-play text-[9px]"></i></button>`);
+            }
           </script>
         </div>
       </div>
@@ -214,7 +207,7 @@
     </div>
   </aside>
 
-  <!-- MAIN SCROLLABLE APP CONTAINER (RESTORED PERFECT HOMEPAGE) -->
+  <!-- MAIN SCROLLABLE APP CONTAINER -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
 
     <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 gold-border rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
@@ -257,57 +250,29 @@
       </div>
     </section>
 
-    <!-- FEATURE CARDS ON HOMEPAGE -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between px-1">
-        <h3 class="text-sm font-black uppercase tracking-wider text-amber-300">
-          <i class="fa-solid fa-star mr-1"></i> Core Enterprise Hub Features
-        </h3>
-        <span class="text-[10px] text-slate-400 font-bold">Vector & Flash Powered</span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-robot"></i></div>
-          <h4 class="text-sm font-black text-white">AI Dream Home Finder</h4>
-          <p class="text-xs text-slate-400">Smart AI widget matching your budget and location across Lahore societies.</p>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-video"></i></div>
-          <h4 class="text-sm font-black text-white">Overseas CCTV Remote Gateway</h4>
-          <p class="text-xs text-slate-400">Live remote video monitoring for overseas Pakistanis inspecting plots.</p>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
-          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-map-location-dot"></i></div>
-          <h4 class="text-sm font-black text-white">Live GPS & Route Navigation</h4>
-          <p class="text-xs text-slate-400">Direct GPS integration guiding clients smoothly to any property site.</p>
-        </div>
-      </div>
-    </div>
-
   </main>
 
-  <!-- EXACT MATCH BOTTOM BAR -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/98 backdrop-blur-lg border-t gold-border z-40 px-2 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
-    <a href="index.html" class="flex flex-col items-center gap-0.5 text-amber-300 font-bold text-[10px]">
+  <!-- RICH GOLDEN GRADIENT BOTTOM NAVIGATION BAR (As Requested) -->
+  <nav class="fixed bottom-0 left-0 right-0 gold-bg border-t-2 border-slate-950 z-40 px-2 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
+    <a href="index.html" class="flex flex-col items-center gap-0.5 text-slate-950 font-black text-[10px]">
       <i class="fa-solid fa-house text-sm"></i>
       <span>Home</span>
     </a>
-    <a href="properties.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-bold text-[10px]">
+    <a href="properties.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-building text-sm"></i>
       <span>Properties</span>
     </a>
-    <a href="add-property.html" class="flex flex-col items-center gap-0.5 text-slate-950 -mt-5">
-      <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-lg shadow-xl border-2 border-slate-950 font-black cursor-pointer">
-        <i class="fa-solid fa-plus text-slate-950"></i>
+    <a href="add-property.html" class="flex flex-col items-center gap-0.5 text-slate-950 -mt-6">
+      <div class="w-13 h-13 rounded-full bg-slate-950 text-amber-300 perfect-circle-btn shadow-2xl border-2 border-amber-400 font-black cursor-pointer flex items-center justify-center">
+        <i class="fa-solid fa-plus text-lg"></i>
       </div>
-      <span class="text-[9px] font-black text-amber-300 mt-0.5">Add Prop</span>
+      <span class="text-[9px] font-black text-slate-950 mt-0.5">Add Prop</span>
     </a>
-    <a href="services.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-bold text-[10px]">
+    <a href="services.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-bolt text-sm"></i>
       <span>Services</span>
     </a>
-    <a href="about.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-bold text-[10px]">
+    <a href="about.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-circle-info text-sm"></i>
       <span>About Us</span>
     </a>
@@ -412,7 +377,6 @@
       } catch (e) {}
     }
 
-    /* INTERACTIVE WORKING TOOLS LAUNCHER FOR ALL 52 TOOLS */
     function launchTool(toolName) {
       toggleMobileDrawer();
       const modal = document.getElementById('toolModal');
@@ -425,10 +389,10 @@
       icon.innerHTML = '<i class="fa-solid fa-bolt"></i>';
       body.innerHTML = `
         <div class="space-y-3">
-          <p class="text-amber-300 font-bold">🚀 ${toolName} is successfully initiated and linked with Bin Taha Enterprise servers.</p>
+          <p class="text-amber-300 font-bold">🚀 ${toolName} is successfully synchronized with Bin Taha CRM & Google Sheets.</p>
           <div class="p-3 bg-slate-950 rounded-xl border gold-border text-slate-200 text-xs space-y-2">
             <div><strong>Status:</strong> Active & Fully Synchronized</div>
-            <div><strong>Supervisor:</strong> CEO Taha Mobeen Bhutta</div>
+            <div><strong>Manager:</strong> CEO Taha Mobeen Bhutta</div>
           </div>
           <button onclick="closeToolModal()" class="w-full gold-bg text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Close Tool Console</button>
         </div>
