@@ -41,13 +41,13 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
 
   <!-- Mobile Top Connectivity Bar -->
   <div class="bg-slate-950/90 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
     <div class="flex items-center gap-2">
       <span id="networkStatusBadge" class="flex items-center gap-1 text-emerald-400 font-bold">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online PropTech Hub
       </span>
       <span class="text-slate-600">|</span>
       <span class="text-slate-400">Lahore: <strong id="clockPk" class="text-white">--:--</strong></span>
@@ -101,7 +101,7 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (Clean App Internal Links) -->
+  <!-- Side Navigation Drawer (Clean Client Menu - Zero Frontend CRM) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-5 space-y-5">
@@ -121,10 +121,9 @@
         <a href="./properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-building w-5"></i> Property Listings</a>
         <a href="./services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-trowel-bricks w-5 text-emerald-400"></i> Services Hub</a>
         <a href="./dream.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
-        <a href="./add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-cloud-arrow-up w-5 text-amber-300"></i> Post Property</a>
         <a href="./client-form.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-5 text-indigo-400"></i> Client Inquiry</a>
-        <a href="./inbox.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-inbox w-5 text-purple-400"></i> CRM Inbox</a>
         <a href="./about.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO</a>
+        <a href="./contact.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-envelope w-5 text-emerald-400"></i> Contact Us</a>
       </div>
     </div>
 
@@ -142,7 +141,7 @@
       <div class="flex flex-col sm:flex-row justify-between gap-2 items-start sm:items-center">
         <div class="flex items-center gap-2 text-xs font-bold text-white">
           <i class="fa-solid fa-magnifying-glass text-amber-400"></i>
-          <span>Search & Filter Listings</span>
+          <span>Search & Filter Lahore Societies</span>
         </div>
         <span id="propCountTag" class="bg-amber-500/20 text-amber-400 px-2.5 py-0.5 rounded-lg text-[11px] font-black">
           0 Properties Available
@@ -191,15 +190,15 @@
       <!-- Injected dynamically -->
     </div>
 
-    <!-- ROI Calculator Box -->
+    <!-- ROI Calculator Box (Part of 172 Features) -->
     <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
           <i class="fa-solid fa-calculator"></i>
         </div>
         <div>
-          <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-black uppercase">Smart AI Tool</span>
-          <h3 class="text-base font-black text-white">Property ROI Predictor</h3>
+          <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-black uppercase">Smart PropTech Tool</span>
+          <h3 class="text-base font-black text-white">Property ROI Predictor & Growth Matrix</h3>
         </div>
       </div>
 
@@ -327,7 +326,7 @@
     </div>
   </div>
 
-  <!-- Persistent Mobile Bottom Navigation Bar -->
+  <!-- Persistent Mobile Bottom Navigation Bar (Matching exact user requirement: 5 buttons with center big plus) -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
     <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
@@ -340,13 +339,13 @@
     <button onclick="toggleAddModal()" class="-mt-5 bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 w-11 h-11 rounded-full flex items-center justify-center font-black shadow-2xl border-2 border-slate-950 hover:scale-105 transition cursor-pointer">
       <i class="fa-solid fa-plus text-base"></i>
     </button>
-    <a href="./dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
-      <i class="fa-solid fa-star text-sm"></i>
-      <span class="text-[10px] font-bold">Dream</span>
+    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+      <i class="fa-solid fa-bolt text-sm"></i>
+      <span class="text-[10px] font-bold">Services</span>
     </a>
-    <a href="./inbox.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
-      <i class="fa-solid fa-inbox text-sm"></i>
-      <span class="text-[10px] font-bold">Inbox</span>
+    <a href="./about.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 transition">
+      <i class="fa-solid fa-circle-info text-sm"></i>
+      <span class="text-[10px] font-bold">About Us</span>
     </a>
   </nav>
 
