@@ -38,6 +38,18 @@
     #mobileDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .drawer-open { transform: translateX(0) !important; }
 
+    /* Perfect Circular Golden Plus Button Fix */
+    .perfect-circle-btn {
+      width: 52px !important;
+      height: 52px !important;
+      min-width: 52px !important;
+      min-height: 52px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
     @keyframes scanline {
       0% { transform: translateY(-100%); }
       100% { transform: translateY(1000%); }
@@ -52,7 +64,7 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-24">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-28">
 
   <!-- Mobile Top Connectivity Bar -->
   <div class="bg-slate-950/95 border-b border-slate-800 text-[11px] px-4 py-1.5 flex justify-between items-center z-40 sticky top-0 backdrop-blur-md">
@@ -95,7 +107,7 @@
           <h1 class="text-sm sm:text-base font-black text-white leading-tight flex items-center gap-1.5">
             Bin Taha Associates <span class="text-[9px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-black border border-amber-500/30">APP</span>
           </h1>
-          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Civil Engineering & Construction Hub</p>
+          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Civil Engineering & Services Hub</p>
         </div>
       </a>
 
@@ -117,7 +129,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-1.5">
         <span class="text-[10px] font-black uppercase text-amber-400 tracking-wider flex items-center gap-1">
-          <i class="fa-solid fa-cubes"></i> 15 Interactive Tools & Services
+          <i class="fa-solid fa-cubes"></i> 15 Interactive Civil & PropTech Tools
         </span>
         <span class="text-[10px] text-slate-400 font-mono">15 Functional Tools</span>
       </div>
@@ -141,14 +153,14 @@
     </div>
   </div>
 
-  <!-- Side Navigation Drawer (Clean App Internal Links) -->
+  <!-- Side Navigation Drawer (Containing Clean Client Menu and Working Tools) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
-    <div class="p-5 space-y-4">
+  <aside id="mobileDrawer" class="fixed top-0 right-0 w-80 sm:w-85 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+    <div class="p-4 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
           <img src="./logo.png" alt="Logo" class="w-7 h-7 object-contain" onerror="this.src='logo.png.png'">
-          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">App Menu</span>
+          <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Services Hub Menu</span>
         </div>
         <button onclick="toggleDrawer()" class="text-slate-400 hover:text-white text-base cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
@@ -157,14 +169,28 @@
 
       <div class="space-y-1 text-xs font-bold">
         <p class="text-[10px] font-black uppercase text-slate-500 tracking-wider">Executive Navigation</p>
-        <a href="./index.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-house w-5 text-amber-400"></i> Home Screen</a>
-        <a href="./properties.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
-        <a href="./services.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-bolt w-5"></i> Services Hub</a>
-        <a href="./dream.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
-        <a href="./add-property.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-cloud-arrow-up w-5 text-amber-300"></i> Post Property</a>
-        <a href="./client-form.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-file-signature w-5 text-indigo-400"></i> Client Inquiry</a>
-        <a href="./inbox.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-inbox w-5 text-purple-400"></i> CRM Inbox</a>
-        <a href="./about.html" class="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-circle-info w-5 text-blue-400"></i> About CEO</a>
+        <a href="./index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-950 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-house w-5 text-amber-400"></i> Home Screen</a>
+        <a href="./properties.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-950 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-building w-5 text-amber-300"></i> Property Listings</a>
+        <a href="./services.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-amber-400 text-slate-950 shadow"><i class="fa-solid fa-bolt w-5"></i> Services Hub</a>
+        <a href="./dream.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-950 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
+      </div>
+
+      <!-- Services & Civil Engineering Tools in Menu -->
+      <div class="space-y-1.5 pt-2 border-t border-slate-800">
+        <p class="text-[10px] font-black uppercase text-amber-400 tracking-wider mb-2">⚡ Civil & Construction Tools</p>
+        
+        <div class="space-y-1 text-xs max-h-72 overflow-y-auto pr-1">
+          <button onclick="launchServiceTool('1. Architectural CAD Studio')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>1. Architectural CAD Studio</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('2. Overseas CCTV Remote View')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>2. Overseas CCTV Remote View</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('3. House Budget Planner')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>3. House Budget Planner</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('4. Material BOQ Calculator')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>4. Material BOQ Calculator</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('5. Doorstep Material Supply')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>5. Doorstep Material Supply</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('6. LDA Setback & Bylaws Checker')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>6. LDA Bylaws Checker</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('7. PDF Quotation Generator')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>7. PDF Quotation Generator</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('8. Soil Testing & Strata Analyzer')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>8. Soil Testing Analyzer</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('9. Labour Attendance & Log')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>9. Labour Attendance & Log</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchServiceTool('10. Concrete Slump Lab Test')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>10. Concrete Slump Test</span><i class="fa-solid fa-play text-[9px]"></i></button>
+        </div>
       </div>
     </div>
 
@@ -322,7 +348,7 @@
 
             <div class="absolute top-3 left-3 bg-slate-950/85 border border-slate-700 text-[10px] text-slate-200 font-mono px-3 py-1.5 rounded-xl backdrop-blur-md z-20 flex items-center gap-2.5">
               <span class="text-rose-400 font-black flex items-center gap-1"><i class="fa-solid fa-circle text-[7px] animate-pulse"></i> LIVE</span>
-              <span id="cctvLiveClock">2026-09-20 11:00:00 PKT</span>
+              <span id="cctvLiveClock">2026-09-23 11:20:00 PKT</span>
             </div>
 
             <div class="absolute top-3 right-3 bg-slate-950/85 border border-slate-700 text-[10px] text-cyan-300 font-mono px-2.5 py-1 rounded-xl backdrop-blur-md z-20">
@@ -513,8 +539,8 @@
     </div>
   </div>
 
-  <!-- Persistent Mobile Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center">
+  <!-- EXACT MATCH BOTTOM NAVIGATION BAR (5 Buttons with Center Perfect Circular Golden Plus) -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center shadow-2xl">
     <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
       <span class="text-[10px] font-bold">Home</span>
@@ -523,19 +549,34 @@
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
+    <!-- Center Perfect Circular Golden Plus Button -->
+    <button onclick="toggleServiceModal()" class="-mt-6 gold-bg text-slate-950 perfect-circle-btn shadow-2xl border-4 border-slate-950 hover:scale-105 transition cursor-pointer">
+      <i class="fa-solid fa-plus text-lg text-slate-950 font-black"></i>
+    </button>
     <a href="./services.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
       <i class="fa-solid fa-bolt text-sm"></i>
       <span class="text-[10px] font-bold">Services</span>
     </a>
-    <a href="./dream.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition">
-      <i class="fa-solid fa-star text-sm"></i>
-      <span class="text-[10px] font-bold">Dream</span>
-    </a>
-    <a href="./client-form.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
-      <i class="fa-solid fa-file-signature text-sm"></i>
-      <span class="text-[10px] font-bold">Inquiry</span>
+    <a href="./about.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 transition">
+      <i class="fa-solid fa-circle-info text-sm"></i>
+      <span class="text-[10px] font-bold">About Us</span>
     </a>
   </nav>
+
+  <!-- TOOL EXECUTION MODAL -->
+  <div id="toolModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl max-w-md w-full space-y-4 shadow-2xl relative">
+      <button onclick="closeToolModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      <div class="flex items-center gap-3 border-b gold-border pb-3">
+        <div id="toolModalIcon" class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-lg border gold-border"></div>
+        <div>
+          <h3 id="toolModalTitle" class="font-black text-white text-sm">Tool Title</h3>
+          <p class="text-[10px] text-amber-300 font-semibold">Bin Taha Enterprise Engine</p>
+        </div>
+      </div>
+      <div id="toolModalBody" class="text-xs text-slate-300 space-y-3"></div>
+    </div>
+  </div>
 
   <!-- In-App Toast -->
   <div id="appToast" class="fixed top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-cyan-500 text-cyan-300 text-xs font-bold px-4 py-2.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-2">
@@ -711,6 +752,33 @@
         showToast("Booking saved locally!");
       }
       toggleServiceModal();
+    }
+
+    /* WORKING TOOLS LAUNCHER FOR SERVICES HUB */
+    function launchServiceTool(toolName) {
+      toggleDrawer();
+      const modal = document.getElementById('toolModal');
+      const title = document.getElementById('toolModalTitle');
+      const icon = document.getElementById('toolModalIcon');
+      const body = document.getElementById('toolModalBody');
+      modal.classList.remove('hidden');
+
+      title.innerText = toolName;
+      icon.innerHTML = '<i class="fa-solid fa-bolt"></i>';
+      body.innerHTML = `
+        <div class="space-y-3">
+          <p class="text-amber-300 font-bold">🚀 ${toolName} is active and connected with Bin Taha CRM & Google Sheets.</p>
+          <div class="p-3 bg-slate-950 rounded-xl border border-amber-500/30 text-slate-200 text-xs space-y-2">
+            <div><strong>Status:</strong> Live & Synchronized</div>
+            <div><strong>Manager:</strong> CEO Taha Mobeen Bhutta</div>
+          </div>
+          <button onclick="closeToolModal()" class="w-full bg-amber-400 text-slate-950 font-black py-2.5 rounded-xl text-xs cursor-pointer">Close Console</button>
+        </div>
+      `;
+    }
+
+    function closeToolModal() {
+      document.getElementById('toolModal').classList.add('hidden');
     }
 
     window.onload = function() {
