@@ -84,35 +84,28 @@
     </div>
   </section>
 
-  <!-- In-App Header & Navigation Trigger -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-3 sticky top-[61px] z-30 backdrop-blur-md shadow-lg">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+<!-- MAIN NAVIGATION HEADER (RICH GOLDEN GRADIENT THEME) -->
+  <header class="gold-bg px-4 py-3 border-b-2 border-slate-950 flex items-center justify-between sticky top-[37px] z-40 shadow-lg">
+    <div class="flex items-center gap-2.5">
+      <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-slate-950 active:bg-slate-900 text-amber-300 flex items-center justify-center text-base border border-amber-400/50 shadow focus:outline-none cursor-pointer" title="Open App Menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
       
-      <!-- Brand & Logo -->
-      <a href="./index.html" class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-xl bg-slate-950 border border-amber-500/50 flex items-center justify-center overflow-hidden shadow gold-glow shrink-0">
-          <img src="./logo.png" alt="Bin Taha Logo" class="w-full h-full object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
-        </div>
+      <div class="flex items-center gap-2 cursor-pointer" onclick="handleSecretCeoTap()">
+        <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
-          <h1 class="text-sm sm:text-base font-black text-white leading-tight">Bin Taha Associates</h1>
-          <p class="text-[9px] sm:text-[10px] text-amber-400 font-bold uppercase tracking-wider">Properties Hub & AI Portal</p>
+          <h1 class="text-sm font-black text-slate-950 leading-none">Bin Taha Home</h1>
+          <p class="text-[9px] text-slate-900 font-black uppercase tracking-wider mt-0.5">CEO Taha Mobeen Bhutta</p>
         </div>
-      </a>
-
-      <!-- Quick Action Buttons + Drawer Toggle -->
-      <div class="flex items-center gap-2">
-        <button onclick="toggleAddModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow transition cursor-pointer">
-          <i class="fa-solid fa-plus text-[10px]"></i> Add Property
-        </button>
-
-        <button onclick="toggleDrawer()" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center hover:text-white hover:border-amber-500/60 transition cursor-pointer">
-          <i class="fa-solid fa-bars text-sm"></i>
-        </button>
       </div>
+    </div>
 
+    <div class="flex items-center gap-2">
+      <a href="https://wa.me/923219404812" target="_blank" class="bg-slate-950 active:scale-95 text-amber-300 font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg border border-amber-400/40">
+        <i class="fa-brands fa-whatsapp text-sm"></i> <span class="hidden xs:inline">WhatsApp</span>
+      </a>
     </div>
   </header>
-
   <!-- Side Navigation Drawer (Containing Correctly Styled 52 Working Interactive Tools) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-80 sm:w-85 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
