@@ -76,8 +76,8 @@
   <div id="splashScreen">
     <img src="logo.png" alt="Bin Taha Logo" class="splash-eagle-3d" onerror="this.src='logo.png.png'">
     <div style="opacity:0; animation: fadeInText 1s ease 1.2s forwards; margin-top: 20px; text-align: center;">
-      <h1 class="text-base font-black gold-text uppercase tracking-wider">Bin Taha Associates</h1>
-      <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Real Estate & Construction Master Platform</p>
+      <h1 class="text-base font-black gold-text uppercase tracking-wider">Bin Taha Home Hub</h1>
+      <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Real Estate & PropTech Master Platform</p>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
   <aside aria-label="System status" class="bg-slate-950/95 backdrop-blur-md px-3 py-2 border-b gold-border sticky top-0 z-50 flex flex-wrap justify-between items-center text-[11px]">
     <div class="flex items-center gap-2">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-emerald-400 font-bold tracking-wide">ONLINE</span>
+      <span class="text-emerald-400 font-bold tracking-wide">BIN TAHA HOME ONLINE</span>
     </div>
 
     <div class="flex items-center gap-2 font-bold text-[10px]">
@@ -132,7 +132,7 @@
       <div class="flex items-center gap-2 cursor-pointer" onclick="handleSecretCeoTap()">
         <img src="logo.png" alt="Bin Taha Logo" class="h-10 w-10 object-contain moving-eagle-3d" onerror="this.src='logo.png.png'">
         <div>
-          <h1 class="text-sm font-black text-white leading-none">Bin Taha Associates</h1>
+          <h1 class="text-sm font-black text-white leading-none">Bin Taha Home</h1>
           <p class="text-[9px] text-amber-300 font-bold uppercase tracking-wider mt-0.5">CEO Taha Mobeen Bhutta</p>
         </div>
       </div>
@@ -145,7 +145,7 @@
     </div>
   </header>
 
-  <!-- LUXURY SIDE MENU DRAWER (CONTAINING ALL 52 INTERACTIVE MASTER TOOLS) -->
+  <!-- LUXURY SIDE MENU DRAWER (CONTAINING ALL 52 TOOLS) -->
   <div id="drawerOverlay" onclick="toggleMobileDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
   
   <aside id="mobileDrawer" class="fixed top-0 left-0 bottom-0 w-85 max-w-[90vw] bg-slate-950 border-r gold-border z-50 transform -translate-x-full overflow-y-auto flex flex-col justify-between p-4 shadow-2xl">
@@ -207,9 +207,10 @@
     </div>
   </aside>
 
-  <!-- MAIN SCROLLABLE APP CONTAINER -->
+  <!-- MAIN SCROLLABLE APP CONTAINER (WITH RESTORED FRONT DISPLAY CARDS & TOOLS) -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-1 w-full">
 
+    <!-- HERO SECTION -->
     <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 gold-border rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
       <div class="flex items-center justify-between">
         <span class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
@@ -250,9 +251,114 @@
       </div>
     </section>
 
+    <!-- FRONT DISPLAY CARDS FOR CORE FEATURES -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between px-1">
+        <h3 class="text-sm font-black uppercase tracking-wider text-amber-300">
+          <i class="fa-solid fa-star mr-1"></i> Core PropTech Features & Tools
+        </h3>
+        <span class="text-[10px] text-slate-400 font-bold">Vector & Flash Powered</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-robot"></i></div>
+          <h4 class="text-sm font-black text-white">AI Dream Home Finder</h4>
+          <p class="text-xs text-slate-400">Smart AI widget matching your budget and location across Lahore societies.</p>
+        </div>
+        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-video"></i></div>
+          <h4 class="text-sm font-black text-white">Overseas CCTV Remote Gateway</h4>
+          <p class="text-xs text-slate-400">Live remote video monitoring for overseas Pakistanis inspecting plots.</p>
+        </div>
+        <div class="glass-card p-4 rounded-2xl border gold-border hover:border-amber-400 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h4 class="text-sm font-black text-white">Live GPS & Route Navigation</h4>
+          <p class="text-xs text-slate-400">Direct GPS integration guiding clients smoothly to any property site.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERSEAS CURRENCY EXCHANGE CONVERTER -->
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">🌍 Currency Exchange</span>
+        <span class="text-[10px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-md">Live Rates</span>
+      </div>
+      <h3 class="text-base font-black text-white">Global Currency Real-Time Converter</h3>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">PKR Capital Amount:</label>
+          <input type="number" id="fxAmount" value="10000000" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Convert to Foreign Currency:</label>
+          <select id="fxCurrency" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+            <option value="USD">USD ($ - US Dollar)</option>
+            <option value="AED">AED (د.إ - UAE Dirham)</option>
+            <option value="GBP">GBP (£ - British Pound)</option>
+          </select>
+        </div>
+        <button onclick="calculateFx()" class="w-full bg-amber-400 active:scale-95 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-coins"></i> Calculate Currency Conversion
+        </button>
+      </div>
+      <div id="fxResultBox" class="hidden p-3 bg-slate-950 rounded-xl border gold-border text-xs text-amber-300 font-bold leading-relaxed"></div>
+    </div>
+
+    <!-- GOVT TAX & DC VALUE AUTO-CALCULATOR -->
+    <div class="bg-slate-900 border-2 gold-border p-5 rounded-3xl space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">⚖️ Govt Tax & DC Calculator</span>
+        <span class="text-[10px] bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md">Auto e-Challan</span>
+      </div>
+      <h3 class="text-base font-black text-white">Auto DC Valuation & Government Dues Generator</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Select Society / Area:</label>
+          <select id="taxSociety" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+            <option value="LDA Avenue 1">LDA Avenue 1 (Lahore)</option>
+            <option value="Jubilee Town">Jubilee Town (Lahore)</option>
+            <option value="Raiwind Road">Raiwind Road / Bugtia Chowk</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Plot Size:</label>
+          <select id="taxPlotSize" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+            <option value="5">5 Marla</option>
+            <option value="10">10 Marla</option>
+            <option value="20">1 Kanal</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Filer / Non-Filer Status:</label>
+          <select id="taxFilerStatus" onchange="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+            <option value="filer">Active Filer (Tax Saved)</option>
+            <option value="nonfiler">Non-Filer (Double Tax)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 text-[11px] mb-1">Agreed Deal Price (PKR):</label>
+          <input type="number" id="taxDealPrice" value="15000000" oninput="calculateGovtTaxes()" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-white font-bold outline-none focus:border-amber-400 text-xs">
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-950 rounded-2xl border gold-border text-xs space-y-2.5">
+        <div class="flex justify-between font-bold text-slate-300"><span>Estimated DC Rate / Marla:</span> <span id="outDcRate" class="text-amber-300">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>FBR Valuation Total:</span> <span id="outFbrVal" class="text-amber-300">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Stamp Duty (1%):</span> <span id="outStampDuty" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>CVT (Capital Value Tax):</span> <span id="outCvt" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Registry Fee (1%):</span> <span id="outRegistry" class="text-cyan-400">PKR --</span></div>
+        <div class="flex justify-between font-bold text-slate-300"><span>Society Transfer Fee:</span> <span id="outTransferFee" class="text-emerald-400">PKR --</span></div>
+        <div class="border-t border-slate-800 pt-2 flex justify-between font-black text-sm"><span>Total Govt Dues & Challan:</span> <span id="outTotalTax" class="text-emerald-400 font-black">PKR --</span></div>
+      </div>
+    </div>
+
   </main>
 
-  <!-- RICH GOLDEN GRADIENT BOTTOM NAVIGATION BAR (As Requested) -->
+  <!-- RICH GOLDEN GRADIENT BOTTOM NAVIGATION BAR -->
   <nav class="fixed bottom-0 left-0 right-0 gold-bg border-t-2 border-slate-950 z-40 px-2 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
     <a href="index.html" class="flex flex-col items-center gap-0.5 text-slate-950 font-black text-[10px]">
       <i class="fa-solid fa-house text-sm"></i>
@@ -322,6 +428,7 @@
       }, 2500);
       updateWorldClocks();
       setInterval(updateWorldClocks, 1000);
+      calculateGovtTaxes();
     });
 
     let eagleTapCount = 0;
@@ -407,6 +514,49 @@
       const society = document.getElementById('searchSociety').value;
       alert(`Searching Bin Taha database for ${society}...`);
       window.location.href = `properties.html?society=${encodeURIComponent(society)}`;
+    }
+
+    function calculateFx() {
+      const pkr = parseFloat(document.getElementById('fxAmount').value) || 0;
+      const curr = document.getElementById('fxCurrency').value;
+      let rate = 280; let symbol = '$';
+      if (curr === 'AED') { rate = 76; symbol = 'AED '; }
+      else if (curr === 'GBP') { rate = 365; symbol = '£'; }
+      const converted = (pkr / rate).toFixed(2);
+      const resBox = document.getElementById('fxResultBox');
+      resBox.classList.remove('hidden');
+      resBox.innerHTML = `✅ Equivalent Value: <strong class="text-white">${symbol}${converted}</strong> (${curr}) calculated at live market rates.`;
+    }
+
+    function calculateGovtTaxes() {
+      const society = document.getElementById('taxSociety').value;
+      const marlaCount = parseFloat(document.getElementById('taxPlotSize').value) || 5;
+      const isFiler = document.getElementById('taxFilerStatus').value === 'filer';
+      const dealPrice = parseFloat(document.getElementById('taxDealPrice').value) || 15000000;
+
+      let dcPerMarla = 1200000;
+      if (society === 'Jubilee Town') dcPerMarla = 1000000;
+      if (society === 'Raiwind Road') dcPerMarla = 1500000;
+
+      const totalDcValuation = dcPerMarla * marlaCount;
+      const calculationBase = Math.max(dealPrice, totalDcValuation);
+
+      const stampDuty = calculationBase * 0.01;
+      const cvt = calculationBase * 0.02;
+      const registryFee = calculationBase * 0.01;
+      const advTaxRate = isFiler ? 0.03 : 0.06;
+      const advTax = calculationBase * advTaxRate;
+      let transferFee = marlaCount <= 5 ? 35000 : (marlaCount <= 10 ? 60000 : 100000);
+
+      const totalGovtDues = stampDuty + cvt + registryFee + advTax + transferFee;
+
+      document.getElementById('outDcRate').innerText = `PKR ${dcPerMarla.toLocaleString()} / Marla`;
+      document.getElementById('outFbrVal').innerText = `PKR ${totalDcValuation.toLocaleString()}`;
+      document.getElementById('outStampDuty').innerText = `PKR ${Math.round(stampDuty).toLocaleString()}`;
+      document.getElementById('outCvt').innerText = `PKR ${Math.round(cvt).toLocaleString()}`;
+      document.getElementById('outRegistry').innerText = `PKR ${Math.round(registryFee).toLocaleString()}`;
+      document.getElementById('outTransferFee').innerText = `PKR ${transferFee.toLocaleString()}`;
+      document.getElementById('outTotalTax').innerText = `PKR ${Math.round(totalGovtDues).toLocaleString()}`;
     }
   </script>
 </body>
