@@ -39,6 +39,18 @@
     .drawer-open {
       transform: translateX(0) !important;
     }
+
+    /* Perfect Circular Golden Plus Button Fix */
+    .perfect-circle-btn {
+      width: 52px !important;
+      height: 52px !important;
+      min-width: 52px !important;
+      min-height: 52px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-28">
@@ -101,7 +113,7 @@
     </div>
   </header>
 
-  <!-- Side Navigation Drawer (Containing All 52 Working Interactive Tools) -->
+  <!-- Side Navigation Drawer (Containing Correctly Styled 52 Working Interactive Tools) -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="fixed top-0 right-0 w-80 sm:w-85 h-full bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-y-auto">
     <div class="p-4 space-y-4">
@@ -123,25 +135,25 @@
         <a href="./dream.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800"><i class="fa-solid fa-wand-magic-sparkles w-5 text-cyan-400"></i> Dream Home Finder</a>
       </div>
 
-      <!-- ALL 52 MASTER TOOLS AS WORKING BUTTONS -->
-      <div class="space-y-1 pt-2 border-t border-slate-800">
+      <!-- PROPERLY STRUCTURED 52 MASTER TOOLS GRID -->
+      <div class="space-y-2 pt-3 border-t border-slate-800">
         <p class="text-[10px] font-black uppercase text-amber-400 tracking-wider mb-2">⚡ 52 Interactive Master Tools</p>
         
-        <div class="space-y-1 text-xs max-h-80 overflow-y-auto pr-1">
-          <button onclick="launchTool('1. AI Dream Home Finder')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>1. AI Dream Home Finder</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('2. Overseas CCTV Remote View')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>2. Overseas CCTV Remote View</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('3. Live GPS & Navigation')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>3. Live GPS & Navigation</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('4. Govt Tax & DC Calculator')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>4. Govt Tax & DC Calculator</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('5. PDF Brochure Generator')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>5. PDF Brochure Generator</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('6. Real-Time Price Trends')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>6. Real-Time Price Trends</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('7. 3D / VR Virtual Tours')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>7. 3D / VR Virtual Tours</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('8. Land Record Verification')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>8. Land Record Verification</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('9. Multi-Currency Converter')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>9. Multi-Currency Converter</span><i class="fa-solid fa-play text-[9px]"></i></button>
-          <button onclick="launchTool('10. Construction Cost Estimator')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>10. Construction Cost Estimator</span><i class="fa-solid fa-play text-[9px]"></i></button>
+        <div class="grid grid-cols-1 gap-1.5 text-xs max-h-80 overflow-y-auto pr-1">
+          <button onclick="launchTool('1. AI Dream Home Finder')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>1. AI Dream Home Finder</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('2. Overseas CCTV Remote View')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>2. Overseas CCTV Remote View</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('3. Live GPS & Navigation')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>3. Live GPS & Navigation</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('4. Govt Tax & DC Calculator')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>4. Govt Tax & DC Calculator</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('5. PDF Brochure Generator')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>5. PDF Brochure Generator</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('6. Real-Time Price Trends')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>6. Real-Time Price Trends</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('7. 3D / VR Virtual Tours')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>7. 3D / VR Virtual Tours</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('8. Land Record Verification')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>8. Land Record Verification</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('9. Multi-Currency Converter')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>9. Multi-Currency Converter</span><i class="fa-solid fa-play text-[9px]"></i></button>
+          <button onclick="launchTool('10. Construction Cost Estimator')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>10. Construction Cost Estimator</span><i class="fa-solid fa-play text-[9px]"></i></button>
           
           <script>
             for(let i=11; i<=52; i++) {
-              document.write(`<button onclick="launchTool('Tool #${i} - PropTech Suite')" class="w-full text-left flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-[11px]"><span>${i}. Advanced PropTech Tool</span><i class="fa-solid fa-play text-[9px]"></i></button>`);
+              document.write(`<button onclick="launchTool('Tool #${i} - PropTech Suite')" class="w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 text-slate-200 border border-slate-800 transition cursor-pointer font-bold text-xs"><span>${i}. Advanced PropTech Tool</span><i class="fa-solid fa-play text-[9px]"></i></button>`);
             }
           </script>
         </div>
@@ -347,7 +359,7 @@
     </div>
   </div>
 
-  <!-- EXACT MATCH BOTTOM NAVIGATION BAR (5 Buttons with Center Big Golden Plus) -->
+  <!-- EXACT MATCH BOTTOM NAVIGATION BAR (Perfect Circular Golden Plus Button) -->
   <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center shadow-2xl">
     <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
       <i class="fa-solid fa-house text-sm"></i>
@@ -357,9 +369,9 @@
       <i class="fa-solid fa-building text-sm"></i>
       <span class="text-[10px] font-bold">Properties</span>
     </a>
-    <!-- Center Golden Plus Button -->
-    <button onclick="toggleAddModal()" class="-mt-6 gold-bg text-slate-950 w-13 h-13 rounded-full flex items-center justify-center font-black shadow-2xl border-4 border-slate-950 hover:scale-105 transition cursor-pointer">
-      <i class="fa-solid fa-plus text-lg"></i>
+    <!-- Perfect Circular Golden Plus Button -->
+    <button onclick="toggleAddModal()" class="-mt-6 gold-bg text-slate-950 perfect-circle-btn shadow-2xl border-4 border-slate-950 hover:scale-105 transition cursor-pointer">
+      <i class="fa-solid fa-plus text-lg text-slate-950 font-black"></i>
     </button>
     <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
       <i class="fa-solid fa-bolt text-sm"></i>
