@@ -353,29 +353,31 @@
   </div>
 
   <!-- EXACT MATCH BOTTOM NAVIGATION BAR (Perfect Circular Golden Plus Button) -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-slate-950/95 border-t border-slate-800 py-2 px-3 z-40 backdrop-blur-lg flex justify-around items-center shadow-2xl">
-    <a href="./index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+ <!-- RICH GOLDEN GRADIENT BOTTOM NAVIGATION BAR -->
+  <nav class="fixed bottom-0 left-0 right-0 gold-bg border-t-2 border-slate-950 z-40 px-2 py-2 flex justify-around items-center max-w-lg mx-auto shadow-2xl">
+    <a href="index.html" class="flex flex-col items-center gap-0.5 text-slate-950 font-black text-[10px]">
       <i class="fa-solid fa-house text-sm"></i>
-      <span class="text-[10px] font-bold">Home</span>
+      <span>Home</span>
     </a>
-    <a href="./properties.html" class="flex flex-col items-center gap-1 text-amber-400 font-black">
+    <a href="properties.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-building text-sm"></i>
-      <span class="text-[10px] font-bold">Properties</span>
+      <span>Properties</span>
     </a>
-    <!-- Perfect Circular Golden Plus Button -->
-    <button onclick="toggleAddModal()" class="-mt-6 gold-bg text-slate-950 perfect-circle-btn shadow-2xl border-4 border-slate-950 hover:scale-105 transition cursor-pointer">
-      <i class="fa-solid fa-plus text-lg text-slate-950 font-black"></i>
-    </button>
-    <a href="./services.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition">
+    <a href="add-property.html" class="flex flex-col items-center gap-0.5 text-slate-950 -mt-6">
+      <div class="w-13 h-13 rounded-full bg-slate-950 text-amber-300 perfect-circle-btn shadow-2xl border-2 border-amber-400 font-black cursor-pointer flex items-center justify-center">
+        <i class="fa-solid fa-plus text-lg"></i>
+      </div>
+      <span class="text-[9px] font-black text-slate-950 mt-0.5">Add Prop</span>
+    </a>
+    <a href="services.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-bolt text-sm"></i>
-      <span class="text-[10px] font-bold">Services</span>
+      <span>Services</span>
     </a>
-    <a href="./about.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 transition">
+    <a href="about.html" class="flex flex-col items-center gap-0.5 text-slate-950/80 hover:text-slate-950 font-bold text-[10px]">
       <i class="fa-solid fa-circle-info text-sm"></i>
-      <span class="text-[10px] font-bold">About Us</span>
+      <span>About Us</span>
     </a>
   </nav>
-
   <!-- TOOL EXECUTION MODAL -->
   <div id="toolModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border-2 gold-border p-6 rounded-3xl max-w-md w-full space-y-4 shadow-2xl relative">
