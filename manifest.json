@@ -1,7 +1,7 @@
 {
   "name": "Bin Taha Associates",
   "short_name": "Bin Taha",
-  "start_url": "index.html",
+  "start_url": "bin_taha_app_home.html",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#020617",
